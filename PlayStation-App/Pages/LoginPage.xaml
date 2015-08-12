@@ -11,7 +11,10 @@
         <viewModels:LoginPageViewModel />
     </Page.DataContext>
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="../Assets/Background/background.png"></ImageBrush>
+        </Grid.Background>
         <ProgressBar VerticalAlignment="Top" Visibility="{Binding IsLoading, Converter={StaticResource BooleanToVisibilityConverter}}" IsIndeterminate="True"/>
         <Grid VerticalAlignment="Center">
             <Grid.RowDefinitions>
@@ -22,14 +25,15 @@
             <TextBlock FontSize="30" FontWeight="Thin" Margin="0,25,0,0" HorizontalAlignment="Center" Text="PlayStation.App"></TextBlock>
             <Grid Grid.Row="1">
                 <StackPanel Margin="0,25,0,0" Width="300">
-                    <TextBox x:Name="Username" IsSpellCheckEnabled="False" PlaceholderText="Username" Margin="0,0,0,15"
+                    <TextBox x:Uid="EmailAddress"  x:Name="Username" IsSpellCheckEnabled="False" PlaceholderText="Eメールアドレス" Margin="0,0,0,15"
                          Text="{Binding UserName, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
-                    <PasswordBox PasswordRevealMode="Peek" x:Name="Password" PlaceholderText="Password" Margin="0,0,0,15"
+                    <PasswordBox x:Uid="Password" PasswordRevealMode="Peek" x:Name="Password" PlaceholderText="パスワード" Margin="0,0,0,15"
                              Password="{Binding Password, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
-                    <Button x:Name="LoginButton" Content="Login" HorizontalAlignment="Center"
+                    <Button x:Uid="Signin" x:Name="LoginButton" Content="サインイン" HorizontalAlignment="Center"
                         Command="{Binding ClickLoginButtonCommand}" />
                 </StackPanel>
             </Grid>
+            <Image VerticalAlignment="Bottom" Grid.Row="2"  Margin="25" Source="../Assets/Background/PlayStation_Logo.png"/>
         </Grid>
     </Grid>
 </Page>

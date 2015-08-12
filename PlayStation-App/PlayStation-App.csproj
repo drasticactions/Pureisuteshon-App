@@ -96,6 +96,7 @@
     </Content>
     <None Include="project.json" />
     <None Include="Service References\Application Insights\ConnectedService.json" />
+    <PRIResource Include="Strings\ja-JP\Resources.resw" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.xaml.cs">
@@ -132,6 +133,8 @@
     <None Include="PlayStation-App_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\Background\background.png" />
+    <Content Include="Assets\Background\PlayStation_Logo.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
