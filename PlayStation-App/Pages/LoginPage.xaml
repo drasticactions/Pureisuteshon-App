@@ -1,0 +1,35 @@
+﻿<Page
+    x:Class="PlayStation_App.Pages.LoginPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:PlayStation_App.Pages"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewModels="using:PlayStation_App.ViewModels"
+    mc:Ignorable="d">
+    <Page.DataContext>
+        <viewModels:LoginPageViewModel />
+    </Page.DataContext>
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <ProgressBar VerticalAlignment="Top" Visibility="{Binding IsLoading, Converter={StaticResource BooleanToVisibilityConverter}}" IsIndeterminate="True"/>
+        <Grid VerticalAlignment="Center">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <TextBlock FontSize="30" FontWeight="Thin" Margin="0,25,0,0" HorizontalAlignment="Center" Text="PlayStation.App"></TextBlock>
+            <Grid Grid.Row="1">
+                <StackPanel Margin="0,25,0,0" Width="300">
+                    <TextBox x:Name="Username" IsSpellCheckEnabled="False" PlaceholderText="Username" Margin="0,0,0,15"
+                         Text="{Binding UserName, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
+                    <PasswordBox PasswordRevealMode="Peek" x:Name="Password" PlaceholderText="Password" Margin="0,0,0,15"
+                             Password="{Binding Password, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
+                    <Button x:Name="LoginButton" Content="Login" HorizontalAlignment="Center"
+                        Command="{Binding ClickLoginButtonCommand}" />
+                </StackPanel>
+            </Grid>
+        </Grid>
+    </Grid>
+</Page>
