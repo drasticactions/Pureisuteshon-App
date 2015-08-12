@@ -61,7 +61,7 @@ namespace PlayStation_App.ViewModels
             {
                 loginResult = await _authManager.Authenticate(UserName, Password);
             }
-            catch (LoginFailedException ex)
+            catch (Exception ex)
             {
             }
             IsLoading = false;
