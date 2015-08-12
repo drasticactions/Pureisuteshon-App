@@ -4,9 +4,16 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:PlayStation_App"
     xmlns:converter="using:PlayStation_App.Tools.Converter"
+    xmlns:locator="using:PlayStation_App.Locator"
     RequestedTheme="Dark">
 
     <Application.Resources>
-        <converter:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Styles/Styles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <locator:ViewModels x:Name="Locator" />
+            <converter:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+        </ResourceDictionary>
     </Application.Resources>
 </Application>
