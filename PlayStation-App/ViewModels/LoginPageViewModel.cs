@@ -60,6 +60,7 @@ namespace PlayStation_App.ViewModels
             try
             {
                 loginResult = await _authManager.Authenticate(UserName, Password);
+                Locator.ViewModels.MainPageVm.CurrentUser = loginResult;
             }
             catch (Exception ex)
             {

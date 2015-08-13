@@ -87,18 +87,26 @@ namespace PlayStation_App
                 // このとき、必要な情報をナビゲーション パラメーターとして渡して、新しいページを
                 //構成します
                 var authManager = new AuthenticationManager();
-                var loginTest = await authManager.LoginTest(new UserAccountEntity());
-                if (loginTest != null)
+                var loginTest = new UserAccountEntity();
+                if (loginTest.GetAccessToken() != null)
+                {
+                    loginTest = await authManager.LoginTest(loginTest);
+                }
+                if (loginTest?.GetAccessToken() != null)
                 {
                     UserAccountEntity.User user = await authManager.GetUserEntity(loginTest);
-                    if (user != null)
+                    if (!string.IsNullOrEmpty(user?.AccountId))
                     {
                         loginTest.SetUserEntity(user);
                         Locator.ViewModels.MainPageVm.CurrentUser = loginTest;
                     }
+                    else
+                    {
+                        loginTest = null;
+                    }
                 }
                 RootFrame.Navigate(
-                    loginTest != null ? typeof(MainPage) : typeof(LoginPage),
+                    loginTest?.GetAccessToken() != null ? typeof(MainPage) : typeof(LoginPage),
                     e.Arguments);
             }
             // 現在のウィンドウがアクティブであることを確認します

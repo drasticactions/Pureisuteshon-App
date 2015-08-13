@@ -14,11 +14,51 @@
                                         SimpleFriendTemplate="{StaticResource SimpleFriendTemplate}" />
     </Page.Resources>
     <Grid>
-        <RelativePanel>
-            <GridView x:Name="SimpleFriendGrid" Width="350" ItemsSource="{Binding FriendList}" ItemTemplateSelector="{StaticResource FriendButtonTemplateSelector}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <CommandBar Margin="0,0,0,15">
+            <CommandBar.Background>
+                <SolidColorBrush Color="#DBDEE7" Opacity="0.15" />
+            </CommandBar.Background>
+            <AppBarButton Label="PS Store">
+                <AppBarButton.Icon>
+                    <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE14D;"/>
+                </AppBarButton.Icon>
+            </AppBarButton>
+            <AppBarSeparator />
+            <AppBarButton Label="お知らせ">
+                <AppBarButton.Icon>
+                    <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE946;"/>
+                </AppBarButton.Icon>
+            </AppBarButton>
+            <AppBarButton Label="メッセージ">
+                <AppBarButton.Icon>
+                    <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE15F;"/>
+                </AppBarButton.Icon>
+            </AppBarButton>
+            <AppBarSeparator />
+            <AppBarButton Label="プロフィール">
+                <AppBarButton.Icon>
+                    <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE187;"/>
+                </AppBarButton.Icon>
+                <AppBarButton.Flyout>
+                    <MenuFlyout>
+                        <MenuFlyoutItem Text="プロフィール"/>
+                        <MenuFlyoutItem Text="トロフィー"/>
+                        <MenuFlyoutItem Text="コード番組を入力する"/>
+                        <MenuFlyoutItem Text="設定"/>
+                        <MenuFlyoutItem Text="サインアウト"/>
+                    </MenuFlyout>
+                </AppBarButton.Flyout>
+            </AppBarButton>
+        </CommandBar>
+        <RelativePanel Grid.Row="1">
+            <GridView VerticalAlignment="Stretch" x:Name="SimpleFriendGrid" Width="350" ItemsSource="{Binding FriendList}" ItemTemplateSelector="{StaticResource FriendButtonTemplateSelector}">
                 <GridView.ItemsPanel>
                     <ItemsPanelTemplate>
-                        <VariableSizedWrapGrid ItemHeight="50" ItemWidth="170" Orientation="Horizontal"></VariableSizedWrapGrid>
+                        <VariableSizedWrapGrid ItemHeight="50" ItemWidth="170" Orientation="Horizontal"/>
                     </ItemsPanelTemplate>
                 </GridView.ItemsPanel>
             </GridView>

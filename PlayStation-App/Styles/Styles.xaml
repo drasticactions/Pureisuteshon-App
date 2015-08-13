@@ -3,11 +3,31 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:PlayStation_App.Styles">
 
+    <DataTemplate x:Key="StoreActivitySimpleDataTemplate">
+        
+    </DataTemplate>
+
+    <DataTemplate x:Key="ActivitySimpleDataTemplate">
+        <Grid Height="150" Width="160">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            
+            <Grid Grid.Row="0">
+                
+            </Grid>
+            
+            
+        </Grid>
+    </DataTemplate>
+
     <DataTemplate x:Key="SimpleFriendTemplate">
         <Border Width="160" BorderBrush="Transparent" BorderThickness="1">
             <Grid>
                 <Grid.Background>
-                    <SolidColorBrush Color="#DBDEE7" Opacity="0.45" />
+                    <SolidColorBrush Color="#DBDEE7" Opacity="0.15" />
                 </Grid.Background>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="25" />
@@ -30,7 +50,7 @@
         <Border Height="140" Width="160" VerticalAlignment="Stretch" BorderBrush="Transparent" BorderThickness="1">
             <Grid VerticalAlignment="Stretch">
                 <Grid.Background>
-                    <SolidColorBrush Color="#DBDEE7" Opacity="0.45" />
+                    <SolidColorBrush Color="#DBDEE7" Opacity="0.15" />
                 </Grid.Background>
                 <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
                     <Grid.RowDefinitions>

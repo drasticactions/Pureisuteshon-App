@@ -152,7 +152,7 @@ namespace PlayStation_App.Core.Managers
             httpClient.DefaultRequestHeaders.Add("Origin", "https://auth.api.sonyentertainmentnetwork.com");
             var nameValueCollection = new Dictionary<string, string>
                 {
-                { "params", "c2VydmljZV9lbnRpdHk9cHNuJnJlcXVlc3RfdGhlbWU9bGlxdWlk" },
+                { "params", "c2VydmljZV9lbnRpdHk9cHNuJnJlcXVlc3RfdGhlbWU9bGlxdWlkJmF1dGhlbnRpY2F0aW9uX2Vycm9yPXRydWU=" },
                 { "rememberSignIn", "On" },
                 { "j_username", userName },
                 { "j_password", password },
@@ -165,7 +165,8 @@ namespace PlayStation_App.Core.Managers
                 throw new Exception("Failed to log in: " + response.StatusCode);
             }
 
-            var codeUrl = response.RequestMessage.RequestUri;
+            ohNoTest = await httpClient.GetAsync(new Uri(EndPoints.Login));
+            var codeUrl = ohNoTest.RequestMessage.RequestUri;
             var queryString = UriExtensions.ParseQueryString(codeUrl.ToString());
             if (queryString.ContainsKey("authentication_error"))
             {

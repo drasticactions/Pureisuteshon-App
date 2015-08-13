@@ -147,6 +147,7 @@
     <Content Include="Assets\Icons\Friend\Friend_Standby.png" />
     <Content Include="Assets\Icons\Home\Home_Friends.png" />
     <Content Include="Assets\Icons\Home\Home_LiveFromPlaystation.png" />
+    <Content Include="Assets\Icons\Home\Home_Store.png" />
     <Content Include="Assets\Icons\Home\Home_WhatsNew.png" />
     <Content Include="Assets\Icons\WhatsNew.png" />
     <Content Include="Assets\Icons\Settings.png" />

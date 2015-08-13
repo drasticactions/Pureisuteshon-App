@@ -35,6 +35,18 @@ namespace PlayStation_App.ViewModels
             }
         }
 
+        private ObservableCollection<RecentActivityEntity.Feed> _whatsNewList = new ObservableCollection<RecentActivityEntity.Feed>();
+
+        public ObservableCollection<RecentActivityEntity.Feed> WhatsNew
+        {
+            get { return _whatsNewList; }
+            set
+            {
+                SetProperty(ref _whatsNewList, value);
+                OnPropertyChanged();
+            }
+        }
+
         public async Task Initialize()
         {
             IsLoading = true;
@@ -57,6 +69,16 @@ namespace PlayStation_App.ViewModels
                 foreach (var friend in friendEntity.FriendList)
                 {
                     FriendList.Add(friend);
+                }
+
+                var recentActivityManager = new RecentActivityManager();
+                var recentActivityList =
+                    await
+                        recentActivityManager.GetActivityFeed(CurrentUserEntity.OnlineId, 0, true, true,
+                            Locator.ViewModels.MainPageVm.CurrentUser);
+                foreach (var item in recentActivityList.feed)
+                {
+                    WhatsNew.Add(item);
                 }
             }
             catch (Exception)
