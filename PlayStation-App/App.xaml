@@ -5,6 +5,7 @@
     xmlns:local="using:PlayStation_App"
     xmlns:converter="using:PlayStation_App.Tools.Converter"
     xmlns:locator="using:PlayStation_App.Locator"
+    xmlns:templateSelector="using:PlayStation_App.Tools.TemplateSelector"
     RequestedTheme="Dark">
 
     <Application.Resources>
@@ -14,6 +15,8 @@
             </ResourceDictionary.MergedDictionaries>
             <locator:ViewModels x:Name="Locator" />
             <converter:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+            <converter:OnlineConverter x:Key="OnlineConverter" />
+            <templateSelector:FriendButtonTemplateSelector x:Key="FriendButtonTemplateSelector"/>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

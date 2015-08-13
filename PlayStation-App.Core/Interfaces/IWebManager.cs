@@ -9,6 +9,13 @@ namespace PlayStation_App.Core.Interfaces
     public interface IWebManager
     {
         bool IsNetworkAvailable { get; }
+
+        Task<WebManager.Result> PutData(Uri uri, StringContent json, UserAccountEntity userAccountEntity);
+
+        Task<WebManager.Result> DeleteData(Uri uri, StringContent json, UserAccountEntity userAccountEntity);
+
+        Task<WebManager.Result> PostData(Uri uri, StringContent content, UserAccountEntity userAccountEntity);
+
         Task<WebManager.Result> PostData(Uri uri, FormUrlEncodedContent header, UserAccountEntity userAccountEntity);
 
         Task<WebManager.Result> GetData(Uri uri, UserAccountEntity userAccountEntity);

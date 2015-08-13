@@ -12,6 +12,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using PlayStation_App.Commands.Navigation;
 using PlayStation_App.Models;
 
 // 空白ページのアイテム テンプレートについては、http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409 を参照してください
@@ -27,6 +28,8 @@ namespace PlayStation_App
         {
             this.InitializeComponent();
             App.RootFrame = MainFrame;
+            var test3 = new NavigateToHomePage();
+            test3.Execute(null);
         }
 
         private async void MenuClick(object sender, ItemClickEventArgs e)

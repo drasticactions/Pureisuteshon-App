@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using PlayStation_App.Commands.Navigation;
 using PlayStation_App.Common;
 using PlayStation_App.Core.Entities;
 using PlayStation_App.Models;
@@ -20,7 +21,7 @@ namespace PlayStation_App.ViewModels
                 {
                     Icon = "/Assets/Icons/Home.png",
                     Name = loader.GetString("Home/Text"),
-                    //Command = new NavigateToMainForumsPage()
+                    Command = new NavigateToHomePage()
                 },
                 new MenuItem()
                 {
