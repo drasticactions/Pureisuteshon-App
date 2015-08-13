@@ -120,10 +120,31 @@
   <data name="EmailAddress.PlaceholderText" xml:space="preserve">
     <value>Eメールアドレス</value>
   </data>
+  <data name="Friends.Text" xml:space="preserve">
+    <value>フレンド</value>
+  </data>
+  <data name="Home.Text" xml:space="preserve">
+    <value>ホーム</value>
+  </data>
+  <data name="LiveFromPlaystation.Text" xml:space="preserve">
+    <value>Live From PlayStation</value>
+  </data>
+  <data name="Messenger.Text" xml:space="preserve">
+    <value>メッセージ</value>
+  </data>
   <data name="Password.PlaceholderText" xml:space="preserve">
     <value>パスワード</value>
   </data>
+  <data name="Settings.Text" xml:space="preserve">
+    <value>設定</value>
+  </data>
   <data name="Signin.Content" xml:space="preserve">
     <value>サインイン</value>
+  </data>
+  <data name="Trophy.Text" xml:space="preserve">
+    <value>トロフェー</value>
+  </data>
+  <data name="WhatsNew.Text" xml:space="preserve">
+    <value>What's New</value>
   </data>
 </root>

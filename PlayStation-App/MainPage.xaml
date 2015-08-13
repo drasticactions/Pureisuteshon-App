@@ -9,6 +9,9 @@
     mc:Ignorable="d">
 
     <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="../Assets/Background/background.png"></ImageBrush>
+        </Grid.Background>
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup>
                 <VisualState x:Name="wideState">
@@ -40,7 +43,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <SplitView Grid.Row="1" x:Name="Splitter" VerticalAlignment="Stretch">
+        <SplitView Grid.Row="1" x:Name="Splitter" Opacity=".9" VerticalAlignment="Stretch">
             <SplitView.Pane>
                 <RelativePanel  VerticalAlignment="Stretch">
                     <ListView ItemClick="MenuClick"  ItemsSource="{Binding MenuItems}" IsItemClickEnabled="True" 
@@ -50,11 +53,11 @@
                             <DataTemplate>
                                 <Grid>
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="25"/>
+                                        <ColumnDefinition Width="27"/>
                                         <ColumnDefinition Width="*"/>
                                     </Grid.ColumnDefinitions>
                                     <Image Stretch="UniformToFill" Source="{Binding Icon}" />
-                                    <TextBlock Padding="25,3,0,0" Style="{StaticResource TagLineTextStyle}"  TextAlignment="Left" Grid.Column="1" Text="{Binding Name}" />
+                                    <TextBlock Padding="25,6,0,0" Style="{StaticResource TagLineTextStyle}"  TextAlignment="Left" Grid.Column="1" Text="{Binding Name}" />
                                 </Grid>
                             </DataTemplate>
                         </ListView.ItemTemplate>

@@ -135,6 +135,13 @@
   <ItemGroup>
     <Content Include="Assets\Background\background.png" />
     <Content Include="Assets\Background\PlayStation_Logo.png" />
+    <Content Include="Assets\Icons\WhatsNew.png" />
+    <Content Include="Assets\Icons\Settings.png" />
+    <Content Include="Assets\Icons\Trophy.png" />
+    <Content Include="Assets\Icons\Friends.png" />
+    <Content Include="Assets\Icons\Live.png" />
+    <Content Include="Assets\Icons\Messenger.png" />
+    <Content Include="Assets\Icons\Home.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />

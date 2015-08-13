@@ -4,6 +4,7 @@ namespace PlayStation_App.Models
 {
     public class MenuItem
     {
+        public string Uid { get; set; }
         public string Icon { get; set; }
 
         public string Name { get; set; }
