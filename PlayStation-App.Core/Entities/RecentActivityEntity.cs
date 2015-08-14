@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using Humanizer;
 
 namespace PlayStation_App.Core.Entities
 {
@@ -67,6 +69,28 @@ namespace PlayStation_App.Core.Entities
 
         public class Feed
         {
+            public string TitleName
+            {
+                get
+                {
+                    return !Targets.Any() ? string.Empty : Targets.FirstOrDefault(node => node.Type == "TITLE_NAME")?.Meta;
+                }
+            }
+            public string ShortGameTitle
+            {
+                get
+                {
+                    return !Targets.Any() ? string.Empty : Targets.FirstOrDefault(node => node.Type == "SHORT_PRODUCT_NAME")?.Meta;
+                }
+            }
+            public string GameTitle
+            {
+                get
+                {
+                    return !Targets.Any() ? string.Empty : Targets.FirstOrDefault(node => node.Type == "PRODUCT_NAME")?.Meta;
+                }
+            }
+            public bool IsMenuItem { get; set; }
             public string Caption { get; set; }
 
             public List<CondensedStory> CondensedStories { get; set; }
@@ -85,6 +109,8 @@ namespace PlayStation_App.Core.Entities
             public string LargeImageUrl { get; set; }
             public string ThumbnailImageUrl { get; set; }
             public DateTime Date { get; set; }
+
+            public string FormattedDate => Date.Humanize();
             public double Relevancy { get; set; }
             public int CommentCount { get; set; }
             public int LikeCount { get; set; }

@@ -128,6 +128,7 @@
     <Compile Include="Tools\Converter\BooleanToVisibilityConverter.cs" />
     <Compile Include="Tools\Converter\BooleanToVisibilityInverter.cs" />
     <Compile Include="Tools\Converter\OnlineConverter.cs" />
+    <Compile Include="Tools\TemplateSelector\SimpleActivityTemplateSelector.cs" />
     <Compile Include="Tools\TemplateSelector\FriendButtonTemplateSelector.cs" />
     <Compile Include="ViewModels\HomeViewModel.cs" />
     <Compile Include="ViewModels\LoginPageViewModel.cs" />

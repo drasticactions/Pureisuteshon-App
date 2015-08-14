@@ -12,6 +12,10 @@
         <templateSelector:FriendButtonTemplateSelector x:Name="FriendButtonTemplateSelector"
                                         FriendButtonTemplate="{StaticResource FriendButtonTemplate}"
                                         SimpleFriendTemplate="{StaticResource SimpleFriendTemplate}" />
+        <templateSelector:SimpleActivityTemplateSelector x:Name="SimpleActivityTemplateSelector"
+                                                         WhatsNewButtonTemplate="{StaticResource WhatsNewButtonTemplate}"
+                                        ActivitySimpleDataTemplate="{StaticResource ActivitySimpleDataTemplate}"
+                                        StoreActivitySimpleDataTemplate="{StaticResource StoreActivitySimpleDataTemplate}" />
     </Page.Resources>
     <Grid>
         <Grid.RowDefinitions>
@@ -55,10 +59,17 @@
             </AppBarButton>
         </CommandBar>
         <RelativePanel Grid.Row="1">
-            <GridView VerticalAlignment="Stretch" x:Name="SimpleFriendGrid" Width="350" ItemsSource="{Binding FriendList}" ItemTemplateSelector="{StaticResource FriendButtonTemplateSelector}">
+            <GridView VerticalAlignment="Stretch" x:Name="SimpleFriendGrid" MaxWidth="350" ItemsSource="{Binding FriendList}" ItemTemplateSelector="{StaticResource FriendButtonTemplateSelector}">
                 <GridView.ItemsPanel>
                     <ItemsPanelTemplate>
                         <VariableSizedWrapGrid ItemHeight="50" ItemWidth="170" Orientation="Horizontal"/>
+                    </ItemsPanelTemplate>
+                </GridView.ItemsPanel>
+            </GridView>
+            <GridView RelativePanel.RightOf="SimpleFriendGrid" MaxWidth="350" ItemsSource="{Binding WhatsNew}" ItemTemplateSelector="{StaticResource SimpleActivityTemplateSelector}">
+                <GridView.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <VariableSizedWrapGrid ItemHeight="150" ItemWidth="170" Orientation="Horizontal"/>
                     </ItemsPanelTemplate>
                 </GridView.ItemsPanel>
             </GridView>

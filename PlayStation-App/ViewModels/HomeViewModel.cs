@@ -66,6 +66,14 @@ namespace PlayStation_App.ViewModels
                         FriendCount = friendEntity.TotalResults
                     }
                 };
+
+                WhatsNew = new ObservableCollection<RecentActivityEntity.Feed>()
+                {
+                    new RecentActivityEntity.Feed()
+                    {
+                        IsMenuItem = true
+                    }
+                };
                 foreach (var friend in friendEntity.FriendList)
                 {
                     FriendList.Add(friend);

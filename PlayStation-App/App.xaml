@@ -17,6 +17,7 @@
             <converter:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
             <converter:OnlineConverter x:Key="OnlineConverter" />
             <templateSelector:FriendButtonTemplateSelector x:Key="FriendButtonTemplateSelector"/>
+            <templateSelector:SimpleActivityTemplateSelector x:Key="SimpleActivityTemplateSelector"/>
         </ResourceDictionary>
     </Application.Resources>
 </Application>
