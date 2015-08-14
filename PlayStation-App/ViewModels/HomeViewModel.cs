@@ -23,6 +23,19 @@ namespace PlayStation_App.ViewModels
             }
         }
 
+        private ObservableCollection<LiveBroadcastEntity> _broadcastEntities = new ObservableCollection<LiveBroadcastEntity>();
+
+        public ObservableCollection<LiveBroadcastEntity> BroadcastEntities
+        {
+            get { return _broadcastEntities; }
+            set
+            {
+                SetProperty(ref _broadcastEntities, value);
+                OnPropertyChanged();
+            }
+        }
+
+
         private ObservableCollection<FriendsEntity.Friend> _friendList;
 
         public ObservableCollection<FriendsEntity.Friend> FriendList
@@ -74,6 +87,11 @@ namespace PlayStation_App.ViewModels
                         IsMenuItem = true
                     }
                 };
+
+                BroadcastEntities.Add(new LiveBroadcastEntity()
+                {
+                    IsMenuItem = true
+                });
                 foreach (var friend in friendEntity.FriendList)
                 {
                     FriendList.Add(friend);
@@ -88,12 +106,28 @@ namespace PlayStation_App.ViewModels
                 {
                     WhatsNew.Add(item);
                 }
+
+                var liveStreamManager = new LiveStreamManager();
+                NicoNicoEntity nicoNicoEntity =
+                    await liveStreamManager.GetNicoFeed("onair", "PS4", 0, 80, "view", Locator.ViewModels.MainPageVm.CurrentUser);
+                if (nicoNicoEntity?.programs == null)
+                {
+                    IsLoading = false;
+                    return;
+                }
+                foreach (NicoNicoEntity.Program program in nicoNicoEntity.programs)
+                {
+                    var entity = new LiveBroadcastEntity();
+                    entity.ParseFromNicoNico(program);
+                    BroadcastEntities.Add(entity);
+                }
             }
             catch (Exception)
             {
                 
                 throw;
             }
+
             IsLoading = false;
         }
     }

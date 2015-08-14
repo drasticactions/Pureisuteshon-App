@@ -9,6 +9,9 @@
     xmlns:templateSelector="using:PlayStation_App.Tools.TemplateSelector"
     mc:Ignorable="d">
 <Page.Resources>
+        <templateSelector:SimpleLiveFeedTemplateSelector x:Name="SimpleLiveFeedTemplateSelector"
+                                                         SimpleLiveBroadcastButtonTemplate="{StaticResource SimpleLiveBroadcastButtonTemplate}"
+                                        SimpleLiveBroadcastTemplate="{StaticResource SimpleLiveBroadcastTemplate}" />
         <templateSelector:FriendButtonTemplateSelector x:Name="FriendButtonTemplateSelector"
                                         FriendButtonTemplate="{StaticResource FriendButtonTemplate}"
                                         SimpleFriendTemplate="{StaticResource SimpleFriendTemplate}" />
@@ -58,21 +61,30 @@
                 </AppBarButton.Flyout>
             </AppBarButton>
         </CommandBar>
-        <RelativePanel Grid.Row="1">
-            <GridView VerticalAlignment="Stretch" x:Name="SimpleFriendGrid" MaxWidth="350" ItemsSource="{Binding FriendList}" ItemTemplateSelector="{StaticResource FriendButtonTemplateSelector}">
-                <GridView.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <VariableSizedWrapGrid ItemHeight="50" ItemWidth="170" Orientation="Horizontal"/>
-                    </ItemsPanelTemplate>
-                </GridView.ItemsPanel>
-            </GridView>
-            <GridView RelativePanel.RightOf="SimpleFriendGrid" MaxWidth="350" ItemsSource="{Binding WhatsNew}" ItemTemplateSelector="{StaticResource SimpleActivityTemplateSelector}">
-                <GridView.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <VariableSizedWrapGrid ItemHeight="150" ItemWidth="170" Orientation="Horizontal"/>
-                    </ItemsPanelTemplate>
-                </GridView.ItemsPanel>
-            </GridView>
-        </RelativePanel>
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" ZoomMode="Disabled">
+            <RelativePanel>
+                <GridView VerticalAlignment="Stretch"  x:Name="SimpleFriendGrid"  ItemsSource="{Binding FriendList}" ItemTemplateSelector="{StaticResource FriendButtonTemplateSelector}">
+                    <GridView.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <VariableSizedWrapGrid ItemHeight="50" ItemWidth="170" MaximumRowsOrColumns="3" Orientation="Vertical"/>
+                        </ItemsPanelTemplate>
+                    </GridView.ItemsPanel>
+                </GridView>
+                <GridView x:Name="SimpleWhatsNew" RelativePanel.Below="SimpleFriendGrid"  ItemsSource="{Binding WhatsNew}" ItemTemplateSelector="{StaticResource SimpleActivityTemplateSelector}">
+                    <GridView.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <VariableSizedWrapGrid ItemHeight="150" ItemWidth="170" MaximumRowsOrColumns="2" Orientation="Vertical"/>
+                        </ItemsPanelTemplate>
+                    </GridView.ItemsPanel>
+                </GridView>
+                <GridView x:Name="SimpleLive" RelativePanel.Below="SimpleWhatsNew"  ItemsSource="{Binding BroadcastEntities}" ItemTemplateSelector="{StaticResource SimpleLiveFeedTemplateSelector}">
+                    <GridView.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <VariableSizedWrapGrid ItemHeight="150" ItemWidth="170" MaximumRowsOrColumns="2" Orientation="Vertical"/>
+                        </ItemsPanelTemplate>
+                    </GridView.ItemsPanel>
+                </GridView>
+            </RelativePanel>
+        </ScrollViewer>
     </Grid>
 </Page>

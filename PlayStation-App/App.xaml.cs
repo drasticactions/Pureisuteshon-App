@@ -90,6 +90,7 @@ namespace PlayStation_App
                 var loginTest = new UserAccountEntity();
                 if (loginTest.GetAccessToken() != null)
                 {
+                    await authManager.RefreshAccessToken(loginTest);
                     loginTest = await authManager.LoginTest(loginTest);
                 }
                 if (loginTest?.GetAccessToken() != null)

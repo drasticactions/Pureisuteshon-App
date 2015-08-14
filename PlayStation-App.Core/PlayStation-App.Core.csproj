@@ -36,16 +36,21 @@
   <ItemGroup>
     <Compile Include="Entities\FriendEntity.cs" />
     <Compile Include="Entities\FriendTokenEntity.cs" />
+    <Compile Include="Entities\LiveBroadcastEntity.cs" />
+    <Compile Include="Entities\NicoNicoEntity.cs" />
     <Compile Include="Entities\RecentActivityEntity.cs" />
+    <Compile Include="Entities\TwitchEntity.cs" />
     <Compile Include="Entities\UserAccountEntity.cs" />
     <Compile Include="Entities\UserAuthenticationEntity.cs" />
     <Compile Include="Entities\UserEntity.cs" />
+    <Compile Include="Entities\UstreamEntity.cs" />
     <Compile Include="Exceptions\LoginFailedException.cs" />
     <Compile Include="Exceptions\RefreshTokenException.cs" />
     <Compile Include="Helpers\Settings.cs" />
     <Compile Include="Interfaces\IWebManager.cs" />
     <Compile Include="Managers\AuthenticationManager.cs" />
     <Compile Include="Managers\FriendManager.cs" />
+    <Compile Include="Managers\LiveStreamManager.cs" />
     <Compile Include="Managers\RecentActivityManager.cs" />
     <Compile Include="Managers\UserManager.cs" />
     <Compile Include="Managers\WebManager.cs" />

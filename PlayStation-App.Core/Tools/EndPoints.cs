@@ -2,6 +2,27 @@
 {
     public class EndPoints
     {
+        public class UstreamUrlConstants
+        {
+            public const string FilterBase = "filter[{0}]";
+
+            public const string Platform = "platform";
+
+            public const string Type = "type";
+
+            public const string PlatformPs4 = "PS4";
+
+            public const string Interactive = "interactive";
+
+            public const string Sort = "sort";
+        }
+
+        public const string UstreamBaseUrl = "https://ps4api.ustream.tv/media.json?";
+
+        public const string TwitchBaseUrl = "https://api.twitch.tv/api/orbis/streams?";
+
+        public const string NicoNicoBaseUrl = "http://edn.live.nicovideo.jp/api/v1.0/programs?";
+
         public const string ConsumerKey = "4db3729d-4591-457a-807a-1cf01e60c3ac";
 
         public const string ConsumerSecret = "criemouwIuVoa4iU";
