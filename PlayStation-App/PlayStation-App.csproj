@@ -120,6 +120,9 @@
     <Compile Include="Pages\HomePage.xaml.cs">
       <DependentUpon>HomePage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\LiveFromPlaystationPage.xaml.cs">
+      <DependentUpon>LiveFromPlaystationPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
     </Compile>
@@ -132,6 +135,7 @@
     <Compile Include="Tools\TemplateSelector\FriendButtonTemplateSelector.cs" />
     <Compile Include="Tools\TemplateSelector\SimpleLiveFeedTemplateSelector.cs" />
     <Compile Include="ViewModels\HomeViewModel.cs" />
+    <Compile Include="ViewModels\LiveFromPlayStationViewModel.cs" />
     <Compile Include="ViewModels\LoginPageViewModel.cs" />
     <Compile Include="ViewModels\MainPageViewModel.cs" />
   </ItemGroup>
@@ -151,6 +155,9 @@
     <Content Include="Assets\Icons\Home\Home_LiveFromPlaystation.png" />
     <Content Include="Assets\Icons\Home\Home_Store.png" />
     <Content Include="Assets\Icons\Home\Home_WhatsNew.png" />
+    <Content Include="Assets\Icons\Stream\Nico.png" />
+    <Content Include="Assets\Icons\Stream\Twitch.png" />
+    <Content Include="Assets\Icons\Stream\Ustream.png" />
     <Content Include="Assets\Icons\WhatsNew.png" />
     <Content Include="Assets\Icons\Settings.png" />
     <Content Include="Assets\Icons\Trophy.png" />
@@ -177,6 +184,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Pages\HomePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\LiveFromPlaystationPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

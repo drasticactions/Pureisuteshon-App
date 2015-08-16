@@ -27,7 +27,7 @@
                 <Grid.Background>
                     <SolidColorBrush Color="#3483C5" Opacity="0.95" />
                 </Grid.Background>
-                <TextBlock Margin="3" TextAlignment="Right" TextTrimming="CharacterEllipsis" Text="{Binding Service}"/>
+                <Image VerticalAlignment="Center" HorizontalAlignment="Right" Width="17" Height="17" Margin="4" Source="{Binding Service}"/>
             </Grid>
         </Grid>
     </DataTemplate>

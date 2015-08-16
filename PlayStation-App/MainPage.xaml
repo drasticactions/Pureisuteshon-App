@@ -43,7 +43,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <SplitView Grid.Row="1" x:Name="Splitter" Opacity=".9" VerticalAlignment="Stretch">
+        <SplitView Grid.Row="1" x:Name="Splitter" Opacity=".95" VerticalAlignment="Stretch">
             <SplitView.Pane>
                 <RelativePanel  VerticalAlignment="Stretch">
                     <ListView ItemClick="MenuClick"  ItemsSource="{Binding MenuItems}" IsItemClickEnabled="True" 

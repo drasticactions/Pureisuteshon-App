@@ -46,7 +46,7 @@ namespace PlayStation_App.Core.Entities
             try
             {
                 Title = program.title;
-                Service = "ニコニコ";
+                Service = "/Assets/Icons/Stream/Nico.png";
                 Description = program.description;
                 UserName = program.user.name;
                 GameTitle = program.sce.title_name;
@@ -66,7 +66,7 @@ namespace PlayStation_App.Core.Entities
             try
             {
                 Title = twitchStream.status;
-                Service = "Twitch";
+                Service = "/Assets/Icons/Stream/Twitch.png";
                 Description = twitchStream.name;
                 UserName = twitchStream.sce_user_online_id;
                 GameTitle = twitchStream.sce_title_name;
@@ -90,7 +90,7 @@ namespace PlayStation_App.Core.Entities
         {
             try
             {
-                Service = "UStream";
+                Service = "/Assets/Icons/Stream/Ustream.png";
                 Title = ustreamEntity.media.title;
                 PreviewThumbnail = ustreamEntity.media.thumbnail.live;
                 Description = ustreamEntity.media.description;
