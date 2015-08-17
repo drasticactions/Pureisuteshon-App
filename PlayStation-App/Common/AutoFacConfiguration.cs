@@ -12,6 +12,7 @@ namespace PlayStation_App.Common
             // Register View Models
             builder.RegisterType<MainPageViewModel>().SingleInstance();
             builder.RegisterType<HomeViewModel>().SingleInstance();
+            builder.RegisterType<LiveFromPlayStationViewModel>().SingleInstance();
             //builder.RegisterType<MainPage>();
             return builder.Build();
         }

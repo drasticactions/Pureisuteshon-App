@@ -5,9 +5,68 @@
     xmlns:local="using:PlayStation_App.Pages"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
+    xmlns:core="using:Microsoft.Xaml.Interactions.Core"
+    DataContext="{Binding Source={StaticResource Locator}, Path=LiveFromPlayStationVm}"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <CommandBar Margin="0,0,0,15">
+            <CommandBar.Background>
+                <SolidColorBrush Color="#DBDEE7" Opacity="0.15" />
+            </CommandBar.Background>
+            <AppBarButton Label="ゲームのリスト">
+                <AppBarButton.Icon>
+                    <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE7FC;"/>
+                </AppBarButton.Icon>
+            </AppBarButton>
+            <AppBarButton Label="検索">
+                <AppBarButton.Icon>
+                    <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE094;"/>
+                </AppBarButton.Icon>
+                <AppBarButton.Flyout>
+                    <Flyout>
+                        <StackPanel>
+                            <TextBox Margin="5" Text="{Binding SearchString, Mode=TwoWay}"/>
+                            <Button Margin="5" Content="検索">
+                                <interactivity:Interaction.Behaviors>
+                                    <core:EventTriggerBehavior EventName="Click">
+                                        <core:InvokeCommandAction Command="{Binding SearchLiveList}" />
+                                    </core:EventTriggerBehavior>
+                                </interactivity:Interaction.Behaviors>
+                            </Button>
+                        </StackPanel>
+                    </Flyout>
+                </AppBarButton.Flyout>
+            </AppBarButton>
+        </CommandBar>
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <ComboBox Margin="15" x:Name="FilterComboBox" SelectionChanged="Selector_OnSelectionChanged" SelectedIndex="0" Grid.Row="0">
+                <ComboBoxItem Content="ライブ" />
+                <ComboBoxItem Content="インタラクティブ" />
+                <ComboBoxItem Content="ニコニコ生放送" />
+                <ComboBoxItem Content="Twitch" />
+                <ComboBoxItem Content="Ustream" />
+            </ComboBox>
+            <ScrollViewer Grid.Row="1" ZoomMode="Disabled">
+                <GridView 
+                ItemsSource="{Binding LiveBroadcastCollection}" 
+                ItemTemplate="{StaticResource LiveBroadcastTemplate}">
+                    <GridView.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapGrid Orientation="Horizontal" />
+                        </ItemsPanelTemplate>
+                    </GridView.ItemsPanel>
+                </GridView>
+            </ScrollViewer>
+        </Grid>
     </Grid>
 </Page>

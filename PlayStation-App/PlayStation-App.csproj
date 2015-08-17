@@ -103,6 +103,8 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Commands\Navigation\NavigateToHomePage.cs" />
+    <Compile Include="Commands\Navigation\NavigateToLiveFromPlaystationPage.cs" />
+    <Compile Include="Commands\Search\SearchLiveFromPlaystation.cs" />
     <Compile Include="Common\AlwaysExecutableCommand.cs" />
     <Compile Include="Common\AsyncDelegateCommand.cs" />
     <Compile Include="Common\AutoFacConfiguration.cs" />
@@ -210,7 +212,14 @@
       <Name>PlayStation-App.Core</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <SDKReference Include="BehaviorsXamlSDKManaged, Version=12.0">
+      <Name>Behaviors SDK %28XAML%29</Name>
+    </SDKReference>
+    <SDKReference Include="WindowsMobile, Version=10.0.10240.0">
+      <Name>Windows Mobile Extensions for the UWP</Name>
+    </SDKReference>
+  </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>

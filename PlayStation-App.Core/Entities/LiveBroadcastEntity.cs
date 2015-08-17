@@ -78,7 +78,6 @@ namespace PlayStation_App.Core.Entities
                 PreviewThumbnail = twitchStream.preview;
                 Viewers = twitchStream.viewers;
                 Url = string.Format("http://www.twitch.tv/{0}", UserName);
-                Service = "Twitch";
             }
             catch (Exception)
             {

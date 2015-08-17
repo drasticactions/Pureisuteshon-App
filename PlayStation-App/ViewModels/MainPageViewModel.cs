@@ -51,7 +51,7 @@ namespace PlayStation_App.ViewModels
                 {
                     Icon = "/Assets/Icons/Live.png",
                     Name = loader.GetString("LiveFromPlayStation/Text"),
-                    //Command = new NavigateToMainForumsPage()
+                    Command = new NavigateToLiveFromPlaystationPage()
                 },
                 new MenuItem()
                 {

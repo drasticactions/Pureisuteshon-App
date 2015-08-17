@@ -109,7 +109,7 @@ namespace PlayStation_App.ViewModels
 
                 var liveStreamManager = new LiveStreamManager();
                 NicoNicoEntity nicoNicoEntity =
-                    await liveStreamManager.GetNicoFeed("onair", "PS4", 0, 80, "view", Locator.ViewModels.MainPageVm.CurrentUser);
+                    await liveStreamManager.GetNicoFeed("onair", "PS4", false, 0, 80, "view", string.Empty, Locator.ViewModels.MainPageVm.CurrentUser);
                 if (nicoNicoEntity?.programs == null)
                 {
                     IsLoading = false;

@@ -26,5 +26,28 @@ namespace PlayStation_App.Pages
         {
             this.InitializeComponent();
         }
+
+        private void Selector_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (FilterComboBox == null) return;
+            switch (FilterComboBox.SelectedIndex)
+            {
+                case 0:
+                    Locator.ViewModels.LiveFromPlayStationVm.BuildList();
+                    break;
+                case 1:
+                    Locator.ViewModels.LiveFromPlayStationVm.BuildListInteractive();
+                    break;
+                case 2:
+                    Locator.ViewModels.LiveFromPlayStationVm.BuildNicoList();
+                    break;
+                case 3:
+                    Locator.ViewModels.LiveFromPlayStationVm.BuildTwitch();
+                    break;
+                case 4:
+                    Locator.ViewModels.LiveFromPlayStationVm.BuildUstreamList();
+                    break;
+            }
+        }
     }
 }
