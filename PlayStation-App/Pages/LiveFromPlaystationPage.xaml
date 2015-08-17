@@ -56,8 +56,8 @@
                 <ComboBoxItem Content="Twitch" />
                 <ComboBoxItem Content="Ustream" />
             </ComboBox>
-            <ScrollViewer Grid.Row="1" ZoomMode="Disabled">
-                <GridView 
+            <ScrollViewer  Grid.Row="1" ZoomMode="Disabled">
+                <GridView x:Name="LiveGrid"
                 ItemsSource="{Binding LiveBroadcastCollection}" 
                 ItemTemplate="{StaticResource LiveBroadcastTemplate}">
                     <GridView.ItemsPanel>

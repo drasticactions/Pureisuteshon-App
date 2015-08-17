@@ -106,8 +106,8 @@ namespace PlayStation_App.ViewModels
         private async void SetTwitchElements(bool interactive = false, string query = "")
         {
             IsLoading = true;
-            TwitchEntity twitchList =
-                await _liveStreamManager.GetTwitchFeed(0, 80, "PS4", interactive, query, Locator.ViewModels.MainPageVm.CurrentUser);
+                TwitchEntity twitchList =
+                    await _liveStreamManager.GetTwitchFeed(0, 80, "PS4", interactive, query, Locator.ViewModels.MainPageVm.CurrentUser);
             if (twitchList?.streams == null) return;
             foreach (TwitchEntity.Stream twitch in twitchList.streams)
             {
