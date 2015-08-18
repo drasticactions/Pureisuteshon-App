@@ -3,6 +3,66 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:PlayStation_App.Styles">
 
+    <DataTemplate x:Key="FriendTemplate">
+        <Border BorderBrush="Transparent" BorderThickness="1">
+            <Grid>
+                <Grid.Background>
+                    <SolidColorBrush Color="#D9E2EC" Opacity="0.05" />
+                </Grid.Background>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="25" />
+                    <ColumnDefinition Width="75" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Image Margin="5" VerticalAlignment="Center" HorizontalAlignment="Left"
+                                                   Grid.Column="0" Width="15" Height="15"
+                                                   Source="{Binding Presence.PrimaryInfo.OnlineStatus, Converter={StaticResource OnlineConverter}}" />
+                <Border VerticalAlignment="Center" Grid.Column="1" Width="70" Height="70">
+                    <Image Source="{Binding AvatarUrl}"  />
+                </Border>
+                <Grid VerticalAlignment="Center" Grid.Column="2">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="35" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" Text="{Binding OnlineId}" Width="300"
+                                                           FontSize="25" TextWrapping="NoWrap"
+                                                           TextTrimming="WordEllipsis" />
+                        <Image
+                                                    Visibility="{Binding Plus, Converter={StaticResource BooleanToVisibilityConverter}}"
+                                                    Grid.Column="1" HorizontalAlignment="Right" Margin="5" Width="25"
+                                                    Height="25" Source="/Assets/Icons/Friend/PSPlus.png" />
+                    </Grid>
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <StackPanel Grid.Column="0" Width="300">
+                            <TextBlock
+                                                        Text="{Binding Presence.PrimaryInfo.GameTitleInfo.TitleName}"
+                                                        FontSize="15" TextWrapping="Wrap" />
+                            <TextBlock Text="{Binding  Presence.PrimaryInfo.GameStatus}"
+                                                               FontSize="15" TextWrapping="Wrap" />
+                        </StackPanel>
+                        <StackPanel Grid.Column="1" Margin="5" HorizontalAlignment="Right"
+                                                            Orientation="Vertical">
+                            <Image Width="25" Height="25"
+                                                           Source="/Assets/Icons/Friend/Trophy.png" />
+                            <TextBlock FontSize="15" HorizontalAlignment="Center"
+                                                               Text="{Binding TrophySummary.Level}" />
+                        </StackPanel>
+                    </Grid>
+                </Grid>
+            </Grid>
+        </Border>
+    </DataTemplate>
+
     <DataTemplate x:Key="LiveBroadcastTemplate">
         <Border Width="300" Height="300" Margin="15" BorderBrush="White" BorderThickness="1">
             <Grid>

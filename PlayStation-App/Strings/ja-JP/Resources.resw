@@ -147,4 +147,46 @@
   <data name="WhatsNew.Text" xml:space="preserve">
     <value>What's New</value>
   </data>
+  <data name="FriendRequest.Content" xml:space="preserve">
+    <value>フレンド依頼を送信する</value>
+  </data>
+  <data name="FriendRequestAlert.Text" xml:space="preserve">
+    <value>このプレーヤーをフレンドに追加しますか？</value>
+  </data>
+  <data name="FriendRequestConfirm.Text" xml:space="preserve">
+    <value>このプレーヤーにフレンド依頼を送信します。</value>
+  </data>
+  <data name="FriendRequestReceived.Content" xml:space="preserve">
+    <value>フレンド依頼(受信済み)</value>
+  </data>
+  <data name="FriendRequestSent.Content" xml:space="preserve">
+    <value>フレンド依頼(送信済み)</value>
+  </data>
+  <data name="FriendSendError.Text" xml:space="preserve">
+    <value>フレンド依頼を送信できませんでした。</value>
+  </data>
+  <data name="FriendsFilterAll.Content" xml:space="preserve">
+    <value>すべて</value>
+  </data>
+  <data name="FriendsFilterBlockedPlayer.Content" xml:space="preserve">
+    <value>ブロックしているプレーヤー</value>
+  </data>
+  <data name="FriendsFilterNameRequestReceived.Content" xml:space="preserve">
+    <value>名前リクエスト(受信済み)</value>
+  </data>
+  <data name="FriendsFilterNameRequestSent.Content" xml:space="preserve">
+    <value>名前リクエスト(送信済み)</value>
+  </data>
+  <data name="FriendsFilterOnline.Content" xml:space="preserve">
+    <value>オンライン</value>
+  </data>
+  <data name="FriendsFilterPlayersMet.Content" xml:space="preserve">
+    <value>Players Met</value>
+  </data>
+  <data name="FriendsFilterRequestReceived.Content" xml:space="preserve">
+    <value>フレンド依頼(受信済み)</value>
+  </data>
+  <data name="FriendsFilterRequestSent.Content" xml:space="preserve">
+    <value>フレンド依頼(送信済み)</value>
+  </data>
 </root>

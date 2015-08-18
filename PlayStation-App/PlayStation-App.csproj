@@ -96,12 +96,15 @@
     </Content>
     <None Include="project.json" />
     <None Include="Service References\Application Insights\ConnectedService.json" />
-    <PRIResource Include="Strings\ja-JP\Resources.resw" />
+    <PRIResource Include="Strings\ja-JP\Resources.resw">
+      <SubType>Designer</SubType>
+    </PRIResource>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Commands\Navigation\NavigateToFriendsPage.cs" />
     <Compile Include="Commands\Navigation\NavigateToHomePage.cs" />
     <Compile Include="Commands\Navigation\NavigateToLiveFromPlaystationPage.cs" />
     <Compile Include="Commands\Search\SearchLiveFromPlaystation.cs" />
@@ -119,6 +122,12 @@
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Models\MenuItem.cs" />
+    <Compile Include="Pages\FriendPage.xaml.cs">
+      <DependentUpon>FriendPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\FriendsPage.xaml.cs">
+      <DependentUpon>FriendsPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\HomePage.xaml.cs">
       <DependentUpon>HomePage.xaml</DependentUpon>
     </Compile>
@@ -133,9 +142,11 @@
     <Compile Include="Tools\Converter\BooleanToVisibilityConverter.cs" />
     <Compile Include="Tools\Converter\BooleanToVisibilityInverter.cs" />
     <Compile Include="Tools\Converter\OnlineConverter.cs" />
+    <Compile Include="Tools\ScrollingCollection\FriendScrollingCollection.cs" />
     <Compile Include="Tools\TemplateSelector\SimpleActivityTemplateSelector.cs" />
     <Compile Include="Tools\TemplateSelector\FriendButtonTemplateSelector.cs" />
     <Compile Include="Tools\TemplateSelector\SimpleLiveFeedTemplateSelector.cs" />
+    <Compile Include="ViewModels\FriendsPageViewModel.cs" />
     <Compile Include="ViewModels\HomeViewModel.cs" />
     <Compile Include="ViewModels\LiveFromPlayStationViewModel.cs" />
     <Compile Include="ViewModels\LoginPageViewModel.cs" />
@@ -153,6 +164,8 @@
     <Content Include="Assets\Icons\Friend\Friend_Offline.png" />
     <Content Include="Assets\Icons\Friend\Friend_Online.png" />
     <Content Include="Assets\Icons\Friend\Friend_Standby.png" />
+    <Content Include="Assets\Icons\Friend\PSPlus.png" />
+    <Content Include="Assets\Icons\Friend\Trophy.png" />
     <Content Include="Assets\Icons\Home\Home_Friends.png" />
     <Content Include="Assets\Icons\Home\Home_LiveFromPlaystation.png" />
     <Content Include="Assets\Icons\Home\Home_Store.png" />
@@ -184,6 +197,14 @@
     <Page Include="MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\FriendPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\FriendsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\HomePage.xaml">
       <SubType>Designer</SubType>

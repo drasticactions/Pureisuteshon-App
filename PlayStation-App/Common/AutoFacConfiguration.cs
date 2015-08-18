@@ -13,6 +13,7 @@ namespace PlayStation_App.Common
             builder.RegisterType<MainPageViewModel>().SingleInstance();
             builder.RegisterType<HomeViewModel>().SingleInstance();
             builder.RegisterType<LiveFromPlayStationViewModel>().SingleInstance();
+            builder.RegisterType<FriendsPageViewModel>().SingleInstance();
             //builder.RegisterType<MainPage>();
             return builder.Build();
         }

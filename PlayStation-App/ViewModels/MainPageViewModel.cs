@@ -33,7 +33,7 @@ namespace PlayStation_App.ViewModels
                 {
                     Icon = "/Assets/Icons/Friends.png",
                     Name = loader.GetString("Friends/Text"),
-                    //Command = new NavigateToMainForumsPage()
+                    Command = new NavigateToFriendsPage()
                 },
                 new MenuItem()
                 {
