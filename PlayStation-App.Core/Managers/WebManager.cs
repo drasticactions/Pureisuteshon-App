@@ -162,6 +162,11 @@ namespace PlayStation_App.Core.Managers
             }
         }
 
+        public Task<Result> PostData(Uri uri, MultipartContent content, UserAccountEntity userAccountEntity)
+        {
+            throw new NotImplementedException();
+        }
+
         public class Result
         {
             public Result(bool isSuccess, string json)

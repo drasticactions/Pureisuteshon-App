@@ -13,6 +13,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Navigation;
+using PlayStation_App.Commands.DetailLoader;
 using PlayStation_App.Core.Entities;
 
 // 空白ページのアイテム テンプレートについては、http://go.microsoft.com/fwlink/?LinkId=234238 を参照してください
@@ -68,7 +69,8 @@ namespace PlayStation_App.Pages
         {
             var clickedItem = (FriendsEntity.Friend)e.ClickedItem;
             _lastSelectedItem = clickedItem;
-            //Locator.ViewModels.BookmarksPageVm.NavigateToThreadPageCommand.Execute(e);
+            var command = new LoadFriendDetail();
+            command.Execute(clickedItem.OnlineId);
             if (AdaptiveStates.CurrentState == NarrowState)
             {
                 // Use "drill in" transition for navigating from master list to detail view

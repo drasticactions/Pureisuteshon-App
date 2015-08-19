@@ -159,6 +159,21 @@
   <data name="FriendRequestReceived.Content" xml:space="preserve">
     <value>フレンド依頼(受信済み)</value>
   </data>
+  <data name="AboutMe.Text" xml:space="preserve">
+    <value>紹介:</value>
+  </data>
+  <data name="AboutMePivot.Header" xml:space="preserve">
+    <value>紹介</value>
+  </data>
+  <data name="AboutMeCategory.Text" xml:space="preserve">
+    <value>紹介</value>
+  </data>
+  <data name="MyLanguages.Text" xml:space="preserve">
+    <value>よく使う言語:</value>
+  </data>
+  <data name="TrophyTotal.Text" xml:space="preserve">
+    <value>合計:</value>
+  </data>
   <data name="FriendRequestSent.Content" xml:space="preserve">
     <value>フレンド依頼(送信済み)</value>
   </data>
@@ -188,5 +203,68 @@
   </data>
   <data name="FriendsFilterRequestSent.Content" xml:space="preserve">
     <value>フレンド依頼(送信済み)</value>
+  </data>
+  <data name="LangChineseSimplified.Text" xml:space="preserve">
+    <value>中国語 (簡体字)</value>
+  </data>
+  <data name="LangChineseTraditional.Text" xml:space="preserve">
+    <value>中国語 (繁体字)</value>
+  </data>
+  <data name="LangDanish.Text" xml:space="preserve">
+    <value>デンマーク語</value>
+  </data>
+  <data name="LangDutch.Text" xml:space="preserve">
+    <value>オランダ語</value>
+  </data>
+  <data name="LangEnglishUK.Text" xml:space="preserve">
+    <value>英語（イギリス）</value>
+  </data>
+  <data name="LangEnglishUS.Text" xml:space="preserve">
+    <value>英語（アメリカ）</value>
+  </data>
+  <data name="LangFinnish.Text" xml:space="preserve">
+    <value>フィンランド語</value>
+  </data>
+  <data name="LangFrench.Text" xml:space="preserve">
+    <value>フランス語</value>
+  </data>
+  <data name="LangGerman.Text" xml:space="preserve">
+    <value>ドイツ語</value>
+  </data>
+  <data name="LangItalian.Text" xml:space="preserve">
+    <value>イタリア語</value>
+  </data>
+  <data name="LangJapanese.Text" xml:space="preserve">
+    <value>日本語</value>
+  </data>
+  <data name="LangKorean.Text" xml:space="preserve">
+    <value>韓国語</value>
+  </data>
+  <data name="LangNorwegian.Text" xml:space="preserve">
+    <value>ノルウェー語</value>
+  </data>
+  <data name="LangPolish.Text" xml:space="preserve">
+    <value>ポーランド語</value>
+  </data>
+  <data name="LangPortugueseBrazil.Text" xml:space="preserve">
+    <value>ポルトガル語 (ブラジル)</value>
+  </data>
+  <data name="LangPortuguesePortugal.Text" xml:space="preserve">
+    <value>ポルトガル語 (ポルトガル)</value>
+  </data>
+  <data name="LangRussian.Text" xml:space="preserve">
+    <value>ロシア語</value>
+  </data>
+  <data name="LangSpanishLA.Text" xml:space="preserve">
+    <value>スペイン語 (ラテンアメリカ)</value>
+  </data>
+  <data name="LangSpanishSpain.Text" xml:space="preserve">
+    <value>スペイン語 (スペイン)</value>
+  </data>
+  <data name="LangSwedish.Text" xml:space="preserve">
+    <value>スウェーデン語</value>
+  </data>
+  <data name="LangTurkish.Text" xml:space="preserve">
+    <value>トルコ語</value>
   </data>
 </root>

@@ -35,6 +35,12 @@
         public const string FriendMeUrl =
     "https://friendme.sonyentertainmentnetwork.com/friendme/api/v1/c2s/users/me/friendrequest";
 
+        public const string TrophyDetailList =
+    "https://{0}-tpy.np.community.playstation.net/trophy/v1/trophyTitles/{1}/trophyGroups/all/trophies?fields=@default,trophyRare,trophyEarnedRate&npLanguage={2}&iconSize=m&comparedUser={3}&fromUser={4}";
+
+        public const string TrophyList =
+            "https://{0}-tpy.np.community.playstation.net/trophy/v1/trophyTitles?fields=%40default&npLanguage={1}&iconSize=s&platform=PS3%2CPSVITA%2CPS4&offset={2}&limit=64&comparedUser={3}&fromUser={4}";
+
         public const string RequestMessage =
            "https://{0}-prof.np.community.playstation.net/userProfile/v1/users/{1}/friendList/{2}/requestMessage";
 
@@ -62,7 +68,26 @@
         public const string FriendList =
            "https://{0}-prof.np.community.playstation.net/userProfile/v1/users/{1}/friendList?fields=@default,relation,onlineId,avatarUrl,plus,personalDetail,trophySummary&sort=onlineId&avatarSize=m&offset={2}&limit=32";
 
+        public const string MessageGroup2 =
+    "https://{0}-gmsg.np.community.playstation.net/groupMessaging/v1/messageGroups/{1}/messages?fields=@default%2CmessageGroup%2Cbody&npLanguage={2}";
 
+        public const string MessageGroup =
+            "https://{0}-gmsg.np.community.playstation.net/groupMessaging/v1/users/{1}/messageGroups?fields=@default%2CmessageGroupId%2CmessageGroupDetail%2CtotalUnseenMessages%2CtotalMessages%2ClatestMessage&npLanguage={2}";
+
+        public const string MessageContent =
+            "https://{0}-gmsg.np.community.playstation.net/groupMessaging/v1/messageGroups/{1}/messages/{2}?contentKey={3}&npLanguage={4}";
+
+        public const string ClearMessages =
+            "https://{0}-gmsg.np.community.playstation.net/groupMessaging/v1/messageGroups/{1}/messages?messageUid={2}";
+
+        public const string ClearNotification =
+            "https://{0}-ntl.np.community.playstation.net/notificationList/v1/users/{1}/notifications/{2}/{3}";
+
+        public const string DeleteThread =
+            "https://{0}-gmsg.np.community.playstation.net/groupMessaging/v1/messageGroups/{1}/users/{2}";
+
+        public const string CreatePost =
+            "https://{0}-gmsg.np.community.playstation.net/groupMessaging/v1/messageGroups/{1}/messages";
 
         public const string Login =
             "https://auth.api.sonyentertainmentnetwork.com/2.0/oauth/authorize?response_type=code&returnAuthCode=true&service_entity=urn:service-entity:psn&client_id=4db3729d-4591-457a-807a-1cf01e60c3ac&redirect_uri=com.playstation.PlayStationApp://redirect&scope=psn:sceapp";

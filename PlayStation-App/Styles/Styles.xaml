@@ -6,9 +6,6 @@
     <DataTemplate x:Key="FriendTemplate">
         <Border BorderBrush="Transparent" BorderThickness="1">
             <Grid>
-                <Grid.Background>
-                    <SolidColorBrush Color="#D9E2EC" Opacity="0.05" />
-                </Grid.Background>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="25" />
                     <ColumnDefinition Width="75" />

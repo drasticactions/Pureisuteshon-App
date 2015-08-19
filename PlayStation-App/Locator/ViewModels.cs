@@ -20,6 +20,8 @@ namespace PlayStation_App.Locator
             }
         }
 
+        public static FriendPageViewModel FriendPageVm => App.Container.Resolve<FriendPageViewModel>();
+
         public static FriendsPageViewModel FriendsPageVm => App.Container.Resolve<FriendsPageViewModel>();
 
         public static MainPageViewModel MainPageVm => App.Container.Resolve<MainPageViewModel>();

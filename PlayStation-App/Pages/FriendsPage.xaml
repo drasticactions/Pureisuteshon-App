@@ -99,8 +99,185 @@
                     </ListView>
                 </Grid>
             </Grid>
-            <Grid x:Name="DetailContentPresenter" Grid.Column="1">
-                
+            <Grid x:Name="DetailContentPresenter"  DataContext="{Binding Source={StaticResource Locator}, Path=FriendPageVm}" Grid.Column="1">
+                <ScrollViewer ZoomMode="Disabled">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition x:Name="UserAvatarColumn" Width="Auto"/>
+                            <ColumnDefinition  Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid Margin="5" Grid.Column="0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Image MinHeight="160" MaxHeight="160" Source="{Binding UserModel.User.AvatarUrl}" Stretch="UniformToFill" />
+                            <StackPanel Grid.Row="1">
+
+                            </StackPanel>
+                        </Grid>
+                        <Grid Margin="5" Grid.Column="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="25" />
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="35" />
+                                </Grid.ColumnDefinitions>
+                                <Image Margin="5" VerticalAlignment="Center" HorizontalAlignment="Left"
+                                                   Grid.Column="0" Width="15" Height="15"
+                                                   Source="{Binding UserModel.User.presence.PrimaryInfo.OnlineStatus, Converter={StaticResource OnlineConverter}}" />
+                                <TextBlock Grid.Column="1" HorizontalAlignment="Left"
+                                       Style="{StaticResource HeaderTextBlockStyle}"
+                                                           Text="{Binding UserModel.User.OnlineId}" 
+                                                           FontSize="25" TextWrapping="NoWrap"
+                                                           TextTrimming="WordEllipsis" />
+                                <Image
+                                                    Visibility="{Binding UserModel.User.Plus, Converter={StaticResource BooleanToVisibilityConverter}}"
+                                                    Grid.Column="2" HorizontalAlignment="Left" Margin="5" Width="25"
+                                                    Height="25" Source="/Assets/Icons/Friend/PSPlus.png" />
+                            </Grid>
+                            <StackPanel Grid.Row="1" Margin="5,0,0,0" x:Name="AboutMeStackPanel">
+                                <TextBlock
+                                    Style="{StaticResource SubheaderTextBlockStyle}"
+                                    Text="About Me" x:Uid="AboutMe"
+                                    FontSize="30" />
+                                <Border Margin="15" BorderBrush="Transparent" BorderThickness="1">
+                                    <Grid>
+                                        <Grid.Background>
+                                            <SolidColorBrush Color="Transparent" Opacity="0.15" />
+                                        </Grid.Background>
+                                        <TextBlock x:Name="AboutMeTextBlock" VerticalAlignment="Center"
+                                                   Padding="5,5,5,10"
+                                                   Style="{StaticResource BodyTextBlockStyle}" FontSize="20"
+                                                   TextWrapping="Wrap" Text="{Binding UserModel.User.AboutMe}" />
+                                    </Grid>
+                                </Border>
+                            </StackPanel>
+                            <StackPanel Grid.Row="2" Margin="5,0,0,0">
+                                <TextBlock
+                                    Style="{StaticResource SubheaderTextBlockStyle}"
+                                    Text="Languages" x:Uid="MyLanguages"
+                                    FontSize="30" />
+                                <Border Margin="15" BorderBrush="Transparent" BorderThickness="1">
+                                    <Grid>
+                                        <TextBlock x:Name="MyLanguagesBlock" VerticalAlignment="Center"
+                                                   Padding="5,5,5,10" FontSize="20"
+                                                   Style="{StaticResource BodyTextBlockStyle}"
+                                                   Text="{Binding UserModel.Language}"
+                                                   TextWrapping="Wrap" />
+                                    </Grid>
+                                </Border>
+
+                            </StackPanel>
+                            <Grid Grid.Row="3" x:Name="UserTrophyGrid" Margin="5,0,0,25">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="85" />
+                                    <ColumnDefinition Width="85" />
+                                </Grid.ColumnDefinitions>
+                                <Image VerticalAlignment="Center" HorizontalAlignment="Center" Source="/Assets/Icons/Friend/Trophy.png"/>
+                                <Grid Column="1">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*" />
+                                        <RowDefinition Height="25" />
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+                                    <TextBlock FontSize="30" Grid.Row="0"
+                                               Text="{Binding UserModel.User.trophySummary.Level}" />
+                                    <TextBlock FontSize="30" Grid.Row="0"
+                                               HorizontalAlignment="Right"
+                                               Text="{Binding UserModel.User.trophySummary.Progress }" />
+                                    <ProgressBar Height="5"
+                                                 Value="{Binding UserModel.User.trophySummary.Progress}" Grid.Row="1" />
+                                    <StackPanel Grid.Row="2" Orientation="Horizontal">
+                                        <TextBlock FontSize="30"
+                                                   Style="{StaticResource SubheaderTextBlockStyle}"
+                                                   Text="Total" x:Uid="TrophyTotal" />
+                                        <TextBlock FontSize="30"
+                                                   Text="{Binding UserModel.User.trophySummary.TotalTrophies }"
+                                                   Padding="15,0,0,0" />
+                                    </StackPanel>
+                                </Grid>
+                                <Grid Grid.Column="2">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*" />
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+                                    <Grid Grid.Row="0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+                                        <Image Width="25" Height="25"
+                                               Source="/Assets/Icons/Trophy/Platinum.png" />
+                                        <TextBlock
+                                            Style="{StaticResource SubheaderTextBlockStyle}"
+                                            FontSize="20"
+                                            Text="{Binding UserModel.User.trophySummary.EarnedTrophies.Platinum }"
+                                            VerticalAlignment="Center" HorizontalAlignment="Left"
+                                            Grid.Column="1" />
+                                    </Grid>
+                                    <Grid Grid.Row="1">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+                                        <Image Width="25" Height="25"
+                                               Source="/Assets/Icons/Trophy/Gold.png" />
+                                        <TextBlock
+                                            Style="{StaticResource SubheaderTextBlockStyle}"
+                                            FontSize="20"
+                                            Text="{Binding UserModel.User.trophySummary.EarnedTrophies.Gold }"
+                                            Grid.Column="1" VerticalAlignment="Center"
+                                            HorizontalAlignment="Left" />
+                                    </Grid>
+
+                                </Grid>
+                                <Grid Grid.Column="3">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*" />
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+                                    <Grid Grid.Row="0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+                                        <Image Width="25" Height="25"
+                                               Source="/Assets/Icons/Trophy/Silver.png" />
+                                        <TextBlock
+                                            Style="{StaticResource SubheaderTextBlockStyle}"
+                                            FontSize="20"
+                                            Text="{Binding UserModel.User.trophySummary.EarnedTrophies.Silver }"
+                                            VerticalAlignment="Center" HorizontalAlignment="Left"
+                                            Grid.Column="1" />
+                                    </Grid>
+                                    <Grid Grid.Row="1">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+                                        <Image Width="25" Height="25"
+                                               Source="/Assets/Icons/Trophy/Bronze.png" />
+                                        <TextBlock
+                                            Style="{StaticResource SubheaderTextBlockStyle}"
+                                            FontSize="20"
+                                            Text="{Binding UserModel.User.trophySummary.EarnedTrophies.Bronze }"
+                                            Grid.Column="1" VerticalAlignment="Center"
+                                            HorizontalAlignment="Left" />
+                                    </Grid>
+                                </Grid>
+                            </Grid>
+                        </Grid>
+                    </Grid>
+                </ScrollViewer>
             </Grid>
         </Grid>
     </Grid>

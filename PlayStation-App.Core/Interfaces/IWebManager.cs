@@ -19,5 +19,6 @@ namespace PlayStation_App.Core.Interfaces
         Task<WebManager.Result> PostData(Uri uri, FormUrlEncodedContent header, UserAccountEntity userAccountEntity);
 
         Task<WebManager.Result> GetData(Uri uri, UserAccountEntity userAccountEntity);
+        Task<WebManager.Result> PostData(Uri uri, MultipartContent content, UserAccountEntity userAccountEntity);
     }
 }

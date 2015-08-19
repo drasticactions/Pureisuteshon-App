@@ -37,8 +37,12 @@
     <Compile Include="Entities\FriendEntity.cs" />
     <Compile Include="Entities\FriendTokenEntity.cs" />
     <Compile Include="Entities\LiveBroadcastEntity.cs" />
+    <Compile Include="Entities\MessageEntity.cs" />
+    <Compile Include="Entities\MessageGroupEntity.cs" />
     <Compile Include="Entities\NicoNicoEntity.cs" />
     <Compile Include="Entities\RecentActivityEntity.cs" />
+    <Compile Include="Entities\TrophyDetailEntity.cs" />
+    <Compile Include="Entities\TrophyEntity.cs" />
     <Compile Include="Entities\TwitchEntity.cs" />
     <Compile Include="Entities\UserAccountEntity.cs" />
     <Compile Include="Entities\UserAuthenticationEntity.cs" />
@@ -51,7 +55,10 @@
     <Compile Include="Managers\AuthenticationManager.cs" />
     <Compile Include="Managers\FriendManager.cs" />
     <Compile Include="Managers\LiveStreamManager.cs" />
+    <Compile Include="Managers\MessageManager.cs" />
     <Compile Include="Managers\RecentActivityManager.cs" />
+    <Compile Include="Managers\TrophyDetailManager.cs" />
+    <Compile Include="Managers\TrophyManager.cs" />
     <Compile Include="Managers\UserManager.cs" />
     <Compile Include="Managers\WebManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
