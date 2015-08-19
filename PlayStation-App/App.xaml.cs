@@ -8,6 +8,7 @@ using Windows.ApplicationModel.Activation;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Storage;
+using Windows.UI.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -46,6 +47,18 @@ namespace PlayStation_App
             Container = AutoFacConfiguration.Configure();
         }
 
+        private void BackPressed(object sender, BackRequestedEventArgs e)
+        {
+            if (RootFrame == null)
+            {
+                return;
+            }
+
+            if (!RootFrame.CanGoBack) return;
+            RootFrame.GoBack();
+            e.Handled = true;
+        }
+
         /// <summary>
         /// アプリケーションがエンド ユーザーによって正常に起動されたときに呼び出されます。他のエントリ ポイントは、
         /// アプリケーションが特定のファイルを開くために起動されたときなどに使用されます。
@@ -60,7 +73,7 @@ namespace PlayStation_App
                 this.DebugSettings.EnableFrameRateCounter = true;
             }
 #endif
-
+            SystemNavigationManager.GetForCurrentView().BackRequested += BackPressed;
             RootFrame = Window.Current.Content as Frame;
 
             // ウィンドウに既にコンテンツが表示されている場合は、アプリケーションの初期化を繰り返さずに、

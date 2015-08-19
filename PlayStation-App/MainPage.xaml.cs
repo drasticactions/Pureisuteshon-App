@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -28,6 +29,7 @@ namespace PlayStation_App
         {
             this.InitializeComponent();
             App.RootFrame = MainFrame;
+            App.RootFrame.Navigated += RootFrameOnNavigated;
             var test3 = new NavigateToHomePage();
             test3.Execute(null);
         }
@@ -40,6 +42,11 @@ namespace PlayStation_App
             {
                 Splitter.IsPaneOpen = false;
             }
+        }
+
+        private void RootFrameOnNavigated(object sender, NavigationEventArgs navigationEventArgs)
+        {
+            SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = App.RootFrame.CanGoBack ? AppViewBackButtonVisibility.Visible : AppViewBackButtonVisibility.Collapsed;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
