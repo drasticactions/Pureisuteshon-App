@@ -55,7 +55,7 @@ namespace PlayStation_App.Pages
             if (isNarrow && oldState == DefaultState && _lastSelectedItem != null)
             {
                 // Resize down to the detail item. Don't play a transition.
-               //App.RootFrame.Navigate(typeof(FriendPage), null, new SuppressNavigationTransitionInfo());
+               App.RootFrame.Navigate(typeof(FriendPage), null, new SuppressNavigationTransitionInfo());
             }
 
             EntranceNavigationTransitionInfo.SetIsTargetElement(MasterListView, isNarrow);
@@ -74,7 +74,7 @@ namespace PlayStation_App.Pages
             if (AdaptiveStates.CurrentState == NarrowState)
             {
                 // Use "drill in" transition for navigating from master list to detail view
-                //App.RootFrame.Navigate(typeof(FriendPage), null, new DrillInNavigationTransitionInfo());
+                App.RootFrame.Navigate(typeof(FriendPage), null, new DrillInNavigationTransitionInfo());
             }
             else
             {

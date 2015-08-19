@@ -196,6 +196,46 @@
         </Grid>
     </DataTemplate>
 
+    <DataTemplate x:Key="MessageUserDataTemplate">
+        <Grid Margin="6">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="125" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Border VerticalAlignment="Top" Grid.Column="0" Width="100" Height="100">
+                <Image Source="{Binding AvatarUrl}" />
+            </Border>
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="20" />
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Column="0" Grid.Row="0" TextWrapping="NoWrap" TextTrimming="WordEllipsis"
+                               Text="{Binding Message.senderOnlineId}" />
+                <Grid Grid.Row="1">
+                    <Grid.Background>
+                        <SolidColorBrush Color="#DBDEE7" Opacity="0.65" />
+                    </Grid.Background>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" TextWrapping="Wrap" Foreground="White" Text="{Binding Message.body}" />
+                    <Grid Grid.Column="1">
+                        <Image Width="50" HorizontalAlignment="Center" VerticalAlignment="Top"
+                                   Source="/Assets/appbar.image.png"
+                                   Visibility="{Binding Message.contentKeys}" />
+                    </Grid>
+                </Grid>
+                <Grid Grid.Row="2">
+                    <TextBlock HorizontalAlignment="Right" FontSize="15" TextWrapping="NoWrap"
+                                   Text="{Binding Message.receivedDate}" />
+                </Grid>
+            </Grid>
+        </Grid>
+    </DataTemplate>
+
     <DataTemplate x:Key="SimpleFriendTemplate">
         <Border Width="160" BorderBrush="Transparent" BorderThickness="1">
             <Grid>

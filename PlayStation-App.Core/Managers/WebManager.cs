@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Net.NetworkInformation;
@@ -31,6 +32,10 @@ namespace PlayStation_App.Core.Managers
                     }
                     httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", userAccountEntity.GetAccessToken());
                     var response = await httpClient.PutAsync(uri, json);
+                    if (response.StatusCode == HttpStatusCode.Unauthorized)
+                    {
+                        return new Result(false, string.Empty);
+                    }
                     var responseContent = await response.Content.ReadAsStringAsync();
                     return response.IsSuccessStatusCode ? new Result(true, string.Empty) : new Result(false, responseContent);
                 }
@@ -61,6 +66,10 @@ namespace PlayStation_App.Core.Managers
                     }
                     httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", userAccountEntity.GetAccessToken());
                     var response = await httpClient.DeleteAsync(uri);
+                    if (response.StatusCode == HttpStatusCode.Unauthorized)
+                    {
+                        return new Result(false, string.Empty);
+                    }
                     var responseContent = await response.Content.ReadAsStringAsync();
                     return response.IsSuccessStatusCode ? new Result(true, string.Empty) : new Result(false, responseContent);
                 }
@@ -92,6 +101,10 @@ namespace PlayStation_App.Core.Managers
                     httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer",
                         userAccountEntity.GetAccessToken());
                     var response = await httpClient.PostAsync(uri, content);
+                    if (response.StatusCode == HttpStatusCode.Unauthorized)
+                    {
+                        return new Result(false, string.Empty);
+                    }
                     var responseContent = await response.Content.ReadAsStringAsync();
                     return new Result(true, responseContent);
                 }
@@ -121,8 +134,12 @@ namespace PlayStation_App.Core.Managers
                     }
                     httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", userAccountEntity.GetAccessToken());
                     var response = await httpClient.PostAsync(uri, header);
+                    if (response.StatusCode == HttpStatusCode.Unauthorized)
+                    {
+                        return new Result(false, string.Empty);
+                    }
                     var responseContent = await response.Content.ReadAsStringAsync();
-                    return string.IsNullOrEmpty(responseContent) ? new Result(false, string.Empty) : new Result(true, responseContent);
+                    return !response.IsSuccessStatusCode && string.IsNullOrEmpty(responseContent) ? new Result(false, string.Empty) : new Result(true, responseContent);
                 }
                 catch
                 {
@@ -151,8 +168,12 @@ namespace PlayStation_App.Core.Managers
                     }
                     httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", userAccountEntity.GetAccessToken());
                     var response = await httpClient.GetAsync(uri);
+                    if (response.StatusCode == HttpStatusCode.Unauthorized)
+                    {
+                        return new Result(false, string.Empty);
+                    }
                     var responseContent = await response.Content.ReadAsStringAsync();
-                    return string.IsNullOrEmpty(responseContent) ? new Result(false, string.Empty) : new Result(true, responseContent);
+                    return !response.IsSuccessStatusCode && string.IsNullOrEmpty(responseContent) ? new Result(false, string.Empty) : new Result(true, responseContent);
                 }
                 catch
                 {

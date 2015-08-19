@@ -123,6 +123,21 @@
   <data name="Friends.Text" xml:space="preserve">
     <value>フレンド</value>
   </data>
+  <data name="RecentActivity.Text" xml:space="preserve">
+    <value>最近のアクティビティー</value>
+  </data>
+  <data name="MessagesPivot.Text" xml:space="preserve">
+    <value>メッセージ</value>
+  </data>
+  <data name="MessagePivot.Label" xml:space="preserve">
+    <value>メッセージ</value>
+  </data>
+  <data name="AddAsFriend.Content" xml:space="preserve">
+    <value>フレンドに追加する</value>
+  </data>
+  <data name="AddAsFriend.Label" xml:space="preserve">
+    <value>フレンドに追加する</value>
+  </data>
   <data name="Home.Text" xml:space="preserve">
     <value>ホーム</value>
   </data>

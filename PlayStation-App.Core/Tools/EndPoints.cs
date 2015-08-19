@@ -51,7 +51,7 @@
        "https://{0}-prof.np.community.playstation.net/userProfile/v1/users/{1}/friendList/{2}/personalDetailSharing";
 
         public const string User =
-            "https://{0}-prof.np.community.playstation.net/userProfile/v1/users/{1}/profile?fields=@default,relation,onlineId,presence,avatarUrl,plus,personalDetail,trophySummary";
+            "https://{0}-prof.np.community.playstation.net/userProfile/v1/users/{1}/profile?fields=onlineId,aboutMe,languagesUsed,plus,@personalDetail,avatarUrls,presence,isOfficiallyVerified,relation,requestMessageFlag,trophySummary,npTitleIconUrl,mutualFriendsCount&avatarSizes=m,xl&profilePictureSizes=m,xl&languagesUsedLanguageSet=set3&psVitaTitleIcon=circled&titleIconSize=s&aboutMeType=1";
 
         public const string OauthToken = "https://auth.api.sonyentertainmentnetwork.com/2.0/oauth/token";
 

@@ -1,4 +1,5 @@
 ﻿<Page
+    x:Name="pageRoot"
     x:Class="PlayStation_App.Pages.FriendsPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -20,12 +21,19 @@
                               CurrentStateChanged="AdaptiveStates_CurrentStateChanged">
                 <VisualState x:Name="DefaultState">
                     <VisualState.StateTriggers>
-                        <AdaptiveTrigger MinWindowWidth="800" />
+                        <AdaptiveTrigger MinWindowWidth="600" />
+                    </VisualState.StateTriggers>
+                </VisualState>
+
+                <VisualState x:Name="MidState">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="900" />
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
-                        <Setter Target="HamburgerPlacement.Width" Value="0" />
+                        <Setter Target="UserAvatarColumn.Width" Value="Auto"/>
                     </VisualState.Setters>
                 </VisualState>
+
 
                 <VisualState x:Name="NarrowState">
                     <VisualState.StateTriggers>
@@ -35,39 +43,38 @@
                     <VisualState.Setters>
                         <Setter Target="MasterColumn.Width" Value="*" />
                         <Setter Target="DetailColumn.Width" Value="0" />
-                        <Setter Target="ForumThreadList.SelectionMode" Value="None" />
+                        <Setter Target="FriendList.SelectionMode" Value="None" />
                     </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
 
-        <CommandBar Margin="0,0,0,15">
-            <CommandBar.Background>
-                <SolidColorBrush Color="#DBDEE7" Opacity="0.15" />
-            </CommandBar.Background>
-            <AppBarButton Label="検索">
-                <AppBarButton.Icon>
-                    <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE094;"/>
-                </AppBarButton.Icon>
-            </AppBarButton>
-        </CommandBar>
-
         <Grid x:Name="MasterListView" Grid.Row="1">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition x:Name="MasterColumn" Width="450" />
+                <ColumnDefinition x:Name="MasterColumn" Width="350" />
                 <ColumnDefinition x:Name="DetailColumn" Width="*" />
             </Grid.ColumnDefinitions>
             <Grid Grid.Column="0">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="*"/>
                     <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
-                <Grid.ChildrenTransitions>
-                    <TransitionCollection>
-                        <EntranceThemeTransition/>
-                    </TransitionCollection>
-                </Grid.ChildrenTransitions>
-                <Grid Grid.Row="0">
+                <CommandBar Margin="0,0,0,15">
+                    <CommandBar.Background>
+                        <SolidColorBrush Color="#DBDEE7" Opacity="0.15" />
+                    </CommandBar.Background>
+                    <AppBarButton Label="検索">
+                        <AppBarButton.Icon>
+                            <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE094;"/>
+                        </AppBarButton.Icon>
+                    </AppBarButton>
+                </CommandBar>
+                <Grid Grid.Row="1">
+                    <Grid.ChildrenTransitions>
+                        <TransitionCollection>
+                            <EntranceThemeTransition/>
+                        </TransitionCollection>
+                    </Grid.ChildrenTransitions>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="10"/>
                         <RowDefinition Height="Auto"/>
@@ -100,10 +107,29 @@
                 </Grid>
             </Grid>
             <Grid x:Name="DetailContentPresenter"  DataContext="{Binding Source={StaticResource Locator}, Path=FriendPageVm}" Grid.Column="1">
-                <ScrollViewer ZoomMode="Disabled">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <CommandBar Margin="0,0,0,15">
+                    <CommandBar.Background>
+                        <SolidColorBrush Color="#DBDEE7" Opacity="0.15" />
+                    </CommandBar.Background>
+                    <AppBarButton x:Uid="MessagePivot" Label="メッセージ">
+                        <AppBarButton.Icon>
+                            <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE15F;"/>
+                        </AppBarButton.Icon>
+                    </AppBarButton>
+                    <AppBarButton x:Uid="AddAsFriend" Label="追加">
+                        <AppBarButton.Icon>
+                            <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE109;"/>
+                        </AppBarButton.Icon>
+                    </AppBarButton>
+                </CommandBar>
+                <ScrollViewer VerticalScrollBarVisibility="Auto" Grid.Row="1" ZoomMode="Disabled">
                     <Grid>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition x:Name="UserAvatarColumn" Width="Auto"/>
+                            <ColumnDefinition x:Name="UserAvatarColumn" Width="0"/>
                             <ColumnDefinition  Width="*"/>
                         </Grid.ColumnDefinitions>
                         <Grid Margin="5" Grid.Column="0">
@@ -111,7 +137,7 @@
                                 <RowDefinition Height="Auto"/>
                                 <RowDefinition Height="*"/>
                             </Grid.RowDefinitions>
-                            <Image MinHeight="160" MaxHeight="160" Source="{Binding UserModel.User.AvatarUrl}" Stretch="UniformToFill" />
+                            <Image MinHeight="160" MaxHeight="160" Source="{Binding UserModel.User.DefaultAvatarUrl}" Stretch="UniformToFill" />
                             <StackPanel Grid.Row="1">
 
                             </StackPanel>
@@ -121,7 +147,9 @@
                                 <RowDefinition Height="Auto" />
                                 <RowDefinition Height="Auto" />
                                 <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto"></RowDefinition>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
                             </Grid.RowDefinitions>
                             <Grid Grid.Row="0">
                                 <Grid.ColumnDefinitions>
@@ -274,6 +302,40 @@
                                             HorizontalAlignment="Left" />
                                     </Grid>
                                 </Grid>
+                            </Grid>
+                            <Grid Grid.Row="4">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <TextBlock
+                                    Style="{StaticResource SubheaderTextBlockStyle}"
+                                    Text="フレンド" x:Uid="Friends"
+                                    FontSize="30" Margin="0,0,0,10" />
+                                <GridView Grid.Row="1" VerticalAlignment="Stretch"  x:Name="SimpleFriendGrid"  ItemsSource="{Binding FriendScrollingCollection}" ItemTemplate="{StaticResource SimpleFriendTemplate}">
+                                    <GridView.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <ItemsWrapGrid ItemHeight="50" ItemWidth="170" MaximumRowsOrColumns="3" Orientation="Vertical"/>
+                                        </ItemsPanelTemplate>
+                                    </GridView.ItemsPanel>
+                                </GridView>
+                            </Grid>
+                            <Grid Grid.Row="5">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <TextBlock
+                                    Style="{StaticResource SubheaderTextBlockStyle}"
+                                    Text="最近のアクティビティー" x:Uid="RecentActivity"
+                                    FontSize="30" Margin="0,0,0,10" />
+                                <GridView Grid.Row="1" VerticalAlignment="Stretch"  x:Name="SimpleActGrid"  ItemsSource="{Binding RecentActivityScrollingCollection}" ItemTemplate="{StaticResource ActivitySimpleDataTemplate}">
+                                    <GridView.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <ItemsWrapGrid ItemHeight="150" ItemWidth="170" MaximumRowsOrColumns="2" Orientation="Vertical"/>
+                                        </ItemsPanelTemplate>
+                                    </GridView.ItemsPanel>
+                                </GridView>
                             </Grid>
                         </Grid>
                     </Grid>

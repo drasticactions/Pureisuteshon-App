@@ -31,6 +31,9 @@ namespace PlayStation_App.Core.Managers
                 var url = string.Format(EndPoints.User, user.Region, userName);
                 var result = await _webManager.GetData(new Uri(url), userAccountEntity);
                 var userEntity = JsonConvert.DeserializeObject<UserEntity>(result.ResultJson);
+                if (userEntity?.trophySummary == null) return userEntity;
+                var list = userEntity.trophySummary.EarnedTrophies;
+                userEntity.trophySummary.TotalTrophies = list.Bronze + list.Gold + list.Platinum + list.Silver;
                 return userEntity;
             }
             catch (Exception exception)

@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
+using Newtonsoft.Json;
 
 namespace PlayStation_App.Core.Entities
 {
@@ -7,12 +9,28 @@ namespace PlayStation_App.Core.Entities
         public string OnlineId { get; set; }
         public string Region { get; set; }
         public string NpId { get; set; }
-        public string AvatarUrl { get; set; }
+
+        public string DefaultAvatarUrl
+        {
+            get
+            {
+                if (avatarUrls != null && avatarUrls.Any())
+                {
+                    return avatarUrls.First().Url;
+                }
+
+                return string.Empty;
+            }
+        }
+
+
+
         public string PanelBgc { get; set; }
         public string PanelUrl { get; set; }
         public string AboutMe { get; set; }
         public List<string> LanguagesUsed { get; set; }
         public bool Plus { get; set; }
+        public List<AvatarUrl> avatarUrls { get; set; }
         public TrophySummary trophySummary { get; set; }
         public string Relation { get; set; }
         public Presence presence { get; set; }
@@ -27,6 +45,16 @@ namespace PlayStation_App.Core.Entities
             public int Gold { get; set; }
             public int Silver { get; set; }
             public int Bronze { get; set; }
+        }
+
+        public class AvatarUrl
+        {
+
+            [JsonProperty("size")]
+            public string Size { get; set; }
+
+            [JsonProperty("avatarUrl")]
+            public string Url { get; set; }
         }
 
         public class TrophySummary

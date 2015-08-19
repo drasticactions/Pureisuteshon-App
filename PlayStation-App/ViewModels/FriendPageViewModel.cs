@@ -103,13 +103,13 @@ namespace PlayStation_App.ViewModels
                     messageManager.GetGroupConversation(
                         string.Format("~{0},{1}", userName, Locator.ViewModels.MainPageVm.CurrentUser.GetUserEntity().OnlineId),
                          Locator.ViewModels.MainPageVm.CurrentUser);
-            if (_messageEntity == null)
+            if (_messageEntity?.messages == null)
                 return;
             foreach (
                 MessageGroupItem newMessage in
                     _messageEntity.messages.Select(message => new MessageGroupItem { Message = message }))
             {
-                GetAvatar(newMessage, userAccountEntity);
+                //GetAvatar(newMessage, userAccountEntity);
                 MessageGroupCollection.Add(newMessage);
             }
         }
@@ -119,7 +119,7 @@ namespace PlayStation_App.ViewModels
             var userManager = new UserManager();
             UserEntity user = await userManager.GetUserAvatar(message.Message.senderOnlineId, userAccountEntity);
             if (user == null) return;
-            message.AvatarUrl = user.AvatarUrl;
+            message.AvatarUrl = user.DefaultAvatarUrl;
             OnPropertyChanged("MessageGroupCollection");
         }
 
