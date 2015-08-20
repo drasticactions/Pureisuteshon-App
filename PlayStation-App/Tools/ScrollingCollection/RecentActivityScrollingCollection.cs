@@ -80,12 +80,20 @@ namespace PlayStation_App.Tools.ScrollingCollection
                 await recentActivityManager.GetActivityFeed(username, PageCount, StorePromo, IsNews, UserAccountEntity);
             if (feedEntity == null)
             {
+                if (Count <= 0)
+                {
+                    IsEmpty = true;
+                }
                 HasMoreItems = false;
                 IsLoading = false;
                 return;
             }
             if (feedEntity.feed == null)
             {
+                if (Count <= 0)
+                {
+                    IsEmpty = true;
+                }
                 HasMoreItems = false;
                 IsLoading = false;
                 return;

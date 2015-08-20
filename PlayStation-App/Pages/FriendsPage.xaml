@@ -31,6 +31,7 @@
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
                         <Setter Target="UserAvatarColumn.Width" Value="Auto"/>
+                        <Setter Target="TrophyImage.Width" Value="Auto"/>
                     </VisualState.Setters>
                 </VisualState>
 
@@ -137,7 +138,7 @@
                                 <RowDefinition Height="Auto"/>
                                 <RowDefinition Height="*"/>
                             </Grid.RowDefinitions>
-                            <Image MinHeight="160" MaxHeight="160" Source="{Binding UserModel.User.DefaultAvatarUrl}" Stretch="UniformToFill" />
+                            <Image Height="160" Width="160" Source="{Binding UserModel.User.DefaultAvatarUrl}" Stretch="UniformToFill" />
                             <StackPanel Grid.Row="1">
 
                             </StackPanel>
@@ -210,7 +211,7 @@
                                     <ColumnDefinition Width="85" />
                                     <ColumnDefinition Width="85" />
                                 </Grid.ColumnDefinitions>
-                                <Image VerticalAlignment="Center" HorizontalAlignment="Center" Source="/Assets/Icons/Friend/Trophy.png"/>
+                                <Image x:Name="TrophyImage" Width="0" VerticalAlignment="Center" HorizontalAlignment="Center" Source="/Assets/Icons/Friend/Trophy.png"/>
                                 <Grid Column="1">
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="*" />
@@ -312,6 +313,7 @@
                                     Style="{StaticResource SubheaderTextBlockStyle}"
                                     Text="フレンド" x:Uid="Friends"
                                     FontSize="30" Margin="0,0,0,10" />
+                                <TextBlock FontSize="25" TextWrapping="Wrap" Visibility="{Binding FriendScrollingCollection.IsEmpty, Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay }" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1"  Style="{StaticResource HeaderTextBlockStyle}" x:Uid="NoFriends" Text="フレンドはまだいません。"/>
                                 <GridView Grid.Row="1" VerticalAlignment="Stretch"  x:Name="SimpleFriendGrid"  ItemsSource="{Binding FriendScrollingCollection}" ItemTemplate="{StaticResource SimpleFriendTemplate}">
                                     <GridView.ItemsPanel>
                                         <ItemsPanelTemplate>
@@ -329,6 +331,7 @@
                                     Style="{StaticResource SubheaderTextBlockStyle}"
                                     Text="最近のアクティビティー" x:Uid="RecentActivity"
                                     FontSize="30" Margin="0,0,0,10" />
+                                <TextBlock  FontSize="25" TextWrapping="Wrap" Visibility="{Binding RecentActivityScrollingCollection.IsEmpty, Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay }" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1"  Style="{StaticResource HeaderTextBlockStyle}" x:Uid="NoActivities" Text="アクティビティーはありません。"/>
                                 <GridView Grid.Row="1" VerticalAlignment="Stretch"  x:Name="SimpleActGrid"  ItemsSource="{Binding RecentActivityScrollingCollection}" ItemTemplate="{StaticResource ActivitySimpleDataTemplate}">
                                     <GridView.ItemsPanel>
                                         <ItemsPanelTemplate>

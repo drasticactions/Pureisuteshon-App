@@ -120,6 +120,27 @@
   <data name="EmailAddress.PlaceholderText" xml:space="preserve">
     <value>Eメールアドレス</value>
   </data>
+  <data name="NoActivities.Text" xml:space="preserve">
+    <value>アクティビティーはありません。</value>
+  </data>
+  <data name="NoFriends.Text" xml:space="preserve">
+    <value>フレンドはまだいません。</value>
+  </data>
+  <data name="NoGameAlert.Text" xml:space="preserve">
+    <value>ゲームアラートはありません。</value>
+  </data>
+  <data name="NoInvites.Text" xml:space="preserve">
+    <value>招待はありません。</value>
+  </data>
+  <data name="NoMessages.Text" xml:space="preserve">
+    <value>メッセージがありません。文字でメッセージを作成して、フレンドに送ってみよう。</value>
+  </data>
+  <data name="NoNotifications.Text" xml:space="preserve">
+    <value>お知らせはありません。</value>
+  </data>
+  <data name="NoPlayers.Text" xml:space="preserve">
+    <value>プレーヤーが見つかりません。</value>
+  </data>
   <data name="Friends.Text" xml:space="preserve">
     <value>フレンド</value>
   </data>
