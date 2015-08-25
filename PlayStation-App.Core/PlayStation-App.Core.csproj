@@ -34,20 +34,20 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Entities\FriendEntity.cs" />
-    <Compile Include="Entities\FriendTokenEntity.cs" />
-    <Compile Include="Entities\LiveBroadcastEntity.cs" />
-    <Compile Include="Entities\MessageEntity.cs" />
-    <Compile Include="Entities\MessageGroupEntity.cs" />
-    <Compile Include="Entities\NicoNicoEntity.cs" />
-    <Compile Include="Entities\RecentActivityEntity.cs" />
-    <Compile Include="Entities\TrophyDetailEntity.cs" />
-    <Compile Include="Entities\TrophyEntity.cs" />
-    <Compile Include="Entities\TwitchEntity.cs" />
-    <Compile Include="Entities\UserAccountEntity.cs" />
-    <Compile Include="Entities\UserAuthenticationEntity.cs" />
-    <Compile Include="Entities\UserEntity.cs" />
-    <Compile Include="Entities\UstreamEntity.cs" />
+    <Compile Include="Entities\Friend\FriendEntity.cs" />
+    <Compile Include="Entities\Friend\FriendTokenEntity.cs" />
+    <Compile Include="Entities\Live\LiveBroadcastEntity.cs" />
+    <Compile Include="Entities\Message\MessageEntity.cs" />
+    <Compile Include="Entities\Message\MessageGroupEntity.cs" />
+    <Compile Include="Entities\Live\NicoNicoEntity.cs" />
+    <Compile Include="Entities\RecentActivity\RecentActivityEntity.cs" />
+    <Compile Include="Entities\Trophy\TrophyDetailEntity.cs" />
+    <Compile Include="Entities\Trophy\TrophyEntity.cs" />
+    <Compile Include="Entities\Live\TwitchEntity.cs" />
+    <Compile Include="Entities\User\UserAccountEntity.cs" />
+    <Compile Include="Entities\User\UserAuthenticationEntity.cs" />
+    <Compile Include="Entities\User\UserEntity.cs" />
+    <Compile Include="Entities\Live\UstreamEntity.cs" />
     <Compile Include="Exceptions\LoginFailedException.cs" />
     <Compile Include="Exceptions\RefreshTokenException.cs" />
     <Compile Include="Helpers\Settings.cs" />

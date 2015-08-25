@@ -19,6 +19,7 @@ using Windows.UI.Xaml.Navigation;
 using Autofac;
 using PlayStation_App.Common;
 using PlayStation_App.Core.Entities;
+using PlayStation_App.Core.Entities.User;
 using PlayStation_App.Core.Managers;
 using PlayStation_App.Pages;
 

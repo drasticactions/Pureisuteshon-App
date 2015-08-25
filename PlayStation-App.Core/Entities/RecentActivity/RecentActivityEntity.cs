@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Humanizer;
 
-namespace PlayStation_App.Core.Entities
+namespace PlayStation_App.Core.Entities.RecentActivity
 {
     public class RecentActivityEntity
     {

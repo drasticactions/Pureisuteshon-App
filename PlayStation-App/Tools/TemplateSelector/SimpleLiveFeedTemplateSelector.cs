@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using PlayStation_App.Core.Entities;
+using PlayStation_App.Core.Entities.Live;
 
 namespace PlayStation_App.Tools.TemplateSelector
 {

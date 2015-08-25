@@ -15,6 +15,7 @@ using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Navigation;
 using PlayStation_App.Commands.DetailLoader;
 using PlayStation_App.Core.Entities;
+using PlayStation_App.Core.Entities.Friend;
 
 // 空白ページのアイテム テンプレートについては、http://go.microsoft.com/fwlink/?LinkId=234238 を参照してください
 

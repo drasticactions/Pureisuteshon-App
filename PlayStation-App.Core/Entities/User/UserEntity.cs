@@ -2,7 +2,7 @@
 using System.Linq;
 using Newtonsoft.Json;
 
-namespace PlayStation_App.Core.Entities
+namespace PlayStation_App.Core.Entities.User
 {
     public class UserEntity
     {

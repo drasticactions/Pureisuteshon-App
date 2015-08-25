@@ -1,4 +1,4 @@
-﻿namespace PlayStation_App.Core.Entities
+﻿namespace PlayStation_App.Core.Entities.Friend
 {
     public class FriendTokenEntity
     {

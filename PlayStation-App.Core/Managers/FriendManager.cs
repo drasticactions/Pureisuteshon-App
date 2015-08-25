@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using PlayStation_App.Core.Entities;
+using PlayStation_App.Core.Entities.Friend;
+using PlayStation_App.Core.Entities.User;
 using PlayStation_App.Core.Interfaces;
 using PlayStation_App.Core.Tools;
 

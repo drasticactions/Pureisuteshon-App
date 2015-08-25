@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using PlayStation_App.Core.Entities;
+using PlayStation_App.Core.Entities.Live;
+using PlayStation_App.Core.Entities.User;
 using PlayStation_App.Core.Interfaces;
 using PlayStation_App.Core.Tools;
 

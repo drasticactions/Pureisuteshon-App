@@ -8,6 +8,8 @@ using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.UI.Xaml.Data;
 using PlayStation_App.Core.Entities;
+using PlayStation_App.Core.Entities.Friend;
+using PlayStation_App.Core.Entities.User;
 using PlayStation_App.Core.Managers;
 
 namespace PlayStation_App.Tools.ScrollingCollection

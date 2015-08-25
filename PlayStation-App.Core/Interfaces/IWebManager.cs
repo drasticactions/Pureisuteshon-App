@@ -2,6 +2,7 @@
 using System.Net.Http;
 using System.Threading.Tasks;
 using PlayStation_App.Core.Entities;
+using PlayStation_App.Core.Entities.User;
 using PlayStation_App.Core.Managers;
 
 namespace PlayStation_App.Core.Interfaces

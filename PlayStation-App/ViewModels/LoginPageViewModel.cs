@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using PlayStation_App.Common;
 using PlayStation_App.Core.Entities;
+using PlayStation_App.Core.Entities.User;
 using PlayStation_App.Core.Exceptions;
 using PlayStation_App.Core.Managers;
 

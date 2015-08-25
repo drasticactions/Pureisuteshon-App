@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using PlayStation_App.Commands.Navigation;
 using PlayStation_App.Common;
 using PlayStation_App.Core.Entities;
+using PlayStation_App.Core.Entities.User;
 using PlayStation_App.Models;
 
 namespace PlayStation_App.ViewModels

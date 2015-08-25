@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.UI.Xaml.Data;
 using PlayStation_App.Core.Entities;
+using PlayStation_App.Core.Entities.RecentActivity;
+using PlayStation_App.Core.Entities.User;
 using PlayStation_App.Core.Managers;
 using PlayStation_App.Properties;
 

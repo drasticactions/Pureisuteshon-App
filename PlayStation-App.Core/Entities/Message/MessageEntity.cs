@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
+using PlayStation_App.Core.Entities.User;
 
-namespace PlayStation_App.Core.Entities
+namespace PlayStation_App.Core.Entities.Message
 {
     public class MessageEntity
     {

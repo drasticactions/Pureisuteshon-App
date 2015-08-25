@@ -2,7 +2,7 @@
 using Newtonsoft.Json.Linq;
 using Refractored.Xam.Settings;
 
-namespace PlayStation_App.Core.Entities
+namespace PlayStation_App.Core.Entities.User
 {
     public class UserAccountEntity
     {

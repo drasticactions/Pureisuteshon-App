@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using PlayStation_App.Commands.Search;
 using PlayStation_App.Common;
 using PlayStation_App.Core.Entities;
+using PlayStation_App.Core.Entities.Live;
 using PlayStation_App.Core.Managers;
 
 namespace PlayStation_App.ViewModels
