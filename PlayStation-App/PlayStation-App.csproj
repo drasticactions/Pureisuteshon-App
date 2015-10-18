@@ -129,6 +129,7 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Commands\Friends\LoadFriendDetail.cs" />
+    <Compile Include="Commands\Friends\NavigataeToFriendLinkPageCommand.cs" />
     <Compile Include="Commands\Friends\NavigateToFriendsPage.cs" />
     <Compile Include="Commands\Live\NavigateToLiveFromPlaystationPage.cs" />
     <Compile Include="Commands\Live\SearchLiveFromPlaystation.cs" />
@@ -181,6 +182,7 @@
     <Compile Include="Models\RecentActivity\Target2.cs" />
     <Compile Include="Models\Response\FriendListResponse.cs" />
     <Compile Include="Models\Response\RecentActivityResponse.cs" />
+    <Compile Include="Models\Response\TokenResponse.cs" />
     <Compile Include="Models\Response\TrophyDetailResponse.cs" />
     <Compile Include="Models\Response\TrophyResponse.cs" />
     <Compile Include="Models\Trophies\ComparedUser.cs" />
@@ -225,11 +227,14 @@
     <Compile Include="Models\Trophies\FromUser.cs" />
     <Compile Include="Models\Trophies\Trophy.cs" />
     <Compile Include="ViewModels\AccountSelectScreenViewModel.cs" />
+    <Compile Include="ViewModels\FriendLinkViewModel.cs" />
     <Compile Include="ViewModels\FriendPageViewModel.cs" />
     <Compile Include="ViewModels\FriendsPageViewModel.cs" />
     <Compile Include="ViewModels\LiveFromPlayStationViewModel.cs" />
     <Compile Include="ViewModels\LoginPageViewModel.cs" />
     <Compile Include="ViewModels\MainPageViewModel.cs" />
+    <Compile Include="ViewModels\MessageGroupItem.cs" />
+    <Compile Include="ViewModels\MessagesViewModel.cs" />
     <Compile Include="ViewModels\TrophiesViewModel.cs" />
     <Compile Include="ViewModels\WhatsNewViewModel.cs" />
     <Compile Include="Views\AboutPage.xaml.cs">
@@ -240,6 +245,9 @@
     </Compile>
     <Compile Include="Views\Account\SelectAccountPage.xaml.cs">
       <DependentUpon>SelectAccountPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FriendLinkPage.xaml.cs">
+      <DependentUpon>FriendLinkPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\FriendPage.xaml.cs">
       <DependentUpon>FriendPage.xaml</DependentUpon>
@@ -276,6 +284,9 @@
     <None Include="PlayStation-App_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\Icons\AddFriendLink.png" />
+    <Content Include="Assets\Icons\FriendLink\FriendShareLink.png" />
+    <Content Include="Assets\Icons\FriendLink\FriendSmsEmailLink.png" />
     <Content Include="Assets\Icons\Friends.png" />
     <Content Include="Assets\Icons\Friend\Friend_Offline.png" />
     <Content Include="Assets\Icons\Friend\Friend_Online.png" />
@@ -357,6 +368,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Account\SelectAccountPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\FriendLinkPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

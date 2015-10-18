@@ -11,7 +11,12 @@
         <viewModels:LoginPageViewModel />
     </Page.DataContext>
     <Grid>
-        <ProgressBar VerticalAlignment="Top" Visibility="{Binding IsLoading, Converter={StaticResource BooleanToVisibilityConverter}}" IsIndeterminate="True"/>
+        <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Visibility="{Binding IsLoading, Converter={StaticResource BooleanToVisibilityConverter}}" Canvas.ZIndex="1" Grid.Row="1">
+            <Grid.Background>
+                <SolidColorBrush Color="Black" Opacity=".25"/>
+            </Grid.Background>
+            <ProgressRing Foreground="White" Width="50" Height="50" IsActive="{Binding IsLoading}" Style="{StaticResource WaveProgressRingStyle}" />
+        </Grid>
         <Grid VerticalAlignment="Center">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>

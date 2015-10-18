@@ -85,6 +85,12 @@ namespace PlayStation_App.ViewModels
                 },
                 new MenuItem()
                 {
+                    Icon = "/Assets/Icons/AddFriendLink.png",
+                    Name = loader.GetString("InviteFriendsToPsn/Text"),
+                    Command = new NavigataeToFriendLinkPageCommand()
+                },
+                new MenuItem()
+                {
                     Icon = "/Assets/Icons/Settings.png",
                     Name = loader.GetString("Settings/Text"),
                     //Command = new NavigateToMainForumsPage()

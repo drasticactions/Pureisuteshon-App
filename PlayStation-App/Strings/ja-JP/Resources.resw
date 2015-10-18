@@ -357,4 +357,43 @@
   <data name="TrophyVeryRare.Text" xml:space="preserve">
     <value>とてもレア</value>
   </data>
+  <data name="CreateFriendRequestLink.Content" xml:space="preserve">
+    <value>フレンド依頼リンクを作る</value>
+  </data>
+  <data name="FriendRequestLinkBody.Text" xml:space="preserve">
+    <value>あなたにフレンド依頼を送るためのリンクを作って、SNSに投稿したり、EメールやSMSで送信したりできます。</value>
+  </data>
+  <data name="FriendRequestLinkNote.Text" xml:space="preserve">
+    <value>フレンド依頼リンクを誰でもアクセスできる場所でシェアすると、あなたの知り合いではないプレーヤーからフレンド依頼が送信される可能性があります。</value>
+  </data>
+  <data name="FriendRequestLinkTitle.Text" xml:space="preserve">
+    <value>フレンド依頼リンクをシェアする</value>
+  </data>
+  <data name="InviteFriendsToPsn.Text" xml:space="preserve">
+    <value>フレンドを増やそう</value>
+  </data>
+  <data name="SendByEmail.Content" xml:space="preserve">
+    <value>Eメールで送る</value>
+  </data>
+  <data name="SendByText.Content" xml:space="preserve">
+    <value>SMSで送る</value>
+  </data>
+  <data name="UseEmailSms.Text" xml:space="preserve">
+    <value>EメールやSMSで送信する</value>
+  </data>
+  <data name="UseEmailSmsGuide.Text" xml:space="preserve">
+    <value>EメールやSMSを使って、PlayStation™Networkのフレンド依頼を友達に送ります。</value>
+  </data>
+  <data name="UseEmailSmsGuideClose.Text" xml:space="preserve">
+    <value>EメールやSMSで送るフレンド依頼は、実名リクエストも兼ねています。フレンド依頼が許可されると、お互いに実名を教え合います。</value>
+  </data>
+  <data name="FriendRequestBody.Text" xml:space="preserve">
+    <value>PlayStation™Networkでフレンドになりませんか？</value>
+  </data>
+  <data name="SendMeFriendRequest.Text" xml:space="preserve">
+    <value>私にPSNのフレンド依頼を送ってください！</value>
+  </data>
+  <data name="SentFromPlayStationApp.Text" xml:space="preserve">
+    <value>PlayStation-Appから送信</value>
+  </data>
 </root>
