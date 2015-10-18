@@ -34,5 +34,7 @@ namespace PlayStation_App.Locator
 
         public static LiveFromPlayStationViewModel LiveFromPlayStationVm => App.Container.Resolve<LiveFromPlayStationViewModel>();
 
+        public static MessagesViewModel MessagesVm => App.Container.Resolve<MessagesViewModel>();
+
     }
 }

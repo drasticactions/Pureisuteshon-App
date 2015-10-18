@@ -109,13 +109,14 @@ namespace PlayStation_App.ViewModels
                     messageManager.GetGroupConversation(
                         string.Format("~{0},{1}", userName, Locator.ViewModels.MainPageVm.CurrentUser.Username),
                          Locator.ViewModels.MainPageVm.CurrentTokens);
+            await AccountAuthHelpers.UpdateTokens(Locator.ViewModels.MainPageVm.CurrentUser, messageResult);
+            _messageEntity = JsonConvert.DeserializeObject<MessageEntity>(messageResult.ResultJson);
             if (_messageEntity?.messages == null)
                 return;
             foreach (
                 MessageGroupItem newMessage in
                     _messageEntity.messages.Select(message => new MessageGroupItem { Message = message }))
             {
-                //GetAvatar(newMessage, userAccountEntity);
                 MessageGroupCollection.Add(newMessage);
             }
         }
@@ -227,39 +228,6 @@ namespace PlayStation_App.ViewModels
                 default:
                     return null;
             }
-        }
-
-        /// <summary>
-        ///     TODO: Seperate to new class, use ISupportIncrementalLoading
-        /// </summary>
-        public class MessageGroupItem : NotifierBase
-        {
-            private string _avatarUrl;
-
-            public string AvatarUrl
-            {
-                get { return _avatarUrl; }
-                set
-                {
-                    SetProperty(ref _avatarUrl, value);
-                    OnPropertyChanged();
-                }
-            }
-
-            public MessageEntity.Message Message { get; set; }
-
-            public MessageEntity.MessageGroup MessageGroup { get; set; }
-        }
-
-        public class UserViewModel : NotifierBase
-        {
-            public User User { get; set; }
-
-            public string CurrentUserOnlineId { get; set; }
-
-            public string Language { get; set; }
-
-            public bool IsNotCurrentUser { get; set; }
         }
     }
 }

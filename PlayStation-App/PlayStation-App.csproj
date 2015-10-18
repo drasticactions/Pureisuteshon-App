@@ -253,6 +253,9 @@
     <Compile Include="Views\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\MessageListPage.xaml.cs">
+      <DependentUpon>MessageListPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\TrophyDetailListPage.xaml.cs">
       <DependentUpon>TrophyDetailListPage.xaml</DependentUpon>
     </Compile>
@@ -372,6 +375,10 @@
     <Page Include="Views\MainPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MessageListPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\TrophyDetailListPage.xaml">
       <SubType>Designer</SubType>

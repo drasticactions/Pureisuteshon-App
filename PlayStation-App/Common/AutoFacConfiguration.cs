@@ -17,6 +17,7 @@ namespace PlayStation_App.Common
             builder.RegisterType<FriendPageViewModel>().SingleInstance();
             builder.RegisterType<TrophiesViewModel>().SingleInstance();
             builder.RegisterType<LiveFromPlayStationViewModel>().SingleInstance();
+            builder.RegisterType<MessagesViewModel>().SingleInstance();
             //builder.RegisterType<MainPage>();
             return builder.Build();
         }
