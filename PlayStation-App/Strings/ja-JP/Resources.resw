@@ -303,4 +303,58 @@
   <data name="LangTurkish.Text" xml:space="preserve">
     <value>トルコ語</value>
   </data>
+  <data name="TrophyBronze.Text" xml:space="preserve">
+    <value>ブロンズ</value>
+  </data>
+  <data name="TrophyCommon.Text" xml:space="preserve">
+    <value>ふつう</value>
+  </data>
+  <data name="TrophyDetail.Text" xml:space="preserve">
+    <value>詳細</value>
+  </data>
+  <data name="TrophyEarned.Text" xml:space="preserve">
+    <value>獲得済み</value>
+  </data>
+  <data name="TrophyEarnedDate.Text" xml:space="preserve">
+    <value>獲得日</value>
+  </data>
+  <data name="TrophyGold.Text" xml:space="preserve">
+    <value>ゴールド</value>
+  </data>
+  <data name="TrophyGrade.Text" xml:space="preserve">
+    <value>グレード</value>
+  </data>
+  <data name="TrophyHeader.Text" xml:space="preserve">
+    <value>トロフィー</value>
+  </data>
+  <data name="TrophyPivot.Header" xml:space="preserve">
+    <value>トロフィー</value>
+  </data>
+  <data name="TrophyHidden.Text" xml:space="preserve">
+    <value>隠しトロフィー</value>
+  </data>
+  <data name="TrophyNotEarned.Text" xml:space="preserve">
+    <value>未獲得</value>
+  </data>
+  <data name="TrophyPlatinum.Text" xml:space="preserve">
+    <value>プラチナ</value>
+  </data>
+  <data name="TrophyRare.Text" xml:space="preserve">
+    <value>レア</value>
+  </data>
+  <data name="TrophyRarity.Text" xml:space="preserve">
+    <value>レア度</value>
+  </data>
+  <data name="TrophySilver.Text" xml:space="preserve">
+    <value>シルバー</value>
+  </data>
+  <data name="TrophyStatus.Text" xml:space="preserve">
+    <value>状況</value>
+  </data>
+  <data name="TrophyUltraRare.Text" xml:space="preserve">
+    <value>超レア</value>
+  </data>
+  <data name="TrophyVeryRare.Text" xml:space="preserve">
+    <value>とてもレア</value>
+  </data>
 </root>

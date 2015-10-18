@@ -27,7 +27,6 @@ namespace PlayStation_App.ViewModels
         {
             FriendScrollingCollection = new FriendScrollingCollection
             {
-                UserAccountEntity = Locator.ViewModels.MainPageVm.CurrentUser,
                 Offset = 0,
                 OnlineFilter = onlineFilter,
                 Requested = requested,

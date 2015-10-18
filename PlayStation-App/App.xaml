@@ -7,17 +7,30 @@
     xmlns:locator="using:PlayStation_App.Locator"
     xmlns:templateSelector="using:PlayStation_App.Tools.TemplateSelector"
     RequestedTheme="Dark">
-
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/Styles/Styles.xaml"/>
+                <ResourceDictionary Source="Styles/Spinkit.Styles.xaml" />
             </ResourceDictionary.MergedDictionaries>
             <locator:ViewModels x:Name="Locator" />
             <converter:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
-            <converter:OnlineConverter x:Key="OnlineConverter" />
-            <templateSelector:FriendButtonTemplateSelector x:Key="FriendButtonTemplateSelector"/>
-            <templateSelector:SimpleActivityTemplateSelector x:Key="SimpleActivityTemplateSelector"/>
+            <converter:TrophyImageConverter x:Key="TrophyImageConverter" />
+            <converter:BroadcastImageConverter x:Key="BroadcastImageConverter"/>
+            <converter:OnlineConverter x:Key="OnlineConverter"/>
+            <templateSelector:RecentActivityTemplateSelector x:Key="RecentActivityTemplateSelector"/>
+            <converter:BooleanToVisibilityInverter x:Key="BooleanToVisibilityInverter" />
+            <converter:HasTrophiesConverter x:Key="HasTrophiesConverter" />
+            <converter:ValuePercentConverter x:Key="ValuePercentConverter" />
+            <converter:TrophyTypeConverter x:Key="TrophyTypeConverter" />
+            <converter:TrophyRareConverter x:Key="TrophyRareConverter" />
+            <converter:TrophyHiddenConverter x:Key="TrophyHiddenConverter" />
+            <converter:TrophyHiddenIconConverter x:Key="TrophyHiddenIconConverter" />
+            <converter:TrophyEarnedVisibilityConverter x:Key="TrophyEarnedVisibilityConverter" />
+            <converter:TrophyDateConverter x:Key="TrophyDateConverter" />
+            <converter:TrophyGradeConverter x:Key="TrophyGradeConverter" />
+            <converter:TrophyRareTextConverter x:Key="TrophyRareTextConverter" />
+            <converter:TrophyStatusConverter x:Key="TrophyStatusConverter" />
         </ResourceDictionary>
     </Application.Resources>
 </Application>

@@ -3,17 +3,25 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
+using PlayStation.Entities.User;
+using PlayStation.Entities.Web;
+using PlayStation.Managers;
+using PlayStation.Tools;
 using PlayStation_App.Common;
-using PlayStation_App.Core.Entities;
-using PlayStation_App.Core.Entities.User;
-using PlayStation_App.Core.Exceptions;
-using PlayStation_App.Core.Managers;
+using PlayStation_App.Database;
+using PlayStation_App.Models.Authentication;
+using PlayStation_App.Models.User;
+using PlayStation_App.Tools.Debug;
+using PlayStation_App.Tools.Helpers;
+using Xamarin;
 
 namespace PlayStation_App.ViewModels
 {
     public class LoginPageViewModel : NotifierBase
     {
         private readonly AuthenticationManager _authManager = new AuthenticationManager();
+        private readonly UserManager _userManager = new UserManager();
         private string _password;
         private string _userName;
 
@@ -56,18 +64,71 @@ namespace PlayStation_App.ViewModels
 
         public async Task ClickLoginButton()
         {
-            var loginResult = new UserAccountEntity();
+            using (var handle = Insights.TrackTime("TimeToLogin"))
+            {
+                await Login();
+            }
+            
+        }
+
+        public async Task Login()
+        {
+            Result loginResult = new Result();
             IsLoading = true;
             try
             {
-                loginResult = await _authManager.Authenticate(UserName, Password);
-                Locator.ViewModels.MainPageVm.CurrentUser = loginResult;
+                loginResult = await _authManager.SendLoginData(UserName, Password);
             }
             catch (Exception ex)
             {
+                loginResult.IsSuccess = false;
+                loginResult.ResultJson = ex.Message;
+                Insights.Report(ex, Insights.Severity.Error);
             }
+
+            if (!loginResult.IsSuccess)
+            {
+                // Translate Error Text
+                loginResult.ResultJson = "Eメールアドレスまたはパスワードが違っています。もう一度入力してください。";
+            }
+            else if (loginResult.IsSuccess)
+            {
+                try
+                {
+                    var authTokens = JsonConvert.DeserializeObject<Tokens>(loginResult.Tokens);
+                    var expiresInDate = AuthHelpers.GetUnixTime(DateTime.Now) + authTokens.ExpiresIn;
+                    if (!string.IsNullOrEmpty(authTokens.AccessToken) && !string.IsNullOrEmpty(authTokens.RefreshToken))
+                    {
+                        var loginUserResult =
+                            await
+                                _authManager.GetUserEntity(new UserAuthenticationEntity(authTokens.AccessToken, authTokens.RefreshToken, expiresInDate), "ja");
+                        var loginUser = JsonConvert.DeserializeObject<LogInUser>(loginUserResult.ResultJson);
+
+                        var userResult =
+                            await
+                                _userManager.GetUser(loginUser.OnlineId,
+                                    new UserAuthenticationEntity(authTokens.AccessToken, authTokens.RefreshToken,
+                                        expiresInDate), loginUser.Region, loginUser.Language);
+                        var user = JsonConvert.DeserializeObject<User>(userResult.ResultJson);
+                        var newAccountResult = await AccountAuthHelpers.CreateUserAccount(authTokens, loginUser, user);
+                        if (!newAccountResult)
+                        {
+                            loginResult.IsSuccess = false;
+                            loginResult.Error = "Failed to create new user in database.";
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    loginResult.IsSuccess = false;
+                    loginResult.ResultJson = ex.Message;
+                }
+            }
+
+            // Check if the result was good. If not, show error.
+            await ResultChecker.CheckSuccess(loginResult);
             IsLoading = false;
-            base.RaiseEvent(loginResult != null ? LoginSuccessful : LoginFailed, EventArgs.Empty);
+            base.RaiseEvent(loginResult.IsSuccess ? LoginSuccessful : LoginFailed, EventArgs.Empty);
         }
     }
 }

@@ -1,11 +1,17 @@
 ﻿{
   "dependencies": {
     "Autofac": "3.5.2",
+    "Humanizer": "1.37.7",
     "Microsoft.ApplicationInsights": "1.0.0",
     "Microsoft.ApplicationInsights.PersistenceChannel": "1.0.0",
     "Microsoft.ApplicationInsights.WindowsApps": "1.0.0",
     "Microsoft.NETCore.UniversalWindowsPlatform": "5.0.0",
-    "Xam.Plugins.Settings": "1.5.2"
+    "NotificationsExtensions.Win10": "10240.0.3",
+    "SpinKit.Xaml": "1.1.0",
+    "SQLite.Net.Async-PCL": "3.0.5",
+    "SQLite.WinRT": "3.8.11.5",
+    "SQLiteNetExtensions.Async": "1.3.0",
+    "Xamarin.Insights": "1.11.1"
   },
   "frameworks": {
     "uap10.0": {}

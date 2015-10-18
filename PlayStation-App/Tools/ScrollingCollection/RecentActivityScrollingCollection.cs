@@ -1,25 +1,28 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Text;
 using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.UI.Xaml.Data;
-using PlayStation_App.Core.Entities;
-using PlayStation_App.Core.Entities.RecentActivity;
-using PlayStation_App.Core.Entities.User;
-using PlayStation_App.Core.Managers;
+using Newtonsoft.Json;
+using PlayStation.Managers;
+using PlayStation_App.Models.RecentActivity;
+using PlayStation_App.Models.Response;
 using PlayStation_App.Properties;
+using PlayStation_App.Tools.Helpers;
+using Xamarin;
 
 namespace PlayStation_App.Tools.ScrollingCollection
 {
-    public class RecentActivityScrollingCollection : ObservableCollection<RecentActivityEntity.Feed>,
-        ISupportIncrementalLoading, INotifyPropertyChanged
+    public class RecentActivityScrollingCollection : ObservableCollection<Feed>,
+            ISupportIncrementalLoading, INotifyPropertyChanged
     {
         public bool IsNews;
         public bool StorePromo;
-        public UserAccountEntity UserAccountEntity;
         private bool _isEmpty;
         private bool _isLoading;
 
@@ -55,6 +58,8 @@ namespace PlayStation_App.Tools.ScrollingCollection
             }
         }
 
+        private RecentActivityManager _recentActivityManager = new RecentActivityManager();
+
         public new event PropertyChangedEventHandler PropertyChanged;
 
         public IAsyncOperation<LoadMoreItemsResult> LoadMoreItemsAsync(uint count)
@@ -62,24 +67,28 @@ namespace PlayStation_App.Tools.ScrollingCollection
             return LoadDataAsync(count).AsAsyncOperation();
         }
 
-        public bool HasMoreItems { get; private set; }
+        public bool HasMoreItems { get; set; }
 
         private async Task<LoadMoreItemsResult> LoadDataAsync(uint count)
         {
-            if (!IsLoading)
-            {
-                LoadFeedList(Username);
+                if (!IsLoading)
+           {
+                using (var handle = Insights.TrackTime("PagingFriendsList"))
+                {
+                    LoadFeedList(Username);
+                }
             }
-            var ret = new LoadMoreItemsResult {Count = count};
+            var ret = new LoadMoreItemsResult { Count = count };
             return ret;
         }
 
         public async void LoadFeedList(string username)
         {
             IsLoading = true;
-            var recentActivityManager = new RecentActivityManager();
-            RecentActivityEntity feedEntity =
-                await recentActivityManager.GetActivityFeed(username, PageCount, StorePromo, IsNews, UserAccountEntity);
+            var feedResultEntity =
+                await _recentActivityManager.GetActivityFeed(username, PageCount, StorePromo, IsNews, Locator.ViewModels.MainPageVm.CurrentTokens);
+            await AccountAuthHelpers.UpdateTokens(Locator.ViewModels.MainPageVm.CurrentUser, feedResultEntity);
+            var feedEntity = JsonConvert.DeserializeObject<RecentActivityResponse>(feedResultEntity.ResultJson);
             if (feedEntity == null)
             {
                 if (Count <= 0)
@@ -90,7 +99,7 @@ namespace PlayStation_App.Tools.ScrollingCollection
                 IsLoading = false;
                 return;
             }
-            if (feedEntity.feed == null)
+            if (feedEntity.Feed == null)
             {
                 if (Count <= 0)
                 {
@@ -100,11 +109,11 @@ namespace PlayStation_App.Tools.ScrollingCollection
                 IsLoading = false;
                 return;
             }
-            foreach (RecentActivityEntity.Feed feed in feedEntity.feed)
+            foreach (var feed in feedEntity.Feed)
             {
                 Add(feed);
             }
-            if (feedEntity.feed.Any())
+            if (feedEntity.Feed.Any())
             {
                 HasMoreItems = true;
                 PageCount++;
@@ -123,17 +132,14 @@ namespace PlayStation_App.Tools.ScrollingCollection
         private void NotifyPropertyChanged(String propertyName)
         {
             PropertyChangedEventHandler handler = PropertyChanged;
-            if (null != handler)
-            {
-                handler(this, new PropertyChangedEventArgs(propertyName));
-            }
+            handler?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
         [NotifyPropertyChangedInvocator]
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChangedEventHandler handler = PropertyChanged;
-            if (handler != null) handler(this, new PropertyChangedEventArgs(propertyName));
+            handler?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

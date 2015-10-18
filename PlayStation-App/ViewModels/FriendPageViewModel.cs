@@ -6,11 +6,12 @@ using System.Text;
 using System.Threading.Tasks;
 using Windows.ApplicationModel.Resources;
 using Windows.UI.Xaml;
+using Newtonsoft.Json;
+using PlayStation.Managers;
 using PlayStation_App.Common;
-using PlayStation_App.Core.Entities;
-using PlayStation_App.Core.Entities.Message;
-using PlayStation_App.Core.Entities.User;
-using PlayStation_App.Core.Managers;
+using PlayStation_App.Models.Message;
+using PlayStation_App.Models.User;
+using PlayStation_App.Tools.Helpers;
 using PlayStation_App.Tools.ScrollingCollection;
 
 namespace PlayStation_App.ViewModels
@@ -27,6 +28,8 @@ namespace PlayStation_App.ViewModels
         private TrophyScrollingCollection _trophyScrollingCollection;
         private UserViewModel _userViewModel;
 
+        public bool IsSelected => UserModel != null;
+
         public UserViewModel UserModel
         {
             get { return _userViewModel; }
@@ -34,6 +37,7 @@ namespace PlayStation_App.ViewModels
             {
                 SetProperty(ref _userViewModel, value);
                 OnPropertyChanged();
+                OnPropertyChanged("IsSelected");
             }
         }
 
@@ -96,15 +100,15 @@ namespace PlayStation_App.ViewModels
         }
 
 
-        public async void SetMessages(string userName, UserAccountEntity userAccountEntity)
+        public async void SetMessages(string userName)
         {
             MessageGroupCollection = new ObservableCollection<MessageGroupItem>();
             var messageManager = new MessageManager();
-            _messageEntity =
+            var messageResult =
                 await
                     messageManager.GetGroupConversation(
-                        string.Format("~{0},{1}", userName, Locator.ViewModels.MainPageVm.CurrentUser.GetUserEntity().OnlineId),
-                         Locator.ViewModels.MainPageVm.CurrentUser);
+                        string.Format("~{0},{1}", userName, Locator.ViewModels.MainPageVm.CurrentUser.Username),
+                         Locator.ViewModels.MainPageVm.CurrentTokens);
             if (_messageEntity?.messages == null)
                 return;
             foreach (
@@ -116,21 +120,11 @@ namespace PlayStation_App.ViewModels
             }
         }
 
-        private async void GetAvatar(MessageGroupItem message, UserAccountEntity userAccountEntity)
-        {
-            var userManager = new UserManager();
-            UserEntity user = await userManager.GetUserAvatar(message.Message.senderOnlineId, userAccountEntity);
-            if (user == null) return;
-            message.AvatarUrl = user.DefaultAvatarUrl;
-            OnPropertyChanged("MessageGroupCollection");
-        }
-
         public void SetFriendsList(string userName, bool onlineFilter, bool blockedPlayer, bool recentlyPlayed,
             bool personalDetailSharing, bool friendStatus, bool requesting, bool requested)
         {
             FriendScrollingCollection = new FriendScrollingCollection
             {
-                UserAccountEntity = Locator.ViewModels.MainPageVm.CurrentUser,
                 Offset = 0,
                 OnlineFilter = onlineFilter,
                 Requested = requested,
@@ -147,7 +141,6 @@ namespace PlayStation_App.ViewModels
             {
                 IsNews = false,
                 StorePromo = false,
-                UserAccountEntity = Locator.ViewModels.MainPageVm.CurrentUser,
                 Username = userName,
                 PageCount = 0
             };
@@ -157,7 +150,7 @@ namespace PlayStation_App.ViewModels
         {
             TrophyScrollingCollection = new TrophyScrollingCollection
             {
-                UserAccountEntity = Locator.ViewModels.MainPageVm.CurrentUser,
+                CompareUsername = Locator.ViewModels.MainPageVm.CurrentUser.Username,
                 Username = userName,
                 Offset = 0
             };
@@ -165,10 +158,14 @@ namespace PlayStation_App.ViewModels
 
         public async Task SetUser(string userName)
         {
-            bool isCurrentUser = Locator.ViewModels.MainPageVm.CurrentUser.GetUserEntity().OnlineId.Equals(userName);
+            bool isCurrentUser = Locator.ViewModels.MainPageVm.CurrentUser.Username.Equals(userName);
             var userManager = new UserManager();
-            UserEntity user = await userManager.GetUser(userName, Locator.ViewModels.MainPageVm.CurrentUser);
+            var userResult = await userManager.GetUser(userName, Locator.ViewModels.MainPageVm.CurrentTokens);
+            await AccountAuthHelpers.UpdateTokens(Locator.ViewModels.MainPageVm.CurrentUser, userResult);
+            var user = JsonConvert.DeserializeObject<User>(userResult.ResultJson);
             if (user == null) return;
+            var list = user.TrophySummary.EarnedTrophies;
+            user.TrophySummary.TotalTrophies = list.Bronze + list.Gold + list.Platinum + list.Silver;
             List<string> languageList = user.LanguagesUsed.Select(ParseLanguageVariable).ToList();
             string language = string.Join("," + Environment.NewLine, languageList);
             UserModel = new UserViewModel
@@ -176,7 +173,7 @@ namespace PlayStation_App.ViewModels
                 Language = language,
                 User = user,
                 IsNotCurrentUser = !isCurrentUser,
-                CurrentUserOnlineId = Locator.ViewModels.MainPageVm.CurrentUser.GetUserEntity().OnlineId
+                CurrentUserOnlineId = Locator.ViewModels.MainPageVm.CurrentUser.Username
             };
         }
 
@@ -256,7 +253,7 @@ namespace PlayStation_App.ViewModels
 
         public class UserViewModel : NotifierBase
         {
-            public UserEntity User { get; set; }
+            public User User { get; set; }
 
             public string CurrentUserOnlineId { get; set; }
 

@@ -1,12 +1,14 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using PlayStation_App.Database;
 using PlayStation_App.Properties;
 
 namespace PlayStation_App.Common
 {
     public abstract class NotifierBase : INotifyPropertyChanged
     {
+        
         public event PropertyChangedEventHandler PropertyChanged;
 
         [NotifyPropertyChangedInvocator]

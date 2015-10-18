@@ -20,14 +20,19 @@ namespace PlayStation_App.Locator
             }
         }
 
-        public static FriendPageViewModel FriendPageVm => App.Container.Resolve<FriendPageViewModel>();
-
-        public static FriendsPageViewModel FriendsPageVm => App.Container.Resolve<FriendsPageViewModel>();
+        public static AccountSelectScreenViewModel AccountSelectVm => App.Container.Resolve<AccountSelectScreenViewModel>();
 
         public static MainPageViewModel MainPageVm => App.Container.Resolve<MainPageViewModel>();
 
-        public static HomeViewModel HomeVm => App.Container.Resolve<HomeViewModel>();
+        public static WhatsNewViewModel WhatsNewVm => App.Container.Resolve<WhatsNewViewModel>();
+
+        public static FriendsPageViewModel FriendsPageVm => App.Container.Resolve<FriendsPageViewModel>();
+
+        public static FriendPageViewModel FriendPageVm => App.Container.Resolve<FriendPageViewModel>();
+
+        public static TrophiesViewModel TrophiesVm => App.Container.Resolve<TrophiesViewModel>();
 
         public static LiveFromPlayStationViewModel LiveFromPlayStationVm => App.Container.Resolve<LiveFromPlayStationViewModel>();
+
     }
 }

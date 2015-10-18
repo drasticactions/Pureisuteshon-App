@@ -4,11 +4,13 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using PlayStation_App.Commands.Search;
+using Newtonsoft.Json;
+using PlayStation.Managers;
+using PlayStation_App.Commands.Live;
 using PlayStation_App.Common;
-using PlayStation_App.Core.Entities;
-using PlayStation_App.Core.Entities.Live;
-using PlayStation_App.Core.Managers;
+using PlayStation_App.Models.Live;
+using PlayStation_App.Models.Response;
+using PlayStation_App.Tools.Helpers;
 
 namespace PlayStation_App.ViewModels
 {
@@ -38,62 +40,69 @@ namespace PlayStation_App.ViewModels
             }
         }
 
-        public void BuildList()
+        public async Task BuildList()
         {
             LiveBroadcastCollection = new ObservableCollection<LiveBroadcastEntity>();
-            SetUstreamElements();
-            SetTwitchElements();
-            SetNicoDougaElements();
-        }
-
-        public void BuildListSearch()
-        {
-            LiveBroadcastCollection = new ObservableCollection<LiveBroadcastEntity>();
-            SetUstreamElements(false, SearchString);
-            SetTwitchElements(false, SearchString);
-            SetNicoDougaElements(false, SearchString);
-        }
-
-        public void BuildListInteractive()
-        {
-            LiveBroadcastCollection = new ObservableCollection<LiveBroadcastEntity>();
-            SetUstreamElements(true);
-            SetTwitchElements(true);
-            SetNicoDougaElements(true);
-        }
-
-        public void BuildNicoList()
-        {
-            LiveBroadcastCollection = new ObservableCollection<LiveBroadcastEntity>();
-            SetNicoDougaElements(false);
-        }
-
-        public void BuildTwitch()
-        {
-            LiveBroadcastCollection = new ObservableCollection<LiveBroadcastEntity>();
-            SetTwitchElements(false);
-        }
-
-
-        public void BuildUstreamList()
-        {
-            LiveBroadcastCollection = new ObservableCollection<LiveBroadcastEntity>();
-            SetUstreamElements(false);
-        }
-
-        private async void SetUstreamElements(bool interactive = false, string query = "")
-        {
             IsLoading = true;
+            await SetUstreamElements();
+            await SetTwitchElements();
+            await SetNicoDougaElements();
+            IsLoading = false;
+        }
+
+        public async Task BuildListSearch()
+        {
+            LiveBroadcastCollection = new ObservableCollection<LiveBroadcastEntity>();
+            IsLoading = true;
+            await SetUstreamElements(false, SearchString);
+            await SetTwitchElements(false, SearchString);
+            await SetNicoDougaElements(false, SearchString);
+            IsLoading = false;
+        }
+
+        public async Task BuildListInteractive()
+        {
+            LiveBroadcastCollection = new ObservableCollection<LiveBroadcastEntity>();
+            IsLoading = true;
+            await SetUstreamElements(true);
+            await SetTwitchElements(true);
+            await SetNicoDougaElements(true);
+            IsLoading = false;
+        }
+
+        public async Task BuildNicoList()
+        {
+            LiveBroadcastCollection = new ObservableCollection<LiveBroadcastEntity>();
+            await SetNicoDougaElements(false);
+        }
+
+        public async Task BuildTwitch()
+        {
+            LiveBroadcastCollection = new ObservableCollection<LiveBroadcastEntity>();
+            await SetTwitchElements(false);
+        }
+
+
+        public async Task BuildUstreamList()
+        {
+            LiveBroadcastCollection = new ObservableCollection<LiveBroadcastEntity>();
+            await SetUstreamElements(false);
+        }
+
+        private async Task SetUstreamElements(bool interactive = false, string query = "")
+        {
             var filterList = new Dictionary<string, string>
             {
                 {"platform", "PS4"},
                 {"type", "live"},
                 {"interactive", interactive ? "true" : "false"}
             };
-            UstreamEntity ustreamList =
+            var ustreamResultList =
                 await
                     _liveStreamManager.GetUstreamFeed(0, 80, "compact", filterList, "views", query,
-                        Locator.ViewModels.MainPageVm.CurrentUser);
+                        Locator.ViewModels.MainPageVm.CurrentTokens);
+            await AccountAuthHelpers.UpdateTokens(Locator.ViewModels.MainPageVm.CurrentUser, ustreamResultList);
+            var ustreamList = JsonConvert.DeserializeObject<UstreamEntity>(ustreamResultList.ResultJson);
             if (ustreamList?.items == null) return;
             foreach (UstreamEntity.Item ustream in ustreamList.items)
             {
@@ -101,14 +110,15 @@ namespace PlayStation_App.ViewModels
                 entity.ParseFromUstream(ustream);
                 LiveBroadcastCollection.Add(entity);
             }
-            IsLoading = false;
+
         }
 
-        private async void SetTwitchElements(bool interactive = false, string query = "")
+        private async Task SetTwitchElements(bool interactive = false, string query = "")
         {
-            IsLoading = true;
-                TwitchEntity twitchList =
-                    await _liveStreamManager.GetTwitchFeed(0, 80, "PS4", interactive, query, Locator.ViewModels.MainPageVm.CurrentUser);
+                var twitchResult =
+                    await _liveStreamManager.GetTwitchFeed(0, 80, "PS4", interactive, query, Locator.ViewModels.MainPageVm.CurrentTokens);
+            await AccountAuthHelpers.UpdateTokens(Locator.ViewModels.MainPageVm.CurrentUser, twitchResult);
+            var twitchList = JsonConvert.DeserializeObject<TwitchEntity>(twitchResult.ResultJson);
             if (twitchList?.streams == null) return;
             foreach (TwitchEntity.Stream twitch in twitchList.streams)
             {
@@ -116,14 +126,14 @@ namespace PlayStation_App.ViewModels
                 entity.ParseFromTwitch(twitch);
                 LiveBroadcastCollection.Add(entity);
             }
-            IsLoading = false;
         }
 
-        private async void SetNicoDougaElements(bool interactive = false, string query = "")
+        private async Task SetNicoDougaElements(bool interactive = false, string query = "")
         {
-            IsLoading = true;
-            NicoNicoEntity nicoNicoEntity =
-                await _liveStreamManager.GetNicoFeed("onair", "PS4", interactive, 0, 80, "view", query, Locator.ViewModels.MainPageVm.CurrentUser);
+            var nicoNicoResultEntity =
+                await _liveStreamManager.GetNicoFeed("onair", "PS4", interactive, 0, 80, "view", query, Locator.ViewModels.MainPageVm.CurrentTokens);
+            await AccountAuthHelpers.UpdateTokens(Locator.ViewModels.MainPageVm.CurrentUser, nicoNicoResultEntity);
+            var nicoNicoEntity = JsonConvert.DeserializeObject<NicoNicoEntity>(nicoNicoResultEntity.ResultJson);
             if (nicoNicoEntity?.programs == null) return;
             foreach (NicoNicoEntity.Program program in nicoNicoEntity.programs)
             {
@@ -132,7 +142,6 @@ namespace PlayStation_App.ViewModels
                 LiveBroadcastCollection.Add(entity);
             }
 
-            IsLoading = false;
         }
     }
 }

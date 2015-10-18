@@ -10,11 +10,13 @@ namespace PlayStation_App.Common
             var builder = new ContainerBuilder();
 
             // Register View Models
+            builder.RegisterType<AccountSelectScreenViewModel>().SingleInstance();
             builder.RegisterType<MainPageViewModel>().SingleInstance();
-            builder.RegisterType<HomeViewModel>().SingleInstance();
-            builder.RegisterType<LiveFromPlayStationViewModel>().SingleInstance();
+            builder.RegisterType<WhatsNewViewModel>().SingleInstance();
             builder.RegisterType<FriendsPageViewModel>().SingleInstance();
             builder.RegisterType<FriendPageViewModel>().SingleInstance();
+            builder.RegisterType<TrophiesViewModel>().SingleInstance();
+            builder.RegisterType<LiveFromPlayStationViewModel>().SingleInstance();
             //builder.RegisterType<MainPage>();
             return builder.Build();
         }

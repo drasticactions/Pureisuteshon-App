@@ -7,14 +7,17 @@ using System.Text;
 using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.UI.Xaml.Data;
-using PlayStation_App.Core.Entities;
-using PlayStation_App.Core.Entities.Friend;
-using PlayStation_App.Core.Entities.User;
-using PlayStation_App.Core.Managers;
+using Newtonsoft.Json;
+using PlayStation.Entities.User;
+using PlayStation.Managers;
+using PlayStation_App.Models.Friends;
+using PlayStation_App.Models.Response;
+using PlayStation_App.Tools.Helpers;
+using Xamarin;
 
 namespace PlayStation_App.Tools.ScrollingCollection
 {
-    public class FriendScrollingCollection : ObservableCollection<FriendsEntity.Friend>, ISupportIncrementalLoading
+    public class FriendScrollingCollection : ObservableCollection<Friend>, ISupportIncrementalLoading
     {
         public bool BlockedPlayer;
         public bool FriendStatus;
@@ -28,7 +31,6 @@ namespace PlayStation_App.Tools.ScrollingCollection
         public bool Requested;
         public bool Requesting;
         private bool _isEmpty;
-        public UserAccountEntity UserAccountEntity;
 
         private bool _isLoading;
 
@@ -68,16 +70,19 @@ namespace PlayStation_App.Tools.ScrollingCollection
         }
 
         public bool HasMoreItems { get; protected set; }
-        private async Task<LoadMoreItemsResult> LoadDataAsync(uint count)
+
+        private async Task<LoadMoreItemsResult> LoadFriends(uint count)
         {
             IsLoading = true;
             try
             {
                 var friendManager = new FriendManager();
-                var friendEntity =
+                var friendResultEntity =
                     await
                         friendManager.GetFriendsList(Username, Offset, BlockedPlayer, RecentlyPlayed, PersonalDetailSharing,
-                            FriendStatus, Requesting, Requested, OnlineFilter, UserAccountEntity);
+                            FriendStatus, Requesting, Requested, OnlineFilter, Locator.ViewModels.MainPageVm.CurrentTokens);
+                await AccountAuthHelpers.UpdateTokens(Locator.ViewModels.MainPageVm.CurrentUser, friendResultEntity);
+                var friendEntity = JsonConvert.DeserializeObject<FriendListResponse>(friendResultEntity.ResultJson);
                 if (friendEntity == null)
                 {
                     HasMoreItems = false;
@@ -87,7 +92,7 @@ namespace PlayStation_App.Tools.ScrollingCollection
                     }
                     return new LoadMoreItemsResult { Count = count };
                 }
-                if (friendEntity.FriendList == null)
+                if (friendEntity.Friend == null)
                 {
                     HasMoreItems = false;
                     if (Count <= 0)
@@ -96,11 +101,11 @@ namespace PlayStation_App.Tools.ScrollingCollection
                     }
                     return new LoadMoreItemsResult { Count = count };
                 }
-                foreach (var friend in friendEntity.FriendList)
+                foreach (var friend in friendEntity.Friend)
                 {
                     Add(friend);
                 }
-                if (friendEntity.FriendList.Any())
+                if (friendEntity.Friend.Any())
                 {
                     HasMoreItems = true;
                     Offset = Offset += 32;
@@ -120,6 +125,14 @@ namespace PlayStation_App.Tools.ScrollingCollection
             }
             IsLoading = false;
             return new LoadMoreItemsResult { Count = count };
+        }
+
+        private async Task<LoadMoreItemsResult> LoadDataAsync(uint count)
+        {
+            using (var handle = Insights.TrackTime("PagingFriendsList"))
+            {
+                return await LoadFriends(count);
+            }
         }
 
     }

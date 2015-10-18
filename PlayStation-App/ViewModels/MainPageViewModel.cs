@@ -3,17 +3,52 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.ApplicationModel;
+using PlayStation.Entities.User;
+using PlayStation_App.Commands.Friends;
+using PlayStation_App.Commands.Live;
 using PlayStation_App.Commands.Navigation;
+using PlayStation_App.Commands.Trophies;
 using PlayStation_App.Common;
-using PlayStation_App.Core.Entities;
-using PlayStation_App.Core.Entities.User;
 using PlayStation_App.Models;
+using PlayStation_App.Models.Authentication;
 
 namespace PlayStation_App.ViewModels
 {
     public class MainPageViewModel : NotifierBase
     {
         public MainPageViewModel()
+        {
+            IsLoggedIn = false;
+            if (DesignMode.DesignModeEnabled)
+            {
+                PopulateDesignMenu();
+            }
+            else
+            {
+                PopulateLoginMenu();
+            }
+        }
+
+        private void PopulateDesignMenu()
+        {
+            MenuItems = new List<MenuItem>()
+            {
+                new MenuItem()
+                {
+                    Icon = "/Assets/Icons/Home.png",
+                    Name = "ホーム",
+                    Command = new NavigateToWhatsNewPage()
+                }
+            };
+        }
+
+        private void PopulateLoginMenu()
+        {
+            MenuItems = new List<MenuItem>();
+        }
+
+        public void PopulateMenu()
         {
             var loader = new Windows.ApplicationModel.Resources.ResourceLoader();
             MenuItems = new List<MenuItem>()
@@ -22,13 +57,7 @@ namespace PlayStation_App.ViewModels
                 {
                     Icon = "/Assets/Icons/Home.png",
                     Name = loader.GetString("Home/Text"),
-                    Command = new NavigateToHomePage()
-                },
-                new MenuItem()
-                {
-                    Icon = "/Assets/Icons/WhatsNew.png",
-                    Name = loader.GetString("WhatsNew/Text"),
-                    //Command = new NavigateToMainForumsPage()
+                    Command = new NavigateToWhatsNewPage()
                 },
                 new MenuItem()
                 {
@@ -40,7 +69,7 @@ namespace PlayStation_App.ViewModels
                 {
                     Icon = "/Assets/Icons/Trophy.png",
                     Name = loader.GetString("Trophy/Text"),
-                    //Command = new NavigateToMainForumsPage()
+                    Command = new NavigateToTrophiesPage()
                 },
                 new MenuItem()
                 {
@@ -62,15 +91,23 @@ namespace PlayStation_App.ViewModels
                 }
             };
         }
-        private UserAccountEntity _currentUser;
+        private AccountUser _currentUser;
 
-        public UserAccountEntity CurrentUser
+        public AccountUser CurrentUser
         {
             get { return _currentUser; }
             set
             {
                 SetProperty(ref _currentUser, value);
                 OnPropertyChanged();
+            }
+        }
+
+        public UserAuthenticationEntity CurrentTokens
+        {
+            get
+            {
+                return new UserAuthenticationEntity(CurrentUser.AccessToken, CurrentUser.RefreshToken, CurrentUser.RefreshDate);
             }
         }
 
@@ -84,7 +121,15 @@ namespace PlayStation_App.ViewModels
                 OnPropertyChanged();
             }
         }
-
-        public List<MenuItem> MenuItems { get; set; }
+        private List<MenuItem> _menuItems;
+        public List<MenuItem> MenuItems
+        {
+            get { return _menuItems; }
+            set
+            {
+                SetProperty(ref _menuItems, value);
+                OnPropertyChanged();
+            }
+        }
     }
 }

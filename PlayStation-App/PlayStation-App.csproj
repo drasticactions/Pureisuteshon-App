@@ -4,12 +4,12 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
-    <ProjectGuid>{A4DD5ECD-B68F-437E-B07A-9F875DEDADA2}</ProjectGuid>
+    <ProjectGuid>{B5AE7C13-5B05-419B-9E9F-8783163C41A7}</ProjectGuid>
     <OutputType>AppContainerExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>PlayStation_App</RootNamespace>
     <AssemblyName>PlayStation-App</AssemblyName>
-    <DefaultLanguage>ja-JP</DefaultLanguage>
+    <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
     <TargetPlatformVersion>10.0.10240.0</TargetPlatformVersion>
     <TargetPlatformMinVersion>10.0.10240.0</TargetPlatformMinVersion>
@@ -18,7 +18,6 @@
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <PackageCertificateKeyFile>PlayStation-App_TemporaryKey.pfx</PackageCertificateKeyFile>
-    <ApplicationInsightsResourceId>/subscriptions/ee65c5cf-1c76-4f5e-a25d-414deaec77f4/resourcegroups/Default-ApplicationInsights-CentralUS/providers/microsoft.insights/components/PlayStation-App</ApplicationInsightsResourceId>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
     <DebugSymbols>true</DebugSymbols>
@@ -94,8 +93,33 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Assets\Buttons\FriendButton.png" />
+    <Content Include="Assets\Buttons\LiveButton.png" />
+    <Content Include="Assets\Buttons\WhatsNewButton.png" />
+    <Content Include="Assets\Fonts\Other\Locator-Black.otf" />
+    <Content Include="Assets\Fonts\Other\Locator-BlackItalic-1.otf" />
+    <Content Include="Assets\Fonts\Other\Locator-BoldItalic.otf" />
+    <Content Include="Assets\Fonts\Other\Locator-Medium.otf" />
+    <Content Include="Assets\Fonts\Other\Locator-MediumItalic.otf" />
+    <Content Include="Assets\Fonts\Other\Locator-RegularItalic.otf" />
+    <Content Include="Assets\Fonts\Other\Locator-UltraLight.otf" />
+    <Content Include="Assets\Fonts\Locator-Bold.eot" />
+    <Content Include="Assets\Fonts\Locator-Bold.otf" />
+    <Content Include="Assets\Fonts\Locator-Bold.ttf" />
+    <Content Include="Assets\Fonts\Locator-Bold.woff" />
+    <Content Include="Assets\Fonts\Locator-Light.eot" />
+    <Content Include="Assets\Fonts\Locator-Light.otf" />
+    <Content Include="Assets\Fonts\Locator-Light.ttf" />
+    <Content Include="Assets\Fonts\Locator-Light.woff" />
+    <Content Include="Assets\Fonts\Locator-LightItalic.eot" />
+    <Content Include="Assets\Fonts\Locator-LightItalic.otf" />
+    <Content Include="Assets\Fonts\Locator-LightItalic.ttf" />
+    <Content Include="Assets\Fonts\Locator-LightItalic.woff" />
+    <Content Include="Assets\Fonts\Locator-Regular.eot" />
+    <Content Include="Assets\Fonts\Locator-Regular.otf" />
+    <Content Include="Assets\Fonts\Locator-Regular.ttf" />
+    <Content Include="Assets\Fonts\Locator-Regular.woff" />
     <None Include="project.json" />
-    <None Include="Service References\Application Insights\ConnectedService.json" />
     <PRIResource Include="Strings\ja-JP\Resources.resw">
       <SubType>Designer</SubType>
     </PRIResource>
@@ -104,11 +128,17 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Commands\DetailLoader\LoadFriendDetail.cs" />
-    <Compile Include="Commands\Navigation\NavigateToFriendsPage.cs" />
-    <Compile Include="Commands\Navigation\NavigateToHomePage.cs" />
-    <Compile Include="Commands\Navigation\NavigateToLiveFromPlaystationPage.cs" />
-    <Compile Include="Commands\Search\SearchLiveFromPlaystation.cs" />
+    <Compile Include="Commands\Friends\LoadFriendDetail.cs" />
+    <Compile Include="Commands\Friends\NavigateToFriendsPage.cs" />
+    <Compile Include="Commands\Live\NavigateToLiveFromPlaystationPage.cs" />
+    <Compile Include="Commands\Live\SearchLiveFromPlaystation.cs" />
+    <Compile Include="Commands\Navigation\NavigateToWhatsNewPage.cs" />
+    <Compile Include="Commands\SelectAccount\CheckAndNavigateToMainShell.cs" />
+    <Compile Include="Commands\SelectAccount\CheckAndNavigateToSelectAccountCommand.cs" />
+    <Compile Include="Commands\Trophies\NavigateToTrophiesPage.cs" />
+    <Compile Include="Commands\Trophies\NavigateToTrophyDetailCommand.cs" />
+    <Compile Include="Commands\Trophies\NavigateToTrophyDetailListCommand.cs" />
+    <Compile Include="Commands\WhatsNew\SelectRecentItemCommand.cs" />
     <Compile Include="Common\AlwaysExecutableCommand.cs" />
     <Compile Include="Common\AsyncDelegateCommand.cs" />
     <Compile Include="Common\AutoFacConfiguration.cs" />
@@ -118,43 +148,123 @@
     <Compile Include="Common\ObservableDictionary.cs" />
     <Compile Include="Common\RelayCommand.cs" />
     <Compile Include="Common\SuspensionManager.cs" />
+    <Compile Include="Database\Repository.cs" />
+    <Compile Include="Database\Tools\DatabaseHelpers.cs" />
+    <Compile Include="Database\UserAccountDataSource.cs" />
+    <Compile Include="Database\UserAccountDatabase.cs" />
     <Compile Include="Locator\ViewModels.cs" />
-    <Compile Include="MainPage.xaml.cs">
-      <DependentUpon>MainPage.xaml</DependentUpon>
-    </Compile>
+    <Compile Include="Models\Authentication\AccountUser.cs" />
+    <Compile Include="Models\Authentication\LogInUser.cs" />
+    <Compile Include="Models\Authentication\ParentalControl.cs" />
+    <Compile Include="Models\Authentication\Tokens.cs" />
+    <Compile Include="Models\Friends\EarnedTrophies.cs" />
+    <Compile Include="Models\Friends\Friend.cs" />
+    <Compile Include="Models\Friends\GameTitleInfo.cs" />
+    <Compile Include="Models\Friends\Presence.cs" />
+    <Compile Include="Models\Friends\PrimaryInfo.cs" />
+    <Compile Include="Models\Friends\TrophySummary.cs" />
+    <Compile Include="Models\Live\LiveBroadcastEntity.cs" />
+    <Compile Include="Models\Live\NicoNicoEntity.cs" />
+    <Compile Include="Models\Live\TwitchEntity.cs" />
+    <Compile Include="Models\Live\UstreamEntity.cs" />
     <Compile Include="Models\MenuItem.cs" />
-    <Compile Include="Pages\FriendPage.xaml.cs">
-      <DependentUpon>FriendPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\FriendsPage.xaml.cs">
-      <DependentUpon>FriendsPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\HomePage.xaml.cs">
-      <DependentUpon>HomePage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\LiveFromPlaystationPage.xaml.cs">
-      <DependentUpon>LiveFromPlaystationPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\LoginPage.xaml.cs">
-      <DependentUpon>LoginPage.xaml</DependentUpon>
-    </Compile>
+    <Compile Include="Models\Message\MessageEntity.cs" />
+    <Compile Include="Models\Message\MessageGroupEntity.cs" />
+    <Compile Include="Models\RecentActivity\CaptionComponent.cs" />
+    <Compile Include="Models\RecentActivity\CaptionComponent2.cs" />
+    <Compile Include="Models\RecentActivity\CondensedStory.cs" />
+    <Compile Include="Models\RecentActivity\Feed.cs" />
+    <Compile Include="Models\RecentActivity\Param.cs" />
+    <Compile Include="Models\RecentActivity\Source.cs" />
+    <Compile Include="Models\RecentActivity\Source2.cs" />
+    <Compile Include="Models\RecentActivity\Target.cs" />
+    <Compile Include="Models\RecentActivity\Target2.cs" />
+    <Compile Include="Models\Response\FriendListResponse.cs" />
+    <Compile Include="Models\Response\RecentActivityResponse.cs" />
+    <Compile Include="Models\Response\TrophyDetailResponse.cs" />
+    <Compile Include="Models\Response\TrophyResponse.cs" />
+    <Compile Include="Models\Trophies\ComparedUser.cs" />
+    <Compile Include="Models\TrophyDetail\ComparedUser.cs" />
+    <Compile Include="Models\TrophyDetail\DefinedTrophies.cs" />
+    <Compile Include="Models\TrophyDetail\EarnedTrophies.cs" />
+    <Compile Include="Models\TrophyDetail\EarnedTrophies2.cs" />
+    <Compile Include="Models\TrophyDetail\FromUser.cs" />
+    <Compile Include="Models\TrophyDetail\TrophyTitle.cs" />
+    <Compile Include="Models\User\AvatarUrl.cs" />
+    <Compile Include="Models\User\EarnedTrophies.cs" />
+    <Compile Include="Models\User\PersonalDetail.cs" />
+    <Compile Include="Models\User\Presence.cs" />
+    <Compile Include="Models\User\PrimaryInfo.cs" />
+    <Compile Include="Models\User\TrophySummary.cs" />
+    <Compile Include="Models\User\User.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tools\Converter\BooleanToVisibilityConverter.cs" />
     <Compile Include="Tools\Converter\BooleanToVisibilityInverter.cs" />
+    <Compile Include="Tools\Converter\BroadcastImageConverter.cs" />
+    <Compile Include="Tools\Converter\HasTrophiesConverter.cs" />
+    <Compile Include="Tools\Converter\TrophyDateConverter.cs" />
+    <Compile Include="Tools\Converter\TrophyEarnedVisibilityConverter.cs" />
+    <Compile Include="Tools\Converter\TrophyGradeConverter.cs" />
+    <Compile Include="Tools\Converter\TrophyHiddenConverter.cs" />
+    <Compile Include="Tools\Converter\TrophyHiddenIconConverter.cs" />
+    <Compile Include="Tools\Converter\TrophyImageConverter.cs" />
+    <Compile Include="Tools\Converter\TrophyRareConverter.cs" />
+    <Compile Include="Tools\Converter\TrophyRareTextConverter.cs" />
+    <Compile Include="Tools\Converter\TrophyStatusConverter.cs" />
+    <Compile Include="Tools\Converter\TrophyTypeConverter.cs" />
+    <Compile Include="Tools\Converter\ValuePrecentConverter.cs" />
+    <Compile Include="Tools\Debug\ResultChecker.cs" />
+    <Compile Include="Tools\Debug\SampleData.cs" />
+    <Compile Include="Tools\Helpers\AuthHelpers.cs" />
     <Compile Include="Tools\Converter\OnlineConverter.cs" />
-    <Compile Include="Tools\ScrollingCollection\FriendScrollingCollection.cs" />
     <Compile Include="Tools\ScrollingCollection\RecentActivityScrollingCollection.cs" />
+    <Compile Include="Tools\ScrollingCollection\FriendScrollingCollection.cs" />
     <Compile Include="Tools\ScrollingCollection\TrophyScrollingCollection.cs" />
-    <Compile Include="Tools\TemplateSelector\SimpleActivityTemplateSelector.cs" />
-    <Compile Include="Tools\TemplateSelector\FriendButtonTemplateSelector.cs" />
-    <Compile Include="Tools\TemplateSelector\SimpleLiveFeedTemplateSelector.cs" />
+    <Compile Include="Tools\TemplateSelector\RecentActivityTemplateSelector.cs" />
+    <Compile Include="Models\Trophies\FromUser.cs" />
+    <Compile Include="Models\Trophies\Trophy.cs" />
+    <Compile Include="ViewModels\AccountSelectScreenViewModel.cs" />
     <Compile Include="ViewModels\FriendPageViewModel.cs" />
     <Compile Include="ViewModels\FriendsPageViewModel.cs" />
-    <Compile Include="ViewModels\HomeViewModel.cs" />
     <Compile Include="ViewModels\LiveFromPlayStationViewModel.cs" />
     <Compile Include="ViewModels\LoginPageViewModel.cs" />
     <Compile Include="ViewModels\MainPageViewModel.cs" />
+    <Compile Include="ViewModels\TrophiesViewModel.cs" />
+    <Compile Include="ViewModels\WhatsNewViewModel.cs" />
+    <Compile Include="Views\AboutPage.xaml.cs">
+      <DependentUpon>AboutPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Account\LoginPage.xaml.cs">
+      <DependentUpon>LoginPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Account\SelectAccountPage.xaml.cs">
+      <DependentUpon>SelectAccountPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FriendPage.xaml.cs">
+      <DependentUpon>FriendPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FriendsPage.xaml.cs">
+      <DependentUpon>FriendsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LiveFromPlaystationPage.xaml.cs">
+      <DependentUpon>LiveFromPlaystationPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MainPage.xaml.cs">
+      <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TrophyDetailListPage.xaml.cs">
+      <DependentUpon>TrophyDetailListPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TrophyDetailPage.xaml.cs">
+      <DependentUpon>TrophyDetailPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TrophyListPage.xaml.cs">
+      <DependentUpon>TrophyListPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\WhatsNewPage.xaml.cs">
+      <DependentUpon>WhatsNewPage.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -163,31 +273,39 @@
     <None Include="PlayStation-App_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Assets\Background\background.png" />
-    <Content Include="Assets\Background\PlayStation_Logo.png" />
+    <Content Include="Assets\Icons\Friends.png" />
     <Content Include="Assets\Icons\Friend\Friend_Offline.png" />
     <Content Include="Assets\Icons\Friend\Friend_Online.png" />
     <Content Include="Assets\Icons\Friend\Friend_Standby.png" />
     <Content Include="Assets\Icons\Friend\PSPlus.png" />
     <Content Include="Assets\Icons\Friend\Trophy.png" />
+    <Content Include="Assets\Icons\Home.png" />
     <Content Include="Assets\Icons\Home\Home_Friends.png" />
     <Content Include="Assets\Icons\Home\Home_LiveFromPlaystation.png" />
     <Content Include="Assets\Icons\Home\Home_Store.png" />
     <Content Include="Assets\Icons\Home\Home_WhatsNew.png" />
+    <Content Include="Assets\Icons\Live.png" />
+    <Content Include="Assets\Icons\Messenger.png" />
+    <Content Include="Assets\Icons\Rare\phone_trophy_rareness_common.png" />
+    <Content Include="Assets\Icons\Rare\phone_trophy_rareness_rare.png" />
+    <Content Include="Assets\Icons\Rare\phone_trophy_rareness_ultraRare.png" />
+    <Content Include="Assets\Icons\Rare\phone_trophy_rareness_uncommon.png" />
+    <Content Include="Assets\Icons\Settings.png" />
     <Content Include="Assets\Icons\Stream\Nico.png" />
     <Content Include="Assets\Icons\Stream\Twitch.png" />
     <Content Include="Assets\Icons\Stream\Ustream.png" />
+    <Content Include="Assets\Icons\Trophy.png" />
     <Content Include="Assets\Icons\Trophy\Bronze.png" />
     <Content Include="Assets\Icons\Trophy\Gold.png" />
+    <Content Include="Assets\Icons\Trophy\Hidden.png" />
     <Content Include="Assets\Icons\Trophy\Platinum.png" />
     <Content Include="Assets\Icons\Trophy\Silver.png" />
+    <Content Include="Assets\Icons\Trophy\TrophyList.png" />
     <Content Include="Assets\Icons\WhatsNew.png" />
-    <Content Include="Assets\Icons\Settings.png" />
-    <Content Include="Assets\Icons\Trophy.png" />
-    <Content Include="Assets\Icons\Friends.png" />
-    <Content Include="Assets\Icons\Live.png" />
-    <Content Include="Assets\Icons\Messenger.png" />
-    <Content Include="Assets\Icons\Home.png" />
+    <Content Include="Assets\Main\background.png" />
+    <Content Include="Assets\Sample\RecentActivityFeed.txt" />
+    <Content Include="Assets\Sample\TrophyList.txt" />
+    <Content Include="Assets\TestAsset\xl_avatar.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
@@ -202,53 +320,77 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="MainPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Pages\FriendPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Pages\FriendsPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Pages\HomePage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Pages\LiveFromPlaystationPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Pages\LoginPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Styles\Styles.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Page>
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadata Include="Service References\" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\PlayStation-App.Core\PlayStation-App.Core.csproj">
-      <Project>{6414e6f6-90b9-43f1-bce9-bd255bb4ad22}</Project>
-      <Name>PlayStation-App.Core</Name>
+    <ProjectReference Include="..\PlayStation\PlayStation.csproj">
+      <Project>{edf72919-ca43-4b95-8d52-ef4821bf5432}</Project>
+      <Name>PlayStation</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <SDKReference Include="BehaviorsXamlSDKManaged, Version=12.0">
       <Name>Behaviors SDK %28XAML%29</Name>
     </SDKReference>
-    <SDKReference Include="WindowsMobile, Version=10.0.10240.0">
-      <Name>Windows Mobile Extensions for the UWP</Name>
+    <SDKReference Include="SQLite.UAP.2015, Version=3.8.11.1">
+      <Name>SQLite for Universal App Platform</Name>
     </SDKReference>
   </ItemGroup>
+  <ItemGroup>
+    <Page Include="Styles\Spinkit.Styles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\Styles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Page>
+    <Page Include="Views\AboutPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Account\LoginPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Account\SelectAccountPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\FriendPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\FriendsPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\LiveFromPlaystationPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\MainPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TrophyDetailListPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TrophyDetailPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TrophyListPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\WhatsNewPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>
