@@ -396,4 +396,25 @@
   <data name="SentFromPlayStationApp.Text" xml:space="preserve">
     <value>PlayStation-Appから送信</value>
   </data>
+  <data name="ErrorSaveImage.Text" xml:space="preserve">
+    <value>画像を保存できませんでした。</value>
+  </data>
+  <data name="SaveImage.Text" xml:space="preserve">
+    <value>画像を保存する</value>
+  </data>
+  <data name="SaveImageButton.Content" xml:space="preserve">
+    <value>保存</value>
+  </data>
+  <data name="ViewImage.Text" xml:space="preserve">
+    <value>画像を表示する</value>
+  </data>
+  <data name="ErrorText.Text" xml:space="preserve">
+    <value>予期しないエラーが発生しました:</value>
+  </data>
+  <data name="ImageSaved.Text" xml:space="preserve">
+    <value>画像を保存しました。</value>
+  </data>
+  <data name="SuccessText.Text" xml:space="preserve">
+    <value>メッセージ:</value>
+  </data>
 </root>

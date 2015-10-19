@@ -75,5 +75,14 @@ namespace PlayStation_App.Views
                 //EnableContentTransitions();
             }
         }
+
+        private async void DownloadImage_OnClick(object sender, ItemClickEventArgs e)
+        {
+            var clickedItem = (MessageGroupItem) e.ClickedItem;
+            if (clickedItem.ImageAvailable)
+            {
+                
+            }
+        }
     }
 }

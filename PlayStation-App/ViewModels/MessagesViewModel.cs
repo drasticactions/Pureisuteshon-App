@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text;
 using System.Threading.Tasks;
 using Windows.UI.Xaml.Media.Imaging;
@@ -13,6 +14,7 @@ using PlayStation_App.Common;
 using PlayStation_App.Models.MessageGroups;
 using PlayStation_App.Models.Response;
 using PlayStation_App.Models.User;
+using PlayStation_App.Tools.Debug;
 using PlayStation_App.Tools.Helpers;
 using Xamarin;
 
@@ -35,6 +37,10 @@ namespace PlayStation_App.ViewModels
         public AttachImageCommand AttachImageCommand { get; set; } = new AttachImageCommand();
         public RemoveImageCommand RemoveImageCommand { get; set; } = new RemoveImageCommand();
         public SendMessageCommand SendMessageCommand { get; set; } = new SendMessageCommand();
+        public DownloadImage DownloadImage { get; set; } = new DownloadImage();
+
+        public ViewImage ViewImage { get; set; } = new ViewImage();
+
         private MessageGroupResponse _messageGroupEntity;
         public byte[] AttachedImage { get; set; }
         public string ImagePath { get; set; } = "";
@@ -115,7 +121,7 @@ namespace PlayStation_App.ViewModels
             {
                 _selectedMessageGroup = messageGroup;
                 var messageResult =
-               await _messageManager.GetGroupConversation(messageGroup.MessageGroupId, Locator.ViewModels.MainPageVm.CurrentTokens);
+               await _messageManager.GetGroupConversation(messageGroup.MessageGroupId, Locator.ViewModels.MainPageVm.CurrentTokens, Locator.ViewModels.MainPageVm.CurrentUser.Region, Locator.ViewModels.MainPageVm.CurrentUser.Language);
                 await AccountAuthHelpers.UpdateTokens(Locator.ViewModels.MainPageVm.CurrentUser, messageResult);
                 _messageResponse = JsonConvert.DeserializeObject<MessageResponse>(messageResult.ResultJson);
                 foreach (
@@ -131,7 +137,7 @@ namespace PlayStation_App.ViewModels
                             var imageBytes =
                                 await
                                     _messageManager.GetMessageContent(_selectedMessageGroup.MessageGroupId, newMessage.Message.SentMessageId,
-                                        Locator.ViewModels.MainPageVm.CurrentTokens);
+                                        Locator.ViewModels.MainPageVm.CurrentTokens, Locator.ViewModels.MainPageVm.CurrentUser.Region, Locator.ViewModels.MainPageVm.CurrentUser.Language);
                             newMessage.Image = await DecodeImage(imageBytes);
                         }
                     }
@@ -167,7 +173,7 @@ namespace PlayStation_App.ViewModels
             
             try
             {
-                var messageResult = await _messageManager.GetMessageGroup(userName, Locator.ViewModels.MainPageVm.CurrentTokens);
+                var messageResult = await _messageManager.GetMessageGroup(userName, Locator.ViewModels.MainPageVm.CurrentTokens, Locator.ViewModels.MainPageVm.CurrentUser.Region, Locator.ViewModels.MainPageVm.CurrentUser.Language);
                 await AccountAuthHelpers.UpdateTokens(Locator.ViewModels.MainPageVm.CurrentUser, messageResult);
                 _messageGroupEntity = JsonConvert.DeserializeObject<MessageGroupResponse>(messageResult.ResultJson);
                 foreach (
@@ -191,7 +197,7 @@ namespace PlayStation_App.ViewModels
 
         private async Task<string> GetAvatarUrl(string username)
         {
-            var userResult = await _userManager.GetUserAvatar(username, Locator.ViewModels.MainPageVm.CurrentTokens);
+            var userResult = await _userManager.GetUserAvatar(username, Locator.ViewModels.MainPageVm.CurrentTokens, Locator.ViewModels.MainPageVm.CurrentUser.Region, Locator.ViewModels.MainPageVm.CurrentUser.Language);
             await AccountAuthHelpers.UpdateTokens(Locator.ViewModels.MainPageVm.CurrentUser, userResult);
             var user = JsonConvert.DeserializeObject<User>(userResult.ResultJson);
             if (user?.AvatarUrls != null)
@@ -220,6 +226,11 @@ namespace PlayStation_App.ViewModels
                                 AttachedImage,
                                 Locator.ViewModels.MainPageVm.CurrentTokens);
             await AccountAuthHelpers.UpdateTokens(Locator.ViewModels.MainPageVm.CurrentUser, result);
+            var resultCheck = await ResultChecker.CheckSuccess(result);
+            if (resultCheck)
+            {
+                await GetMessages(_selectedMessageGroup);
+            }
         }
 
         private async Task SendMessageWithoutMedia()
@@ -228,6 +239,44 @@ namespace PlayStation_App.ViewModels
                             _messageManager.CreatePost(_selectedMessageGroup.MessageGroupId, Message,
                                 Locator.ViewModels.MainPageVm.CurrentTokens);
             await AccountAuthHelpers.UpdateTokens(Locator.ViewModels.MainPageVm.CurrentUser, result);
+            var resultCheck = await ResultChecker.CheckSuccess(result);
+            if (resultCheck)
+            {
+                await GetMessages(_selectedMessageGroup);
+            }
+        }
+
+
+
+        public async Task DownloadImageAsync(MessageGroupItem item)
+        {
+            IsLoading = true;
+            var saved = true;
+            try
+            {
+                var imageBytes =
+                                await
+                                    _messageManager.GetMessageContent(_selectedMessageGroup.MessageGroupId, item.Message.SentMessageId,
+                                        Locator.ViewModels.MainPageVm.CurrentTokens, Locator.ViewModels.MainPageVm.CurrentUser.Region, Locator.ViewModels.MainPageVm.CurrentUser.Language);
+                await FileAccessCommands.SaveStreamToCameraRoll(imageBytes, item.Message.SentMessageId + ".png");
+            }
+            catch (Exception ex)
+            {
+                Insights.Report(ex);
+                saved = false;
+            }
+
+            var loader = new Windows.ApplicationModel.Resources.ResourceLoader();
+
+            if (!saved)
+            {
+                await ResultChecker.SendMessageDialogAsync(loader.GetString("ErrorSaveImage.Text"), false);
+            }
+            else
+            {
+                await ResultChecker.SendMessageDialogAsync(loader.GetString("ImageSaved.Text"), true);
+            }
+            IsLoading = false;
         }
     }
 }

@@ -231,6 +231,7 @@
     <Compile Include="Tools\Debug\SampleData.cs" />
     <Compile Include="Tools\Helpers\AuthHelpers.cs" />
     <Compile Include="Tools\Converter\OnlineConverter.cs" />
+    <Compile Include="Tools\OpenMenuFlyoutAction.cs" />
     <Compile Include="Tools\ScrollingCollection\RecentActivityScrollingCollection.cs" />
     <Compile Include="Tools\ScrollingCollection\FriendScrollingCollection.cs" />
     <Compile Include="Tools\ScrollingCollection\TrophyScrollingCollection.cs" />
@@ -247,6 +248,7 @@
     <Compile Include="ViewModels\MessageGroupItem.cs" />
     <Compile Include="ViewModels\MessagesViewModel.cs" />
     <Compile Include="ViewModels\TrophiesViewModel.cs" />
+    <Compile Include="ViewModels\ViewImageViewModel.cs" />
     <Compile Include="ViewModels\WhatsNewViewModel.cs" />
     <Compile Include="Views\AboutPage.xaml.cs">
       <DependentUpon>AboutPage.xaml</DependentUpon>
@@ -286,6 +288,9 @@
     </Compile>
     <Compile Include="Views\TrophyListPage.xaml.cs">
       <DependentUpon>TrophyListPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ViewImagePage.xaml.cs">
+      <DependentUpon>ViewImagePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\WhatsNewPage.xaml.cs">
       <DependentUpon>WhatsNewPage.xaml</DependentUpon>
@@ -424,6 +429,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\TrophyListPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ViewImagePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

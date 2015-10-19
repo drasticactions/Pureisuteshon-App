@@ -58,7 +58,7 @@ namespace PlayStation_App.ViewModels
                 await
                     _trophyManager.GetTrophyDetailList(npCommunicationId,
                         TrophyScrollingCollection.CompareUsername, true,
-                        Locator.ViewModels.MainPageVm.CurrentTokens, TrophyScrollingCollection.Username);
+                        Locator.ViewModels.MainPageVm.CurrentTokens, TrophyScrollingCollection.Username, Locator.ViewModels.MainPageVm.CurrentUser.Region, Locator.ViewModels.MainPageVm.CurrentUser.Language);
             await AccountAuthHelpers.UpdateTokens(Locator.ViewModels.MainPageVm.CurrentUser, trophyResult);
             var trophies = JsonConvert.DeserializeObject<TrophyResponse>(trophyResult.ResultJson);
             if (trophies == null)

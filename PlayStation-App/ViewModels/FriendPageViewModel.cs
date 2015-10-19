@@ -108,7 +108,7 @@ namespace PlayStation_App.ViewModels
                 await
                     messageManager.GetGroupConversation(
                         string.Format("~{0},{1}", userName, Locator.ViewModels.MainPageVm.CurrentUser.Username),
-                         Locator.ViewModels.MainPageVm.CurrentTokens);
+                         Locator.ViewModels.MainPageVm.CurrentTokens, Locator.ViewModels.MainPageVm.CurrentUser.Region, Locator.ViewModels.MainPageVm.CurrentUser.Language);
             await AccountAuthHelpers.UpdateTokens(Locator.ViewModels.MainPageVm.CurrentUser, messageResult);
             _messageEntity = JsonConvert.DeserializeObject<MessageResponse>(messageResult.ResultJson);
             if (_messageEntity?.Messages == null)
@@ -161,7 +161,7 @@ namespace PlayStation_App.ViewModels
         {
             bool isCurrentUser = Locator.ViewModels.MainPageVm.CurrentUser.Username.Equals(userName);
             var userManager = new UserManager();
-            var userResult = await userManager.GetUser(userName, Locator.ViewModels.MainPageVm.CurrentTokens);
+            var userResult = await userManager.GetUser(userName, Locator.ViewModels.MainPageVm.CurrentTokens, Locator.ViewModels.MainPageVm.CurrentUser.Region, Locator.ViewModels.MainPageVm.CurrentUser.Language);
             await AccountAuthHelpers.UpdateTokens(Locator.ViewModels.MainPageVm.CurrentUser, userResult);
             var user = JsonConvert.DeserializeObject<User>(userResult.ResultJson);
             if (user == null) return;

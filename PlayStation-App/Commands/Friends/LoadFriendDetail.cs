@@ -11,7 +11,7 @@ namespace PlayStation_App.Commands.Friends
         false, false);
             Locator.ViewModels.FriendPageVm.SetRecentActivityFeed((string)parameter);
             Locator.ViewModels.FriendPageVm.SetTrophyList((string)parameter);
-            Locator.ViewModels.FriendPageVm.SetMessages((string)parameter);
+            //Locator.ViewModels.FriendPageVm.SetMessages((string)parameter);
             await Locator.ViewModels.FriendPageVm.SetUser((string) parameter);
             Locator.ViewModels.FriendsPageVm.IsLoading = false;
         }

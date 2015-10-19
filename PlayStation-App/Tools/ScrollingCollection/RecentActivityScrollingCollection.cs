@@ -86,7 +86,7 @@ namespace PlayStation_App.Tools.ScrollingCollection
         {
             IsLoading = true;
             var feedResultEntity =
-                await _recentActivityManager.GetActivityFeed(username, PageCount, StorePromo, IsNews, Locator.ViewModels.MainPageVm.CurrentTokens);
+                await _recentActivityManager.GetActivityFeed(username, PageCount, StorePromo, IsNews, Locator.ViewModels.MainPageVm.CurrentTokens, Locator.ViewModels.MainPageVm.CurrentUser.Region, Locator.ViewModels.MainPageVm.CurrentUser.Language);
             await AccountAuthHelpers.UpdateTokens(Locator.ViewModels.MainPageVm.CurrentUser, feedResultEntity);
             var feedEntity = JsonConvert.DeserializeObject<RecentActivityResponse>(feedResultEntity.ResultJson);
             if (feedEntity == null)

@@ -62,7 +62,7 @@ namespace PlayStation_App.ViewModels
         private async Task LoadFeed(ObservableCollection<Feed> testFeed)
         {
             var feedResultEntity =
-                await _recentActivityManager.GetActivityFeed(Locator.ViewModels.MainPageVm.CurrentUser.Username, _page, true, true, Locator.ViewModels.MainPageVm.CurrentTokens);
+                await _recentActivityManager.GetActivityFeed(Locator.ViewModels.MainPageVm.CurrentUser.Username, _page, true, true, Locator.ViewModels.MainPageVm.CurrentTokens, Locator.ViewModels.MainPageVm.CurrentUser.Region, Locator.ViewModels.MainPageVm.CurrentUser.Language);
             await AccountAuthHelpers.UpdateTokens(Locator.ViewModels.MainPageVm.CurrentUser, feedResultEntity);
             var feedEntity = JsonConvert.DeserializeObject<RecentActivityResponse>(feedResultEntity.ResultJson);
             foreach (var feed in feedEntity.Feed)

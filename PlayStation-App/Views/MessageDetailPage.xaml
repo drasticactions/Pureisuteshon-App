@@ -19,7 +19,7 @@
             <VisualStateGroup x:Name="AdaptiveStates">
                 <VisualState x:Name="DefaultState">
                     <VisualState.StateTriggers>
-                        <AdaptiveTrigger MinWindowWidth="600" />
+                        <AdaptiveTrigger MinWindowWidth="380" />
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
                         <Setter Target="HamburgerPlacement.Width" Value="0" />
@@ -49,7 +49,7 @@
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            <ListView ItemTemplate="{StaticResource MessageDetailDataTemplate}" ItemsSource="{Binding MessageCollection}">
+            <ListView x:Name="MessagesList" ItemTemplate="{StaticResource MessageDetailDataTemplate}" ItemsSource="{Binding MessageCollection}">
                 <ListView.ItemContainerStyle>
                     <Style TargetType="ListViewItem">
                         <Setter Property="HorizontalContentAlignment" Value="Stretch" />
@@ -58,7 +58,7 @@
             </ListView>
             <Grid Grid.Row="1">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="45"/>
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
                 <TextBox Text="{Binding Message, Mode=TwoWay}" Margin="5" VerticalAlignment="Top" Height="30"/>

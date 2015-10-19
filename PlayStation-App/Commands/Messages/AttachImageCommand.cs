@@ -8,9 +8,13 @@ using Windows.Graphics.Imaging;
 using Windows.Storage;
 using Windows.Storage.Pickers;
 using Windows.Storage.Streams;
+using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Imaging;
 using PlayStation_App.Common;
+using PlayStation_App.Models.Trophies;
+using PlayStation_App.ViewModels;
+using PlayStation_App.Views;
 
 namespace PlayStation_App.Commands.Messages
 {
@@ -72,6 +76,28 @@ namespace PlayStation_App.Commands.Messages
         {
             Locator.ViewModels.MessagesVm.IsImageAttached = false;
             Locator.ViewModels.MessagesVm.AttachedImage = null;
+        }
+    }
+
+    public class DownloadImage : AlwaysExecutableCommand
+    {
+        public async override void Execute(object parameter)
+        {
+            var message = parameter as MessageGroupItem;
+            if (message == null)
+                return;
+            await Locator.ViewModels.MessagesVm.DownloadImageAsync(message);
+        }
+    }
+
+    public class ViewImage : AlwaysExecutableCommand
+    {
+        public override void Execute(object parameter)
+        {
+            var message = parameter as MessageGroupItem;
+            if (message == null)
+                return;
+            App.RootFrame.Navigate(typeof (ViewImagePage), message);
         }
     }
 }

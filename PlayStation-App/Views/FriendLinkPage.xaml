@@ -19,7 +19,7 @@
             <VisualStateGroup>
                 <VisualState x:Name="DefaultState">
                     <VisualState.StateTriggers>
-                        <AdaptiveTrigger MinWindowWidth="800" />
+                        <AdaptiveTrigger MinWindowWidth="380" />
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
                         <Setter Target="HamburgerPlacement.Width" Value="0" />

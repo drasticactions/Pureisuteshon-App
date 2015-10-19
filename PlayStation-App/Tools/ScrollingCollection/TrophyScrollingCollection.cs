@@ -95,7 +95,7 @@ namespace PlayStation_App.Tools.ScrollingCollection
             Offset = Offset + MaxCount;
             IsLoading = true;
             var trophyManager = new TrophyManager();
-            var trophyResultList = await trophyManager.GetTrophyList(username, CompareUsername, Offset, Locator.ViewModels.MainPageVm.CurrentTokens);
+            var trophyResultList = await trophyManager.GetTrophyList(username, CompareUsername, Offset, Locator.ViewModels.MainPageVm.CurrentTokens, Locator.ViewModels.MainPageVm.CurrentUser.Region, Locator.ViewModels.MainPageVm.CurrentUser.Language);
             await AccountAuthHelpers.UpdateTokens(Locator.ViewModels.MainPageVm.CurrentUser, trophyResultList);
             var trophyList = JsonConvert.DeserializeObject<TrophyDetailResponse>(trophyResultList.ResultJson);
             if (trophyList == null)

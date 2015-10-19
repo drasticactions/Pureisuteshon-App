@@ -80,7 +80,7 @@ namespace PlayStation_App.Tools.ScrollingCollection
                 var friendResultEntity =
                     await
                         friendManager.GetFriendsList(Username, Offset, BlockedPlayer, RecentlyPlayed, PersonalDetailSharing,
-                            FriendStatus, Requesting, Requested, OnlineFilter, Locator.ViewModels.MainPageVm.CurrentTokens);
+                            FriendStatus, Requesting, Requested, OnlineFilter, Locator.ViewModels.MainPageVm.CurrentTokens, Locator.ViewModels.MainPageVm.CurrentUser.Region, Locator.ViewModels.MainPageVm.CurrentUser.Language);
                 await AccountAuthHelpers.UpdateTokens(Locator.ViewModels.MainPageVm.CurrentUser, friendResultEntity);
                 var friendEntity = JsonConvert.DeserializeObject<FriendListResponse>(friendResultEntity.ResultJson);
                 if (friendEntity == null)
