@@ -25,7 +25,8 @@ namespace PlayStation_App.ViewModels
             new ObservableCollection<MessageGroupItem>();
 
         private bool _messageGroupEmpty;
-
+        private bool _isSelected;
+        private bool _isImageAttached;
         private MessageResponse _messageResponse;
 
         private MessageGroupResponse _messageGroupEntity;
@@ -39,7 +40,24 @@ namespace PlayStation_App.ViewModels
                 OnPropertyChanged();
             }
         }
-
+        public bool IsImageAttached
+        {
+            get { return _isImageAttached; }
+            set
+            {
+                SetProperty(ref _isImageAttached, value);
+                OnPropertyChanged();
+            }
+        }
+        public bool IsSelected
+        {
+            get { return _isSelected; }
+            set
+            {
+                SetProperty(ref _isSelected, value);
+                OnPropertyChanged();
+            }
+        }
         public bool MessageGroupEmpty
         {
             get { return _messageGroupEmpty; }
@@ -74,6 +92,7 @@ namespace PlayStation_App.ViewModels
 
         public async Task GetMessages(string id)
         {
+            IsSelected = false;
             MessageCollection = new ObservableCollection<MessageGroupItem>();
             IsLoading = true;
             try
@@ -111,6 +130,7 @@ namespace PlayStation_App.ViewModels
                 Insights.Report(ex);
             }
             IsLoading = false;
+            IsSelected = true;
         }
 
         private async Task<BitmapImage> DecodeImage(Stream stream)

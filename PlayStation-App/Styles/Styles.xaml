@@ -21,7 +21,7 @@
                     <TextBlock TextWrapping="Wrap" Margin="5" FontWeight="Bold"
                                    Text="{Binding Message.Body}" />
                     <Border Visibility="{Binding ImageAvailable, Converter={StaticResource BooleanToVisibilityConverter}}" BorderBrush="White" BorderThickness="1" Margin="5">
-                        <Image Margin="5" Source="{Binding Image}"/>
+                        <Image Source="{Binding Image}"/>
                     </Border>
                 </StackPanel>
                 <TextBlock FontSize="15" HorizontalAlignment="Right" TextWrapping="Wrap"
