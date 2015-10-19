@@ -16,7 +16,7 @@ using PlayStation_App.Models.Response;
 using PlayStation_App.Models.User;
 using PlayStation_App.Tools.Debug;
 using PlayStation_App.Tools.Helpers;
-using Xamarin;
+
 
 namespace PlayStation_App.ViewModels
 {
@@ -143,14 +143,14 @@ namespace PlayStation_App.ViewModels
                     }
                     catch (Exception ex)
                     {
-                        Insights.Report(ex);
+                        //Insights.Report(ex);
                     }
                     MessageCollection.Add(newMessage);
                 }
             }
             catch (Exception ex)
             {
-                Insights.Report(ex);
+                //Insights.Report(ex);
             }
             IsLoading = false;
             IsSelected = true;
@@ -186,7 +186,7 @@ namespace PlayStation_App.ViewModels
             }
             catch (Exception ex)
             {
-                Insights.Report(ex);
+                //Insights.Report(ex);
             }
             if (MessageGroupCollection.Count <= 0)
             {
@@ -262,7 +262,7 @@ namespace PlayStation_App.ViewModels
             }
             catch (Exception ex)
             {
-                Insights.Report(ex);
+                //Insights.Report(ex);
                 saved = false;
             }
 

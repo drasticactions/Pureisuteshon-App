@@ -13,7 +13,7 @@ using PlayStation.Managers;
 using PlayStation_App.Models.Friends;
 using PlayStation_App.Models.Response;
 using PlayStation_App.Tools.Helpers;
-using Xamarin;
+
 
 namespace PlayStation_App.Tools.ScrollingCollection
 {
@@ -129,10 +129,7 @@ namespace PlayStation_App.Tools.ScrollingCollection
 
         private async Task<LoadMoreItemsResult> LoadDataAsync(uint count)
         {
-            using (var handle = Insights.TrackTime("PagingFriendsList"))
-            {
-                return await LoadFriends(count);
-            }
+            return await LoadFriends(count);
         }
 
     }

@@ -17,7 +17,7 @@ using PlayStation_App.Models.User;
 using PlayStation_App.Tools.Debug;
 using PlayStation_App.Tools.Helpers;
 using PlayStation_App.Views;
-using Xamarin;
+
 
 namespace PlayStation_App.ViewModels
 {
@@ -71,20 +71,12 @@ namespace PlayStation_App.ViewModels
                 return;
             }
             var loginResult = false;
-            using (var handle = Insights.TrackTime("TimeToLoginExistingUser"))
-            {
-                loginResult = await LoginTest(user);
-            }
+            loginResult = await LoginTest(user);
             if (loginResult)
             {
                 Locator.ViewModels.MainPageVm.CurrentUser = user;
                 Locator.ViewModels.MainPageVm.IsLoggedIn = true;
                 Locator.ViewModels.MainPageVm.PopulateMenu();
-                var traits = new Dictionary<string, string>
-                {
-                    {Insights.Traits.Name, user.Username}
-                };
-                Insights.Identify(user.AccountId, traits);
                 new NavigateToWhatsNewPage().Execute(null);
             }
         }

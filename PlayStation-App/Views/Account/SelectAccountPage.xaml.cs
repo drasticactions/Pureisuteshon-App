@@ -12,7 +12,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-using Xamarin;
+
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -30,9 +30,6 @@ namespace PlayStation_App.Views.Account
 
         private void AddAccount_OnClick(object sender, RoutedEventArgs e)
         {
-            Insights.Track("ClickedOnAddNewUserAccount", new Dictionary<string, string> {
-                { "NavigateTo", "LoginPage"}
-            });
             App.RootFrame.Navigate(typeof (LoginPage));
         }
     }

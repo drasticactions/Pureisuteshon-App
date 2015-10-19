@@ -21,7 +21,6 @@ using PlayStation_App.Database;
 using PlayStation_App.ViewModels;
 using PlayStation_App.Views;
 using PlayStation_App.Views.Account;
-using Xamarin;
 
 namespace PlayStation_App
 {
@@ -64,7 +63,7 @@ namespace PlayStation_App
         /// <param name="e">Details about the launch request and process.</param>
         protected async override void OnLaunched(LaunchActivatedEventArgs e)
         {
-            Insights.Initialize("0cd564b17c7afd17e9f5c3577fb71babd9bcc209");
+            ////Insights.Initialize("0cd564b17c7afd17e9f5c3577fb71babd9bcc209");
 
 #if DEBUG
             if (System.Diagnostics.Debugger.IsAttached)

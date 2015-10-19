@@ -14,7 +14,7 @@ using PlayStation_App.Models.Authentication;
 using PlayStation_App.Models.User;
 using PlayStation_App.Tools.Debug;
 using PlayStation_App.Tools.Helpers;
-using Xamarin;
+
 
 namespace PlayStation_App.ViewModels
 {
@@ -64,11 +64,7 @@ namespace PlayStation_App.ViewModels
 
         public async Task ClickLoginButton()
         {
-            using (var handle = Insights.TrackTime("TimeToLogin"))
-            {
-                await Login();
-            }
-            
+            await Login();
         }
 
         public async Task Login()
@@ -83,13 +79,13 @@ namespace PlayStation_App.ViewModels
             {
                 loginResult.IsSuccess = false;
                 loginResult.ResultJson = ex.Message;
-                Insights.Report(ex, Insights.Severity.Error);
+                //Insights.Report(ex, //Insights.Severity.Error);
             }
 
             if (!loginResult.IsSuccess)
             {
-                // Translate Error Text
-                loginResult.ResultJson = "Eメールアドレスまたはパスワードが違っています。もう一度入力してください。";
+                var loader = new Windows.ApplicationModel.Resources.ResourceLoader();
+                loginResult.ResultJson = loader.GetString("LoginError.Text");
             }
             else if (loginResult.IsSuccess)
             {

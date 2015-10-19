@@ -417,4 +417,7 @@
   <data name="SuccessText.Text" xml:space="preserve">
     <value>メッセージ:</value>
   </data>
+  <data name="LoginError.Text" xml:space="preserve">
+    <value>Eメールアドレスまたはパスワードが違っています。もう一度入力してください。</value>
+  </data>
 </root>

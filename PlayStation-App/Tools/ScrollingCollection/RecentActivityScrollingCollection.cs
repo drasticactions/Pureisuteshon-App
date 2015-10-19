@@ -14,7 +14,7 @@ using PlayStation_App.Models.RecentActivity;
 using PlayStation_App.Models.Response;
 using PlayStation_App.Properties;
 using PlayStation_App.Tools.Helpers;
-using Xamarin;
+
 
 namespace PlayStation_App.Tools.ScrollingCollection
 {
@@ -73,10 +73,7 @@ namespace PlayStation_App.Tools.ScrollingCollection
         {
                 if (!IsLoading)
            {
-                using (var handle = Insights.TrackTime("PagingFriendsList"))
-                {
-                    LoadFeedList(Username);
-                }
+                LoadFeedList(Username);
             }
             var ret = new LoadMoreItemsResult { Count = count };
             return ret;
