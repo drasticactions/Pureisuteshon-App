@@ -38,26 +38,26 @@
             <TextBlock x:Uid="InviteFriendsToPsn" Grid.Column="1" Margin="10,0,0,0" x:Name="pageTitle" FontWeight="Bold" Style="{StaticResource TagLineTextStyle}"
                        IsHitTestVisible="false" TextWrapping="NoWrap" TextTrimming="CharacterEllipsis" VerticalAlignment="Center" />
         </Grid>
-        <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Visibility="{Binding IsLoading, Converter={StaticResource BooleanToVisibilityConverter}}" Canvas.ZIndex="1" Grid.Row="1">
+        <Grid  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Visibility="{Binding IsLoading, Converter={StaticResource BooleanToVisibilityConverter}}" Canvas.ZIndex="1" Grid.Row="1">
             <Grid.Background>
                 <SolidColorBrush Color="Black" Opacity=".25"/>
             </Grid.Background>
             <ProgressRing Foreground="White" Width="50" Height="50" IsActive="{Binding IsLoading}" Style="{StaticResource WaveProgressRingStyle}" />
         </Grid>
         <Grid Grid.Row="1">
-            <ScrollViewer MaxWidth="600" ZoomMode="Disabled">
+            <ScrollViewer MaxWidth="750" ZoomMode="Disabled">
                 <StackPanel VerticalAlignment="Center" Margin="15">
-                    <TextBlock TextWrapping="Wrap" x:Uid="UseEmailSms" Style="{StaticResource SubtitleTextBlockStyle}" Text="EメールやSMSで送信する"/>
-                    <TextBlock x:Uid="UseEmailSmsGuide" TextWrapping="Wrap" Margin="0,5,0,0" Text="EメールやSMSを使って、PlayStation™Networkのフレンド依頼を友達に送ります。"/>
-                    <TextBlock x:Uid="UseEmailSmsGuideClose" TextWrapping="Wrap" Margin="0,5,0,0" Text="EメールやSMSで送るフレンド依頼は、実名リクエストも兼ねています。フレンド依頼が許可されると、お互いに実名を教え合います。"/>
-                    <Image MaxWidth="250" Margin="0,5,0,0" Source="/Assets/Icons/FriendLink/FriendSmsEmailLink.png"/>
-                    <Button x:Uid="SendByEmail" Margin="0,5,0,0" HorizontalAlignment="Center" Click="SendEmail_OnClick" Content="Eメールで送る"/>
-                    <Button x:Uid="SendByText" Margin="0,5,0,0" HorizontalAlignment="Center" Click="SendSms_OnClick" Content="SMSで送る"/>
-                    <TextBlock Margin="0,5,0,0" TextWrapping="Wrap" x:Uid="FriendRequestLinkTitle" Style="{StaticResource SubtitleTextBlockStyle}" Text="フレンド依頼リンクをシェアする"/>
-                    <TextBlock x:Uid="FriendRequestLinkBody" TextWrapping="Wrap" Margin="0,5,0,0" Text="あなたにフレンド依頼を送るためのリンクを作って、SNSに投稿したり、EメールやSMSで送信したりできます。"/>
-                    <Image MaxWidth="250" Margin="0,5,0,0" Source="/Assets/Icons/FriendLink/FriendShareLink.png"/>
-                    <Button Click="ShareInvite_OnClick" Margin="0,5,0,0" HorizontalAlignment="Center" Content="フレンド依頼リンクを作る" x:Uid="CreateFriendRequestLink"/>
-                    <TextBlock x:Uid="FriendRequestLinkNote" TextWrapping="Wrap" Text="フレンド依頼リンクを誰でもアクセスできる場所でシェアすると、あなたの知り合いではないプレーヤーからフレンド依頼が送信される可能性があります。"/>
+                    <TextBlock Margin="5" TextWrapping="Wrap" x:Uid="UseEmailSms" Style="{StaticResource SubtitleTextBlockStyle}" Text="EメールやSMSで送信する"/>
+                    <TextBlock  x:Uid="UseEmailSmsGuide" TextWrapping="Wrap"  Margin="5" Text="EメールやSMSを使って、PlayStation™Networkのフレンド依頼を友達に送ります。"/>
+                    <TextBlock x:Uid="UseEmailSmsGuideClose" TextWrapping="Wrap"  Margin="5" Text="EメールやSMSで送るフレンド依頼は、実名リクエストも兼ねています。フレンド依頼が許可されると、お互いに実名を教え合います。"/>
+                    <Image MaxWidth="250"  Margin="5" Source="/Assets/Icons/FriendLink/FriendSmsEmailLink.png"/>
+                    <Button x:Uid="SendByEmail"  Margin="5" HorizontalAlignment="Center" Click="SendEmail_OnClick" Content="Eメールで送る"/>
+                    <Button x:Uid="SendByText" Margin="5" HorizontalAlignment="Center" Click="SendSms_OnClick" Content="SMSで送る"/>
+                    <TextBlock  Margin="5" TextWrapping="Wrap" x:Uid="FriendRequestLinkTitle" Style="{StaticResource SubtitleTextBlockStyle}" Text="フレンド依頼リンクをシェアする"/>
+                    <TextBlock x:Uid="FriendRequestLinkBody" TextWrapping="Wrap"  Margin="5" Text="あなたにフレンド依頼を送るためのリンクを作って、SNSに投稿したり、EメールやSMSで送信したりできます。"/>
+                    <Image MaxWidth="250"  Margin="5" Source="/Assets/Icons/FriendLink/FriendShareLink.png"/>
+                    <Button Click="ShareInvite_OnClick"  Margin="5" HorizontalAlignment="Center" Content="フレンド依頼リンクを作る" x:Uid="CreateFriendRequestLink"/>
+                    <TextBlock x:Uid="FriendRequestLinkNote"  Margin="5" TextWrapping="Wrap" Text="フレンド依頼リンクを誰でもアクセスできる場所でシェアすると、あなたの知り合いではないプレーヤーからフレンド依頼が送信される可能性があります。"/>
                 </StackPanel>
             </ScrollViewer>
         </Grid>

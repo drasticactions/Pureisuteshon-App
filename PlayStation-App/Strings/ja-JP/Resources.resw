@@ -161,7 +161,7 @@
   </data>
   <data name="Home.Text" xml:space="preserve">
     <value>ホーム</value>
-  </data>s
+  </data>
   <data name="LiveFromPlaystation.Text" xml:space="preserve">
     <value>Live From PlayStation</value>
   </data>
@@ -440,5 +440,14 @@
   </data>
   <data name="LoginError.Text" xml:space="preserve">
     <value>Eメールアドレスまたはパスワードが違っています。もう一度入力してください。</value>
+  </data>
+  <data name="Signout.Text" xml:space="preserve">
+    <value>サインアウト</value>
+  </data>
+  <data name="DeleteAccount.Text" xml:space="preserve">
+    <value>ユーザーを削除する</value>
+  </data>
+  <data name="DeleteAccountError.Text" xml:space="preserve">
+    <value>ユーザーを削除できませんでした。</value>
   </data>
 </root>

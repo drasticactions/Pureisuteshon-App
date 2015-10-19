@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Windows.ApplicationModel;
 using Newtonsoft.Json;
+using PlayStation.Entities.Web;
 using PlayStation.Managers;
 using PlayStation_App.Commands.WhatsNew;
 using PlayStation_App.Common;
@@ -28,6 +29,7 @@ namespace PlayStation_App.ViewModels
             else
             {
                 //SetupSampleData();
+                _page = 0;
                 await LoadNextPages();
             }
         }
@@ -42,34 +44,63 @@ namespace PlayStation_App.ViewModels
 
         public async Task LoadNextPages()
         {
-            await LoadPage();
+            IsLoading = true;
+            var result = new Result();
+            try
+            {
+                await LoadPage();
+                result.IsSuccess = true;
+            }
+            catch (Exception ex)
+            {
+                result.IsSuccess = false;
+                result.Error = ex.Message;
+            }
+            await ResultChecker.CheckSuccess(result);
+            IsLoading = false;
         }
 
         private async Task LoadPage()
         {
-            IsLoading = true;
-            var testFeed = new RecentActivityScrollingCollection();
-            testFeed.Add(_page == 0
-                ? new Feed() {IsPreviousButton = true, IsReloadButton = true}
-                : new Feed() {IsPreviousButton = true});
-            await LoadFeed(testFeed);
-            await LoadFeed(testFeed);
-            testFeed.Add(new Feed() { IsNextButton = true });
+            var testFeed = new RecentActivityScrollingCollection
+            {
+                _page == 0
+                    ? new Feed() {IsPreviousButton = true, IsReloadButton = true}
+                    : new Feed() {IsPreviousButton = true}
+            };
+            var result = await LoadFeed(testFeed);
+            if (result)
+            {
+                result = await LoadFeed(testFeed);
+            }
+            if (result)
+            {
+                testFeed.Add(new Feed() { IsNextButton = true });
+            }
             RecentActivityScrollingCollection = testFeed;
-            IsLoading = false;
         }
 
-        private async Task LoadFeed(ObservableCollection<Feed> testFeed)
+        private async Task<bool> LoadFeed(ObservableCollection<Feed> testFeed)
         {
             var feedResultEntity =
                 await _recentActivityManager.GetActivityFeed(Locator.ViewModels.MainPageVm.CurrentUser.Username, _page, true, true, Locator.ViewModels.MainPageVm.CurrentTokens, Locator.ViewModels.MainPageVm.CurrentUser.Region, Locator.ViewModels.MainPageVm.CurrentUser.Language);
-            await AccountAuthHelpers.UpdateTokens(Locator.ViewModels.MainPageVm.CurrentUser, feedResultEntity);
+            var result = await ResultChecker.CheckSuccess(feedResultEntity);
+            if (!result)
+            {
+                return false;
+            }   
+            if (string.IsNullOrEmpty(feedResultEntity.ResultJson))
+            {
+                // No Items, return false.
+                return false;
+            }
             var feedEntity = JsonConvert.DeserializeObject<RecentActivityResponse>(feedResultEntity.ResultJson);
             foreach (var feed in feedEntity.Feed)
             {
                 testFeed.Add(feed);
             }
             _page++;
+            return true;
         }
 
         private async void SetupSampleData()

@@ -10,6 +10,7 @@ using PlayStation_App.Commands.Live;
 using PlayStation_App.Common;
 using PlayStation_App.Models.Live;
 using PlayStation_App.Models.Response;
+using PlayStation_App.Tools.Debug;
 using PlayStation_App.Tools.Helpers;
 
 namespace PlayStation_App.ViewModels
@@ -102,6 +103,11 @@ namespace PlayStation_App.ViewModels
                     _liveStreamManager.GetUstreamFeed(0, 80, "compact", filterList, "views", query,
                         Locator.ViewModels.MainPageVm.CurrentTokens);
             await AccountAuthHelpers.UpdateTokens(Locator.ViewModels.MainPageVm.CurrentUser, ustreamResultList);
+            var result = await ResultChecker.CheckSuccess(ustreamResultList);
+            if (!result)
+            {
+                return;
+            }
             var ustreamList = JsonConvert.DeserializeObject<UstreamEntity>(ustreamResultList.ResultJson);
             if (ustreamList?.items == null) return;
             foreach (UstreamEntity.Item ustream in ustreamList.items)
@@ -118,6 +124,11 @@ namespace PlayStation_App.ViewModels
                 var twitchResult =
                     await _liveStreamManager.GetTwitchFeed(0, 80, "PS4", interactive, query, Locator.ViewModels.MainPageVm.CurrentTokens);
             await AccountAuthHelpers.UpdateTokens(Locator.ViewModels.MainPageVm.CurrentUser, twitchResult);
+            var result = await ResultChecker.CheckSuccess(twitchResult);
+            if (!result)
+            {
+                return;
+            }
             var twitchList = JsonConvert.DeserializeObject<TwitchEntity>(twitchResult.ResultJson);
             if (twitchList?.streams == null) return;
             foreach (TwitchEntity.Stream twitch in twitchList.streams)
@@ -133,6 +144,11 @@ namespace PlayStation_App.ViewModels
             var nicoNicoResultEntity =
                 await _liveStreamManager.GetNicoFeed("onair", "PS4", interactive, 0, 80, "view", query, Locator.ViewModels.MainPageVm.CurrentTokens);
             await AccountAuthHelpers.UpdateTokens(Locator.ViewModels.MainPageVm.CurrentUser, nicoNicoResultEntity);
+            var result = await ResultChecker.CheckSuccess(nicoNicoResultEntity);
+            if (!result)
+            {
+                return;
+            }
             var nicoNicoEntity = JsonConvert.DeserializeObject<NicoNicoEntity>(nicoNicoResultEntity.ResultJson);
             if (nicoNicoEntity?.programs == null) return;
             foreach (NicoNicoEntity.Program program in nicoNicoEntity.programs)

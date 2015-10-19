@@ -51,6 +51,12 @@ namespace PlayStation_App.Tools.Helpers
             return result > 0;
         }
 
+        public async static Task<bool> DeleteUserAccount(AccountUser user)
+        {
+            var result = await Db.AccountUserRepository.Delete(user);
+            return result > 0;
+        }
+
         public async static Task<bool> UpdateUserAccount(AccountUser user, Tokens tokens, LogInUser loginUser, User userUpdate)
         {
             UpdateUserObject(user, tokens, loginUser, userUpdate);

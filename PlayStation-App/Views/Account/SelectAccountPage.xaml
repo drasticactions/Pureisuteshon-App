@@ -7,6 +7,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
     xmlns:core="using:Microsoft.Xaml.Interactions.Core"
+    xmlns:tools="using:PlayStation_App.Tools"
     DataContext="{Binding Source={StaticResource Locator}, Path=AccountSelectVm}"
     mc:Ignorable="d">
 
@@ -24,7 +25,7 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
             <TextBlock FontSize="30" FontWeight="Thin" Margin="0,0,0,15" HorizontalAlignment="Center" Text="PSN.Appx"></TextBlock>
-            <GridView Grid.Row="1" IsItemClickEnabled="True" VerticalAlignment="Center" HorizontalAlignment="Center" ItemsSource="{Binding AccountUsers}">
+            <GridView x:Name="AccountList" Grid.Row="1" IsItemClickEnabled="True" VerticalAlignment="Center" HorizontalAlignment="Center" ItemsSource="{Binding AccountUsers}">
                 <interactivity:Interaction.Behaviors>
                     <core:EventTriggerBehavior EventName="ItemClick">
                         <core:InvokeCommandAction Command="{Binding CheckAndNavigateToMainShellCommand}" />
@@ -42,6 +43,19 @@
                             </Grid.RowDefinitions>
                             <Image Margin="15" MaxWidth="125" Source="{Binding AvatarUrl}"/>
                             <TextBlock TextWrapping="NoWrap" TextTrimming="CharacterEllipsis" Margin="5" Padding="0,5,0,0" Grid.Row="1" HorizontalAlignment="Center" Text="{Binding Username}"/>
+                            <FlyoutBase.AttachedFlyout>
+                                <MenuFlyout>
+                                    <MenuFlyoutItem x:Uid="DeleteAccount" Command="{Binding DataContext.DeleteAccountCommand, ElementName=AccountList}" CommandParameter="{Binding}"/>
+                                </MenuFlyout>
+                            </FlyoutBase.AttachedFlyout>
+                            <interactivity:Interaction.Behaviors>
+                                <core:EventTriggerBehavior EventName="Holding">
+                                    <tools:OpenMenuFlyoutAction />
+                                </core:EventTriggerBehavior>
+                                <core:EventTriggerBehavior EventName="RightTapped">
+                                    <tools:OpenMenuFlyoutAction />
+                                </core:EventTriggerBehavior>
+                            </interactivity:Interaction.Behaviors>
                         </Grid>
                     </DataTemplate>
                 </GridView.ItemTemplate>

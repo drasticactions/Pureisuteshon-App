@@ -92,14 +92,6 @@ namespace PlayStation_App.Views
                     // Friend Requests Sent
                     Locator.ViewModels.FriendsPageVm.SetFriendsList(Locator.ViewModels.MainPageVm.CurrentUser.Username, false, false, false, false, true, true, false);
                     break;
-                case 4:
-                    // Name Requests Received
-                    Locator.ViewModels.FriendsPageVm.SetFriendsList(Locator.ViewModels.MainPageVm.CurrentUser.Username, true, false, false, true, true, false, false);
-                    break;
-                case 5:
-                    // Name Requests Sent
-                    Locator.ViewModels.FriendsPageVm.SetFriendsList(Locator.ViewModels.MainPageVm.CurrentUser.Username, false, false, false, true, true, true, false);
-                    break;
             }
         }
     }

@@ -18,18 +18,13 @@
             <CommandBar.Background>
                 <SolidColorBrush Color="#DBDEE7" Opacity="0.15" />
             </CommandBar.Background>
-            <AppBarButton Label="ゲームのリスト">
-                <AppBarButton.Icon>
-                    <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE7FC;"/>
-                </AppBarButton.Icon>
-            </AppBarButton>
             <AppBarButton Label="検索">
                 <AppBarButton.Icon>
                     <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE094;"/>
                 </AppBarButton.Icon>
                 <AppBarButton.Flyout>
                     <Flyout>
-                        <StackPanel>
+                        <StackPanel Width="300">
                             <TextBox Margin="5" Text="{Binding SearchString, Mode=TwoWay}"/>
                             <Button Margin="5" Content="検索">
                                 <interactivity:Interaction.Behaviors>

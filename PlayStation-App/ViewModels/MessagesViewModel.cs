@@ -123,6 +123,11 @@ namespace PlayStation_App.ViewModels
                 var messageResult =
                await _messageManager.GetGroupConversation(messageGroup.MessageGroupId, Locator.ViewModels.MainPageVm.CurrentTokens, Locator.ViewModels.MainPageVm.CurrentUser.Region, Locator.ViewModels.MainPageVm.CurrentUser.Language);
                 await AccountAuthHelpers.UpdateTokens(Locator.ViewModels.MainPageVm.CurrentUser, messageResult);
+                var result = await ResultChecker.CheckSuccess(messageResult);
+                if (!result)
+                {
+                    return;
+                }
                 _messageResponse = JsonConvert.DeserializeObject<MessageResponse>(messageResult.ResultJson);
                 foreach (
     var newMessage in
@@ -175,6 +180,11 @@ namespace PlayStation_App.ViewModels
             {
                 var messageResult = await _messageManager.GetMessageGroup(userName, Locator.ViewModels.MainPageVm.CurrentTokens, Locator.ViewModels.MainPageVm.CurrentUser.Region, Locator.ViewModels.MainPageVm.CurrentUser.Language);
                 await AccountAuthHelpers.UpdateTokens(Locator.ViewModels.MainPageVm.CurrentUser, messageResult);
+                var result = await ResultChecker.CheckSuccess(messageResult);
+                if (!result)
+                {
+                    return;
+                }
                 _messageGroupEntity = JsonConvert.DeserializeObject<MessageGroupResponse>(messageResult.ResultJson);
                 foreach (
     var newMessage in
@@ -199,6 +209,15 @@ namespace PlayStation_App.ViewModels
         {
             var userResult = await _userManager.GetUserAvatar(username, Locator.ViewModels.MainPageVm.CurrentTokens, Locator.ViewModels.MainPageVm.CurrentUser.Region, Locator.ViewModels.MainPageVm.CurrentUser.Language);
             await AccountAuthHelpers.UpdateTokens(Locator.ViewModels.MainPageVm.CurrentUser, userResult);
+            var result = await ResultChecker.CheckSuccess(userResult);
+            if (!result)
+            {
+                return string.Empty;
+            }
+            if (string.IsNullOrEmpty(userResult.ResultJson))
+            {
+                return string.Empty;
+            }
             var user = JsonConvert.DeserializeObject<User>(userResult.ResultJson);
             if (user?.AvatarUrls != null)
             {

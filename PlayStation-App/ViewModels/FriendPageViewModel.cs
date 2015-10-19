@@ -11,6 +11,7 @@ using PlayStation.Managers;
 using PlayStation_App.Common;
 using PlayStation_App.Models.Response;
 using PlayStation_App.Models.User;
+using PlayStation_App.Tools.Debug;
 using PlayStation_App.Tools.Helpers;
 using PlayStation_App.Tools.ScrollingCollection;
 
@@ -159,10 +160,19 @@ namespace PlayStation_App.ViewModels
 
         public async Task SetUser(string userName)
         {
-            bool isCurrentUser = Locator.ViewModels.MainPageVm.CurrentUser.Username.Equals(userName);
+            var isCurrentUser = Locator.ViewModels.MainPageVm.CurrentUser.Username.Equals(userName);
             var userManager = new UserManager();
             var userResult = await userManager.GetUser(userName, Locator.ViewModels.MainPageVm.CurrentTokens, Locator.ViewModels.MainPageVm.CurrentUser.Region, Locator.ViewModels.MainPageVm.CurrentUser.Language);
             await AccountAuthHelpers.UpdateTokens(Locator.ViewModels.MainPageVm.CurrentUser, userResult);
+            var result = await ResultChecker.CheckSuccess(userResult);
+            if (!result)
+            {
+                return;
+            }
+            if (string.IsNullOrEmpty(userResult.ResultJson))
+            {
+                return;
+            }
             var user = JsonConvert.DeserializeObject<User>(userResult.ResultJson);
             if (user == null) return;
             var list = user.TrophySummary.EarnedTrophies;

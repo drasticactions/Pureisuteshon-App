@@ -92,9 +92,9 @@ namespace PlayStation_App.ViewModels
                 },
                 new MenuItem()
                 {
-                    Icon = "/Assets/Icons/Settings.png",
-                    Name = loader.GetString("Settings/Text"),
-                    //Command = new NavigateToMainForumsPage()
+                    Icon = "/Assets/Icons/SignOut.png",
+                    Name = loader.GetString("Signout/Text"),
+                    Command = new NavigateToSelectAccountCommand()
                 }
             };
         }
@@ -110,13 +110,7 @@ namespace PlayStation_App.ViewModels
             }
         }
 
-        public UserAuthenticationEntity CurrentTokens
-        {
-            get
-            {
-                return new UserAuthenticationEntity(CurrentUser.AccessToken, CurrentUser.RefreshToken, CurrentUser.RefreshDate);
-            }
-        }
+        public UserAuthenticationEntity CurrentTokens => new UserAuthenticationEntity(CurrentUser.AccessToken, CurrentUser.RefreshToken, CurrentUser.RefreshDate);
 
         private bool _isLoggedIn;
         public bool IsLoggedIn

@@ -12,7 +12,7 @@
     mc:Ignorable="d">
     <Page.Resources>
         <templateSelector:RecentActivityTemplateSelector x:Name="WhatsNewTemplateSelector" PlayedGameActivityDataTemplate="{StaticResource PlayedGameDataTemplate}"
-                  PreviousActivityDataTemplate="{StaticResource PreviousActivityDataTemplate}"  LoadMoreActivityDataTemplate="{StaticResource LoadMoreActivityDataTemplate}"  ProfilePicDataTemplate="{StaticResource ProfilePicDataTemplate}"  BroadcastDataTemplate="{StaticResource BroadcastingDataTemplate}"  TrophyActivityDataTemplate="{StaticResource TrophyActivityDataTemplate}"    MultipleTrophyActivityDataTemplate="{StaticResource MultipleTrophyActivityDataTemplate}"   FriendedActivityDataTemplate="{StaticResource FriendedDataTemplate}"    MultiplePeoplePlayActivityDataTemplate="{StaticResource MultiplePeoplePlayActivityDataTemplate}"   StoreActivityDataTemplate="{StaticResource StoreActivityDataTemplate}" />
+                  PreviousActivityDataTemplate="{StaticResource PreviousActivityDataTemplate}"  LoadMoreActivityDataTemplate="{StaticResource LoadMoreActivityDataTemplate}"  ProfilePicDataTemplate="{StaticResource ProfilePicDataTemplate}"  BroadcastDataTemplate="{StaticResource BroadcastingDataTemplate}"  TrophyActivityDataTemplate="{StaticResource SmallTrophyActivityDataTemplate}"    MultipleTrophyActivityDataTemplate="{StaticResource TrophyActivityDataTemplate}"   FriendedActivityDataTemplate="{StaticResource FriendedDataTemplate}"    MultiplePeoplePlayActivityDataTemplate="{StaticResource PlayedGameDataTemplate}"   StoreActivityDataTemplate="{StaticResource StoreActivityDataTemplate}" />
     </Page.Resources>
     <Grid Loaded="LayoutRoot_Loaded">
         <Grid.RowDefinitions>
@@ -72,13 +72,8 @@
                     </Grid.RowDefinitions>
                     <CommandBar Margin="0,0,0,15">
                         <CommandBar.Background>
-                            <SolidColorBrush Color="#DBDEE7" Opacity="0.15" />
+                            <SolidColorBrush Color="#DBDEE7" Opacity="0" />
                         </CommandBar.Background>
-                        <AppBarButton Label="検索">
-                            <AppBarButton.Icon>
-                                <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE094;"/>
-                            </AppBarButton.Icon>
-                        </AppBarButton>
                     </CommandBar>
                     <Grid Grid.Row="1">
                         <Grid.ChildrenTransitions>
@@ -99,8 +94,6 @@
                             <ComboBoxItem x:Uid="FriendsFilterAll" />
                             <ComboBoxItem x:Uid="FriendRequestReceived" />
                             <ComboBoxItem x:Uid="FriendRequestSent" />
-                            <ComboBoxItem x:Uid="FriendsFilterNameRequestReceived" />
-                            <ComboBoxItem x:Uid="FriendsFilterNameRequestSent" />
                         </ComboBox>
                         <ListView Grid.Row="2" x:Name="FriendList"
                       HorizontalAlignment="Stretch" 
@@ -131,18 +124,8 @@
                         </Grid.RowDefinitions>
                         <CommandBar Margin="0,0,0,15">
                             <CommandBar.Background>
-                                <SolidColorBrush Color="#DBDEE7" Opacity="0.15" />
+                                <SolidColorBrush Color="#DBDEE7" Opacity="0" />
                             </CommandBar.Background>
-                            <AppBarButton x:Uid="MessagePivot" Label="メッセージ">
-                                <AppBarButton.Icon>
-                                    <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE15F;"/>
-                                </AppBarButton.Icon>
-                            </AppBarButton>
-                            <AppBarButton x:Uid="AddAsFriend" Label="追加">
-                                <AppBarButton.Icon>
-                                    <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE109;"/>
-                                </AppBarButton.Icon>
-                            </AppBarButton>
                         </CommandBar>
                         <Pivot Grid.Row="1">
                             <PivotItem x:Uid="AboutMePivot" Header="紹介">
@@ -366,15 +349,11 @@
                             <PivotItem x:Uid="RecentActivities" Header="アクティビティー">
                                 <Grid HorizontalAlignment="Stretch" Grid.Column="2">
                                     <Grid.RowDefinitions>
+                                        <RowDefinition Height="10"/>
                                         <RowDefinition Height="*" />
                                     </Grid.RowDefinitions>
-                                    <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Visibility="{Binding RecentActivityScrollingCollection.IsLoading, Converter={StaticResource BooleanToVisibilityConverter}}" Canvas.ZIndex="1" Grid.Row="1">
-                                        <Grid.Background>
-                                            <SolidColorBrush Color="Black" Opacity=".25"/>
-                                        </Grid.Background>
-                                        <ProgressRing Foreground="White" Width="50" Height="50" IsActive="{Binding RecentActivityScrollingCollection.IsLoading}" Style="{StaticResource WaveProgressRingStyle}" />
-                                    </Grid>
-                                    <GridView Grid.Row="0"
+                                    <ProgressBar Height="10" Visibility="{Binding RecentActivityScrollingCollection.IsLoading, Converter={StaticResource BooleanToVisibilityConverter}}" />
+                                    <GridView Grid.Row="1"
                                   IsSwipeEnabled="False"
                                   SelectionMode="None"
                                   IsItemClickEnabled="True"

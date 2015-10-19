@@ -530,6 +530,25 @@
             </Grid>
         </Border>
     </DataTemplate>
+    <DataTemplate x:Key="SmallTrophyActivityDataTemplate">
+        <Border HorizontalAlignment="Left" Height="100" VerticalAlignment="Stretch" BorderBrush="White" Width="320" BorderThickness="1">
+            <Grid VerticalAlignment="Stretch">
+                <Grid.Background>
+                    <SolidColorBrush Color="#CBDBDEE7" />
+                </Grid.Background>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="50"/>
+                </Grid.RowDefinitions>
+                <StackPanel Padding="5" Grid.Row="0" Orientation="Horizontal">
+                    <Image Width="40" Height="40" Source="{Binding Source.ImageUrl}"/>
+                    <Image Width="40" Height="40" Source="{Binding Targets, Converter={StaticResource TrophyImageConverter}}"/>
+                </StackPanel>
+                <TextBlock Grid.Row="1" Foreground="Black" Padding="1" TextWrapping="Wrap"
+                                   Text="{Binding Caption}" />
+            </Grid>
+        </Border>
+    </DataTemplate>
     <DataTemplate x:Key="PlayedGameDataTemplate">
         <Border HorizontalAlignment="Left" Height="100" VerticalAlignment="Stretch" BorderBrush="White" Width="320" BorderThickness="1">
             <Grid VerticalAlignment="Stretch">

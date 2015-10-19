@@ -56,6 +56,10 @@ namespace PlayStation_App.Views
             _vm.IsLoading = true;
             _link = await _vm.CreateFriendLink();
             _vm.IsLoading = false;
+            if (string.IsNullOrEmpty(_link))
+            {
+                return;
+            }
             DataTransferManager.ShowShareUI();
         }
 

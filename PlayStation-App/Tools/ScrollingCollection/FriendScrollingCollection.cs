@@ -12,6 +12,7 @@ using PlayStation.Entities.User;
 using PlayStation.Managers;
 using PlayStation_App.Models.Friends;
 using PlayStation_App.Models.Response;
+using PlayStation_App.Tools.Debug;
 using PlayStation_App.Tools.Helpers;
 
 
@@ -81,6 +82,16 @@ namespace PlayStation_App.Tools.ScrollingCollection
                     await
                         friendManager.GetFriendsList(Username, Offset, BlockedPlayer, RecentlyPlayed, PersonalDetailSharing,
                             FriendStatus, Requesting, Requested, OnlineFilter, Locator.ViewModels.MainPageVm.CurrentTokens, Locator.ViewModels.MainPageVm.CurrentUser.Region, Locator.ViewModels.MainPageVm.CurrentUser.Language);
+                var result = await ResultChecker.CheckSuccess(friendResultEntity);
+                if (!result)
+                {
+                    HasMoreItems = false;
+                    if (Count <= 0)
+                    {
+                        IsEmpty = true;
+                    }
+                    return new LoadMoreItemsResult { Count = count };
+                }
                 await AccountAuthHelpers.UpdateTokens(Locator.ViewModels.MainPageVm.CurrentUser, friendResultEntity);
                 var friendEntity = JsonConvert.DeserializeObject<FriendListResponse>(friendResultEntity.ResultJson);
                 if (friendEntity == null)

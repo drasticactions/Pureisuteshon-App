@@ -633,7 +633,7 @@ You can earn trophies by playing games that support them.</value>
   <data name="Trophy.Text" xml:space="preserve">
     <value>Trophies</value>
   </data>
-    <data name="Messenger.Text" xml:space="preserve">
+  <data name="Messenger.Text" xml:space="preserve">
     <value>Messages</value>
   </data>
   <data name="Live.Content" xml:space="preserve">
@@ -662,5 +662,14 @@ You can earn trophies by playing games that support them.</value>
   </data>
   <data name="Signin.Content" xml:space="preserve">
     <value>Login</value>
+  </data>
+  <data name="Signout.Text" xml:space="preserve">
+    <value>Sign Out</value>
+  </data>
+  <data name="DeleteAccount.Text" xml:space="preserve">
+    <value>Delete Account</value>
+  </data>
+  <data name="DeleteAccountError.Text" xml:space="preserve">
+    <value>Failed to delete account</value>
   </data>
 </root>

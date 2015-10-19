@@ -22,18 +22,8 @@
         </Grid.RowDefinitions>
         <CommandBar Margin="0,0,0,15">
             <CommandBar.Background>
-                <SolidColorBrush Color="#DBDEE7" Opacity="0.15" />
+                <SolidColorBrush Color="#DBDEE7" Opacity="0" />
             </CommandBar.Background>
-            <AppBarButton x:Uid="MessagePivot" Label="メッセージ">
-                <AppBarButton.Icon>
-                    <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE15F;"/>
-                </AppBarButton.Icon>
-            </AppBarButton>
-            <AppBarButton x:Uid="AddAsFriend" Label="追加">
-                <AppBarButton.Icon>
-                    <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE109;"/>
-                </AppBarButton.Icon>
-            </AppBarButton>
         </CommandBar>
         <Pivot Grid.Row="1" x:Name="MainPivot">
             <PivotItem x:Uid="AboutMePivot" Header="紹介">

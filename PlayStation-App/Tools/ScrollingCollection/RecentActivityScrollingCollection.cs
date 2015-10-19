@@ -13,6 +13,7 @@ using PlayStation.Managers;
 using PlayStation_App.Models.RecentActivity;
 using PlayStation_App.Models.Response;
 using PlayStation_App.Properties;
+using PlayStation_App.Tools.Debug;
 using PlayStation_App.Tools.Helpers;
 
 
@@ -85,6 +86,17 @@ namespace PlayStation_App.Tools.ScrollingCollection
             var feedResultEntity =
                 await _recentActivityManager.GetActivityFeed(username, PageCount, StorePromo, IsNews, Locator.ViewModels.MainPageVm.CurrentTokens, Locator.ViewModels.MainPageVm.CurrentUser.Region, Locator.ViewModels.MainPageVm.CurrentUser.Language);
             await AccountAuthHelpers.UpdateTokens(Locator.ViewModels.MainPageVm.CurrentUser, feedResultEntity);
+            var result = await ResultChecker.CheckSuccess(feedResultEntity);
+            if (!result)
+            {
+                HasMoreItems = false;
+                if (Count <= 0)
+                {
+                    IsEmpty = true;
+                }
+                IsLoading = false;
+                return;
+            }
             var feedEntity = JsonConvert.DeserializeObject<RecentActivityResponse>(feedResultEntity.ResultJson);
             if (feedEntity == null)
             {

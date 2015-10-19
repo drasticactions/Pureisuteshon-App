@@ -46,7 +46,7 @@ namespace PlayStation.Managers
         {
             var url = string.Format(EndPoints.MessageGroup2, region, messageGroupId, language);
             url += "&r=" + Guid.NewGuid();
-            return await _webManager.GetData(new Uri(url), userAuthenticationEntity);
+            return await _webManager.GetData(new Uri(url), userAuthenticationEntity, language);
         }
 
         public async Task<Result> DeleteMessageThread(string messageGroupId, string onlineId,

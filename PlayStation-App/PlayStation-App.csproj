@@ -139,6 +139,7 @@
     <Compile Include="Commands\Messages\AttachImageCommand.cs" />
     <Compile Include="Commands\Messages\NavigateToMessagesViewCommand.cs" />
     <Compile Include="Commands\Messages\SendMessageCommand.cs" />
+    <Compile Include="Commands\Navigation\NavigateToSelectAccountCommand.cs" />
     <Compile Include="Commands\Navigation\NavigateToWhatsNewPage.cs" />
     <Compile Include="Commands\SelectAccount\CheckAndNavigateToMainShell.cs" />
     <Compile Include="Commands\SelectAccount\CheckAndNavigateToSelectAccountCommand.cs" />
@@ -329,6 +330,7 @@
     <Content Include="Assets\Icons\Rare\phone_trophy_rareness_ultraRare.png" />
     <Content Include="Assets\Icons\Rare\phone_trophy_rareness_uncommon.png" />
     <Content Include="Assets\Icons\Settings.png" />
+    <Content Include="Assets\Icons\SignOut.png" />
     <Content Include="Assets\Icons\Stream\Nico.png" />
     <Content Include="Assets\Icons\Stream\Twitch.png" />
     <Content Include="Assets\Icons\Stream\Ustream.png" />

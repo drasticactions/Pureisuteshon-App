@@ -10,6 +10,7 @@ using Newtonsoft.Json;
 using PlayStation.Managers;
 using PlayStation_App.Common;
 using PlayStation_App.Models.Response;
+using PlayStation_App.Tools.Debug;
 using PlayStation_App.Tools.Helpers;
 
 namespace PlayStation_App.ViewModels
@@ -22,6 +23,11 @@ namespace PlayStation_App.ViewModels
         {
             var result = await _friendManager.GetFriendLink(Locator.ViewModels.MainPageVm.CurrentTokens);
             await AccountAuthHelpers.UpdateTokens(Locator.ViewModels.MainPageVm.CurrentUser, result);
+            var resultCheck = await ResultChecker.CheckSuccess(result);
+            if (!resultCheck)
+            {
+                return string.Empty;
+            }
             var tokenEntity = JsonConvert.DeserializeObject<TokenResponse>(result.ResultJson);
             return tokenEntity.Token;
         }
@@ -30,12 +36,15 @@ namespace PlayStation_App.ViewModels
         {
             IsLoading = true;
             var link = await CreateFriendLink();
-            var chat = new ChatMessage
+            if (!string.IsNullOrEmpty(link))
             {
-                Subject = _loader.GetString("FriendRequestBody/Text"),
-                Body = string.Format("{0} {1}", _loader.GetString("FriendRequestBody/Text"), link)
-            };
-            await ChatMessageManager.ShowComposeSmsMessageAsync(chat);
+                var chat = new ChatMessage
+                {
+                    Subject = _loader.GetString("FriendRequestBody/Text"),
+                    Body = string.Format("{0} {1}", _loader.GetString("FriendRequestBody/Text"), link)
+                };
+                await ChatMessageManager.ShowComposeSmsMessageAsync(chat);
+            }
             IsLoading = false;
         }
 
@@ -43,12 +52,15 @@ namespace PlayStation_App.ViewModels
         {
             IsLoading = true;
             var link = await CreateFriendLink();
-            var em = new EmailMessage
+            if (!string.IsNullOrEmpty(link))
             {
-                Subject = _loader.GetString("FriendRequestBody/Text"),
-                Body = string.Format("{0} {1}", _loader.GetString("FriendRequestBody/Text"), link)
-            };
-            await EmailManager.ShowComposeNewEmailAsync(em);
+                var em = new EmailMessage
+                {
+                    Subject = _loader.GetString("FriendRequestBody/Text"),
+                    Body = string.Format("{0} {1}", _loader.GetString("FriendRequestBody/Text"), link)
+                };
+                await EmailManager.ShowComposeNewEmailAsync(em);
+            }
             IsLoading = false;
         }
     }

@@ -11,6 +11,7 @@ using PlayStation.Managers;
 using PlayStation_App.Models.Response;
 using PlayStation_App.Models.TrophyDetail;
 using PlayStation_App.Properties;
+using PlayStation_App.Tools.Debug;
 using PlayStation_App.Tools.Helpers;
 
 
@@ -94,6 +95,17 @@ namespace PlayStation_App.Tools.ScrollingCollection
             var trophyManager = new TrophyManager();
             var trophyResultList = await trophyManager.GetTrophyList(username, CompareUsername, Offset, Locator.ViewModels.MainPageVm.CurrentTokens, Locator.ViewModels.MainPageVm.CurrentUser.Region, Locator.ViewModels.MainPageVm.CurrentUser.Language);
             await AccountAuthHelpers.UpdateTokens(Locator.ViewModels.MainPageVm.CurrentUser, trophyResultList);
+            var result = await ResultChecker.CheckSuccess(trophyResultList);
+            if (!result)
+            {
+                HasMoreItems = false;
+                if (Count <= 0)
+                {
+                    IsEmpty = true;
+                }
+                IsLoading = false;
+                return false;
+            }
             var trophyList = JsonConvert.DeserializeObject<TrophyDetailResponse>(trophyResultList.ResultJson);
             if (trophyList == null)
             {

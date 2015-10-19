@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,11 +13,13 @@ using PlayStation_App.Commands.Navigation;
 using PlayStation_App.Commands.SelectAccount;
 using PlayStation_App.Common;
 using PlayStation_App.Database;
+using PlayStation_App.Models;
 using PlayStation_App.Models.Authentication;
 using PlayStation_App.Models.User;
 using PlayStation_App.Tools.Debug;
 using PlayStation_App.Tools.Helpers;
 using PlayStation_App.Views;
+using PlayStation_App.Views.Account;
 
 
 namespace PlayStation_App.ViewModels
@@ -26,12 +29,13 @@ namespace PlayStation_App.ViewModels
         private readonly AuthenticationManager _authManager = new AuthenticationManager();
         private readonly UserManager _userManager = new UserManager();
         public readonly UserAccountDatabase AccountDatabase = new UserAccountDatabase();
+        public DeleteAccountCommand DeleteAccountCommand { get; set; } = new DeleteAccountCommand();
         public CheckAndNavigateToMainShellCommand CheckAndNavigateToMainShellCommand { get; set; } = new CheckAndNavigateToMainShellCommand();
         public AccountSelectScreenViewModel()
         {
             if (DesignMode.DesignModeEnabled)
             {
-                AccountUsers = new List<AccountUser>()
+                AccountUsers = new ObservableCollection<AccountUser>()
             {
                 new AccountUser()
                 {
@@ -49,12 +53,17 @@ namespace PlayStation_App.ViewModels
 
         public async Task<bool> Initialize()
         {
-            AccountUsers = await AccountDatabase.GetUserAccounts();
+            AccountUsers = new ObservableCollection<AccountUser>();
+            var users = await AccountDatabase.GetUserAccounts();
+            foreach (var user in users)
+            {
+                AccountUsers.Add(user);
+            }
             return AccountUsers.Any();
         }
 
-        private List<AccountUser> _accountUsers;
-        public List<AccountUser> AccountUsers
+        private ObservableCollection<AccountUser> _accountUsers;
+        public ObservableCollection<AccountUser> AccountUsers
         {
             get { return _accountUsers; }
             set
@@ -106,6 +115,46 @@ namespace PlayStation_App.ViewModels
             await ResultChecker.CheckSuccess(result);
             IsLoading = false;
             return result.IsSuccess;
+        }
+
+        public async Task<bool> DeleteUserAccount(AccountUser user)
+        {
+            Locator.ViewModels.MainPageVm.MenuItems = new List<MenuItem>();
+            try
+            {
+                var pages = App.RootFrame.BackStack;
+                foreach (var page in pages)
+                {
+                    App.RootFrame.BackStack.Remove(page);
+                }
+            }
+            catch (Exception)
+            {
+                // Failed to delete backstack :\
+            }
+            var result = new Result();
+            try
+            {
+                result.IsSuccess = await AccountAuthHelpers.DeleteUserAccount(user);
+            }
+            catch (Exception ex)
+            {
+                result.IsSuccess = false;
+                result.Error = "Failed to delete user";
+            }
+            var resultCheck = await ResultChecker.CheckSuccess(result);
+            if (resultCheck)
+            {
+                AccountUsers.Remove(user);
+                if (AccountUsers.Any())
+                {
+                    OnPropertyChanged("AccountUsers");
+                    return true;
+                }
+                App.RootFrame.Navigate(typeof (LoginPage));
+                
+            }
+            return resultCheck;
         }
     }
 }
