@@ -1,4 +1,7 @@
-﻿using Windows.UI.Xaml.Controls;
+﻿using System;
+using Windows.System;
+using Windows.UI.Xaml.Controls;
+using PlayStation_App.Models.Live;
 
 // 空白ページのアイテム テンプレートについては、http://go.microsoft.com/fwlink/?LinkId=234238 を参照してください
 
@@ -35,6 +38,12 @@ namespace PlayStation_App.Views
                     await Locator.ViewModels.LiveFromPlayStationVm.BuildUstreamList();
                     break;
             }
+        }
+
+        private async void LiveGrid_OnItemClick(object sender, ItemClickEventArgs e)
+        {
+            var item = (LiveBroadcastEntity) e.ClickedItem;
+            await Launcher.LaunchUriAsync(new Uri(item.Url));
         }
     }
 }

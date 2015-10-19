@@ -57,7 +57,7 @@
                 <ComboBoxItem Content="Ustream" />
             </ComboBox>
             <ScrollViewer  Grid.Row="1" ZoomMode="Disabled">
-                <GridView x:Name="LiveGrid"
+                <GridView x:Name="LiveGrid" ItemClick="LiveGrid_OnItemClick" IsItemClickEnabled="True"
                 ItemsSource="{Binding LiveBroadcastCollection}" 
                 ItemTemplate="{StaticResource LiveBroadcastTemplate}">
                     <GridView.ItemsPanel>
