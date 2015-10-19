@@ -133,7 +133,9 @@
     <Compile Include="Commands\Friends\NavigateToFriendsPage.cs" />
     <Compile Include="Commands\Live\NavigateToLiveFromPlaystationPage.cs" />
     <Compile Include="Commands\Live\SearchLiveFromPlaystation.cs" />
+    <Compile Include="Commands\Messages\AttachImageCommand.cs" />
     <Compile Include="Commands\Messages\NavigateToMessagesViewCommand.cs" />
+    <Compile Include="Commands\Messages\SendMessageCommand.cs" />
     <Compile Include="Commands\Navigation\NavigateToWhatsNewPage.cs" />
     <Compile Include="Commands\SelectAccount\CheckAndNavigateToMainShell.cs" />
     <Compile Include="Commands\SelectAccount\CheckAndNavigateToSelectAccountCommand.cs" />

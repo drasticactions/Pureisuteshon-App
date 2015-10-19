@@ -110,8 +110,8 @@ namespace PlayStation.Managers
                 message = new Message()
                 {
                     body = post,
-                    fakeMessageUid = 1384958573288,
-                    messageKind = 1
+                    fakeMessageUid = 1445225905274,
+                    messageKind = 3
                 }
             };
 
@@ -139,7 +139,6 @@ namespace PlayStation.Managers
                     t.Headers.ContentType = new MediaTypeHeaderValue("image/gif");
                 }
             }
-            t.Headers.ContentType = new MediaTypeHeaderValue("image/jpeg");
             t.Headers.ContentDisposition = new ContentDispositionHeaderValue("attachment");
             t.Headers.Add("Content-Description", "image-data-0");
             t.Headers.Add("Content-Transfer-Encoding", "binary");

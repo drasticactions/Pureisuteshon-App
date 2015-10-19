@@ -8,7 +8,9 @@ using System.Threading.Tasks;
 using Windows.UI.Xaml.Media.Imaging;
 using Newtonsoft.Json;
 using PlayStation.Managers;
+using PlayStation_App.Commands.Messages;
 using PlayStation_App.Common;
+using PlayStation_App.Models.MessageGroups;
 using PlayStation_App.Models.Response;
 using PlayStation_App.Models.User;
 using PlayStation_App.Tools.Helpers;
@@ -24,19 +26,33 @@ namespace PlayStation_App.ViewModels
         private ObservableCollection<MessageGroupItem> _messageCollection =
             new ObservableCollection<MessageGroupItem>();
 
+        private MessageGroup _selectedMessageGroup;
         private bool _messageGroupEmpty;
         private bool _isSelected;
         private bool _isImageAttached;
+        private string _message;
         private MessageResponse _messageResponse;
-
+        public AttachImageCommand AttachImageCommand { get; set; } = new AttachImageCommand();
+        public RemoveImageCommand RemoveImageCommand { get; set; } = new RemoveImageCommand();
+        public SendMessageCommand SendMessageCommand { get; set; } = new SendMessageCommand();
         private MessageGroupResponse _messageGroupEntity;
-
+        public byte[] AttachedImage { get; set; }
+        public string ImagePath { get; set; } = "";
         public MessageResponse MessageResponse
         {
             get { return _messageResponse; }
             set
             {
                 SetProperty(ref _messageResponse, value);
+                OnPropertyChanged();
+            }
+        }
+        public string Message
+        {
+            get { return _message; }
+            set
+            {
+                SetProperty(ref _message, value);
                 OnPropertyChanged();
             }
         }
@@ -90,15 +106,16 @@ namespace PlayStation_App.ViewModels
         private readonly MessageManager _messageManager = new MessageManager();
         private readonly UserManager _userManager = new UserManager();
 
-        public async Task GetMessages(string id)
+        public async Task GetMessages(MessageGroup messageGroup)
         {
             IsSelected = false;
             MessageCollection = new ObservableCollection<MessageGroupItem>();
             IsLoading = true;
             try
             {
+                _selectedMessageGroup = messageGroup;
                 var messageResult =
-               await _messageManager.GetGroupConversation(id, Locator.ViewModels.MainPageVm.CurrentTokens);
+               await _messageManager.GetGroupConversation(messageGroup.MessageGroupId, Locator.ViewModels.MainPageVm.CurrentTokens);
                 await AccountAuthHelpers.UpdateTokens(Locator.ViewModels.MainPageVm.CurrentUser, messageResult);
                 _messageResponse = JsonConvert.DeserializeObject<MessageResponse>(messageResult.ResultJson);
                 foreach (
@@ -113,7 +130,7 @@ namespace PlayStation_App.ViewModels
                         {
                             var imageBytes =
                                 await
-                                    _messageManager.GetMessageContent(id, newMessage.Message.SentMessageId,
+                                    _messageManager.GetMessageContent(_selectedMessageGroup.MessageGroupId, newMessage.Message.SentMessageId,
                                         Locator.ViewModels.MainPageVm.CurrentTokens);
                             newMessage.Image = await DecodeImage(imageBytes);
                         }
@@ -185,5 +202,32 @@ namespace PlayStation_App.ViewModels
             return string.Empty;
         }
 
+        public async Task SendMessage()
+        {
+            if (AttachedImage != null && IsImageAttached)
+            {
+                await SendMessageWithMedia();
+            }
+            else
+            {
+                await SendMessageWithoutMedia();
+            }
+        }
+
+        private async Task SendMessageWithMedia()
+        {
+           var result = await _messageManager.CreatePostWithMedia(_selectedMessageGroup.MessageGroupId, Message, ImagePath,
+                                AttachedImage,
+                                Locator.ViewModels.MainPageVm.CurrentTokens);
+            await AccountAuthHelpers.UpdateTokens(Locator.ViewModels.MainPageVm.CurrentUser, result);
+        }
+
+        private async Task SendMessageWithoutMedia()
+        {
+            var result = await
+                            _messageManager.CreatePost(_selectedMessageGroup.MessageGroupId, Message,
+                                Locator.ViewModels.MainPageVm.CurrentTokens);
+            await AccountAuthHelpers.UpdateTokens(Locator.ViewModels.MainPageVm.CurrentUser, result);
+        }
     }
 }

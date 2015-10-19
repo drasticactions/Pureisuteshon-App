@@ -63,7 +63,7 @@ namespace PlayStation_App.Views
         {
             var clickedItem = (MessageGroupItem)e.ClickedItem;
             _lastSelectedItem = clickedItem;
-            await Locator.ViewModels.MessagesVm.GetMessages(clickedItem.MessageGroup.MessageGroupId);
+            await Locator.ViewModels.MessagesVm.GetMessages(clickedItem.MessageGroup);
             if (AdaptiveStates.CurrentState == NarrowState)
             {
                 // Use "drill in" transition for navigating from master list to detail view

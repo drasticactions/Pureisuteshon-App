@@ -159,9 +159,34 @@ namespace PlayStation.Managers
             }
         }
 
-        public Task<Result> PostData(Uri uri, MultipartContent content, UserAuthenticationEntity userAuthenticationEntity, string language = "ja")
+        public async Task<Result> PostData(Uri uri, MultipartContent content, UserAuthenticationEntity userAuthenticationEntity, string language = "ja")
         {
-            throw new NotImplementedException();
+            using (var httpClient = new HttpClient())
+            {
+                try
+                {
+                    var authenticationManager = new AuthenticationManager();
+                    Result result = new Result(false, "");
+                    if (RefreshTime(userAuthenticationEntity.ExpiresInDate))
+                    {
+                        var tokens = await authenticationManager.RefreshAccessToken(userAuthenticationEntity.RefreshToken);
+                        result.Tokens = tokens.Tokens;
+                    }
+                    httpClient.DefaultRequestHeaders.Add("Accept-Language", language);
+                    httpClient.DefaultRequestHeaders.Add("Origin", "http://psapp.dl.playstation.net");
+                    httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", userAuthenticationEntity.AccessToken);
+                    var response = await httpClient.PostAsync(uri, content);
+                    var responseContent = await response.Content.ReadAsStringAsync();
+                    result.IsSuccess = response.IsSuccessStatusCode;
+                    result.ResultJson = responseContent;
+                    return result;
+                }
+                catch
+                {
+                    // TODO: Add detail error result to json object.
+                    return new Result(false, string.Empty);
+                }
+            }
         }
 
         private bool RefreshTime(long refreshTime)
