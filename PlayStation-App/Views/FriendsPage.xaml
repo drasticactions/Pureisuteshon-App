@@ -118,6 +118,12 @@
                     </Grid>
                 </Grid>
                 <Grid x:Name="DetailContentPresenter"  DataContext="{Binding Source={StaticResource Locator}, Path=FriendPageVm}" Grid.Column="1">
+                    <Grid  Visibility="{Binding IsSelected, Converter={StaticResource BooleanToVisibilityInverter}, Mode=OneWay}">
+                        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <Image MaxHeight="230" Source="/Assets/Icons/Friend/FriendsHangingOut.png"/>
+                            <Image MaxHeight="230" Source="/Assets/Icons/Friend/RandomControllers.png"/>
+                        </StackPanel>
+                    </Grid>
                     <Grid Visibility="{Binding IsSelected, Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
@@ -360,13 +366,15 @@
                             <PivotItem x:Uid="RecentActivities" Header="アクティビティー">
                                 <Grid HorizontalAlignment="Stretch" Grid.Column="2">
                                     <Grid.RowDefinitions>
-                                        <RowDefinition Height="10" />
                                         <RowDefinition Height="*" />
                                     </Grid.RowDefinitions>
-                                    <ProgressBar Margin="0,5,0,0"
-                                     Visibility="{Binding RecentActivityScrollingCollection.IsLoading, Converter={StaticResource BooleanToVisibilityConverter}}"
-                                     Grid.Row="0" IsIndeterminate="True" />
-                                    <GridView Grid.Row="1"
+                                    <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Visibility="{Binding RecentActivityScrollingCollection.IsLoading, Converter={StaticResource BooleanToVisibilityConverter}}" Canvas.ZIndex="1" Grid.Row="1">
+                                        <Grid.Background>
+                                            <SolidColorBrush Color="Black" Opacity=".25"/>
+                                        </Grid.Background>
+                                        <ProgressRing Foreground="White" Width="50" Height="50" IsActive="{Binding RecentActivityScrollingCollection.IsLoading}" Style="{StaticResource WaveProgressRingStyle}" />
+                                    </Grid>
+                                    <GridView Grid.Row="0"
                                   IsSwipeEnabled="False"
                                   SelectionMode="None"
                                   IsItemClickEnabled="True"
@@ -395,14 +403,16 @@
                                     </Grid.RowDefinitions>
                                     <Grid Grid.Row="0">
                                         <Grid.RowDefinitions>
-                                            <RowDefinition Height="10" />
                                             <RowDefinition Height="52" />
                                             <RowDefinition Height="*" />
                                         </Grid.RowDefinitions>
-                                        <ProgressBar Margin="0,5,0,0"
-                                         Visibility="{Binding TrophyScrollingCollection.IsLoading, Converter={StaticResource BooleanToVisibilityConverter}}"
-                                         Grid.Row="0" IsIndeterminate="True" />
-                                        <Grid x:Name="TrophyHeaderGrid" Grid.Row="1">
+                                        <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Visibility="{Binding TrophyScrollingCollection.IsLoading, Converter={StaticResource BooleanToVisibilityConverter}}" Canvas.ZIndex="1" Grid.Row="1">
+                                            <Grid.Background>
+                                                <SolidColorBrush Color="Black" Opacity=".25"/>
+                                            </Grid.Background>
+                                            <ProgressRing Foreground="White" Width="50" Height="50" IsActive="{Binding TrophyScrollingCollection.IsLoading}" Style="{StaticResource WaveProgressRingStyle}" />
+                                        </Grid>
+                                        <Grid x:Name="TrophyHeaderGrid" Grid.Row="0">
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="140" />
                                                 <ColumnDefinition Width="*" />
@@ -436,7 +446,7 @@
                                                 </Grid>
                                             </Grid>
                                         </Grid>
-                                        <TextBlock FontSize="45" LineHeight="45" TextWrapping="Wrap" Grid.Row="2"
+                                        <TextBlock FontSize="45" LineHeight="45" TextWrapping="Wrap" Grid.Row="1"
                                        Visibility="{Binding TrophyScrollingCollection.IsEmpty, Converter={StaticResource BooleanToVisibilityConverter}}"
                                        HorizontalAlignment="Center" VerticalAlignment="Center" x:Uid="NoTrophyInfo"
                                        Text="There are no trophies." />
@@ -532,20 +542,21 @@
                             <PivotItem x:Uid="FriendPivot" Header="フレンド">
                                 <Grid>
                                     <Grid.RowDefinitions>
-                                        <RowDefinition Height="10" />
                                         <RowDefinition Height="*" />
                                     </Grid.RowDefinitions>
-                                    <ProgressBar Margin="0,5,0,0" x:Name="FriendsProgressBar"
-                                     Visibility="{Binding FriendScrollingCollection.IsLoading, Converter={StaticResource BooleanToVisibilityConverter}}"
-                                     Grid.Row="0" IsIndeterminate="True"
-                                     x:FieldModifier="public" />
+                                    <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Visibility="{Binding TrophyScrollingCollection.IsLoading, Converter={StaticResource BooleanToVisibilityConverter}}" Canvas.ZIndex="1" Grid.Row="0">
+                                        <Grid.Background>
+                                            <SolidColorBrush Color="Black" Opacity=".25"/>
+                                        </Grid.Background>
+                                        <ProgressRing Foreground="White" Width="50" Height="50" IsActive="{Binding TrophyScrollingCollection.IsLoading}" Style="{StaticResource WaveProgressRingStyle}" />
+                                    </Grid>
                                     <Viewbox
                             Visibility="{Binding FriendScrollingCollection.IsEmpty, Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay }"
-                            HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="2">
+                            HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="0">
                                         <TextBlock Style="{StaticResource HeaderTextBlockStyle}" x:Uid="NoPlayers"
                                        Text="No players found." />
                                     </Viewbox>
-                                    <GridView x:Name="FriendsListView" Grid.Row="2" ItemTemplate="{StaticResource FriendTemplate}" SelectionMode="None" IsItemClickEnabled="True"
+                                    <GridView x:Name="FriendsListView" Grid.Row="0" ItemTemplate="{StaticResource FriendTemplate}" SelectionMode="None" IsItemClickEnabled="True"
                                   IsSwipeEnabled="False"
                                   HorizontalAlignment="Stretch" ItemsSource="{Binding FriendScrollingCollection}">
                                         <GridView.ItemContainerStyle>

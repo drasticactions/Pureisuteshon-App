@@ -57,6 +57,27 @@ namespace PlayStation.Managers
             return await _webManager.DeleteData(new Uri(url), null, userAuthenticationEntity);
         }
 
+        public async Task<Stream> GetMessageContent(string id, string messageUid, UserAuthenticationEntity userAuthenticationEntity, string region = "jp", string language = "ja")
+        {
+            try
+            {
+                var content = "image-data-0";
+                string url =
+                    $"https://{region}-gmsg.np.community.playstation.net/groupMessaging/v1/messageGroups/{id}/messages/{messageUid}?contentKey={content}&npLanguage={language}";
+                var theAuthClient = new HttpClient();
+                var request = new HttpRequestMessage(HttpMethod.Get, url);
+                request.Headers.CacheControl = new CacheControlHeaderValue { NoCache = true };
+                request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", userAuthenticationEntity.AccessToken);
+                var response = await theAuthClient.SendAsync(request);
+                var responseContent = await response.Content.ReadAsStreamAsync();
+                return responseContent;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
         public async Task<Result> CreatePost(string messageUserId, string post,
             UserAuthenticationEntity userAuthenticationEntity, string region = "jp")
         {

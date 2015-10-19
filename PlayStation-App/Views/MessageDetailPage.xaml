@@ -1,5 +1,5 @@
 ﻿<Page
-    x:Class="PlayStation_App.Views.MessageListPage"
+    x:Class="PlayStation_App.Views.MessageDetailPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:PlayStation_App.Views"
@@ -8,32 +8,19 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid Loaded="LayoutRoot_Loaded">
+    <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <VisualStateManager.VisualStateGroups>
-            <VisualStateGroup x:Name="AdaptiveStates"
-                              CurrentStateChanged="AdaptiveStates_CurrentStateChanged">
+            <VisualStateGroup x:Name="AdaptiveStates">
                 <VisualState x:Name="DefaultState">
                     <VisualState.StateTriggers>
                         <AdaptiveTrigger MinWindowWidth="600" />
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
                         <Setter Target="HamburgerPlacement.Width" Value="0" />
-                    </VisualState.Setters>
-                </VisualState>
-
-                <VisualState x:Name="NarrowState">
-                    <VisualState.StateTriggers>
-                        <AdaptiveTrigger MinWindowWidth="0" />
-                    </VisualState.StateTriggers>
-
-                    <VisualState.Setters>
-                        <Setter Target="MasterColumn.Width" Value="*" />
-                        <Setter Target="DetailColumn.Width" Value="0" />
-                        <Setter Target="MessageList.SelectionMode" Value="None" />
                     </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>
@@ -55,29 +42,14 @@
             </Grid.Background>
             <ProgressRing Foreground="White" Width="50" Height="50" IsActive="{Binding IsLoading}" Style="{StaticResource WaveProgressRingStyle}" />
         </Grid>
-        <Grid x:Name="MasterListView" Grid.Row="1">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition x:Name="MasterColumn" Width="350" />
-                <ColumnDefinition x:Name="DetailColumn" Width="*" />
-            </Grid.ColumnDefinitions>
-            <Grid Grid.Column="0">
-                <ListView IsItemClickEnabled="True" ItemClick="MessageGroup_OnClick" ItemTemplate="{StaticResource MessageDataTemplate}" ItemsSource="{Binding MessageGroupCollection}" x:Name="MessageList">
-                    <ListView.ItemContainerStyle>
-                        <Style TargetType="ListViewItem">
-                            <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-                        </Style>
-                    </ListView.ItemContainerStyle>
-                </ListView>
-            </Grid>
-            <Grid x:Name="DetailContentPresenter" Grid.Column="1">
-                <ListView ItemTemplate="{StaticResource MessageDetailDataTemplate}" ItemsSource="{Binding MessageCollection}">
-                    <ListView.ItemContainerStyle>
-                        <Style TargetType="ListViewItem">
-                            <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-                        </Style>
-                    </ListView.ItemContainerStyle>
-                </ListView>
-            </Grid>
+        <Grid Grid.Row="1">
+            <ListView ItemTemplate="{StaticResource MessageDetailDataTemplate}" ItemsSource="{Binding MessageCollection}">
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                    </Style>
+                </ListView.ItemContainerStyle>
+            </ListView>
         </Grid>
     </Grid>
 </Page>

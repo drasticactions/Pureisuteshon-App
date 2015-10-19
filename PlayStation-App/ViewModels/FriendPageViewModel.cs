@@ -9,7 +9,7 @@ using Windows.UI.Xaml;
 using Newtonsoft.Json;
 using PlayStation.Managers;
 using PlayStation_App.Common;
-using PlayStation_App.Models.Message;
+using PlayStation_App.Models.Response;
 using PlayStation_App.Models.User;
 using PlayStation_App.Tools.Helpers;
 using PlayStation_App.Tools.ScrollingCollection;
@@ -19,7 +19,7 @@ namespace PlayStation_App.ViewModels
     public class FriendPageViewModel : NotifierBase
     {
         private FriendScrollingCollection _friendScrollingCollection;
-        private MessageEntity _messageEntity;
+        private MessageResponse _messageEntity;
 
         private ObservableCollection<MessageGroupItem> _messageGroupCollection =
             new ObservableCollection<MessageGroupItem>();
@@ -110,12 +110,12 @@ namespace PlayStation_App.ViewModels
                         string.Format("~{0},{1}", userName, Locator.ViewModels.MainPageVm.CurrentUser.Username),
                          Locator.ViewModels.MainPageVm.CurrentTokens);
             await AccountAuthHelpers.UpdateTokens(Locator.ViewModels.MainPageVm.CurrentUser, messageResult);
-            _messageEntity = JsonConvert.DeserializeObject<MessageEntity>(messageResult.ResultJson);
-            if (_messageEntity?.messages == null)
+            _messageEntity = JsonConvert.DeserializeObject<MessageResponse>(messageResult.ResultJson);
+            if (_messageEntity?.Messages == null)
                 return;
             foreach (
                 MessageGroupItem newMessage in
-                    _messageEntity.messages.Select(message => new MessageGroupItem { Message = message }))
+                    _messageEntity.Messages.Select(message => new MessageGroupItem { Message = message }))
             {
                 MessageGroupCollection.Add(newMessage);
             }

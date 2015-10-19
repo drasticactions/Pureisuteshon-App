@@ -7,6 +7,7 @@ using Windows.ApplicationModel;
 using PlayStation.Entities.User;
 using PlayStation_App.Commands.Friends;
 using PlayStation_App.Commands.Live;
+using PlayStation_App.Commands.Messages;
 using PlayStation_App.Commands.Navigation;
 using PlayStation_App.Commands.Trophies;
 using PlayStation_App.Common;
@@ -75,7 +76,7 @@ namespace PlayStation_App.ViewModels
                 {
                     Icon = "/Assets/Icons/Messenger.png",
                     Name = loader.GetString("Messenger/Text"),
-                    //Command = new NavigateToMainForumsPage()
+                    Command = new NavigateToMessagesViewCommand()
                 },
                 new MenuItem()
                 {

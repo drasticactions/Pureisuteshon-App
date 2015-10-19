@@ -133,6 +133,7 @@
     <Compile Include="Commands\Friends\NavigateToFriendsPage.cs" />
     <Compile Include="Commands\Live\NavigateToLiveFromPlaystationPage.cs" />
     <Compile Include="Commands\Live\SearchLiveFromPlaystation.cs" />
+    <Compile Include="Commands\Messages\NavigateToMessagesViewCommand.cs" />
     <Compile Include="Commands\Navigation\NavigateToWhatsNewPage.cs" />
     <Compile Include="Commands\SelectAccount\CheckAndNavigateToMainShell.cs" />
     <Compile Include="Commands\SelectAccount\CheckAndNavigateToSelectAccountCommand.cs" />
@@ -169,8 +170,11 @@
     <Compile Include="Models\Live\TwitchEntity.cs" />
     <Compile Include="Models\Live\UstreamEntity.cs" />
     <Compile Include="Models\MenuItem.cs" />
-    <Compile Include="Models\Message\MessageEntity.cs" />
-    <Compile Include="Models\Message\MessageGroupEntity.cs" />
+    <Compile Include="Models\MessageGroups\LatestMessage.cs" />
+    <Compile Include="Models\MessageGroups\Member.cs" />
+    <Compile Include="Models\MessageGroups\MessageGroup.cs" />
+    <Compile Include="Models\MessageGroups\MessageGroupDetail.cs" />
+    <Compile Include="Models\Messages\Message.cs" />
     <Compile Include="Models\RecentActivity\CaptionComponent.cs" />
     <Compile Include="Models\RecentActivity\CaptionComponent2.cs" />
     <Compile Include="Models\RecentActivity\CondensedStory.cs" />
@@ -181,6 +185,8 @@
     <Compile Include="Models\RecentActivity\Target.cs" />
     <Compile Include="Models\RecentActivity\Target2.cs" />
     <Compile Include="Models\Response\FriendListResponse.cs" />
+    <Compile Include="Models\Response\MessageGroupResponse.cs" />
+    <Compile Include="Models\Response\MessageResponse.cs" />
     <Compile Include="Models\Response\RecentActivityResponse.cs" />
     <Compile Include="Models\Response\TokenResponse.cs" />
     <Compile Include="Models\Response\TrophyDetailResponse.cs" />
@@ -204,6 +210,9 @@
     <Compile Include="Tools\Converter\BooleanToVisibilityConverter.cs" />
     <Compile Include="Tools\Converter\BooleanToVisibilityInverter.cs" />
     <Compile Include="Tools\Converter\BroadcastImageConverter.cs" />
+    <Compile Include="Tools\Converter\ConversationUsersConverter.cs" />
+    <Compile Include="Tools\Converter\DateConverter.cs" />
+    <Compile Include="Tools\Converter\HasSeenConverter.cs" />
     <Compile Include="Tools\Converter\HasTrophiesConverter.cs" />
     <Compile Include="Tools\Converter\TrophyDateConverter.cs" />
     <Compile Include="Tools\Converter\TrophyEarnedVisibilityConverter.cs" />
@@ -261,6 +270,9 @@
     <Compile Include="Views\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\MessageDetailPage.xaml.cs">
+      <DependentUpon>MessageDetailPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\MessageListPage.xaml.cs">
       <DependentUpon>MessageListPage.xaml</DependentUpon>
     </Compile>
@@ -288,10 +300,12 @@
     <Content Include="Assets\Icons\FriendLink\FriendShareLink.png" />
     <Content Include="Assets\Icons\FriendLink\FriendSmsEmailLink.png" />
     <Content Include="Assets\Icons\Friends.png" />
+    <Content Include="Assets\Icons\Friend\FriendsHangingOut.png" />
     <Content Include="Assets\Icons\Friend\Friend_Offline.png" />
     <Content Include="Assets\Icons\Friend\Friend_Online.png" />
     <Content Include="Assets\Icons\Friend\Friend_Standby.png" />
     <Content Include="Assets\Icons\Friend\PSPlus.png" />
+    <Content Include="Assets\Icons\Friend\RandomControllers.png" />
     <Content Include="Assets\Icons\Friend\Trophy.png" />
     <Content Include="Assets\Icons\Home.png" />
     <Content Include="Assets\Icons\Home\Home_Friends.png" />
@@ -388,6 +402,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\MainPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MessageDetailPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

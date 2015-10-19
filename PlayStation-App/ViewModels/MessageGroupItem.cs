@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.UI.Xaml.Media.Imaging;
 using PlayStation_App.Common;
-using PlayStation_App.Models.Message;
+using PlayStation_App.Models.MessageGroups;
+using PlayStation_App.Models.Messages;
 using PlayStation_App.Models.User;
 
 namespace PlayStation_App.ViewModels
@@ -12,7 +14,7 @@ namespace PlayStation_App.ViewModels
     public class MessageGroupItem : NotifierBase
     {
         private string _avatarUrl;
-
+        private bool _imageAvailable;
         public string AvatarUrl
         {
             get { return _avatarUrl; }
@@ -23,9 +25,21 @@ namespace PlayStation_App.ViewModels
             }
         }
 
-        public MessageEntity.Message Message { get; set; }
+        public bool ImageAvailable
+        {
+            get { return _imageAvailable; }
+            set
+            {
+                SetProperty(ref _imageAvailable, value);
+                OnPropertyChanged();
+            }
+        }
 
-        public MessageGroupEntity.MessageGroup MessageGroup { get; set; }
+        public BitmapImage Image { get; set; }
+
+        public Message Message { get; set; }
+
+        public MessageGroup MessageGroup { get; set; }
     }
 
     public class UserViewModel : NotifierBase

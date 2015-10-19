@@ -31,6 +31,9 @@
             <converter:TrophyGradeConverter x:Key="TrophyGradeConverter" />
             <converter:TrophyRareTextConverter x:Key="TrophyRareTextConverter" />
             <converter:TrophyStatusConverter x:Key="TrophyStatusConverter" />
+            <converter:HasSeenConverter x:Key="HasSeenConverter" />
+            <converter:ConversationUsersConverter x:Key="ConversationUsersConverter" />
+            <converter:DateConverter x:Key="DateConverter" />
         </ResourceDictionary>
     </Application.Resources>
 </Application>

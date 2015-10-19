@@ -34,5 +34,19 @@ namespace PlayStation.Managers
                 throw new Exception("Error getting user", exception);
             }
         }
+
+        public async Task<Result> GetUserAvatar(string userName, UserAuthenticationEntity userAuthenticationEntity,
+            string region = "jp", string language = "ja")
+        {
+            try
+            {
+                var url = string.Format(EndPoints.UserAvatars, region, userName);
+                return await _webManager.GetData(new Uri(url), userAuthenticationEntity, language);
+            }
+            catch (Exception exception)
+            {
+                throw new Exception("Error getting user avatars", exception);
+            }
+        }
     }
 }
