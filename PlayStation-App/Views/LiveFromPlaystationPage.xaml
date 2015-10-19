@@ -55,9 +55,9 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <ComboBox Margin="15" x:Name="FilterComboBox" SelectionChanged="Selector_OnSelectionChanged" SelectedIndex="0" Grid.Row="0">
-                <ComboBoxItem Content="ライブ" />
-                <ComboBoxItem Content="インタラクティブ" />
-                <ComboBoxItem Content="ニコニコ生放送" />
+                <ComboBoxItem x:Uid="Live" Content="ライブ" />
+                <ComboBoxItem x:Uid="Interactive" Content="インタラクティブ" />
+                <ComboBoxItem x:Uid="NicoNico" Content="ニコニコ生放送" />
                 <ComboBoxItem Content="Twitch" />
                 <ComboBoxItem Content="Ustream" />
             </ComboBox>

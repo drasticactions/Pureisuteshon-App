@@ -23,7 +23,7 @@
                 <RowDefinition/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <TextBlock FontSize="30" FontWeight="Thin" Margin="0,0,0,15" HorizontalAlignment="Center" Text="PlayStation.App"></TextBlock>
+            <TextBlock FontSize="30" FontWeight="Thin" Margin="0,0,0,15" HorizontalAlignment="Center" Text="PSN.Appx"></TextBlock>
             <GridView Grid.Row="1" IsItemClickEnabled="True" VerticalAlignment="Center" HorizontalAlignment="Center" ItemsSource="{Binding AccountUsers}">
                 <interactivity:Interaction.Behaviors>
                     <core:EventTriggerBehavior EventName="ItemClick">
@@ -46,7 +46,7 @@
                     </DataTemplate>
                 </GridView.ItemTemplate>
             </GridView>
-            <Button Margin="15" HorizontalAlignment="Center" Grid.Row="2" Click="AddAccount_OnClick" Content="ユーザーの追加"/>
+            <Button Margin="15" HorizontalAlignment="Center" Grid.Row="2" Click="AddAccount_OnClick" x:Uid="AddUserAccount" Content="ユーザーの追加"/>
         </Grid>
     </Grid>
 </Page>

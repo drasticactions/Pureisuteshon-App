@@ -76,7 +76,7 @@
         </Grid>
     </DataTemplate>
     <DataTemplate x:Key="LiveBroadcastTemplate">
-        <Border MinWidth="300" MaxWidth="450" Height="300" Margin="5" BorderBrush="White" BorderThickness="1">
+        <Border Width="300" Height="300" Margin="5" BorderBrush="White" BorderThickness="1">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="180" />
@@ -353,7 +353,7 @@
                 </Grid.Background>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="150" />
-                    <RowDefinition Height="50" />
+                    <RowDefinition Height="60" />
                 </Grid.RowDefinitions>
                 <Grid Grid.Row="0">
                     <Grid.ColumnDefinitions>
@@ -381,7 +381,7 @@
                 </Grid.Background>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="150" />
-                    <RowDefinition Height="50" />
+                    <RowDefinition Height="60" />
                 </Grid.RowDefinitions>
                 <Grid Grid.Row="0">
                     <Grid.ColumnDefinitions>
@@ -456,7 +456,7 @@
                 </Grid.RowDefinitions>
                 <StackPanel Padding="5" Grid.Row="0" Orientation="Vertical">
                     <FontIcon  Margin="0,25,0,25" HorizontalAlignment="Center" FontFamily="Segoe MDL2 Assets" Glyph="&#xE72C;" />
-                    <TextBlock Padding="0,5,0,0">更新</TextBlock>
+                    <TextBlock x:Uid="Reload" Text="更新"  HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
                 </StackPanel>
             </Grid>
         </Border>
@@ -472,7 +472,7 @@
                 </Grid.RowDefinitions>
                 <StackPanel Padding="5" Grid.Row="0" Orientation="Vertical">
                     <FontIcon  Margin="0,25,0,25" HorizontalAlignment="Center" FontFamily="Segoe MDL2 Assets" Glyph="&#xE72B;" />
-                    <TextBlock Padding="0,5,0,0">前のページ</TextBlock>
+                    <TextBlock x:Uid="PreviousPage" HorizontalAlignment="Center" VerticalAlignment="Center">前のページ</TextBlock>
                 </StackPanel>
             </Grid>
         </Border>
@@ -488,7 +488,7 @@
                 </Grid.RowDefinitions>
                 <StackPanel Padding="5" Grid.Row="0" Orientation="Vertical">
                     <FontIcon  Margin="0,25,0,25" HorizontalAlignment="Center" FontFamily="Segoe MDL2 Assets" Glyph="&#xE72A;" />
-                    <TextBlock Padding="0,5,0,0">次のページ</TextBlock>
+                    <TextBlock x:Uid="NextPage"  HorizontalAlignment="Center" VerticalAlignment="Center">次のページ</TextBlock>
                 </StackPanel>
             </Grid>
         </Border>
@@ -550,22 +550,21 @@
         </Border>
     </DataTemplate>
     <DataTemplate x:Key="StoreActivityDataTemplate">
-        <Border HorizontalAlignment="Left" Height="570" VerticalAlignment="Stretch" BorderBrush="White" Width="320" BorderThickness="1">
+        <Border HorizontalAlignment="Left" Height="210" VerticalAlignment="Stretch" BorderBrush="White" Width="320" BorderThickness="1">
             <Grid VerticalAlignment="Stretch">
                 <Grid.Background>
                     <SolidColorBrush Color="#CBDBDEE7" />
                 </Grid.Background>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="70" />
-                    <RowDefinition Height="200" />
-                    <RowDefinition Height="*" />
+                    <RowDefinition Height="50" />
+                    <RowDefinition Height="160" />
                 </Grid.RowDefinitions>
                 <Grid Background="Black" Grid.Row="0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="50" />
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
-                    <Border Width="50" Height="50">
+                    <Border Width="40" Height="40">
                         <Image Source="{Binding ServiceProviderImageUrl}" Stretch="UniformToFill" />
                     </Border>
                     <TextBlock Margin="15,0,0,0" Grid.Column="1" VerticalAlignment="Center"
@@ -573,13 +572,6 @@
                 </Grid>
                 <Grid Grid.Row="1">
                     <Image Source="{Binding LargeImageUrl}" Stretch="Fill" />
-                </Grid>
-                <Grid Grid.Row="2">
-                    <Grid.Background>
-                        <SolidColorBrush Color="#DBDEE7" Opacity="0.65" />
-                    </Grid.Background>
-                    <TextBlock Foreground="Black" Padding="5" TextWrapping="Wrap" TextTrimming="CharacterEllipsis"
-                                   Text="{Binding StoryComment}" />
                 </Grid>
             </Grid>
         </Border>

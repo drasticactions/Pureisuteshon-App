@@ -81,11 +81,10 @@ namespace PlayStation_App.ViewModels
                 loginResult.ResultJson = ex.Message;
                 //Insights.Report(ex, //Insights.Severity.Error);
             }
-
+            var loader = new Windows.ApplicationModel.Resources.ResourceLoader();
             if (!loginResult.IsSuccess)
             {
-                var loader = new Windows.ApplicationModel.Resources.ResourceLoader();
-                loginResult.ResultJson = loader.GetString("LoginError.Text");
+                loginResult.ResultJson = loader.GetString("LoginError/Text");
             }
             else if (loginResult.IsSuccess)
             {
@@ -99,7 +98,6 @@ namespace PlayStation_App.ViewModels
                             await
                                 _authManager.GetUserEntity(new UserAuthenticationEntity(authTokens.AccessToken, authTokens.RefreshToken, expiresInDate), "ja");
                         var loginUser = JsonConvert.DeserializeObject<LogInUser>(loginUserResult.ResultJson);
-
                         var userResult =
                             await
                                 _userManager.GetUser(loginUser.OnlineId,

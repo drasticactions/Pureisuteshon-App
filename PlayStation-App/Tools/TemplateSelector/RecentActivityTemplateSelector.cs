@@ -85,7 +85,7 @@ namespace PlayStation_App.Tools.TemplateSelector
                         return TrophyActivityDataTemplate;
                     }
                 case "STORE_PROMO":
-                    VariableSizedWrapGrid.SetRowSpan(uiElement, 4);
+                    VariableSizedWrapGrid.SetRowSpan(uiElement, 2);
                     VariableSizedWrapGrid.SetColumnSpan(uiElement, 1);
                     return StoreActivityDataTemplate;
                 case "FRIENDED":
@@ -105,8 +105,32 @@ namespace PlayStation_App.Tools.TemplateSelector
                         VariableSizedWrapGrid.SetColumnSpan(uiElement, 1);
                         return PlayedGameActivityDataTemplate;
                     }
+                case "RATED":
+                    if (feedItem.CondensedStories != null)
+                    {
+                        VariableSizedWrapGrid.SetRowSpan(uiElement, 2);
+                        VariableSizedWrapGrid.SetColumnSpan(uiElement, 1);
+                        return MultiplePeoplePlayActivityDataTemplate;
+                    }
+                    else
+                    {
+                        VariableSizedWrapGrid.SetRowSpan(uiElement, 1);
+                        VariableSizedWrapGrid.SetColumnSpan(uiElement, 1);
+                        return PlayedGameActivityDataTemplate;
+                    }
                 default:
-                    return ActivityDataTemplate;
+                    if (feedItem.CondensedStories != null)
+                    {
+                        VariableSizedWrapGrid.SetRowSpan(uiElement, 2);
+                        VariableSizedWrapGrid.SetColumnSpan(uiElement, 1);
+                        return MultiplePeoplePlayActivityDataTemplate;
+                    }
+                    else
+                    {
+                        VariableSizedWrapGrid.SetRowSpan(uiElement, 1);
+                        VariableSizedWrapGrid.SetColumnSpan(uiElement, 1);
+                        return PlayedGameActivityDataTemplate;
+                    }
             }
         }
 

@@ -29,7 +29,7 @@ namespace PlayStation.Managers
             if (storePromo)
                 url += "&filters=STORE_PROMO";
             url += "&r=" + Guid.NewGuid();
-            return await _webManager.GetData(new Uri(url), userAuthenticationEntity);
+            return await _webManager.GetData(new Uri(url), userAuthenticationEntity, language);
         }
     }
 }

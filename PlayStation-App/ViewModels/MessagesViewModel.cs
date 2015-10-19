@@ -270,11 +270,11 @@ namespace PlayStation_App.ViewModels
 
             if (!saved)
             {
-                await ResultChecker.SendMessageDialogAsync(loader.GetString("ErrorSaveImage.Text"), false);
+                await ResultChecker.SendMessageDialogAsync(loader.GetString("ErrorSaveImage/Text"), false);
             }
             else
             {
-                await ResultChecker.SendMessageDialogAsync(loader.GetString("ImageSaved.Text"), true);
+                await ResultChecker.SendMessageDialogAsync(loader.GetString("ImageSaved/Text"), true);
             }
             IsLoading = false;
         }

@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="EmailAddress.PlaceholderText" xml:space="preserve">
-    <value>Eメールアドレス</value>
+    <value>PSN Eメールアドレス</value>
   </data>
   <data name="NoActivities.Text" xml:space="preserve">
     <value>アクティビティーはありません。</value>
@@ -161,7 +161,7 @@
   </data>
   <data name="Home.Text" xml:space="preserve">
     <value>ホーム</value>
-  </data>
+  </data>s
   <data name="LiveFromPlaystation.Text" xml:space="preserve">
     <value>Live From PlayStation</value>
   </data>
@@ -382,19 +382,19 @@
     <value>EメールやSMSで送信する</value>
   </data>
   <data name="UseEmailSmsGuide.Text" xml:space="preserve">
-    <value>EメールやSMSを使って、PlayStation™Networkのフレンド依頼を友達に送ります。</value>
+    <value>EメールやSMSを使って、PSNのフレンド依頼を友達に送ります。</value>
   </data>
   <data name="UseEmailSmsGuideClose.Text" xml:space="preserve">
     <value>EメールやSMSで送るフレンド依頼は、実名リクエストも兼ねています。フレンド依頼が許可されると、お互いに実名を教え合います。</value>
   </data>
   <data name="FriendRequestBody.Text" xml:space="preserve">
-    <value>PlayStation™Networkでフレンドになりませんか？</value>
+    <value>PSNでフレンドになりませんか？</value>
   </data>
   <data name="SendMeFriendRequest.Text" xml:space="preserve">
     <value>私にPSNのフレンド依頼を送ってください！</value>
   </data>
   <data name="SentFromPlayStationApp.Text" xml:space="preserve">
-    <value>PlayStation-Appから送信</value>
+    <value>PSN.Appxから送信</value>
   </data>
   <data name="ErrorSaveImage.Text" xml:space="preserve">
     <value>画像を保存できませんでした。</value>
@@ -416,6 +416,27 @@
   </data>
   <data name="SuccessText.Text" xml:space="preserve">
     <value>メッセージ:</value>
+  </data>
+  <data name="Reload.Text" xml:space="preserve">
+    <value>更新</value>
+  </data>
+  <data name="PreviousPage.Text" xml:space="preserve">
+    <value>前のページ</value>
+  </data>
+  <data name="NextPage.Text" xml:space="preserve">
+    <value>次のページ</value>
+  </data>
+  <data name="AddUserAccount.Content" xml:space="preserve">
+    <value>ユーザーの追加</value>
+  </data>
+  <data name="Live.Content" xml:space="preserve">
+    <value>ライブ</value>
+  </data>
+  <data name="Interactive.Content" xml:space="preserve">
+    <value>インタラクティブ</value>
+  </data>
+  <data name="NicoNico.Content" xml:space="preserve">
+    <value>ニコニコ生放送</value>
   </data>
   <data name="LoginError.Text" xml:space="preserve">
     <value>Eメールアドレスまたはパスワードが違っています。もう一度入力してください。</value>

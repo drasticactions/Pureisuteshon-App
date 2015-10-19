@@ -31,7 +31,7 @@ namespace PlayStation.Managers
         {
             var url = string.Format(EndPoints.MessageGroup, region, username, language);
             url += "&r=" + Guid.NewGuid();
-            return await _webManager.GetData(new Uri(url), userAuthenticationEntity);
+            return await _webManager.GetData(new Uri(url), userAuthenticationEntity, language);
         }
 
         public async Task<Result> ClearMessages(string messageGroupId, List<int> messageUids, UserAuthenticationEntity userAuthenticationEntity, string region = "jp")

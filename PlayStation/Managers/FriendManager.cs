@@ -43,27 +43,27 @@ namespace PlayStation.Managers
             if (blockedPlayer) url =
                 $"https://{region}-prof.np.community.playstation.net/userProfile/v1/users/{username}/blockList?fields=@default,@profile&offset={offset}";
             url += "&r=" + Guid.NewGuid();
-            return await _webManager.GetData(new Uri(url), userAuthenticationEntity);
+            return await _webManager.GetData(new Uri(url), userAuthenticationEntity, language);
         }
 
         public async Task<Result> AddFriend(string username, string currentUserOnlineId, UserAuthenticationEntity userAuthenticationEntity, string region = "jp", string language = "ja")
         {
             var url = string.Format(EndPoints.DenyAddFriend, region, currentUserOnlineId, username);
-            var result = await _webManager.PutData(new Uri(url), null, userAuthenticationEntity);
+            var result = await _webManager.PutData(new Uri(url), null, userAuthenticationEntity, language);
             return new Result(result.IsSuccess, string.Empty);
         }
 
         public async Task<Result> IgnoreFriendREquest(string username, string currentUserOnlineId, UserAuthenticationEntity userAuthenticationEntity, string region = "jp", string language = "ja")
         {
             var url = string.Format(EndPoints.DenyAddFriend, region, currentUserOnlineId, username);
-            var result = await _webManager.DeleteData(new Uri(url), null, userAuthenticationEntity);
+            var result = await _webManager.DeleteData(new Uri(url), null, userAuthenticationEntity, language);
             return new Result(result.IsSuccess, string.Empty);
         }
 
         public async Task<Result> DeleteFriend(string username, string currentUserOnlineId, UserAuthenticationEntity userAuthenticationEntity, string region = "jp", string language = "ja")
         {
             var url = string.Format(EndPoints.DenyAddFriend, region, currentUserOnlineId, username);
-            var result = await _webManager.DeleteData(new Uri(url), null, userAuthenticationEntity);
+            var result = await _webManager.DeleteData(new Uri(url), null, userAuthenticationEntity, language);
             return new Result(result.IsSuccess, string.Empty);
         }
 

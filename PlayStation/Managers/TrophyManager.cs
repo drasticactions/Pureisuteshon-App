@@ -26,7 +26,7 @@ namespace PlayStation.Managers
         {
             var url = string.Format(EndPoints.TrophyList, region, language, offset, comparedUser, fromUser);
             url += "&r=" + Guid.NewGuid();
-            return await _webManager.GetData(new Uri(url), userAuthenticationEntity);
+            return await _webManager.GetData(new Uri(url), userAuthenticationEntity, language);
         }
 
         public async Task<Result> GetTrophyDetailList(string gameId, string comparedUser, bool includeHidden,
@@ -34,7 +34,7 @@ namespace PlayStation.Managers
         {
             var url = string.Format(EndPoints.TrophyDetailList, region, gameId, language, comparedUser, fromUser);
             url += "&r=" + Guid.NewGuid();
-            return await _webManager.GetData(new Uri(url), userAuthenticationEntity);
+            return await _webManager.GetData(new Uri(url), userAuthenticationEntity, language);
         }
     }
 }

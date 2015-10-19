@@ -69,6 +69,12 @@ namespace PlayStation_App.Tools.Helpers
             return await UpdateUserAccount(user, tokens, null, null);
         }
 
+        public static async Task<bool> DoesUserExist(string accountId)
+        {
+            var result = Db.AccountUserRepository.Items.Where(node => node.AccountId == accountId);
+            return await result.CountAsync() > 0;
+        }
+
         public static long GetUnixTime(DateTime time)
         {
             time = time.ToUniversalTime();

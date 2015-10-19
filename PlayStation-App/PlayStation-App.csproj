@@ -122,6 +122,7 @@
     <Content Include="Assets\Fonts\Locator-Regular.woff" />
     <None Include="project.json" />
     <None Include="Service References\Application Insights\ConnectedService.json" />
+    <PRIResource Include="Strings\en-US\Resources.resw" />
     <PRIResource Include="Strings\ja-JP\Resources.resw">
       <SubType>Designer</SubType>
     </PRIResource>
