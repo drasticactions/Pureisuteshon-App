@@ -76,7 +76,7 @@ namespace PlayStation_App.Tools.ScrollingCollection
            {
                 LoadFeedList(Username);
             }
-            var ret = new LoadMoreItemsResult { Count = count };
+            var ret = new LoadMoreItemsResult { Count = IsEmpty ? 0 : count };
             return ret;
         }
 
@@ -86,7 +86,7 @@ namespace PlayStation_App.Tools.ScrollingCollection
             var feedResultEntity =
                 await _recentActivityManager.GetActivityFeed(username, PageCount, StorePromo, IsNews, Locator.ViewModels.MainPageVm.CurrentTokens, Locator.ViewModels.MainPageVm.CurrentUser.Region, Locator.ViewModels.MainPageVm.CurrentUser.Language);
             await AccountAuthHelpers.UpdateTokens(Locator.ViewModels.MainPageVm.CurrentUser, feedResultEntity);
-            var result = await ResultChecker.CheckSuccess(feedResultEntity);
+            var result = await ResultChecker.CheckSuccess(feedResultEntity, false);
             if (!result)
             {
                 HasMoreItems = false;

@@ -450,4 +450,10 @@
   <data name="DeleteAccountError.Text" xml:space="preserve">
     <value>ユーザーを削除できませんでした。</value>
   </data>
+  <data name="FriendPivot.Header" xml:space="preserve">
+    <value>フレンド</value>
+  </data>
+  <data name="RecentActivities.Header" xml:space="preserve">
+    <value>アクティビティー</value>
+  </data>
 </root>

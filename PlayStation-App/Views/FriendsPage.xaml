@@ -24,7 +24,7 @@
                               CurrentStateChanged="AdaptiveStates_CurrentStateChanged">
                 <VisualState x:Name="DefaultState">
                     <VisualState.StateTriggers>
-                        <AdaptiveTrigger MinWindowWidth="600" />
+                        <AdaptiveTrigger MinWindowWidth="800" />
                     </VisualState.StateTriggers>
                 </VisualState>
 
@@ -70,12 +70,12 @@
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
-                    <CommandBar Margin="0,0,0,15">
+                    <CommandBar Visibility="Collapsed" Margin="0,0,0,15">
                         <CommandBar.Background>
                             <SolidColorBrush Color="#DBDEE7" Opacity="0" />
                         </CommandBar.Background>
                     </CommandBar>
-                    <Grid Grid.Row="1">
+                    <Grid Margin="0,40,0,0" Grid.Row="1">
                         <Grid.ChildrenTransitions>
                             <TransitionCollection>
                                 <EntranceThemeTransition/>
@@ -122,12 +122,12 @@
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="*"/>
                         </Grid.RowDefinitions>
-                        <CommandBar Margin="0,0,0,15">
+                        <CommandBar Visibility="Collapsed" Margin="0,0,0,15">
                             <CommandBar.Background>
                                 <SolidColorBrush Color="#DBDEE7" Opacity="0" />
                             </CommandBar.Background>
                         </CommandBar>
-                        <Pivot Grid.Row="1">
+                        <Pivot Margin="0,40,0,0" Grid.Row="1">
                             <PivotItem x:Uid="AboutMePivot" Header="紹介">
                                 <ScrollViewer VerticalScrollBarVisibility="Auto" Grid.Row="1" ZoomMode="Disabled">
                                     <Grid>
@@ -306,42 +306,6 @@
                                                     </Grid>
                                                 </Grid>
                                             </Grid>
-                                            <Grid Grid.Row="4">
-                                                <Grid.RowDefinitions>
-                                                    <RowDefinition Height="Auto"/>
-                                                    <RowDefinition Height="*"/>
-                                                </Grid.RowDefinitions>
-                                                <TextBlock
-                                    Style="{StaticResource SubheaderTextBlockStyle}"
-                                    Text="フレンド" x:Uid="Friends"
-                                    FontSize="30" Margin="0,0,0,10" />
-                                                <TextBlock FontSize="25" TextWrapping="Wrap" Visibility="{Binding FriendScrollingCollection.IsEmpty, Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay }" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1"  Style="{StaticResource HeaderTextBlockStyle}" x:Uid="NoFriends" Text="フレンドはまだいません。"/>
-                                                <GridView Grid.Row="1" VerticalAlignment="Stretch"  x:Name="SimpleFriendGrid"  ItemsSource="{Binding FriendScrollingCollection}" ItemTemplate="{StaticResource SimpleFriendTemplate}">
-                                                    <GridView.ItemsPanel>
-                                                        <ItemsPanelTemplate>
-                                                            <ItemsWrapGrid ItemHeight="50" ItemWidth="170" MaximumRowsOrColumns="3" Orientation="Vertical"/>
-                                                        </ItemsPanelTemplate>
-                                                    </GridView.ItemsPanel>
-                                                </GridView>
-                                            </Grid>
-                                            <Grid Grid.Row="5">
-                                                <Grid.RowDefinitions>
-                                                    <RowDefinition Height="Auto"/>
-                                                    <RowDefinition Height="*"/>
-                                                </Grid.RowDefinitions>
-                                                <TextBlock
-                                    Style="{StaticResource SubheaderTextBlockStyle}"
-                                    Text="最近のアクティビティー" x:Uid="RecentActivity"
-                                    FontSize="30" Margin="0,0,0,10" />
-                                                <TextBlock  FontSize="25" TextWrapping="Wrap" Visibility="{Binding RecentActivityScrollingCollection.IsEmpty, Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay }" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1"  Style="{StaticResource HeaderTextBlockStyle}" x:Uid="NoActivities" Text="アクティビティーはありません。"/>
-                                                <GridView Grid.Row="1" VerticalAlignment="Stretch"  x:Name="SimpleActGrid"  ItemsSource="{Binding RecentActivityScrollingCollection}" ItemTemplate="{StaticResource ActivitySimpleDataTemplate}">
-                                                    <GridView.ItemsPanel>
-                                                        <ItemsPanelTemplate>
-                                                            <ItemsWrapGrid ItemHeight="150" ItemWidth="170" MaximumRowsOrColumns="2" Orientation="Vertical"/>
-                                                        </ItemsPanelTemplate>
-                                                    </GridView.ItemsPanel>
-                                                </GridView>
-                                            </Grid>
                                         </Grid>
                                     </Grid>
                                 </ScrollViewer>
@@ -364,6 +328,7 @@
                                             <Style TargetType="GridViewItem">
                                                 <Setter Property="Margin" Value="5" />
                                                 <Setter Property="Width" Value="350" />
+                                                <Setter Property="HorizontalContentAlignment" Value="Stretch" />
                                             </Style>
                                         </GridView.ItemContainerStyle>
                                     </GridView>

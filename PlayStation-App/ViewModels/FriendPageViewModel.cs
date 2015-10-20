@@ -19,6 +19,11 @@ namespace PlayStation_App.ViewModels
 {
     public class FriendPageViewModel : NotifierBase
     {
+        public FriendPageViewModel()
+        {
+            FriendScrollingCollection = new FriendScrollingCollection();
+            RecentActivityScrollingCollection = new RecentActivityScrollingCollection();
+        }
         private FriendScrollingCollection _friendScrollingCollection;
         private MessageResponse _messageEntity;
 

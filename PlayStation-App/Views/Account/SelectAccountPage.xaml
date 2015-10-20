@@ -21,10 +21,10 @@
         <Grid VerticalAlignment="Center">
             <Grid.RowDefinitions>
                 <RowDefinition/>
-                <RowDefinition/>
+                <RowDefinition Height="*"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <TextBlock FontSize="30" FontWeight="Thin" Margin="0,0,0,15" HorizontalAlignment="Center" Text="PSN.Appx"></TextBlock>
+            <TextBlock FontSize="30" FontWeight="Thin" VerticalAlignment="Bottom" Margin="0,0,0,15" HorizontalAlignment="Center" Text="PSN.Appx"></TextBlock>
             <GridView x:Name="AccountList" Grid.Row="1" IsItemClickEnabled="True" VerticalAlignment="Center" HorizontalAlignment="Center" ItemsSource="{Binding AccountUsers}">
                 <interactivity:Interaction.Behaviors>
                     <core:EventTriggerBehavior EventName="ItemClick">
@@ -33,16 +33,16 @@
                 </interactivity:Interaction.Behaviors>
                 <GridView.ItemTemplate>
                     <DataTemplate>
-                        <Grid MaxHeight="200" MaxWidth="150">
+                        <Grid Height="150" Width="150">
                             <Grid.Background>
                                 <SolidColorBrush Color="Black" Opacity="0.25" />
                             </Grid.Background>
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="110"/>
                                 <RowDefinition/>
                             </Grid.RowDefinitions>
-                            <Image Margin="15" MaxWidth="125" Source="{Binding AvatarUrl}"/>
-                            <TextBlock TextWrapping="NoWrap" TextTrimming="CharacterEllipsis" Margin="5" Padding="0,5,0,0" Grid.Row="1" HorizontalAlignment="Center" Text="{Binding Username}"/>
+                            <Image Margin="3" Width="110" Height="110" Source="{Binding AvatarUrl}"/>
+                            <TextBlock TextWrapping="NoWrap" TextTrimming="CharacterEllipsis" VerticalAlignment="Top" Margin="1" Padding="0,5,0,0" Grid.Row="1" HorizontalAlignment="Center" Text="{Binding Username}"/>
                             <FlyoutBase.AttachedFlyout>
                                 <MenuFlyout>
                                     <MenuFlyoutItem x:Uid="DeleteAccount" Command="{Binding DataContext.DeleteAccountCommand, ElementName=AccountList}" CommandParameter="{Binding}"/>
@@ -60,7 +60,7 @@
                     </DataTemplate>
                 </GridView.ItemTemplate>
             </GridView>
-            <Button Margin="15" HorizontalAlignment="Center" Grid.Row="2" Click="AddAccount_OnClick" x:Uid="AddUserAccount" Content="ユーザーの追加"/>
+            <Button Margin="15" HorizontalAlignment="Center" VerticalAlignment="Top" Grid.Row="2" Click="AddAccount_OnClick" x:Uid="AddUserAccount" Content="ユーザーの追加"/>
         </Grid>
     </Grid>
 </Page>

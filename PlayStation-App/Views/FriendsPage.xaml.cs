@@ -56,6 +56,7 @@ namespace PlayStation_App.Views
         private void Friend_OnClick(object sender, ItemClickEventArgs e)
         {
             var clickedItem = (Friend)e.ClickedItem;
+            var vm = Locator.ViewModels.FriendPageVm;
             _lastSelectedItem = clickedItem;
             var command = new LoadFriendDetail();
             command.Execute(clickedItem.OnlineId);

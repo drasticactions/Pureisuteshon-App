@@ -95,7 +95,7 @@ namespace PlayStation_App.Tools.ScrollingCollection
             var trophyManager = new TrophyManager();
             var trophyResultList = await trophyManager.GetTrophyList(username, CompareUsername, Offset, Locator.ViewModels.MainPageVm.CurrentTokens, Locator.ViewModels.MainPageVm.CurrentUser.Region, Locator.ViewModels.MainPageVm.CurrentUser.Language);
             await AccountAuthHelpers.UpdateTokens(Locator.ViewModels.MainPageVm.CurrentUser, trophyResultList);
-            var result = await ResultChecker.CheckSuccess(trophyResultList);
+            var result = await ResultChecker.CheckSuccess(trophyResultList, false);
             if (!result)
             {
                 HasMoreItems = false;

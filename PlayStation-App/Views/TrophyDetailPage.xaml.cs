@@ -79,7 +79,7 @@ namespace PlayStation_App.Views
 
         private bool ShouldGoToWideState()
         {
-            return Window.Current.Bounds.Width >= 600;
+            return Window.Current.Bounds.Width >= 800;
         }
     }
 }

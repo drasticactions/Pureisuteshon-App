@@ -68,15 +68,15 @@
                     </interactivity:Interaction.Behaviors>
                     <GridView.ItemTemplate>
                         <DataTemplate>
-                            <Border Height="83" Margin="5" BorderBrush="White"
+                            <Border Height="73" Margin="5" BorderBrush="White"
                                                     BorderThickness="1">
                                 <Grid>
                                     <Grid.Background>
                                         <SolidColorBrush Color="Black" Opacity="0.65" />
                                     </Grid.Background>
-                                    <Border HorizontalAlignment="Left" Height="83" VerticalAlignment="Top"
-                                                            Grid.Column="0" MinWidth="150" MaxWidth="185">
-                                        <Image Source="{Binding TrophyTitleIconUrl}" />
+                                    <Border HorizontalAlignment="Left" Height="73" VerticalAlignment="Top"
+                                                            Grid.Column="0" Width="130">
+                                        <Image Stretch="Fill" Source="{Binding TrophyTitleIconUrl}" />
                                     </Border>
                                 </Grid>
                             </Border>

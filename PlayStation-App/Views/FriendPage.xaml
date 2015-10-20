@@ -20,12 +20,12 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <CommandBar Margin="0,0,0,15">
+        <CommandBar Visibility="Collapsed" Margin="0,0,0,15">
             <CommandBar.Background>
-                <SolidColorBrush Color="#DBDEE7" Opacity="0" />
+                <SolidColorBrush Color="#DBDEE7" Opacity=".05" />
             </CommandBar.Background>
         </CommandBar>
-        <Pivot Grid.Row="1" x:Name="MainPivot">
+        <Pivot Margin="0,40,0,0" Grid.Row="1" x:Name="MainPivot">
             <PivotItem x:Uid="AboutMePivot" Header="紹介">
                 <Grid x:Name="UserInformationGrid" HorizontalAlignment="Stretch" Column="0">
                     <ScrollViewer ZoomMode="Disabled" VerticalScrollBarVisibility="Auto">
@@ -211,8 +211,9 @@
                                   ItemTemplateSelector="{StaticResource WhatsNewTemplateSelector}">
                         <ListView.ItemContainerStyle>
                             <Style TargetType="ListViewItem">
-                                <Setter Property="HorizontalContentAlignment" Value="Stretch" />
                                 <Setter Property="Margin" Value="5" />
+                                <Setter Property="Width" Value="280" />
+                                <Setter Property="HorizontalContentAlignment" Value="Stretch" />
                             </Style>
                         </ListView.ItemContainerStyle>
                     </ListView>
@@ -304,22 +305,8 @@
                                                 <Grid Grid.Column="1">
                                                     <Grid.RowDefinitions>
                                                         <RowDefinition Height="*" />
-                                                        <RowDefinition Height="*" />
                                                     </Grid.RowDefinitions>
-                                                    <Grid Grid.Row="0">
-                                                        <Grid.ColumnDefinitions>
-                                                            <ColumnDefinition Width="*" />
-                                                        </Grid.ColumnDefinitions>
-                                                        <StackPanel>
-                                                            <TextBlock Foreground="#3F454F" FontWeight="Bold"
-                                                                           TextWrapping="Wrap"
-                                                                           TextTrimming="WordEllipsis"
-                                                                           Text="{Binding TrophyTitleName}" />
-                                                            <TextBlock Foreground="#3F454F" TextWrapping="Wrap"
-                                                                           Text="{Binding TrophyTitlePlatfrom}" />
-                                                        </StackPanel>
-                                                    </Grid>
-                                                    <Grid Grid.Row="1">
+                                                    <Grid VerticalAlignment="Center" Grid.Row="0">
                                                         <Grid.ColumnDefinitions>
                                                             <ColumnDefinition Width="*" />
                                                             <ColumnDefinition Width="*" />

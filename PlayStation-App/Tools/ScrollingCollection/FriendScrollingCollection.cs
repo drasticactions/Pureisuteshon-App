@@ -82,7 +82,7 @@ namespace PlayStation_App.Tools.ScrollingCollection
                     await
                         friendManager.GetFriendsList(Username, Offset, BlockedPlayer, RecentlyPlayed, PersonalDetailSharing,
                             FriendStatus, Requesting, Requested, OnlineFilter, Locator.ViewModels.MainPageVm.CurrentTokens, Locator.ViewModels.MainPageVm.CurrentUser.Region, Locator.ViewModels.MainPageVm.CurrentUser.Language);
-                var result = await ResultChecker.CheckSuccess(friendResultEntity);
+                var result = await ResultChecker.CheckSuccess(friendResultEntity, false);
                 if (!result)
                 {
                     HasMoreItems = false;
@@ -90,7 +90,8 @@ namespace PlayStation_App.Tools.ScrollingCollection
                     {
                         IsEmpty = true;
                     }
-                    return new LoadMoreItemsResult { Count = count };
+                    IsLoading = false;
+                    return new LoadMoreItemsResult { Count = 0 };
                 }
                 await AccountAuthHelpers.UpdateTokens(Locator.ViewModels.MainPageVm.CurrentUser, friendResultEntity);
                 var friendEntity = JsonConvert.DeserializeObject<FriendListResponse>(friendResultEntity.ResultJson);
@@ -101,6 +102,7 @@ namespace PlayStation_App.Tools.ScrollingCollection
                     {
                         IsEmpty = true;
                     }
+                    IsLoading = false;
                     return new LoadMoreItemsResult { Count = count };
                 }
                 if (friendEntity.Friend == null)
@@ -110,6 +112,7 @@ namespace PlayStation_App.Tools.ScrollingCollection
                     {
                         IsEmpty = true;
                     }
+                    IsLoading = false;
                     return new LoadMoreItemsResult { Count = count };
                 }
                 foreach (var friend in friendEntity.Friend)
