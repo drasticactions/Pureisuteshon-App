@@ -1,4 +1,4 @@
-# PSX.Appx
+# PSN.Appx
 ### A PSN Client for Windows 10
 
 PSX.Appx is a UWP app that lets you connect to the PSN on any of your devices running Windows 10. Right now it's pretty basic, supporting the following.
