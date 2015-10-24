@@ -88,7 +88,7 @@ namespace PlayStation_App.ViewModels
                 {
                     Icon = "/Assets/Icons/AddFriendLink.png",
                     Name = loader.GetString("InviteFriendsToPsn/Text"),
-                    Command = new NavigataeToFriendLinkPageCommand()
+                    Command = new NavigateToFriendLinkPageCommand()
                 },
                 new MenuItem()
                 {
@@ -109,6 +109,8 @@ namespace PlayStation_App.ViewModels
                 OnPropertyChanged();
             }
         }
+
+        public LoadFriendsPageWithDetail LoadFriendsPageWithDetail { get; set; } = new LoadFriendsPageWithDetail();
 
         public UserAuthenticationEntity CurrentTokens => new UserAuthenticationEntity(CurrentUser.AccessToken, CurrentUser.RefreshToken, CurrentUser.RefreshDate);
 

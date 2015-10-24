@@ -142,7 +142,8 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Commands\Friends\LoadFriendDetail.cs" />
-    <Compile Include="Commands\Friends\NavigataeToFriendLinkPageCommand.cs" />
+    <Compile Include="Commands\Friends\LoadFriendsPageWithDetail.cs" />
+    <Compile Include="Commands\Friends\NavigateToFriendLinkPageCommand.cs" />
     <Compile Include="Commands\Friends\NavigateToFriendsPage.cs" />
     <Compile Include="Commands\Live\NavigateToLiveFromPlaystationPage.cs" />
     <Compile Include="Commands\Live\SearchLiveFromPlaystation.cs" />

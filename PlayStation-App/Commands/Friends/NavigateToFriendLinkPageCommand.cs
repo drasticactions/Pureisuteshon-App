@@ -8,7 +8,7 @@ using PlayStation_App.Views;
 
 namespace PlayStation_App.Commands.Friends
 {
-    public class NavigataeToFriendLinkPageCommand : AlwaysExecutableCommand
+    public class NavigateToFriendLinkPageCommand : AlwaysExecutableCommand
     {
         public override void Execute(object parameter)
         {

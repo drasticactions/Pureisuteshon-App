@@ -46,7 +46,7 @@
         <SplitView Grid.Row="0" x:Name="Splitter" Opacity=".95" VerticalAlignment="Stretch">
             <SplitView.Pane>
                 <RelativePanel  VerticalAlignment="Stretch">
-                    <ListView ItemClick="MenuClick"  ItemsSource="{Binding MenuItems}" IsItemClickEnabled="{Binding IsLoggedIn}" 
+                    <ListView ItemClick="MenuClick" RelativePanel.AlignTopWithPanel="True" RelativePanel.Above="FooterPanel" ItemsSource="{Binding MenuItems}" IsItemClickEnabled="{Binding IsLoggedIn}" 
                  SelectionMode="None" HorizontalAlignment="Left"
                  VerticalAlignment="Top" Margin="-2,40,0,0" >
                         <ListView.ItemTemplate>
@@ -62,6 +62,20 @@
                             </DataTemplate>
                         </ListView.ItemTemplate>
                     </ListView>
+                    <StackPanel x:Name="FooterPanel" Orientation="Vertical" RelativePanel.AlignBottomWithPanel="True">
+                        <Button Command="{Binding LoadFriendsPageWithDetail}" CommandParameter="{Binding CurrentUser.Username}" Visibility="{Binding IsLoggedIn, Converter={StaticResource BooleanToVisibilityConverter}}" Background="Transparent" Grid.Column="0" VerticalAlignment="Top" Foreground="White" >
+                            <Button.Content>
+                                <Grid Width="250">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="30"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Image Width="30" Height="30" Source="{Binding CurrentUser.AvatarUrl}"/>
+                                    <TextBlock Padding="25,0,0,0" TextWrapping="NoWrap" TextTrimming="CharacterEllipsis" VerticalAlignment="Center" Grid.Column="1" Text="{Binding CurrentUser.Username}"/>
+                                </Grid>
+                            </Button.Content>
+                        </Button>
+                    </StackPanel>
                 </RelativePanel>
             </SplitView.Pane>
             <SplitView.Content>
