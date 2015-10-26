@@ -319,6 +319,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\Icons\AddFriendLink.png" />
+    <Content Include="Assets\Icons\Event.png" />
     <Content Include="Assets\Icons\FriendLink\FriendShareLink.png" />
     <Content Include="Assets\Icons\FriendLink\FriendSmsEmailLink.png" />
     <Content Include="Assets\Icons\Friends.png" />

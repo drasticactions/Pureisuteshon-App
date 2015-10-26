@@ -569,7 +569,7 @@
         </Border>
     </DataTemplate>
     <DataTemplate x:Key="StoreActivityDataTemplate">
-        <Border HorizontalAlignment="Left" Height="210" VerticalAlignment="Stretch" BorderBrush="White" BorderThickness="1">
+        <Border HorizontalAlignment="Stretch" Height="210" VerticalAlignment="Stretch" BorderBrush="White" BorderThickness="1">
             <Grid VerticalAlignment="Stretch">
                 <Grid.Background>
                     <SolidColorBrush Color="#CBDBDEE7" />
