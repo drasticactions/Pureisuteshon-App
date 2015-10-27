@@ -36,5 +36,7 @@ namespace PlayStation_App.Locator
 
         public static MessagesViewModel MessagesVm => App.Container.Resolve<MessagesViewModel>();
 
+        public static EventsViewModel EventsVm => App.Container.Resolve<EventsViewModel>();
+
     }
 }

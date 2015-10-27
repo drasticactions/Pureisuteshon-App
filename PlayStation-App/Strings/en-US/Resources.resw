@@ -672,4 +672,19 @@ You can earn trophies by playing games that support them.</value>
   <data name="DeleteAccountError.Text" xml:space="preserve">
     <value>Failed to delete account</value>
   </data>
+  <data name="Events.Text" xml:space="preserve">
+    <value>Events</value>
+  </data>
+  <data name="EventsAll.Header" xml:space="preserve">
+    <value>All</value>
+  </data>
+  <data name="EventsGameList.Header" xml:space="preserve">
+    <value>Game List</value>
+  </data>
+  <data name="EventsMy.Header" xml:space="preserve">
+    <value>My Events</value>
+  </data>
+  <data name="EventsRecommended.Header" xml:space="preserve">
+    <value>Recommended</value>
+  </data>
 </root>

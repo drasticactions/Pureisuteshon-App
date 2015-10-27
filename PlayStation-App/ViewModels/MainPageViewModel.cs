@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Windows.ApplicationModel;
 using PlayStation.Entities.User;
+using PlayStation_App.Commands.Events;
 using PlayStation_App.Commands.Friends;
 using PlayStation_App.Commands.Live;
 using PlayStation_App.Commands.Messages;
@@ -59,6 +60,12 @@ namespace PlayStation_App.ViewModels
                     Icon = "/Assets/Icons/Home.png",
                     Name = loader.GetString("Home/Text"),
                     Command = new NavigateToWhatsNewPage()
+                },
+                new MenuItem()
+                {
+                    Icon = "/Assets/Icons/Event.png",
+                    Name = loader.GetString("Events/Text"),
+                    Command = new NavigateToEventsPageCommand()
                 },
                 new MenuItem()
                 {

@@ -456,4 +456,19 @@
   <data name="RecentActivities.Header" xml:space="preserve">
     <value>アクティビティー</value>
   </data>
+  <data name="Events.Text" xml:space="preserve">
+    <value>イベント</value>
+  </data>
+  <data name="EventsAll.Header" xml:space="preserve">
+    <value>すべて</value>
+  </data>
+  <data name="EventsGameList.Header" xml:space="preserve">
+    <value>ゲームのリスト</value>
+  </data>
+  <data name="EventsMy.Header" xml:space="preserve">
+    <value>マイイベント</value>
+  </data>
+  <data name="EventsRecommended.Header" xml:space="preserve">
+    <value>おすすめ</value>
+  </data>
 </root>

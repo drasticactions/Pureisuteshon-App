@@ -141,6 +141,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Commands\Events\NavigateToEventsPageCommand.cs" />
     <Compile Include="Commands\Friends\LoadFriendDetail.cs" />
     <Compile Include="Commands\Friends\LoadFriendsPageWithDetail.cs" />
     <Compile Include="Commands\Friends\NavigateToFriendLinkPageCommand.cs" />
@@ -176,6 +177,8 @@
     <Compile Include="Models\Authentication\LogInUser.cs" />
     <Compile Include="Models\Authentication\ParentalControl.cs" />
     <Compile Include="Models\Authentication\Tokens.cs" />
+    <Compile Include="Models\Events\Duration.cs" />
+    <Compile Include="Models\Events\Event.cs" />
     <Compile Include="Models\Friends\EarnedTrophies.cs" />
     <Compile Include="Models\Friends\Friend.cs" />
     <Compile Include="Models\Friends\GameTitleInfo.cs" />
@@ -201,6 +204,7 @@
     <Compile Include="Models\RecentActivity\Source2.cs" />
     <Compile Include="Models\RecentActivity\Target.cs" />
     <Compile Include="Models\RecentActivity\Target2.cs" />
+    <Compile Include="Models\Response\EventsREsponse.cs" />
     <Compile Include="Models\Response\FriendListResponse.cs" />
     <Compile Include="Models\Response\MessageGroupResponse.cs" />
     <Compile Include="Models\Response\MessageResponse.cs" />
@@ -254,6 +258,7 @@
     <Compile Include="Models\Trophies\FromUser.cs" />
     <Compile Include="Models\Trophies\Trophy.cs" />
     <Compile Include="ViewModels\AccountSelectScreenViewModel.cs" />
+    <Compile Include="ViewModels\EventsViewModel.cs" />
     <Compile Include="ViewModels\FriendLinkViewModel.cs" />
     <Compile Include="ViewModels\FriendPageViewModel.cs" />
     <Compile Include="ViewModels\FriendsPageViewModel.cs" />
@@ -273,6 +278,9 @@
     </Compile>
     <Compile Include="Views\Account\SelectAccountPage.xaml.cs">
       <DependentUpon>SelectAccountPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EventsPage.xaml.cs">
+      <DependentUpon>EventsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\FriendLinkPage.xaml.cs">
       <DependentUpon>FriendLinkPage.xaml</DependentUpon>
@@ -359,6 +367,7 @@
     <Content Include="Assets\LockScreenLogo.scale-150.png" />
     <Content Include="Assets\LockScreenLogo.scale-400.png" />
     <Content Include="Assets\Main\background.png" />
+    <Content Include="Assets\Sample\Events.txt" />
     <Content Include="Assets\Sample\RecentActivityFeed.txt" />
     <Content Include="Assets\Sample\TrophyList.txt" />
     <Content Include="Assets\SplashScreen.scale-100.png" />
@@ -444,6 +453,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Account\SelectAccountPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\EventsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
