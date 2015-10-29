@@ -95,5 +95,10 @@ namespace PlayStation_App.Views
                     break;
             }
         }
+
+        private void PullToRefreshBox_OnRefreshInvoked(DependencyObject sender, object args)
+        {
+            SetFriendList();
+        }
     }
 }

@@ -26,5 +26,10 @@ namespace PlayStation_App.Views
         {
             this.InitializeComponent();
         }
+
+        private async void PullToRefreshBox_OnRefreshInvoked(DependencyObject sender, object args)
+        {
+            await Locator.ViewModels.WhatsNewVm.LoadPage();
+        }
     }
 }

@@ -7,6 +7,7 @@
     "Microsoft.ApplicationInsights.WindowsApps": "1.0.0",
     "Microsoft.NETCore.UniversalWindowsPlatform": "5.0.0",
     "NotificationsExtensions.Win10": "10240.0.3",
+    "PullToRefresh.UWP": "0.3.2",
     "SpinKit.Xaml": "1.1.0",
     "SQLite.Net.Async-PCL": "3.0.5",
     "SQLite.WinRT": "3.8.11.5",

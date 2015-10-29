@@ -257,6 +257,9 @@
     <Compile Include="Tools\TemplateSelector\RecentActivityTemplateSelector.cs" />
     <Compile Include="Models\Trophies\FromUser.cs" />
     <Compile Include="Models\Trophies\Trophy.cs" />
+    <Compile Include="UserControls\PullToRefresh.xaml.cs">
+      <DependentUpon>PullToRefresh.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewModels\AccountSelectScreenViewModel.cs" />
     <Compile Include="ViewModels\EventsViewModel.cs" />
     <Compile Include="ViewModels\FriendLinkViewModel.cs" />
@@ -443,6 +446,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Page>
+    <Page Include="UserControls\PullToRefresh.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\AboutPage.xaml">
       <SubType>Designer</SubType>

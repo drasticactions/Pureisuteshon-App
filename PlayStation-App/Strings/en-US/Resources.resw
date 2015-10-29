@@ -687,4 +687,10 @@ You can earn trophies by playing games that support them.</value>
   <data name="EventsRecommended.Header" xml:space="preserve">
     <value>Recommended</value>
   </data>
+  <data name="PullToRefreshTextBox.Text" xml:space="preserve">
+    <value>Pull...</value>
+  </data>
+  <data name="ReleaseTextBox.Text" xml:space="preserve">
+    <value>Release to Refresh</value>
+  </data>
 </root>
