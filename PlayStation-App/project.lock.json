@@ -380,6 +380,11 @@
           "lib/uap10.0/NotificationsExtensions.winmd": {}
         }
       },
+      "PullToRefresh.UWP/0.3.2": {
+        "compile": {
+          "ref/uap10.0/PullToRefresh.UWP.winmd": {}
+        }
+      },
       "SpinKit.Xaml/1.1.0": {},
       "SQLite.Net-PCL/3.0.5": {
         "compile": {
@@ -2197,6 +2202,11 @@
         },
         "runtime": {
           "lib/uap10.0/NotificationsExtensions.winmd": {}
+        }
+      },
+      "PullToRefresh.UWP/0.3.2": {
+        "compile": {
+          "ref/uap10.0/PullToRefresh.UWP.winmd": {}
         }
       },
       "SpinKit.Xaml/1.1.0": {},
@@ -4049,6 +4059,11 @@
         },
         "runtime": {
           "lib/uap10.0/NotificationsExtensions.winmd": {}
+        }
+      },
+      "PullToRefresh.UWP/0.3.2": {
+        "compile": {
+          "ref/uap10.0/PullToRefresh.UWP.winmd": {}
         }
       },
       "SpinKit.Xaml/1.1.0": {},
@@ -5908,6 +5923,11 @@
           "lib/uap10.0/NotificationsExtensions.winmd": {}
         }
       },
+      "PullToRefresh.UWP/0.3.2": {
+        "compile": {
+          "ref/uap10.0/PullToRefresh.UWP.winmd": {}
+        }
+      },
       "SpinKit.Xaml/1.1.0": {},
       "SQLite.Net-PCL/3.0.5": {
         "compile": {
@@ -7758,6 +7778,11 @@
         },
         "runtime": {
           "lib/uap10.0/NotificationsExtensions.winmd": {}
+        }
+      },
+      "PullToRefresh.UWP/0.3.2": {
+        "compile": {
+          "ref/uap10.0/PullToRefresh.UWP.winmd": {}
         }
       },
       "SpinKit.Xaml/1.1.0": {},
@@ -9617,6 +9642,11 @@
           "lib/uap10.0/NotificationsExtensions.winmd": {}
         }
       },
+      "PullToRefresh.UWP/0.3.2": {
+        "compile": {
+          "ref/uap10.0/PullToRefresh.UWP.winmd": {}
+        }
+      },
       "SpinKit.Xaml/1.1.0": {},
       "SQLite.Net-PCL/3.0.5": {
         "compile": {
@@ -11467,6 +11497,11 @@
         },
         "runtime": {
           "lib/uap10.0/NotificationsExtensions.winmd": {}
+        }
+      },
+      "PullToRefresh.UWP/0.3.2": {
+        "compile": {
+          "ref/uap10.0/PullToRefresh.UWP.winmd": {}
         }
       },
       "SpinKit.Xaml/1.1.0": {},
@@ -13708,6 +13743,37 @@
         "lib/uap10.0/NotificationsExtensions.winmd",
         "NotificationsExtensions.Win10.nuspec",
         "package/services/metadata/core-properties/0d44865abdf749f1b9cb84f829c2c740.psmdcp"
+      ]
+    },
+    "PullToRefresh.UWP/0.3.2": {
+      "sha512": "kFvRzUaqwkcSWnEW8KZxJLvljrdgKI0Hl4dBdRjyF224ThBrPYjk9YMl3lnFs1EsIeZpmVHC1KMuV7JzCRHgrQ==",
+      "type": "Package",
+      "files": [
+        "[Content_Types].xml",
+        "_rels/.rels",
+        "build/uap10.0/lib/win10-ARM/PullToRefresh.UWP.pri",
+        "build/uap10.0/lib/win10-ARM/PullToRefresh.UWP.winmd",
+        "build/uap10.0/lib/win10-ARM/PullToRefresh.UWP/Properties/PullToRefresh.UWP.rd.xml",
+        "build/uap10.0/lib/win10-ARM/PullToRefresh.UWP/PullToRefresh.UWP.xr.xml",
+        "build/uap10.0/lib/win10-ARM/PullToRefresh.UWP/Themes/Generic.xbf",
+        "build/uap10.0/lib/win10-x64/PullToRefresh.UWP.pri",
+        "build/uap10.0/lib/win10-x64/PullToRefresh.UWP.winmd",
+        "build/uap10.0/lib/win10-x64/PullToRefresh.UWP/Properties/PullToRefresh.UWP.rd.xml",
+        "build/uap10.0/lib/win10-x64/PullToRefresh.UWP/PullToRefresh.UWP.xr.xml",
+        "build/uap10.0/lib/win10-x64/PullToRefresh.UWP/Themes/Generic.xbf",
+        "build/uap10.0/lib/win10-x86/PullToRefresh.UWP.pri",
+        "build/uap10.0/lib/win10-x86/PullToRefresh.UWP.winmd",
+        "build/uap10.0/lib/win10-x86/PullToRefresh.UWP/Properties/PullToRefresh.UWP.rd.xml",
+        "build/uap10.0/lib/win10-x86/PullToRefresh.UWP/PullToRefresh.UWP.xr.xml",
+        "build/uap10.0/lib/win10-x86/PullToRefresh.UWP/Themes/Generic.xbf",
+        "build/uap10.0/PullToRefresh.UWP.targets",
+        "package/services/metadata/core-properties/82238fbb23654acc8d5219de01ceca88.psmdcp",
+        "PullToRefresh.UWP.nuspec",
+        "ref/uap10.0/PullToRefresh.UWP.pri",
+        "ref/uap10.0/PullToRefresh.UWP.winmd",
+        "ref/uap10.0/PullToRefresh.UWP/Properties/PullToRefresh.UWP.rd.xml",
+        "ref/uap10.0/PullToRefresh.UWP/PullToRefresh.UWP.xr.xml",
+        "ref/uap10.0/PullToRefresh.UWP/Themes/Generic.xbf"
       ]
     },
     "SpinKit.Xaml/1.1.0": {
@@ -16575,6 +16641,7 @@
       "Microsoft.ApplicationInsights.WindowsApps >= 1.0.0",
       "Microsoft.NETCore.UniversalWindowsPlatform >= 5.0.0",
       "NotificationsExtensions.Win10 >= 10240.0.3",
+      "PullToRefresh.UWP >= 0.3.2",
       "SpinKit.Xaml >= 1.1.0",
       "SQLite.Net.Async-PCL >= 3.0.5",
       "SQLite.WinRT >= 3.8.11.5",

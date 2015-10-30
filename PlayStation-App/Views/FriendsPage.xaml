@@ -9,6 +9,8 @@
      DataContext="{Binding Source={StaticResource Locator}, Path=FriendsPageVm}"
     xmlns:core="using:Microsoft.Xaml.Interactions.Core"
     xmlns:templateSelector="using:PlayStation_App.Tools.TemplateSelector"
+    xmlns:uwp="using:PullToRefresh.UWP"
+    xmlns:userControls="using:PlayStation_App.UserControls"
     mc:Ignorable="d">
     <Page.Resources>
         <templateSelector:RecentActivityTemplateSelector x:Name="WhatsNewTemplateSelector" PlayedGameActivityDataTemplate="{StaticResource PlayedGameDataTemplate}"
@@ -95,19 +97,40 @@
                             <ComboBoxItem x:Uid="FriendRequestReceived" />
                             <ComboBoxItem x:Uid="FriendRequestSent" />
                         </ComboBox>
-                        <ListView Grid.Row="2" x:Name="FriendList"
+                        <uwp:PullToRefreshBox RefreshInvoked="PullToRefreshBox_OnRefreshInvoked" RefreshThreshold="100" Grid.Row="2">
+                            <uwp:PullToRefreshBox.TopIndicatorTemplate>
+                                <DataTemplate>
+                                    <userControls:PullToRefresh PullProgress="{Binding}" Height="101"
+                                    VerticalAlignment="Bottom">
+                                        <userControls:PullToRefresh.SymbolStyle>
+                                            <Style TargetType="SymbolIcon">
+                                                <Setter Property="Foreground"
+                            Value="{StaticResource ApplicationSecondaryForegroundThemeBrush}" />
+                                            </Style>
+                                        </userControls:PullToRefresh.SymbolStyle>
+                                        <userControls:PullToRefresh.TextStyle>
+                                            <Style TargetType="TextBlock">
+                                                <Setter Property="Foreground"
+                            Value="{StaticResource ApplicationSecondaryForegroundThemeBrush}" />
+                                            </Style>
+                                        </userControls:PullToRefresh.TextStyle>
+                                    </userControls:PullToRefresh>
+                                </DataTemplate>
+                            </uwp:PullToRefreshBox.TopIndicatorTemplate>
+                            <ListView x:Name="FriendList"
                       HorizontalAlignment="Stretch" 
                       IsSwipeEnabled="True" 
                       ItemTemplate="{StaticResource FriendTemplate}"
                       ItemClick="Friend_OnClick"
                       ItemsSource="{Binding FriendScrollingCollection}"
                       IsItemClickEnabled="True">
-                            <ListView.ItemContainerStyle>
-                                <Style TargetType="ListViewItem">
-                                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-                                </Style>
-                            </ListView.ItemContainerStyle>
-                        </ListView>
+                                <ListView.ItemContainerStyle>
+                                    <Style TargetType="ListViewItem">
+                                        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                                    </Style>
+                                </ListView.ItemContainerStyle>
+                            </ListView>
+                        </uwp:PullToRefreshBox>
                     </Grid>
                 </Grid>
                 <Grid x:Name="DetailContentPresenter"  DataContext="{Binding Source={StaticResource Locator}, Path=FriendPageVm}" Grid.Column="1">

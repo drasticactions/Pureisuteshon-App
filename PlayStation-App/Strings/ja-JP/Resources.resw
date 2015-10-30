@@ -471,4 +471,10 @@
   <data name="EventsRecommended.Header" xml:space="preserve">
     <value>おすすめ</value>
   </data>
+  <data name="PullToRefreshTextBox.Text" xml:space="preserve">
+    <value>引っ張って</value>
+  </data>
+  <data name="ReleaseTextBox.Text" xml:space="preserve">
+    <value>離して更新</value>
+  </data>
 </root>

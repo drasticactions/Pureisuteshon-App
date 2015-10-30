@@ -60,7 +60,7 @@ namespace PlayStation_App.ViewModels
             IsLoading = false;
         }
 
-        private async Task LoadPage()
+        public async Task LoadPage()
         {
             var testFeed = new RecentActivityScrollingCollection
             {
