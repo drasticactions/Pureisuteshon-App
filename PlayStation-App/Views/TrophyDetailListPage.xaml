@@ -8,6 +8,8 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
     xmlns:core="using:Microsoft.Xaml.Interactions.Core"
+    xmlns:uwp="using:PullToRefresh.UWP"
+    xmlns:userControls="using:PlayStation_App.UserControls"
     mc:Ignorable="d">
 
     <Grid Loaded="LayoutRoot_Loaded">
@@ -57,14 +59,36 @@
                 <ColumnDefinition x:Name="DetailColumn" Width="350" />
             </Grid.ColumnDefinitions>
             <Grid Grid.Column="0">
-                <GridView Margin="15" ItemsSource="{Binding TrophyDetailList}" ItemClick="TrophyDetail_OnClick" ItemTemplate="{StaticResource TrophyDetailDataTemplate}" IsItemClickEnabled="True" SelectionMode="None"
+                <uwp:PullToRefreshBox RefreshInvoked="PullToRefreshBox_OnRefreshInvoked" RefreshThreshold="100">
+                    <uwp:PullToRefreshBox.TopIndicatorTemplate>
+                        <DataTemplate>
+                            <userControls:PullToRefresh PullProgress="{Binding}" Height="101"
+                                    VerticalAlignment="Bottom">
+                                <userControls:PullToRefresh.SymbolStyle>
+                                    <Style TargetType="SymbolIcon">
+                                        <Setter Property="Foreground"
+                            Value="{StaticResource ApplicationSecondaryForegroundThemeBrush}" />
+                                    </Style>
+                                </userControls:PullToRefresh.SymbolStyle>
+                                <userControls:PullToRefresh.TextStyle>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="Foreground"
+                            Value="{StaticResource ApplicationSecondaryForegroundThemeBrush}" />
+                                    </Style>
+                                </userControls:PullToRefresh.TextStyle>
+                            </userControls:PullToRefresh>
+                        </DataTemplate>
+                    </uwp:PullToRefreshBox.TopIndicatorTemplate>
+                    <GridView Margin="15" ItemsSource="{Binding TrophyDetailList}" ItemClick="TrophyDetail_OnClick" ItemTemplate="{StaticResource TrophyDetailDataTemplate}" IsItemClickEnabled="True" SelectionMode="None"
                   IsSwipeEnabled="False" x:Name="TrophyListView">
-                    <GridView.ItemContainerStyle>
-                        <Style TargetType="GridViewItem">
-                            <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-                        </Style>
-                    </GridView.ItemContainerStyle>
-                </GridView>
+                        <GridView.ItemContainerStyle>
+                            <Style TargetType="GridViewItem">
+                                <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                            </Style>
+                        </GridView.ItemContainerStyle>
+                    </GridView>
+
+                </uwp:PullToRefreshBox>
             </Grid>
             <Grid x:Name="DetailContentPresenter"  Grid.Column="1">
                 <Grid VerticalAlignment="Center" HorizontalAlignment="Center" Visibility="{Binding IsTrophySelected,

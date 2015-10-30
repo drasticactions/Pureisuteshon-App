@@ -31,6 +31,10 @@ namespace PlayStation_App.ViewModels
             }
         }
 
+        public string Username { get; set; }
+
+        public string NpcommunicationId { get; set; }
+
         public async void SetupSampleData()
         {
             var items = await SampleData.GetSampleTrophyFeed();
@@ -42,6 +46,7 @@ namespace PlayStation_App.ViewModels
 
         public void SetTrophyList(string userName)
         {
+            Username = userName;
             TrophyScrollingCollection = new TrophyScrollingCollection
             {
                 CompareUsername = Locator.ViewModels.MainPageVm.CurrentUser.Username,
@@ -52,6 +57,7 @@ namespace PlayStation_App.ViewModels
 
         public async Task SetTrophyDetailList(string npCommunicationId)
         {
+            NpcommunicationId = npCommunicationId;
             IsLoading = true;
             TrophyDetailList = new ObservableCollection<Trophy>();
             var trophyResult =

@@ -84,5 +84,10 @@ namespace PlayStation_App.Views
                 //EnableContentTransitions();
             }
         }
+
+        private async void PullToRefreshBox_OnRefreshInvoked(DependencyObject sender, object args)
+        {
+            await Locator.ViewModels.TrophiesVm.SetTrophyDetailList(Locator.ViewModels.TrophiesVm.NpcommunicationId);
+        }
     }
 }

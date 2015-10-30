@@ -8,6 +8,8 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
     xmlns:core="using:Microsoft.Xaml.Interactions.Core"
+     xmlns:uwp="using:PullToRefresh.UWP"
+    xmlns:userControls="using:PlayStation_App.UserControls"
     mc:Ignorable="d">
 
     <Grid HorizontalAlignment="Stretch">
@@ -53,36 +55,57 @@
                                        HorizontalAlignment="Center" VerticalAlignment="Center" x:Uid="NoTrophyInfo"
                                        Text="There are no trophies." />
             <Grid Margin="10" Grid.Row="1">
-                <GridView x:Name="TrophyListView" IsSwipeEnabled="False" IsItemClickEnabled="True"
+                <uwp:PullToRefreshBox RefreshInvoked="PullToRefreshBox_OnRefreshInvoked" RefreshThreshold="100">
+                    <uwp:PullToRefreshBox.TopIndicatorTemplate>
+                        <DataTemplate>
+                            <userControls:PullToRefresh PullProgress="{Binding}" Height="101"
+                                    VerticalAlignment="Bottom">
+                                <userControls:PullToRefresh.SymbolStyle>
+                                    <Style TargetType="SymbolIcon">
+                                        <Setter Property="Foreground"
+                            Value="{StaticResource ApplicationSecondaryForegroundThemeBrush}" />
+                                    </Style>
+                                </userControls:PullToRefresh.SymbolStyle>
+                                <userControls:PullToRefresh.TextStyle>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="Foreground"
+                            Value="{StaticResource ApplicationSecondaryForegroundThemeBrush}" />
+                                    </Style>
+                                </userControls:PullToRefresh.TextStyle>
+                            </userControls:PullToRefresh>
+                        </DataTemplate>
+                    </uwp:PullToRefreshBox.TopIndicatorTemplate>
+                    <GridView x:Name="TrophyListView" IsSwipeEnabled="False" IsItemClickEnabled="True"
                                           HorizontalAlignment="Stretch" SelectionMode="None"
                                           ItemsSource="{Binding TrophyScrollingCollection}">
-                    <GridView.ItemContainerStyle>
-                        <Style TargetType="GridViewItem">
-                            <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-                        </Style>
-                    </GridView.ItemContainerStyle>
-                    <interactivity:Interaction.Behaviors>
-                        <core:EventTriggerBehavior EventName="ItemClick">
-                            <core:InvokeCommandAction Command="{Binding NavigateToTrophyDetailList}" />
-                        </core:EventTriggerBehavior>
-                    </interactivity:Interaction.Behaviors>
-                    <GridView.ItemTemplate>
-                        <DataTemplate>
-                            <Border Height="73" Margin="5" BorderBrush="White"
+                        <GridView.ItemContainerStyle>
+                            <Style TargetType="GridViewItem">
+                                <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                            </Style>
+                        </GridView.ItemContainerStyle>
+                        <interactivity:Interaction.Behaviors>
+                            <core:EventTriggerBehavior EventName="ItemClick">
+                                <core:InvokeCommandAction Command="{Binding NavigateToTrophyDetailList}" />
+                            </core:EventTriggerBehavior>
+                        </interactivity:Interaction.Behaviors>
+                        <GridView.ItemTemplate>
+                            <DataTemplate>
+                                <Border Height="73" Margin="5" BorderBrush="White"
                                                     BorderThickness="1">
-                                <Grid>
-                                    <Grid.Background>
-                                        <SolidColorBrush Color="Black" Opacity="0.65" />
-                                    </Grid.Background>
-                                    <Border HorizontalAlignment="Left" Height="73" VerticalAlignment="Top"
+                                    <Grid>
+                                        <Grid.Background>
+                                            <SolidColorBrush Color="Black" Opacity="0.65" />
+                                        </Grid.Background>
+                                        <Border HorizontalAlignment="Left" Height="73" VerticalAlignment="Top"
                                                             Grid.Column="0" Width="130">
-                                        <Image Stretch="Fill" Source="{Binding TrophyTitleIconUrl}" />
-                                    </Border>
-                                </Grid>
-                            </Border>
-                        </DataTemplate>
-                    </GridView.ItemTemplate>
-                </GridView>
+                                            <Image Stretch="Fill" Source="{Binding TrophyTitleIconUrl}" />
+                                        </Border>
+                                    </Grid>
+                                </Border>
+                            </DataTemplate>
+                        </GridView.ItemTemplate>
+                    </GridView>
+                </uwp:PullToRefreshBox>
             </Grid>
         </Grid>
     </Grid>
