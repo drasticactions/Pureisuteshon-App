@@ -29,7 +29,7 @@ namespace PlayStation.Managers
             return await _webManager.GetData(new Uri(url), userAuthenticationEntity);
         }
 
-        public async Task<Result> GetFeaturedEvents(UserAuthenticationEntity userAuthenticationEntity, string sort = "eventStartDate", string region = "ja")
+        public async Task<Result> GetFeaturedEvents(UserAuthenticationEntity userAuthenticationEntity, string sort = "recommendInGame", string region = "ja")
         {
             var url = string.Format(EndPoints.FeaturedEvents, region, sort);
             return await _webManager.GetData(new Uri(url), userAuthenticationEntity);
