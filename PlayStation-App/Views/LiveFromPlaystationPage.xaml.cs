@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Threading.Tasks;
+using Windows.Media.Core;
 using Windows.System;
+using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using PlayStation_App.Models.Live;
 
@@ -18,6 +21,11 @@ namespace PlayStation_App.Views
         }
 
         private async void Selector_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            await SetList();
+        }
+
+        private async Task SetList()
         {
             if (FilterComboBox == null) return;
             switch (FilterComboBox.SelectedIndex)
@@ -44,6 +52,11 @@ namespace PlayStation_App.Views
         {
             var item = (LiveBroadcastEntity) e.ClickedItem;
             await Launcher.LaunchUriAsync(new Uri(item.Url));
+        }
+
+        private async void PullToRefreshBox_OnRefreshInvoked(DependencyObject sender, object args)
+        {
+            await SetList();
         }
     }
 }

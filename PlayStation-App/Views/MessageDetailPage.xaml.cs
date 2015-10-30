@@ -81,5 +81,10 @@ namespace PlayStation_App.Views
         {
             return Window.Current.Bounds.Width >= 800;
         }
+
+        private async void PullToRefreshBox_OnRefreshInvoked(DependencyObject sender, object args)
+        {
+            await Locator.ViewModels.MessagesVm.GetMessages(Locator.ViewModels.MessagesVm.SelectedMessageGroup);
+        }
     }
 }

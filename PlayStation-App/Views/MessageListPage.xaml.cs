@@ -84,5 +84,15 @@ namespace PlayStation_App.Views
                 
             }
         }
+
+        private async void PullToRefreshBox_OnRefreshInvoked(DependencyObject sender, object args)
+        {
+            await Locator.ViewModels.MessagesVm.GetMessages(Locator.ViewModels.MessagesVm.SelectedMessageGroup);
+        }
+
+        private async void PullToRefreshBoxMessageList_OnRefreshInvoked(DependencyObject sender, object args)
+        {
+            await Locator.ViewModels.MessagesVm.GetMessageGroups(Locator.ViewModels.MessagesVm.Username);
+        }
     }
 }

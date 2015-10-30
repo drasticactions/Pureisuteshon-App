@@ -8,6 +8,8 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     DataContext="{Binding Source={StaticResource Locator}, Path=MessagesVm}"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:uwp="using:PullToRefresh.UWP"
+    xmlns:userControls="using:PlayStation_App.UserControls"
     mc:Ignorable="d">
 
     <Grid>
@@ -49,13 +51,34 @@
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            <ListView x:Name="MessagesList" ItemTemplate="{StaticResource MessageDetailDataTemplate}" ItemsSource="{Binding MessageCollection}">
-                <ListView.ItemContainerStyle>
-                    <Style TargetType="ListViewItem">
-                        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-                    </Style>
-                </ListView.ItemContainerStyle>
-            </ListView>
+            <uwp:PullToRefreshBox RefreshInvoked="PullToRefreshBox_OnRefreshInvoked" RefreshThreshold="100">
+                <uwp:PullToRefreshBox.TopIndicatorTemplate>
+                    <DataTemplate>
+                        <userControls:PullToRefresh PullProgress="{Binding}" Height="101"
+                                    VerticalAlignment="Bottom">
+                            <userControls:PullToRefresh.SymbolStyle>
+                                <Style TargetType="SymbolIcon">
+                                    <Setter Property="Foreground"
+                            Value="{StaticResource ApplicationSecondaryForegroundThemeBrush}" />
+                                </Style>
+                            </userControls:PullToRefresh.SymbolStyle>
+                            <userControls:PullToRefresh.TextStyle>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="Foreground"
+                            Value="{StaticResource ApplicationSecondaryForegroundThemeBrush}" />
+                                </Style>
+                            </userControls:PullToRefresh.TextStyle>
+                        </userControls:PullToRefresh>
+                    </DataTemplate>
+                </uwp:PullToRefreshBox.TopIndicatorTemplate>
+                <ListView x:Name="MessagesList" ItemTemplate="{StaticResource MessageDetailDataTemplate}" ItemsSource="{Binding MessageCollection}">
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="ListViewItem">
+                            <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                        </Style>
+                    </ListView.ItemContainerStyle>
+                </ListView>
+            </uwp:PullToRefreshBox>
             <Grid Grid.Row="1">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="45"/>

@@ -6,6 +6,8 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
     xmlns:core="using:Microsoft.Xaml.Interactions.Core"
+    xmlns:uwp="using:PullToRefresh.UWP"
+    xmlns:userControls="using:PlayStation_App.UserControls"
     DataContext="{Binding Source={StaticResource Locator}, Path=LiveFromPlayStationVm}"
     mc:Ignorable="d">
 
@@ -56,17 +58,39 @@
                 <ComboBoxItem Content="Twitch" />
                 <ComboBoxItem Content="Ustream" />
             </ComboBox>
-            <ScrollViewer  Grid.Row="1" ZoomMode="Disabled">
-                <GridView x:Name="LiveGrid" ItemClick="LiveGrid_OnItemClick" IsItemClickEnabled="True"
+
+            <uwp:PullToRefreshBox Grid.Row="1" RefreshInvoked="PullToRefreshBox_OnRefreshInvoked" RefreshThreshold="100">
+                <uwp:PullToRefreshBox.TopIndicatorTemplate>
+                    <DataTemplate>
+                        <userControls:PullToRefresh PullProgress="{Binding}" Height="101"
+                                    VerticalAlignment="Bottom">
+                            <userControls:PullToRefresh.SymbolStyle>
+                                <Style TargetType="SymbolIcon">
+                                    <Setter Property="Foreground"
+                            Value="{StaticResource ApplicationSecondaryForegroundThemeBrush}" />
+                                </Style>
+                            </userControls:PullToRefresh.SymbolStyle>
+                            <userControls:PullToRefresh.TextStyle>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="Foreground"
+                            Value="{StaticResource ApplicationSecondaryForegroundThemeBrush}" />
+                                </Style>
+                            </userControls:PullToRefresh.TextStyle>
+                        </userControls:PullToRefresh>
+                    </DataTemplate>
+                </uwp:PullToRefreshBox.TopIndicatorTemplate>
+                <ScrollViewer  Grid.Row="1" ZoomMode="Disabled">
+                    <GridView x:Name="LiveGrid" ItemClick="LiveGrid_OnItemClick" IsItemClickEnabled="True"
                 ItemsSource="{Binding LiveBroadcastCollection}" 
                 ItemTemplate="{StaticResource LiveBroadcastTemplate}">
-                    <GridView.ItemsPanel>
-                        <ItemsPanelTemplate>
-                            <WrapGrid Orientation="Horizontal" />
-                        </ItemsPanelTemplate>
-                    </GridView.ItemsPanel>
-                </GridView>
-            </ScrollViewer>
+                        <GridView.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapGrid Orientation="Horizontal" />
+                            </ItemsPanelTemplate>
+                        </GridView.ItemsPanel>
+                    </GridView>
+                </ScrollViewer>
+            </uwp:PullToRefreshBox>
         </Grid>
     </Grid>
 </Page>

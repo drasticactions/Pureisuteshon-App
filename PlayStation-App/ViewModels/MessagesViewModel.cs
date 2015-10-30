@@ -112,8 +112,11 @@ namespace PlayStation_App.ViewModels
         private readonly MessageManager _messageManager = new MessageManager();
         private readonly UserManager _userManager = new UserManager();
 
+        public MessageGroup SelectedMessageGroup { get; set; }
+
         public async Task GetMessages(MessageGroup messageGroup)
         {
+            SelectedMessageGroup = messageGroup;
             IsSelected = false;
             MessageCollection = new ObservableCollection<MessageGroupItem>();
             IsLoading = true;
@@ -171,8 +174,11 @@ namespace PlayStation_App.ViewModels
             return bitmapImage;
         }
 
+        public string Username { get; set; }
+
         public async Task GetMessageGroups(string userName)
         {
+            Username = userName;
             IsLoading = true;
             MessageGroupCollection = new ObservableCollection<MessageGroupItem>();
             
