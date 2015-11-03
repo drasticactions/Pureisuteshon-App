@@ -699,4 +699,7 @@ You can earn trophies by playing games that support them.</value>
   <data name="LiveSearchButton.Content" xml:space="preserve">
     <value>Search</value>
   </data>
+  <data name="NoSMS.Text" xml:space="preserve">
+    <value>Canot send SMS on this system.</value>
+  </data>
 </root>

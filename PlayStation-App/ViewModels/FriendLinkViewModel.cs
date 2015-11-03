@@ -35,7 +35,15 @@ namespace PlayStation_App.ViewModels
         public async Task SendFriendLinkViaSms()
         {
             IsLoading = true;
+            var result = await ChatMessageManager.GetTransportsAsync();
+            if (!result.Any())
+            {
+                IsLoading = false;
+                await ResultChecker.SendMessageDialogAsync(_loader.GetString("NoSMS/Text"), false);
+                return;
+            }
             var link = await CreateFriendLink();
+
             if (!string.IsNullOrEmpty(link))
             {
                 var chat = new ChatMessage

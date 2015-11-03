@@ -335,8 +335,8 @@
             </Grid>
         </Border>
     </DataTemplate>
-    <DataTemplate x:Key="BroadcastingDataTemplate">
-        <Border VerticalAlignment="Stretch" Height="210" HorizontalAlignment="Stretch" BorderBrush="White" BorderThickness="1">
+    <DataTemplate  x:Key="BroadcastingDataTemplate">
+        <Border MaxWidth="500" VerticalAlignment="Stretch" Height="210" HorizontalAlignment="Stretch" BorderBrush="White" BorderThickness="1">
             <Grid VerticalAlignment="Stretch">
                 <Grid.Background>
                     <SolidColorBrush Color="#C0000000" />
@@ -369,7 +369,7 @@
         </Border>
     </DataTemplate>
     <DataTemplate x:Key="TrophyActivityDataTemplate">
-        <Border VerticalAlignment="Stretch" Height="210" HorizontalAlignment="Stretch" BorderBrush="White"  BorderThickness="1">
+        <Border MaxWidth="500" VerticalAlignment="Stretch" Height="210" HorizontalAlignment="Stretch" BorderBrush="White"  BorderThickness="1">
             <Grid VerticalAlignment="Stretch">
                 <Grid.Background>
                     <SolidColorBrush Color="#C0000000" />
@@ -397,7 +397,7 @@
         </Border>
     </DataTemplate>
     <DataTemplate x:Key="MultipleTrophyActivityDataTemplate">
-        <Border VerticalAlignment="Stretch" Height="210" HorizontalAlignment="Stretch" BorderBrush="White" BorderThickness="1">
+        <Border MaxWidth="500" VerticalAlignment="Stretch" Height="210" HorizontalAlignment="Stretch" BorderBrush="White" BorderThickness="1">
             <Grid VerticalAlignment="Stretch">
                 <Grid.Background>
                     <SolidColorBrush Color="#C0000000" />
@@ -433,7 +433,7 @@
         </Border>
     </DataTemplate>
     <DataTemplate x:Key="MultiplePeoplePlayActivityDataTemplate">
-        <Border VerticalAlignment="Stretch" HorizontalAlignment="Stretch" BorderBrush="White" Height="210" BorderThickness="1">
+        <Border MaxWidth="500" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" BorderBrush="White" Height="210" BorderThickness="1">
             <Grid VerticalAlignment="Stretch">
                 <Grid.Background>
                     <SolidColorBrush Color="#C0000000" />
@@ -469,7 +469,7 @@
         </Border>
     </DataTemplate>
     <DataTemplate x:Key="ReloadActivityDataTemplate">
-        <Border VerticalAlignment="Stretch" Height="100" HorizontalAlignment="Stretch" BorderBrush="White" BorderThickness="1">
+        <Border MaxWidth="500" VerticalAlignment="Stretch" Height="100" HorizontalAlignment="Stretch" BorderBrush="White" BorderThickness="1">
             <Grid VerticalAlignment="Stretch">
                 <Grid.Background>
                     <SolidColorBrush Color="Black" Opacity=".25" />
@@ -485,7 +485,7 @@
         </Border>
     </DataTemplate>
     <DataTemplate  x:Key="PreviousActivityDataTemplate">
-        <Border VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Height="100" BorderBrush="White" BorderThickness="1">
+        <Border MaxWidth="500" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Height="100" BorderBrush="White" BorderThickness="1">
             <Grid VerticalAlignment="Stretch">
                 <Grid.Background>
                     <SolidColorBrush Color="Black" Opacity=".25" />
@@ -501,7 +501,7 @@
         </Border>
     </DataTemplate>
     <DataTemplate x:Key="LoadMoreActivityDataTemplate">
-        <Border HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Height="100" BorderBrush="White" BorderThickness="1">
+        <Border MaxWidth="500" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Height="100" BorderBrush="White" BorderThickness="1">
             <Grid VerticalAlignment="Stretch">
                 <Grid.Background>
                     <SolidColorBrush Color="Black" Opacity=".25" />
@@ -517,7 +517,7 @@
         </Border>
     </DataTemplate>
     <DataTemplate x:Key="ProfilePicDataTemplate">
-        <Border VerticalAlignment="Stretch" Height="100" HorizontalAlignment="Stretch" BorderBrush="White" BorderThickness="1">
+        <Border MaxWidth="500" VerticalAlignment="Stretch" Height="100" HorizontalAlignment="Stretch" BorderBrush="White" BorderThickness="1">
             <Grid VerticalAlignment="Stretch">
                 <Grid.Background>
                     <SolidColorBrush Color="#CBDBDEE7" />
@@ -535,7 +535,7 @@
         </Border>
     </DataTemplate>
     <DataTemplate x:Key="FriendedDataTemplate">
-        <Border VerticalAlignment="Stretch" Height="100" HorizontalAlignment="Stretch" BorderBrush="White" BorderThickness="1">
+        <Border MaxWidth="500" VerticalAlignment="Stretch" Height="100" HorizontalAlignment="Stretch" BorderBrush="White" BorderThickness="1">
             <Grid VerticalAlignment="Stretch">
                 <Grid.Background>
                     <SolidColorBrush Color="#CBDBDEE7" />
@@ -554,7 +554,7 @@
         </Border>
     </DataTemplate>
     <DataTemplate x:Key="SmallTrophyActivityDataTemplate">
-        <Border HorizontalAlignment="Stretch" Height="100" VerticalAlignment="Stretch" BorderBrush="White" BorderThickness="1">
+        <Border MaxWidth="500" HorizontalAlignment="Stretch" Height="100" VerticalAlignment="Stretch" BorderBrush="White" BorderThickness="1">
             <Grid VerticalAlignment="Stretch">
                 <Grid.Background>
                     <SolidColorBrush Color="#CBDBDEE7" />
@@ -572,8 +572,8 @@
             </Grid>
         </Border>
     </DataTemplate>
-    <DataTemplate x:Key="PlayedGameDataTemplate">
-        <Border HorizontalAlignment="Stretch" Height="100" VerticalAlignment="Stretch" BorderBrush="White" BorderThickness="1">
+    <DataTemplate  x:Key="PlayedGameDataTemplate">
+        <Border MaxWidth="500" HorizontalAlignment="Stretch" Height="100" VerticalAlignment="Stretch" BorderBrush="White" BorderThickness="1">
             <Grid VerticalAlignment="Stretch">
                 <Grid.Background>
                     <SolidColorBrush Color="#CBDBDEE7" />
@@ -592,7 +592,7 @@
         </Border>
     </DataTemplate>
     <DataTemplate x:Key="StoreActivityDataTemplate">
-        <Border HorizontalAlignment="Stretch" Height="210" VerticalAlignment="Stretch" BorderBrush="White" BorderThickness="1">
+        <Border MaxWidth="500" HorizontalAlignment="Stretch" Height="210" VerticalAlignment="Stretch" BorderBrush="White" BorderThickness="1">
             <Grid VerticalAlignment="Stretch">
                 <Grid.Background>
                     <SolidColorBrush Color="#CBDBDEE7" />
@@ -618,6 +618,8 @@
             </Grid>
         </Border>
     </DataTemplate>
+    
+    
     <Style x:Key="SymbolButton" TargetType="ToggleButton">
         <Setter Property="Background" Value="{ThemeResource ToggleButtonBackgroundThemeBrush}"/>
         <Setter Property="Foreground" Value="{ThemeResource ToggleButtonForegroundThemeBrush}"/>

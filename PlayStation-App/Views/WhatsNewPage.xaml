@@ -60,7 +60,7 @@
                 <GridView.ItemContainerStyle>
                     <Style TargetType="GridViewItem">
                         <Setter Property="Margin" Value="5" />
-                        <Setter Property="Width" Value="290" />
+                        <Setter Property="MinWidth" Value="290" />
                         <Setter Property="HorizontalContentAlignment" Value="Stretch" />
                     </Style>
                 </GridView.ItemContainerStyle>

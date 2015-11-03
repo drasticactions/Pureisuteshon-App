@@ -483,4 +483,7 @@
   <data name="LiveSearchButton.Content" xml:space="preserve">
     <value>検索</value>
   </data>
+  <data name="NoSMS.Text" xml:space="preserve">
+    <value>SMSを送信できませんでした。</value>
+  </data>
 </root>
