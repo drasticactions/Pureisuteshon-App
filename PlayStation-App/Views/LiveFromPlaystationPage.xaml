@@ -20,7 +20,7 @@
             <CommandBar.Background>
                 <SolidColorBrush Color="#DBDEE7" Opacity="0.15" />
             </CommandBar.Background>
-            <AppBarButton Label="検索">
+            <AppBarButton x:Uid="LiveSearch" Label="検索">
                 <AppBarButton.Icon>
                     <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE094;"/>
                 </AppBarButton.Icon>
@@ -28,7 +28,7 @@
                     <Flyout>
                         <StackPanel Width="300">
                             <TextBox Margin="5" Text="{Binding SearchString, Mode=TwoWay}"/>
-                            <Button Margin="5" Content="検索">
+                            <Button x:Uid="LiveSearchButton" Margin="5" Content="検索">
                                 <interactivity:Interaction.Behaviors>
                                     <core:EventTriggerBehavior EventName="Click">
                                         <core:InvokeCommandAction Command="{Binding SearchLiveList}" />

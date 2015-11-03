@@ -477,4 +477,10 @@
   <data name="ReleaseTextBox.Text" xml:space="preserve">
     <value>離して更新</value>
   </data>
+  <data name="LiveSearch.Label" xml:space="preserve">
+    <value>検索</value>
+  </data>
+  <data name="LiveSearchButton.Content" xml:space="preserve">
+    <value>検索</value>
+  </data>
 </root>

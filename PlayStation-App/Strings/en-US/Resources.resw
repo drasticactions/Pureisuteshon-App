@@ -693,4 +693,10 @@ You can earn trophies by playing games that support them.</value>
   <data name="ReleaseTextBox.Text" xml:space="preserve">
     <value>Release to Refresh</value>
   </data>
+  <data name="LiveSearch.Label" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="LiveSearchButton.Content" xml:space="preserve">
+    <value>Search</value>
+  </data>
 </root>
