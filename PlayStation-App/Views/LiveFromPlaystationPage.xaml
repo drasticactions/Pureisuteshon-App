@@ -83,9 +83,14 @@
                     <GridView x:Name="LiveGrid" ItemClick="LiveGrid_OnItemClick" IsItemClickEnabled="True"
                 ItemsSource="{Binding LiveBroadcastCollection}" 
                 ItemTemplate="{StaticResource LiveBroadcastTemplate}">
+                        <GridView.ItemContainerStyle>
+                            <Style TargetType="GridViewItem">
+                                <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                            </Style>
+                        </GridView.ItemContainerStyle>
                         <GridView.ItemsPanel>
                             <ItemsPanelTemplate>
-                                <WrapGrid Orientation="Horizontal" />
+                                <VariableSizedWrapGrid Orientation="Horizontal" />
                             </ItemsPanelTemplate>
                         </GridView.ItemsPanel>
                     </GridView>

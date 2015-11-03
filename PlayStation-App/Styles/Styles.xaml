@@ -99,7 +99,7 @@
         </Grid>
     </DataTemplate>
     <DataTemplate x:Key="LiveBroadcastTemplate">
-        <Border Width="300" Height="300" Margin="5" BorderBrush="White" BorderThickness="1">
+        <Border MaxWidth="350" Height="300" Margin="5" BorderBrush="White" BorderThickness="1">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="180" />
