@@ -61,12 +61,12 @@ namespace PlayStation_App.ViewModels
                     Name = loader.GetString("Home/Text"),
                     Command = new NavigateToWhatsNewPage()
                 },
-                new MenuItem()
-                {
-                    Icon = "/Assets/Icons/Event.png",
-                    Name = loader.GetString("Events/Text"),
-                    Command = new NavigateToEventsPageCommand()
-                },
+                //new MenuItem()
+                //{
+                //    Icon = "/Assets/Icons/Event.png",
+                //    Name = loader.GetString("Events/Text"),
+                //    Command = new NavigateToEventsPageCommand()
+                //},
                 new MenuItem()
                 {
                     Icon = "/Assets/Icons/Friends.png",
