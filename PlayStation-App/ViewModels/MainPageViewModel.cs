@@ -14,6 +14,7 @@ using PlayStation_App.Commands.Trophies;
 using PlayStation_App.Common;
 using PlayStation_App.Models;
 using PlayStation_App.Models.Authentication;
+using PlayStation_App.Tools;
 
 namespace PlayStation_App.ViewModels
 {
@@ -48,6 +49,18 @@ namespace PlayStation_App.ViewModels
         private void PopulateLoginMenu()
         {
             MenuItems = new List<MenuItem>();
+        }
+
+        private bool _isSplitViewPaneOpen;
+
+        public bool IsSplitViewOpen
+        {
+            get { return _isSplitViewPaneOpen; }
+            set
+            {
+                SetProperty(ref _isSplitViewPaneOpen, value);
+                OnPropertyChanged();
+            }
         }
 
         public void PopulateMenu()
@@ -104,6 +117,8 @@ namespace PlayStation_App.ViewModels
                     Command = new NavigateToSelectAccountCommand()
                 }
             };
+            SwipeableSplitView?.UpdateLayout();
+            SwipeableSplitView?.UpdateMenuList();
         }
         private AccountUser _currentUser;
 
@@ -116,6 +131,8 @@ namespace PlayStation_App.ViewModels
                 OnPropertyChanged();
             }
         }
+
+        public SwipeableSplitView SwipeableSplitView { get; set; }
 
         public LoadFriendsPageWithDetail LoadFriendsPageWithDetail { get; set; } = new LoadFriendsPageWithDetail();
 

@@ -254,6 +254,7 @@
     <Compile Include="Tools\ScrollingCollection\RecentActivityScrollingCollection.cs" />
     <Compile Include="Tools\ScrollingCollection\FriendScrollingCollection.cs" />
     <Compile Include="Tools\ScrollingCollection\TrophyScrollingCollection.cs" />
+    <Compile Include="Tools\SwipeableSplitView.cs" />
     <Compile Include="Tools\TemplateSelector\RecentActivityTemplateSelector.cs" />
     <Compile Include="Models\Trophies\FromUser.cs" />
     <Compile Include="Models\Trophies\Trophy.cs" />

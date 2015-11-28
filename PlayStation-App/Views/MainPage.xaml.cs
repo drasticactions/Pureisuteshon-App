@@ -30,6 +30,7 @@ namespace PlayStation_App.Views
             this.InitializeComponent();
             App.RootFrame = MainFrame;
             App.RootFrame.Navigated += RootFrameOnNavigated;
+            Locator.ViewModels.MainPageVm.SwipeableSplitView = Splitter;
             var test3 = new CheckAndNavigateToSelectAccountCommand();
             test3.Execute(null);
         }
@@ -38,9 +39,9 @@ namespace PlayStation_App.Views
         {
             var menuItem = e.ClickedItem as MenuItem;
             menuItem?.Command.Execute(null);
-            if (Splitter.IsPaneOpen)
+            if (Splitter.IsSwipeablePaneOpen)
             {
-                Splitter.IsPaneOpen = false;
+                Splitter.IsSwipeablePaneOpen = false;
             }
         }
 
@@ -52,7 +53,24 @@ namespace PlayStation_App.Views
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             //Splitter.DisplayMode = (Splitter.DisplayMode == SplitViewDisplayMode.Inline) ? SplitViewDisplayMode.CompactInline : SplitViewDisplayMode.Inline;
-            Splitter.IsPaneOpen = (Splitter.IsPaneOpen != true);
+            Splitter.IsSwipeablePaneOpen = (Splitter.IsSwipeablePaneOpen != true);
+        }
+
+        private void MenuSelection_Click(object sender, RoutedEventArgs e)
+        {
+            var menuListView = (ListView)sender;
+            if (menuListView.SelectedItem == null)
+            {
+                return;
+            }
+
+            var menuItem = menuListView.SelectedItem as MenuItem;
+            menuItem?.Command.Execute(null);
+            if (Splitter.IsSwipeablePaneOpen)
+            {
+                Splitter.IsSwipeablePaneOpen = false;
+            }
+            menuListView.SelectedItem = null;
         }
     }
 }

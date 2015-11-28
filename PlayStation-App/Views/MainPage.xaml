@@ -6,6 +6,7 @@
     DataContext="{Binding Source={StaticResource Locator}, Path=MainPageVm}"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:tools="using:PlayStation_App.Tools"
     mc:Ignorable="d">
 
     <Grid>
@@ -43,11 +44,11 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <SplitView Grid.Row="0" x:Name="Splitter" Opacity=".95" VerticalAlignment="Stretch">
+        <tools:SwipeableSplitView  IsSwipeablePaneOpen="{Binding IsSplitViewPaneOpen, Mode=TwoWay}" Grid.Row="0" x:Name="Splitter" Opacity=".95" VerticalAlignment="Stretch">
             <SplitView.Pane>
                 <RelativePanel  VerticalAlignment="Stretch">
                     <ListView ItemClick="MenuClick" RelativePanel.AlignTopWithPanel="True" RelativePanel.Above="FooterPanel" ItemsSource="{Binding MenuItems}" IsItemClickEnabled="{Binding IsLoggedIn}" 
-                 SelectionMode="None" HorizontalAlignment="Left"
+                 SelectionMode="Single" HorizontalAlignment="Left" SelectionChanged="MenuSelection_Click"
                  VerticalAlignment="Top" Margin="-2,40,0,0" >
                         <ListView.ItemTemplate>
                             <DataTemplate>
@@ -81,7 +82,7 @@
             <SplitView.Content>
                 <Frame x:Name="MainFrame"/>
             </SplitView.Content>
-        </SplitView>
+        </tools:SwipeableSplitView>
         <ToggleButton x:Name="MenuButton" Grid.Column="0" Style="{StaticResource SymbolButton}" Click="Button_Click" VerticalAlignment="Top" Foreground="White" Margin="-9,-1,0,0">
             <ToggleButton.Content>
                 <Border Background="Transparent" Width="40" Height="40">
