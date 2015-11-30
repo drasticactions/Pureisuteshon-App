@@ -5,7 +5,7 @@
 
 PSX.Appx is a UWP app that lets you connect to the PSN on any of your devices running Windows 10. Right now it's pretty basic, supporting the following.
 
-![Trophy list](http://i.imgur.com/pzRVBK6.jpg "Trophy List")
+![Trophy list](http://i.imgur.com/Nfftuj6.png "Trophy List")
 
 * Viewing Recent Activity Feeds
 * Messaging friends via text
