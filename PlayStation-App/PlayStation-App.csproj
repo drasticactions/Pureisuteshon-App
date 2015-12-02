@@ -133,6 +133,7 @@
     <None Include="PlayStation-App_TemporaryKey.pfx" />
     <None Include="project.json" />
     <None Include="Service References\Application Insights\ConnectedService.json" />
+    <PRIResource Include="Strings\id-ID\Resources.resw" />
     <PRIResource Include="Strings\en-US\Resources.resw" />
     <PRIResource Include="Strings\ja-JP\Resources.resw">
       <SubType>Designer</SubType>
