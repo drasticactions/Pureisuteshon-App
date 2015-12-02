@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
+using Windows.ApplicationModel.Resources.Core;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Core;
@@ -73,6 +74,9 @@ namespace PlayStation_App
 #endif
             SystemNavigationManager.GetForCurrentView().BackRequested += BackPressed;
             RootFrame = Window.Current.Content as Frame;
+
+            // Used for testing translations
+            // Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride = "id-ID";
 
             // Do not repeat app initialization when the Window already has content,
             // just ensure that the window is active
