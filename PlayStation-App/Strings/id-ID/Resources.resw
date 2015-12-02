@@ -1,0 +1,708 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AboutMe.Text" xml:space="preserve">
+    <value>Tentang Aku:</value>
+  </data>
+  <data name="AboutMePivot.Header" xml:space="preserve">
+    <value>Info</value>
+  </data>
+  <data name="AboutMeCategory.Text" xml:space="preserve">
+    <value>Introduksi</value>
+  </data>
+  <data name="Accept.Text" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="AddAsFriend.Content" xml:space="preserve">
+    <value>Tambahkan Sebagai Teman</value>
+  </data>
+  <data name="AppBarButtonText.Text" xml:space="preserve">
+    <value>tambahkan</value>
+  </data>
+  <data name="AppBarMenuItemText.Text" xml:space="preserve">
+    <value>Menu</value>
+  </data>
+  <data name="ApplicationTitle.Text" xml:space="preserve">
+    <value>PS</value>
+  </data>
+  <data name="BatchFriendInvite.Text" xml:space="preserve">
+    <value>Ajak Banyak Teman Sekaligus</value>
+  </data>
+  <data name="CancelFriendRequest.Content" xml:space="preserve">
+    <value>Batalkan Permohonan Pertemanan</value>
+  </data>
+  <data name="CancelNameRequest.Content" xml:space="preserve">
+    <value>Batalkan Permohonan Nama</value>
+  </data>
+  <data name="CancelNameRequestError.Text" xml:space="preserve">
+    <value>Tidak dapat membatalkan permohonan nama.</value>
+  </data>
+  <data name="Conversation.Text" xml:space="preserve">
+    <value>Obrolan</value>
+  </data>
+  <data name="Delete.Text" xml:space="preserve">
+    <value>Hapus</value>
+  </data>
+  <data name="DeleteFriendRequest.Content" xml:space="preserve">
+    <value>Hapus Permohonan Pertemanan</value>
+  </data>
+  <data name="DeleteNameRequest.Content" xml:space="preserve">
+    <value>Hapus Permohonan Nama</value>
+  </data>
+  <data name="DislikeButton.Text" xml:space="preserve">
+    <value>Sebal</value>
+  </data>
+  <data name="ElapsedTime.Text" xml:space="preserve">
+    <value>Selama</value>
+  </data>
+  <data name="FriendRequest.Content" xml:space="preserve">
+    <value>Kirim Permohonan Pertemanan</value>
+  </data>
+  <data name="FriendRequestAlert.Text" xml:space="preserve">
+    <value>Apakah kamu mau menambahkan dia sebagai Teman?</value>
+  </data>
+  <data name="FriendRequestConfirm.Text" xml:space="preserve">
+    <value>Permohonan Pertemanan akan dikirim ke pemain ini.</value>
+  </data>
+  <data name="FriendRequestReceived.Content" xml:space="preserve">
+    <value>Permohonan Pertemanan (Diterima)</value>
+  </data>
+  <data name="FriendRequestSent.Content" xml:space="preserve">
+    <value>Permohonan Pertemanan (Terkirim)</value>
+  </data>
+  <data name="FriendSendError.Text" xml:space="preserve">
+    <value>Gagal mengirim Permohonan Pertemanan.</value>
+  </data>
+  <data name="FriendsFilterAll.Content" xml:space="preserve">
+    <value>Semua</value>
+  </data>
+  <data name="FriendsFilterBlockedPlayer.Content" xml:space="preserve">
+    <value>Daftar Hitam Pemain</value>
+  </data>
+  <data name="FriendsFilterNameRequestReceived.Content" xml:space="preserve">
+    <value>Permohonan Nama (Diterima)</value>
+  </data>
+  <data name="FriendsFilterNameRequestSent.Content" xml:space="preserve">
+    <value>Permohonan Nama (Terkirim)</value>
+  </data>
+  <data name="FriendsFilterOnline.Content" xml:space="preserve">
+    <value>Online</value>
+  </data>
+  <data name="FriendsFilterPlayersMet.Content" xml:space="preserve">
+    <value>Pernah Ketemu</value>
+  </data>
+  <data name="FriendsFilterRequestReceived.Content" xml:space="preserve">
+    <value>Permohonan Pertemanan (Diterima)</value>
+  </data>
+  <data name="FriendsFilterRequestSent.Content" xml:space="preserve">
+    <value>Permohonan Pertemanan (Terkirim)</value>
+  </data>
+  <data name="FriendsPivot.Text" xml:space="preserve">
+    <value>Teman</value>
+  </data>
+  <data name="FriendTotal.Text" xml:space="preserve">
+    <value>{0} Teman </value>
+    <comment>{0} adalah jumlah teman keseluruhan.</comment>
+  </data>
+  <data name="FromUser.Text" xml:space="preserve">
+    <value>Dari</value>
+  </data>
+  <data name="GenericError.Text" xml:space="preserve">
+    <value>(^_^)v Sori bro, ada error!</value>
+  </data>
+  <data name="HiddenTrophy.Text" xml:space="preserve">
+    <value>Piala Tersembunyi</value>
+  </data>
+  <data name="Image.Text" xml:space="preserve">
+    <value>Gambar</value>
+  </data>
+  <data name="Invitations.Text" xml:space="preserve">
+    <value>Invitasi</value>
+  </data>
+  <data name="InvitationsPivot.Header" xml:space="preserve">
+    <value>Invitasi</value>
+  </data>
+  <data name="Invitation_singular.Text" xml:space="preserve">
+    <value>Invitasi</value>
+  </data>
+  <data name="JoinInvitationExpired.Text" xml:space="preserve">
+    <value>Invitasi ini sudah kadaluarsa.</value>
+  </data>
+  <data name="LangChineseSimplified.Text" xml:space="preserve">
+    <value>Chinese (Simplified)</value>
+  </data>
+  <data name="LangChineseTraditional.Text" xml:space="preserve">
+    <value>Chinese (Traditional)</value>
+  </data>
+  <data name="LangDanish.Text" xml:space="preserve">
+    <value>Danish</value>
+  </data>
+  <data name="LangDutch.Text" xml:space="preserve">
+    <value>Dutch</value>
+  </data>
+  <data name="LangEnglishUK.Text" xml:space="preserve">
+    <value>English (United Kingdom)</value>
+  </data>
+  <data name="LangEnglishUS.Text" xml:space="preserve">
+    <value>English (United States)</value>
+  </data>
+  <data name="LangFinnish.Text" xml:space="preserve">
+    <value>Finnish</value>
+  </data>
+  <data name="LangFrench.Text" xml:space="preserve">
+    <value>French</value>
+  </data>
+  <data name="LangGerman.Text" xml:space="preserve">
+    <value>German</value>
+  </data>
+  <data name="LangItalian.Text" xml:space="preserve">
+    <value>Italian</value>
+  </data>
+  <data name="LangIndonesian.Text" xml:space="preserve">
+    <value>Indonesian</value>
+  </data>
+  <data name="LangJapanese.Text" xml:space="preserve">
+    <value>Japanese</value>
+  </data>
+  <data name="LangKorean.Text" xml:space="preserve">
+    <value>Korean</value>
+  </data>
+  <data name="LangNorwegian.Text" xml:space="preserve">
+    <value>Norwegian</value>
+  </data>
+  <data name="LangPolish.Text" xml:space="preserve">
+    <value>Polish</value>
+  </data>
+  <data name="LangPortugueseBrazil.Text" xml:space="preserve">
+    <value>Portuguese (Brazil)</value>
+  </data>
+  <data name="LangPortuguesePortugal.Text" xml:space="preserve">
+    <value>Portuguese (Portugal)</value>
+  </data>
+  <data name="LangRussian.Text" xml:space="preserve">
+    <value>Russian</value>
+  </data>
+  <data name="LangSpanishLA.Text" xml:space="preserve">
+    <value>Spanish (Latin America)</value>
+  </data>
+  <data name="LangSpanishSpain.Text" xml:space="preserve">
+    <value>Spanish (Spain)</value>
+  </data>
+  <data name="LangSwedish.Text" xml:space="preserve">
+    <value>Swedish</value>
+  </data>
+  <data name="LangTurkish.Text" xml:space="preserve">
+    <value>Turkish</value>
+  </data>
+  <data name="LikeButton.Text" xml:space="preserve">
+    <value>Suka</value>
+  </data>
+  <data name="LiveFromPlaystation.Text" xml:space="preserve">
+    <value>Live dari PlayStation</value>
+  </data>
+  <data name="LiveTileSupport.Text" xml:space="preserve">
+    <value>Dukunga Live Tile</value>
+  </data>
+  <data name="Login.Text" xml:space="preserve">
+    <value>Masuk</value>
+  </data>
+  <data name="Logout.Text" xml:space="preserve">
+    <value>Keluar</value>
+  </data>
+  <data name="LogoutBar.Label" xml:space="preserve">
+    <value>Keluar</value>
+  </data>
+  <data name="MessagesPivot.Text" xml:space="preserve">
+    <value>Pesan</value>
+  </data>
+  <data name="MessagePivot.Label" xml:space="preserve">
+    <value>Pesan</value>
+  </data>
+  <data name="MyLanguages.Text" xml:space="preserve">
+    <value>Bahasa:</value>
+  </data>
+  <data name="NameRequestAlert.Text" xml:space="preserve">
+    <value>Apakah kamu mau tunjukkan nama aslimu ke orang ini?</value>
+  </data>
+  <data name="NameRequestReceived.Text" xml:space="preserve">
+    <value>Permohonan Nama (diterima)</value>
+  </data>
+  <data name="NameRequestSendError.Text" xml:space="preserve">
+    <value>Tidak dapat mengirim permohonn nama.</value>
+  </data>
+  <data name="NameRequestSent.Text" xml:space="preserve">
+    <value>Permohonan Nama (Terkirim)</value>
+  </data>
+  <data name="NoActivities.Text" xml:space="preserve">
+    <value>Tidak ada aktivitas.</value>
+  </data>
+  <data name="NoFriends.Text" xml:space="preserve">
+    <value>Tidak ada Teman.</value>
+  </data>
+  <data name="NoGameAlert.Text" xml:space="preserve">
+    <value>Tidak ada kabar game baru.</value>
+  </data>
+  <data name="NoInvites.Text" xml:space="preserve">
+    <value>Tidak ada invitasi.</value>
+  </data>
+  <data name="NoMessages.Text" xml:space="preserve">
+    <value>Tidak ada pesan baru.</value>
+  </data>
+  <data name="NoNotifications.Text" xml:space="preserve">
+    <value>Tidak ada notifikasi baru.</value>
+  </data>
+  <data name="NoPlayers.Text" xml:space="preserve">
+    <value>Tidak ada pemain ditemukan.</value>
+  </data>
+  <data name="NotificationsHeader.Text" xml:space="preserve">
+    <value>Notifikasi</value>
+  </data>
+  <data name="NotificationSupport.Text" xml:space="preserve">
+    <value>Dukungan Notifikasi</value>
+  </data>
+  <data name="Notification_invited.Text" xml:space="preserve">
+    <value>Kamu mendapat invitasi.</value>
+  </data>
+  <data name="NoTrophyInfo.Text" xml:space="preserve">
+    <value>Tidak ada piala.
+Kamu bisa meraih piala dengan memainkan game yang punya piala.</value>
+  </data>
+  <data name="NowPlaying.Text" xml:space="preserve">
+    <value>Sedang Dimainkan</value>
+  </data>
+  <data name="NumberOfPlayers.Text" xml:space="preserve">
+    <value>Jumlah Pemain</value>
+  </data>
+  <data name="PlayersJoinedParty.Text" xml:space="preserve">
+    <value>Pemain memasuki Party</value>
+  </data>
+  <data name="PlayersJoinedSession.Text" xml:space="preserve">
+    <value>Pemain sedang bergabung</value>
+  </data>
+  <data name="ProfileHeader.Text" xml:space="preserve">
+    <value>Profil</value>
+  </data>
+  <data name="Profile.Label" xml:space="preserve">
+    <value>Profil</value>
+  </data>
+  <data name="RealNameRequest.Text" xml:space="preserve">
+    <value>Kirim Permohonan Nama</value>
+  </data>
+  <data name="RecentActivity.Text" xml:space="preserve">
+    <value>Aktivitas Terbaru</value>
+  </data>
+  <data name="RecentActivities.Header" xml:space="preserve">
+    <value>Aktivitas Terbaru</value>
+  </data>
+  <data name="Refresh.Text" xml:space="preserve">
+    <value>Perbarui</value>
+  </data>
+  <data name="RefreshBar.Label" xml:space="preserve">
+    <value>Perbarui</value>
+  </data>
+  <data name="RemoveFromFriends.Text" xml:space="preserve">
+    <value>Hapus dari Pertemanan</value>
+  </data>
+  <data name="ResourceFlowDirection.Text" xml:space="preserve">
+    <value>LeftToRight</value>
+    <comment>Controls the FlowDirection for all elements in the RootFrame. Set to the traditional direction of this resource file's language</comment>
+  </data>
+  <data name="ResourceLanguage.Text" xml:space="preserve">
+    <value>id-ID</value>
+    <comment>Controls the Language and ensures that the font for all elements in the RootFrame aligns with the app's language. Set to the language code of this resource file's language.</comment>
+  </data>
+  <data name="RevealName.Text" xml:space="preserve">
+    <value>Tunjukkan Nama</value>
+  </data>
+  <data name="Search.Text" xml:space="preserve">
+    <value>Cari</value>
+  </data>
+  <data name="SearchButtonBar.Content" xml:space="preserve">
+    <value>Cari</value>
+  </data>
+  <data name="SearchButton.Text" xml:space="preserve">
+    <value>Cari</value>
+  </data>
+  <data name="SearchBar.Label" xml:space="preserve">
+    <value>Cari</value>
+  </data>
+  <data name="SendButton.Content" xml:space="preserve">
+    <value>Kirim</value>
+  </data>
+  <data name="SendMessage.Content" xml:space="preserve">
+    <value>Kirim Pesan</value>
+  </data>
+  <data name="Settings.Text" xml:space="preserve">
+    <value>Pengaturan</value>
+  </data>
+  <data name="Status.Text" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="ToMessageHeader.Text" xml:space="preserve">
+    <value>Ke {0}</value>
+    <comment>{0} adalah orang yang dikirimi pesan</comment>
+  </data>
+  <data name="TotalFriends.Text" xml:space="preserve">
+    <value>{0} Teman</value>
+    <comment>{0} represents the total amount of friends.</comment>
+  </data>
+  <data name="TrophyBronze.Text" xml:space="preserve">
+    <value>Perunggu</value>
+  </data>
+  <data name="TrophyCommon.Text" xml:space="preserve">
+    <value>Umum</value>
+  </data>
+  <data name="TrophyDetail.Text" xml:space="preserve">
+    <value>Detail</value>
+  </data>
+  <data name="TrophyEarned.Text" xml:space="preserve">
+    <value>Dimiliki</value>
+  </data>
+  <data name="TrophyEarnedDate.Text" xml:space="preserve">
+    <value>Tanggal Dimiliki</value>
+  </data>
+  <data name="TrophyGold.Text" xml:space="preserve">
+    <value>Emas</value>
+  </data>
+  <data name="TrophyGrade.Text" xml:space="preserve">
+    <value>Peringkat</value>
+  </data>
+  <data name="TrophyHeader.Text" xml:space="preserve">
+    <value>Piala</value>
+  </data>
+  <data name="TrophyPivot.Header" xml:space="preserve">
+    <value>Piala</value>
+  </data>
+  <data name="TrophyHidden.Text" xml:space="preserve">
+    <value>Rahasia</value>
+  </data>
+  <data name="TrophyNotEarned.Text" xml:space="preserve">
+    <value>Belum Didapatkan</value>
+  </data>
+  <data name="TrophyPlatinum.Text" xml:space="preserve">
+    <value>Platinum</value>
+  </data>
+  <data name="TrophyRare.Text" xml:space="preserve">
+    <value>Langka</value>
+  </data>
+  <data name="TrophyRarity.Text" xml:space="preserve">
+    <value>Kelagkaan</value>
+  </data>
+  <data name="TrophySilver.Text" xml:space="preserve">
+    <value>Silver</value>
+  </data>
+  <data name="TrophyStatus.Text" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="TrophyTotal.Text" xml:space="preserve">
+    <value>Total:</value>
+  </data>
+  <data name="TrophyUltraRare.Text" xml:space="preserve">
+    <value>Paling Langka</value>
+  </data>
+  <data name="TrophyVeryRare.Text" xml:space="preserve">
+    <value>Sangat Langka</value>
+  </data>
+  <data name="UserSearch.Text" xml:space="preserve">
+    <value>Cari Pengguna</value>
+  </data>
+  <data name="ViewFriendRequest.Text" xml:space="preserve">
+    <value>Lihat Permohonan Pertemanan</value>
+  </data>
+  <data name="ViewInformation.Text" xml:space="preserve">
+    <value>Lihat Informasi</value>
+  </data>
+  <data name="ViewNameRequest.Text" xml:space="preserve">
+    <value>Lihat Permohonan Nama</value>
+  </data>
+  <data name="VoiceMessage.Text" xml:space="preserve">
+    <value>Pesan Suara</value>
+  </data>
+  <data name="WhatsNew.Text" xml:space="preserve">
+    <value>Terbaru</value>
+  </data>
+  <data name="FriendPivot.Header" xml:space="preserve">
+    <value>Teman</value>
+  </data>
+  <data name="Menu.Header" xml:space="preserve">
+    <value>Menu</value>
+  </data>
+  <data name="Instructions.Text" xml:space="preserve">
+    <value>Agar bisa masuk, Internet Explorer harus diatur sebagai DEFAULT BROWSER. Setelah berhasil masuk, kamu bebas ganti web browser.</value>
+  </data>
+  <data name="AddFriendSubject.Text" xml:space="preserve">
+    <value>Apakah kamu mau jadi teman di PSN?</value>
+  </data>
+  <data name="AddFriendViaEmail.Label" xml:space="preserve">
+    <value>Tambahkan Teman via Email</value>
+  </data>
+  <data name="AddFriendViaEmail2.Text" xml:space="preserve">
+    <value>Tambahkan Teman via Email</value>
+  </data>
+  <data name="AddFriendViaSMS.Label" xml:space="preserve">
+    <value>Tambahkan Teman via SMS</value>
+  </data>
+  <data name="AddFriendViaSMS2.Text" xml:space="preserve">
+    <value>Tambahkan Teman via SMS</value>
+  </data>
+  <data name="CreateFriendRequestLink.Content" xml:space="preserve">
+    <value>Buat link permohonan pertemanan</value>
+  </data>
+  <data name="FriendRequestLinkBody.Text" xml:space="preserve">
+    <value>Kamu bisa membuat link untuk menerima permohonan pertemnan, kemudian bisa dikirim ke facebook, SMS, terserah.</value>
+  </data>
+  <data name="FriendRequestLinkNote.Text" xml:space="preserve">
+    <value>Kalau kamu membagikan link permohonan Pertemanan ke tempat yang publik, orang asing yang ngga kamu kenal bisa ngajak berteman.</value>
+  </data>
+  <data name="FriendRequestLinkTitle.Text" xml:space="preserve">
+    <value>Sebarkan link Permohonan Pertemanan</value>
+  </data>
+  <data name="InviteFriendsToPsn.Text" xml:space="preserve">
+    <value>Ajak teman ke PSN</value>
+  </data>
+  <data name="SendByEmail.Content" xml:space="preserve">
+    <value>Kirim via Email</value>
+  </data>
+  <data name="SendByText.Content" xml:space="preserve">
+    <value>Kirim via SMS</value>
+  </data>
+  <data name="UseEmailSms.Text" xml:space="preserve">
+    <value>Kirim via Email atau SMS</value>
+  </data>
+  <data name="UseEmailSmsGuide.Text" xml:space="preserve">
+    <value>Kirim permohonan Pertemanan PSN ke sahabatmu melalui email atau teks.</value>
+  </data>
+  <data name="UseEmailSmsGuideClose.Text" xml:space="preserve">
+    <value>A Friend request you send using an email or a text message will also be treated as a real-name request. If your Friend request is accepted, you and your Friend will reveal your names to each other.</value>
+  </data>
+  <data name="FriendRequestBody.Text" xml:space="preserve">
+    <value>Ayo jadi temanku di PSN!</value>
+  </data>
+  <data name="SendMeFriendRequest.Text" xml:space="preserve">
+    <value>Ajak aku sebagai teman!</value>
+  </data>
+  <data name="SentFromPlayStationApp.Text" xml:space="preserve">
+    <value>Dikirim via PSN.appx</value>
+  </data>
+  <data name="ErrorSaveImage.Text" xml:space="preserve">
+    <value>Ngga bisa simpan gambar.</value>
+  </data>
+  <data name="SaveImage.Text" xml:space="preserve">
+    <value>Simpan gambar</value>
+  </data>
+  <data name="SaveImageButton.Content" xml:space="preserve">
+    <value>Simpan</value>
+  </data>
+  <data name="ViewImage.Text" xml:space="preserve">
+    <value>Lihat Gambar</value>
+  </data>
+  <data name="ErrorText.Text" xml:space="preserve">
+    <value>Ada error:</value>
+  </data>
+  <data name="ImageSaved.Text" xml:space="preserve">
+    <value>Gambar Disimpan</value>
+  </data>
+  <data name="SuccessText.Text" xml:space="preserve">
+    <value>Pesan:</value>
+  </data>
+  <data name="AddUserAccount.Content" xml:space="preserve">
+    <value>Tambahkan Akun</value>
+  </data>
+  <data name="LoginError.Text" xml:space="preserve">
+    <value>Salah Email PSN atau password, coba lagi.</value>
+  </data>
+  <data name="Home.Text" xml:space="preserve">
+    <value>Beranda</value>
+  </data>
+  <data name="Friends.Text" xml:space="preserve">
+    <value>Teman</value>
+  </data>
+  <data name="Trophy.Text" xml:space="preserve">
+    <value>Piala</value>
+  </data>
+  <data name="Messenger.Text" xml:space="preserve">
+    <value>Pesan</value>
+  </data>
+  <data name="Live.Content" xml:space="preserve">
+    <value>Live</value>
+  </data>
+  <data name="Interactive.Content" xml:space="preserve">
+    <value>Interaktif</value>
+  </data>
+  <data name="NicoNico.Content" xml:space="preserve">
+    <value>Niconico Live</value>
+  </data>
+  <data name="Reload.Text" xml:space="preserve">
+    <value>Perbarui</value>
+  </data>
+  <data name="PreviousPage.Text" xml:space="preserve">
+    <value>Halaman Sebelumnya</value>
+  </data>
+  <data name="NextPage.Text" xml:space="preserve">
+    <value>Halaman Selanjutnya</value>
+  </data>
+  <data name="EmailAddress.PlaceholderText" xml:space="preserve">
+    <value>Alamat Email PSN</value>
+  </data>
+  <data name="Password.PlaceholderText" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="Signin.Content" xml:space="preserve">
+    <value>Masuk</value>
+  </data>
+  <data name="Signout.Text" xml:space="preserve">
+    <value>Keluar</value>
+  </data>
+  <data name="DeleteAccount.Text" xml:space="preserve">
+    <value>Hapus Akun</value>
+  </data>
+  <data name="DeleteAccountError.Text" xml:space="preserve">
+    <value>Gagal menghapus akun</value>
+  </data>
+  <data name="Events.Text" xml:space="preserve">
+    <value>Acara</value>
+  </data>
+  <data name="EventsAll.Header" xml:space="preserve">
+    <value>Semua</value>
+  </data>
+  <data name="EventsGameList.Header" xml:space="preserve">
+    <value>Koleksi Game</value>
+  </data>
+  <data name="EventsMy.Header" xml:space="preserve">
+    <value>Acaraku</value>
+  </data>
+  <data name="EventsRecommended.Header" xml:space="preserve">
+    <value>Dianjurkan</value>
+  </data>
+  <data name="PullToRefreshTextBox.Text" xml:space="preserve">
+    <value>Tarik...</value>
+  </data>
+  <data name="ReleaseTextBox.Text" xml:space="preserve">
+    <value>Lepaskan untuk memperbarui</value>
+  </data>
+  <data name="LiveSearch.Label" xml:space="preserve">
+    <value>Cari</value>
+  </data>
+  <data name="LiveSearchButton.Content" xml:space="preserve">
+    <value>Cari</value>
+  </data>
+  <data name="NoSMS.Text" xml:space="preserve">
+    <value>Tidak bisa mengirim SMS dari sistem ini.</value>
+  </data>
+</root>
