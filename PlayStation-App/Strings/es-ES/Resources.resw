@@ -1,0 +1,705 @@
+﻿﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AboutMe.Text" xml:space="preserve">
+    <value>Sobre mi:</value>
+  </data>
+  <data name="AboutMePivot.Header" xml:space="preserve">
+    <value>Información</value>
+  </data>
+  <data name="AboutMeCategory.Text" xml:space="preserve">
+    <value>Introducción</value>
+  </data>
+  <data name="Accept.Text" xml:space="preserve">
+    <value>Aceptar</value>
+  </data>
+  <data name="AddAsFriend.Content" xml:space="preserve">
+    <value>Añadir como amigo</value>
+  </data>
+  <data name="AppBarButtonText.Text" xml:space="preserve">
+    <value>Añadir</value>
+  </data>
+  <data name="AppBarMenuItemText.Text" xml:space="preserve">
+    <value>Elemento del menú</value>
+  </data>
+  <data name="ApplicationTitle.Text" xml:space="preserve">
+    <value>PS</value>
+  </data>
+  <data name="BatchFriendInvite.Text" xml:space="preserve">
+    <value>Batch Friend Invite</value>
+  </data>
+  <data name="CancelFriendRequest.Content" xml:space="preserve">
+    <value>Cancelar petición de amigo</value>
+  </data>
+  <data name="CancelNameRequest.Content" xml:space="preserve">
+    <value>Cancelar solicitud de nombre</value>
+  </data>
+  <data name="CancelNameRequestError.Text" xml:space="preserve">
+    <value>No se puede cancelar la solicitud de nombre.</value>
+  </data>
+  <data name="Conversation.Text" xml:space="preserve">
+    <value>Conversación</value>
+  </data>
+  <data name="Delete.Text" xml:space="preserve">
+    <value>Eliminar</value>
+  </data>
+  <data name="DeleteFriendRequest.Content" xml:space="preserve">
+    <value>Eliminar petición de amigo</value>
+  </data>
+  <data name="DeleteNameRequest.Content" xml:space="preserve">
+    <value>Eliminar petición de nombre</value>
+  </data>
+  <data name="DislikeButton.Text" xml:space="preserve">
+    <value>Dislike</value>
+  </data>
+  <data name="ElapsedTime.Text" xml:space="preserve">
+    <value>Tiempo transcurrido</value>
+  </data>
+  <data name="FriendRequest.Content" xml:space="preserve">
+    <value>Enviar petición de amigo</value>
+  </data>
+  <data name="FriendRequestAlert.Text" xml:space="preserve">
+    <value>Quieres añadir a este jugador como amigo?</value>
+  </data>
+  <data name="FriendRequestConfirm.Text" xml:space="preserve">
+    <value>Una solicitud de amistad será enviada a este jugador.</value>
+  </data>
+  <data name="FriendRequestReceived.Content" xml:space="preserve">
+    <value>Petición de amistad (Recibido)</value>
+  </data>
+  <data name="FriendRequestSent.Content" xml:space="preserve">
+    <value>Petición de amistad (Enviado)</value>
+  </data>
+  <data name="FriendSendError.Text" xml:space="preserve">
+    <value>No pudo mandarse la petición de amistad.</value>
+  </data>
+  <data name="FriendsFilterAll.Content" xml:space="preserve">
+    <value>Todo</value>
+  </data>
+  <data name="FriendsFilterBlockedPlayer.Content" xml:space="preserve">
+    <value>Jugadores Bloqueados</value>
+  </data>
+  <data name="FriendsFilterNameRequestReceived.Content" xml:space="preserve">
+    <value>Petición de nombre (Recibido)</value>
+  </data>
+  <data name="FriendsFilterNameRequestSent.Content" xml:space="preserve">
+    <value>Petición de nombre (Enviado)</value>
+  </data>
+  <data name="FriendsFilterOnline.Content" xml:space="preserve">
+    <value>En Línea</value>
+  </data>
+  <data name="FriendsFilterPlayersMet.Content" xml:space="preserve">
+    <value>Players Met</value>
+  </data>
+  <data name="FriendsFilterRequestReceived.Content" xml:space="preserve">
+    <value>Peticiones de amistad (Recibido)</value>
+  </data>
+  <data name="FriendsFilterRequestSent.Content" xml:space="preserve">
+    <value>Peticiones de amistad (Enviado)</value>
+  </data>
+  <data name="FriendsPivot.Text" xml:space="preserve">
+    <value>Amigos</value>
+  </data>
+  <data name="FriendTotal.Text" xml:space="preserve">
+    <value>{0} Amigos</value>
+    <comment>{0} represents total number of friends.</comment>
+  </data>
+  <data name="FromUser.Text" xml:space="preserve">
+    <value>De</value>
+  </data>
+  <data name="GenericError.Text" xml:space="preserve">
+    <value>(o_0)Ha ocurrido un error(O_o)</value>
+  </data>
+  <data name="HiddenTrophy.Text" xml:space="preserve">
+    <value>Trofeo Oculto</value>
+  </data>
+  <data name="Image.Text" xml:space="preserve">
+    <value>Imagen</value>
+  </data>
+  <data name="Invitations.Text" xml:space="preserve">
+    <value>Invitaciones</value>
+  </data>
+  <data name="InvitationsPivot.Header" xml:space="preserve">
+    <value>Invitaciones</value>
+  </data>
+  <data name="Invitation_singular.Text" xml:space="preserve">
+    <value>Invitacion</value>
+  </data>
+  <data name="JoinInvitationExpired.Text" xml:space="preserve">
+    <value>Esta Invitación a caducado.</value>
+  </data>
+  <data name="LangChineseSimplified.Text" xml:space="preserve">
+    <value>Chino (Simplificado)</value>
+  </data>
+  <data name="LangChineseTraditional.Text" xml:space="preserve">
+    <value>Chino (Tradicional)</value>
+  </data>
+  <data name="LangDanish.Text" xml:space="preserve">
+    <value>Danés</value>
+  </data>
+  <data name="LangDutch.Text" xml:space="preserve">
+    <value>Holandés</value>
+  </data>
+  <data name="LangEnglishUK.Text" xml:space="preserve">
+    <value>Inglés (Reino Unido)</value>
+  </data>
+  <data name="LangEnglishUS.Text" xml:space="preserve">
+    <value>Inglés (Estados Unidos)</value>
+  </data>
+  <data name="LangFinnish.Text" xml:space="preserve">
+    <value>Finlandés</value>
+  </data>
+  <data name="LangFrench.Text" xml:space="preserve">
+    <value>Francés</value>
+  </data>
+  <data name="LangGerman.Text" xml:space="preserve">
+    <value>Alemán</value>
+  </data>
+  <data name="LangItalian.Text" xml:space="preserve">
+    <value>Italiano</value>
+  </data>
+  <data name="LangJapanese.Text" xml:space="preserve">
+    <value>Japonés</value>
+  </data>
+  <data name="LangKorean.Text" xml:space="preserve">
+    <value>Coreano</value>
+  </data>
+  <data name="LangNorwegian.Text" xml:space="preserve">
+    <value>Noruego</value>
+  </data>
+  <data name="LangPolish.Text" xml:space="preserve">
+    <value>Polaco</value>
+  </data>
+  <data name="LangPortugueseBrazil.Text" xml:space="preserve">
+    <value>Portugués (Brasil)</value>
+  </data>
+  <data name="LangPortuguesePortugal.Text" xml:space="preserve">
+    <value>Portugués (Portugal)</value>
+  </data>
+  <data name="LangRussian.Text" xml:space="preserve">
+    <value>Ruso</value>
+  </data>
+  <data name="LangSpanishLA.Text" xml:space="preserve">
+    <value>Español (Latinoamerica)</value>
+  </data>
+  <data name="LangSpanishSpain.Text" xml:space="preserve">
+    <value>Español (España)</value>
+  </data>
+  <data name="LangSwedish.Text" xml:space="preserve">
+    <value>Sueco</value>
+  </data>
+  <data name="LangTurkish.Text" xml:space="preserve">
+    <value>Turco</value>
+  </data>
+  <data name="LikeButton.Text" xml:space="preserve">
+    <value>Me gusta</value>
+  </data>
+  <data name="LiveFromPlaystation.Text" xml:space="preserve">
+    <value>Live From PlayStation</value>
+  </data>
+  <data name="LiveTileSupport.Text" xml:space="preserve">
+    <value>Live Tile Support</value>
+  </data>
+  <data name="Login.Text" xml:space="preserve">
+    <value>Iniciar Sesión</value>
+  </data>
+  <data name="Logout.Text" xml:space="preserve">
+    <value>Cerrar Sesión</value>
+  </data>
+  <data name="LogoutBar.Label" xml:space="preserve">
+    <value>Cerrar Sesión</value>
+  </data>
+  <data name="MessagesPivot.Text" xml:space="preserve">
+    <value>Mensajes</value>
+  </data>
+  <data name="MessagePivot.Label" xml:space="preserve">
+    <value>Mensajes</value>
+  </data>
+  <data name="MyLanguages.Text" xml:space="preserve">
+    <value>Mis Idiomas:</value>
+  </data>
+  <data name="NameRequestAlert.Text" xml:space="preserve">
+    <value>¿Quieres revelar tu nombre a este amigo?</value>
+  </data>
+  <data name="NameRequestReceived.Text" xml:space="preserve">
+    <value>Socitud de Nombre (Recibido)</value>
+  </data>
+  <data name="NameRequestSendError.Text" xml:space="preserve">
+    <value>No se puede enviar la solicitud de nombre.</value>
+  </data>
+  <data name="NameRequestSent.Text" xml:space="preserve">
+    <value>Socitud de Nombre (Enviado)</value>
+  </data>
+  <data name="NoActivities.Text" xml:space="preserve">
+    <value>No hay actividades.</value>
+  </data>
+  <data name="NoFriends.Text" xml:space="preserve">
+    <value>No hay amigos encontrados.</value>
+  </data>
+  <data name="NoGameAlert.Text" xml:space="preserve">
+    <value>No hay nuevas alertas de juego.</value>
+  </data>
+  <data name="NoInvites.Text" xml:space="preserve">
+    <value>No hay Invitaciones.</value>
+  </data>
+  <data name="NoMessages.Text" xml:space="preserve">
+    <value>No hay Nuevos Mensajes.</value>
+  </data>
+  <data name="NoNotifications.Text" xml:space="preserve">
+    <value>No hay Nuevas Notificaciones.</value>
+  </data>
+  <data name="NoPlayers.Text" xml:space="preserve">
+    <value>No se  encontraron jugadores.</value>
+  </data>
+  <data name="NotificationsHeader.Text" xml:space="preserve">
+    <value>Notificaciones</value>
+  </data>
+  <data name="NotificationSupport.Text" xml:space="preserve">
+    <value>Notificación de Soporte</value>
+  </data>
+  <data name="Notification_invited.Text" xml:space="preserve">
+    <value>Has Recibido una Invitación.</value>
+  </data>
+  <data name="NoTrophyInfo.Text" xml:space="preserve">
+    <value>No hay Trofeos.
+Puedes ganar trofeos jugando a juegos.</value>
+  </data>
+  <data name="NowPlaying.Text" xml:space="preserve">
+    <value>Ahora Jugando</value>
+  </data>
+  <data name="NumberOfPlayers.Text" xml:space="preserve">
+    <value>Numero de Jugadores</value>
+  </data>
+  <data name="PlayersJoinedParty.Text" xml:space="preserve">
+    <value>Jugadores Uniendose a Grupo</value>
+  </data>
+  <data name="PlayersJoinedSession.Text" xml:space="preserve">
+    <value>Jugadores Uniendose a Sesión</value>
+  </data>
+  <data name="ProfileHeader.Text" xml:space="preserve">
+    <value>Perfil</value>
+  </data>
+  <data name="Profile.Label" xml:space="preserve">
+    <value>Perfil</value>
+  </data>
+  <data name="RealNameRequest.Text" xml:space="preserve">
+    <value>Enviar Solicitud de Nombre</value>
+  </data>
+  <data name="RecentActivity.Text" xml:space="preserve">
+    <value>Actividad Reciente</value>
+  </data>
+  <data name="RecentActivities.Header" xml:space="preserve">
+    <value>Actividad Reciente</value>
+  </data>
+  <data name="Refresh.Text" xml:space="preserve">
+    <value>Actualizar</value>
+  </data>
+  <data name="RefreshBar.Label" xml:space="preserve">
+    <value>Actualizar</value>
+  </data>
+  <data name="RemoveFromFriends.Text" xml:space="preserve">
+    <value>Eliminar de amigos</value>
+  </data>
+  <data name="ResourceFlowDirection.Text" xml:space="preserve">
+    <value>Izquierda a Derecha</value>
+    <comment>Controls the FlowDirection for all elements in the RootFrame. Set to the traditional direction of this resource file's language</comment>
+  </data>
+  <data name="ResourceLanguage.Text" xml:space="preserve">
+    <value>en-US</value>
+    <comment>Controls the Language and ensures that the font for all elements in the RootFrame aligns with the app's language. Set to the language code of this resource file's language.</comment>
+  </data>
+  <data name="RevealName.Text" xml:space="preserve">
+    <value>Revelar Nombre</value>
+  </data>
+  <data name="Search.Text" xml:space="preserve">
+    <value>Buscar</value>
+  </data>
+  <data name="SearchButtonBar.Content" xml:space="preserve">
+    <value>Buscar</value>
+  </data>
+  <data name="SearchButton.Text" xml:space="preserve">
+    <value>Buscar</value>
+  </data>
+  <data name="SearchBar.Label" xml:space="preserve">
+    <value>Buscar</value>
+  </data>
+  <data name="SendButton.Content" xml:space="preserve">
+    <value>Enviar</value>
+  </data>
+  <data name="SendMessage.Content" xml:space="preserve">
+    <value>Enviar Mensaje</value>
+  </data>
+  <data name="Settings.Text" xml:space="preserve">
+    <value>Ajustes</value>
+  </data>
+  <data name="Status.Text" xml:space="preserve">
+    <value>Estado</value>
+  </data>
+  <data name="ToMessageHeader.Text" xml:space="preserve">
+    <value>a {0}</value>
+    <comment>{0} represents the person who is being sent the message</comment>
+  </data>
+  <data name="TotalFriends.Text" xml:space="preserve">
+    <value>{0} Amigos</value>
+    <comment>{0} represents the total amount of friends.</comment>
+  </data>
+  <data name="TrophyBronze.Text" xml:space="preserve">
+    <value>Bronce</value>
+  </data>
+  <data name="TrophyCommon.Text" xml:space="preserve">
+    <value>Común</value>
+  </data>
+  <data name="TrophyDetail.Text" xml:space="preserve">
+    <value>Detalles</value>
+  </data>
+  <data name="TrophyEarned.Text" xml:space="preserve">
+    <value>Ganado</value>
+  </data>
+  <data name="TrophyEarnedDate.Text" xml:space="preserve">
+    <value>Fecha Ganado</value>
+  </data>
+  <data name="TrophyGold.Text" xml:space="preserve">
+    <value>Oro</value>
+  </data>
+  <data name="TrophyGrade.Text" xml:space="preserve">
+    <value>Grado</value>
+  </data>
+  <data name="TrophyHeader.Text" xml:space="preserve">
+    <value>Trofeos</value>
+  </data>
+  <data name="TrophyPivot.Header" xml:space="preserve">
+    <value>Trofeos</value>
+  </data>
+  <data name="TrophyHidden.Text" xml:space="preserve">
+    <value>Oculto</value>
+  </data>
+  <data name="TrophyNotEarned.Text" xml:space="preserve">
+    <value>No Ganado</value>
+  </data>
+  <data name="TrophyPlatinum.Text" xml:space="preserve">
+    <value>Platino</value>
+  </data>
+  <data name="TrophyRare.Text" xml:space="preserve">
+    <value>Raro</value>
+  </data>
+  <data name="TrophyRarity.Text" xml:space="preserve">
+    <value>Rareza</value>
+  </data>
+  <data name="TrophySilver.Text" xml:space="preserve">
+    <value>Plata</value>
+  </data>
+  <data name="TrophyStatus.Text" xml:space="preserve">
+    <value>Estado</value>
+  </data>
+  <data name="TrophyTotal.Text" xml:space="preserve">
+    <value>Total:</value>
+  </data>
+  <data name="TrophyUltraRare.Text" xml:space="preserve">
+    <value>Ultra Raro</value>
+  </data>
+  <data name="TrophyVeryRare.Text" xml:space="preserve">
+    <value>Muy Raro</value>
+  </data>
+  <data name="UserSearch.Text" xml:space="preserve">
+    <value>Buscar Usuario</value>
+  </data>
+  <data name="ViewFriendRequest.Text" xml:space="preserve">
+    <value>Ver Solicitud de Amistad</value>
+  </data>
+  <data name="ViewInformation.Text" xml:space="preserve">
+    <value>Ver Información</value>
+  </data>
+  <data name="ViewNameRequest.Text" xml:space="preserve">
+    <value>Ver Solicitud de Nombre/value>
+  </data>
+  <data name="VoiceMessage.Text" xml:space="preserve">
+    <value>Mensaje de Voz</value>
+  </data>
+  <data name="WhatsNew.Text" xml:space="preserve">
+    <value>Que hay Nuevo</value>
+  </data>
+  <data name="FriendPivot.Header" xml:space="preserve">
+    <value>Amigo</value>
+  </data>
+  <data name="Menu.Header" xml:space="preserve">
+    <value>Menu</value>
+  </data>
+  <data name="Instructions.Text" xml:space="preserve">
+    <value>Con el fin de iniciar sesión correctamente, primero debe configurar Internet Explorer como navegador predeterminado. Después de iniciar sesión , puede restablecerlo si lo desea .</value>
+  </data>
+  <data name="AddFriendSubject.Text" xml:space="preserve">
+    <value>¿Quereis ser amigos en PSN?</value>
+  </data>
+  <data name="AddFriendViaEmail.Label" xml:space="preserve">
+    <value>Añadir amigo Via Email</value>
+  </data>
+  <data name="AddFriendViaEmail2.Text" xml:space="preserve">
+    <value>Añadir amigo Via Email</value>
+  </data>
+  <data name="AddFriendViaSMS.Label" xml:space="preserve">
+    <value>Añadir amigo Via SMS</value>
+  </data>
+  <data name="AddFriendViaSMS2.Text" xml:space="preserve">
+    <value>Añadir amigo Via SMS</value>
+  </data>
+  <data name="CreateFriendRequestLink.Content" xml:space="preserve">
+    <value>Crear enlace de solictud de amistad</value>
+  </data>
+  <data name="FriendRequestLinkBody.Text" xml:space="preserve">
+    <value>Puede crear un enlace para recibir solicitudes de amistad, y luego publicarlo en las redes sociales o enviarlo mediante correo electrónico o de texto.</value>
+  </data>
+  <data name="FriendRequestLinkNote.Text" xml:space="preserve">
+    <value>Si comparte su enlace de solicitud de amigo en un lugar donde cualquier persona puede acceder a él, es posible que reciba solicitudes de amistad de jugadores que no conoces.</value>
+  </data>
+  <data name="FriendRequestLinkTitle.Text" xml:space="preserve">
+    <value>Compartir enlace de solicitud de amistad</value>
+  </data>
+  <data name="InviteFriendsToPsn.Text" xml:space="preserve">
+    <value>Invitar amigos a PSN</value>
+  </data>
+  <data name="SendByEmail.Content" xml:space="preserve">
+    <value>Enviar via Email</value>
+  </data>
+  <data name="SendByText.Content" xml:space="preserve">
+    <value>Enviar via SMS</value>
+  </data>
+  <data name="UseEmailSms.Text" xml:space="preserve">
+    <value>Enviar usando Email o SMS</value>
+  </data>
+  <data name="UseEmailSmsGuide.Text" xml:space="preserve">
+    <value>Enviar solicitud de amistad a un amigo utilizando el correo electrónico o texto.</value>
+  </data>
+  <data name="UseEmailSmsGuideClose.Text" xml:space="preserve">
+    <value>Una solicitud de amigo que envíe mediante un correo electrónico o un mensaje de texto también se tratará como una solicitud con el nombre verdadero. Si se acepta su solicitud Amigo, tu y tu amigo revelareis sus nombres entre sí.</value>
+  </data>
+  <data name="FriendRequestBody.Text" xml:space="preserve">
+    <value>Por favor, se mi amigo en PSN!</value>
+  </data>
+  <data name="SendMeFriendRequest.Text" xml:space="preserve">
+    <value>Enviame una solicutud de amigo!</value>
+  </data>
+  <data name="SentFromPlayStationApp.Text" xml:space="preserve">
+    <value>Enviar desde PSN.appx</value>
+  </data>
+  <data name="ErrorSaveImage.Text" xml:space="preserve">
+    <value>No se pudo guardar la imagen.</value>
+  </data>
+  <data name="SaveImage.Text" xml:space="preserve">
+    <value>Guardar Imagen</value>
+  </data>
+  <data name="SaveImageButton.Content" xml:space="preserve">
+    <value>Guardar</value>
+  </data>
+  <data name="ViewImage.Text" xml:space="preserve">
+    <value>Ver Imagen/value>
+  </data>
+  <data name="ErrorText.Text" xml:space="preserve">
+    <value>Hubo un error:</value>
+  </data>
+  <data name="ImageSaved.Text" xml:space="preserve">
+    <value>Imagen Guardada</value>
+  </data>
+  <data name="SuccessText.Text" xml:space="preserve">
+    <value>Mensaje:</value>
+  </data>
+  <data name="AddUserAccount.Content" xml:space="preserve">
+    <value>Añadir Cuenta</value>
+  </data>
+  <data name="LoginError.Text" xml:space="preserve">
+    <valueTu dirección o Contraseña es Incorrecta, Pruebe de Nuevo.</value>
+  </data>
+  <data name="Home.Text" xml:space="preserve">
+    <value>Principal</value>
+  </data>
+  <data name="Friends.Text" xml:space="preserve">
+    <value>Amigos</value>
+  </data>
+  <data name="Trophy.Text" xml:space="preserve">
+    <value>Trofeos</value>
+  </data>
+  <data name="Messenger.Text" xml:space="preserve">
+    <value>Mensajes</value>
+  </data>
+  <data name="Live.Content" xml:space="preserve">
+    <value>Live</value>
+  </data>
+  <data name="Interactive.Content" xml:space="preserve">
+    <value>Interactivo</value>
+  </data>
+  <data name="NicoNico.Content" xml:space="preserve">
+    <value>Niconico Live</value>
+  </data>
+  <data name="Reload.Text" xml:space="preserve">
+    <value>Actualizar</value>
+  </data>
+  <data name="PreviousPage.Text" xml:space="preserve">
+    <value>Página Anterior</value>
+  </data>
+  <data name="NextPage.Text" xml:space="preserve">
+    <value>Siguiente Página</value>
+  </data>
+  <data name="EmailAddress.PlaceholderText" xml:space="preserve">
+    <value>Dirección Email PSN</value>
+  </data>
+  <data name="Password.PlaceholderText" xml:space="preserve">
+    <value>Contraseña</value>
+  </data>
+  <data name="Signin.Content" xml:space="preserve">
+    <value>Iniciar Sesión</value>
+  </data>
+  <data name="Signout.Text" xml:space="preserve">
+    <value>Sesión Cerrada</value>
+  </data>
+  <data name="DeleteAccount.Text" xml:space="preserve">
+    <value>Eliminar Cuenta</value>
+  </data>
+  <data name="DeleteAccountError.Text" xml:space="preserve">
+    <value>Fallo al Eliminar Cuenta</value>
+  </data>
+  <data name="Events.Text" xml:space="preserve">
+    <value>Eventos</value>
+  </data>
+  <data name="EventsAll.Header" xml:space="preserve">
+    <value>Todo</value>
+  </data>
+  <data name="EventsGameList.Header" xml:space="preserve">
+    <value>Lista de Juegos</value>
+  </data>
+  <data name="EventsMy.Header" xml:space="preserve">
+    <value>Mis Eventos</value>
+  </data>
+  <data name="EventsRecommended.Header" xml:space="preserve">
+    <value>Recomendado</value>
+  </data>
+  <data name="PullToRefreshTextBox.Text" xml:space="preserve">
+    <value>Pull...</value>
+  </data>
+  <data name="ReleaseTextBox.Text" xml:space="preserve">
+    <value>Suelte para actualizar</value>
+  </data>
+  <data name="LiveSearch.Label" xml:space="preserve">
+    <value>Buscar</value>
+  </data>
+  <data name="LiveSearchButton.Content" xml:space="preserve">
+    <value>Buscar</value>
+  </data>
+  <data name="NoSMS.Text" xml:space="preserve">
+    <value>No se pueden enviar SMS en este sistema.</value>
+  </data>
+</root>
