@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
+using System.Net.Http;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text;
 using System.Threading.Tasks;
@@ -137,7 +138,7 @@ namespace PlayStation_App.ViewModels
         _messageResponse.Messages.Reverse().Select(message => new MessageGroupItem { Message = message }))
                 {
                     newMessage.AvatarUrl = await GetAvatarUrl(newMessage.Message.SenderOnlineId);
-                    newMessage.ImageAvailable = newMessage.Message.ContentKeys.Contains("image-data-0");
+                    newMessage.ImageAvailable = newMessage.Message.ContentKeys.Contains("image-data-0") || newMessage.Message.StickerDetail != null;
                     try
                     {
                         if (newMessage.ImageAvailable)
@@ -147,6 +148,11 @@ namespace PlayStation_App.ViewModels
                                     _messageManager.GetMessageContent(_selectedMessageGroup.MessageGroupId, newMessage.Message.SentMessageId,
                                         Locator.ViewModels.MainPageVm.CurrentTokens, Locator.ViewModels.MainPageVm.CurrentUser.Region, Locator.ViewModels.MainPageVm.CurrentUser.Language);
                             newMessage.Image = await DecodeImage(imageBytes);
+                        }
+
+                        if (newMessage.Message.StickerDetail != null)
+                        {
+                            newMessage.Message.Body = string.Empty;
                         }
                     }
                     catch (Exception ex)

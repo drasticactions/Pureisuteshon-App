@@ -26,6 +26,9 @@ namespace PlayStation_App.Models.MessageGroups
 
         [JsonProperty("latestMessage")]
         public LatestMessage LatestMessage { get; set; }
+
+        [JsonProperty("thumbnailDetail")]
+        public ThumbnailDetail ThumbnailDetail { get; set; }
     }
 
 }

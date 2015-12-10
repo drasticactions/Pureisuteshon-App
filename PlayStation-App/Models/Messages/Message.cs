@@ -2,6 +2,7 @@
 // http://www.xamasoft.com/json-class-generator
 
 using Newtonsoft.Json;
+using PlayStation_App.Models.MessageGroups;
 
 namespace PlayStation_App.Models.Messages
 {
@@ -38,6 +39,12 @@ namespace PlayStation_App.Models.Messages
 
         [JsonProperty("body")]
         public string Body { get; set; }
+
+        [JsonProperty("voiceDataPlaybackTime")]
+        public int? VoiceDataPlaybackTime { get; set; }
+
+        [JsonProperty("stickerDetail")]
+        public StickerDetail StickerDetail { get; set; }
     }
 
 }

@@ -196,6 +196,8 @@
     <Compile Include="Models\MessageGroups\Member.cs" />
     <Compile Include="Models\MessageGroups\MessageGroup.cs" />
     <Compile Include="Models\MessageGroups\MessageGroupDetail.cs" />
+    <Compile Include="Models\MessageGroups\StickerDetail.cs" />
+    <Compile Include="Models\MessageGroups\ThumbnailDetail.cs" />
     <Compile Include="Models\Messages\Message.cs" />
     <Compile Include="Models\RecentActivity\CaptionComponent.cs" />
     <Compile Include="Models\RecentActivity\CaptionComponent2.cs" />
@@ -438,8 +440,8 @@
     <SDKReference Include="Microsoft.VCLibs, Version=14.0">
       <Name>Visual C++ 2015 Runtime for Universal Windows Platform Apps</Name>
     </SDKReference>
-    <SDKReference Include="SQLite.UAP.2015, Version=3.8.11.1">
-      <Name>SQLite for Universal App Platform</Name>
+    <SDKReference Include="SQLite.UAP.2015, Version=3.9.2">
+      <Name>SQLite for Universal App Platform %28SQLite.UAP.2015, Version=3.9.2%29</Name>
     </SDKReference>
   </ItemGroup>
   <ItemGroup>

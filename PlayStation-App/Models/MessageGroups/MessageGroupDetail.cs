@@ -12,6 +12,9 @@ namespace PlayStation_App.Models.MessageGroups
         [JsonProperty("messageGroupType")]
         public int MessageGroupType { get; set; }
 
+        [JsonProperty("messageGroupName")]
+        public string MessageGroupName { get; set; }
+
         [JsonProperty("totalMembers")]
         public int TotalMembers { get; set; }
 
