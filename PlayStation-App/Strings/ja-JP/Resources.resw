@@ -486,4 +486,13 @@
   <data name="NoSMS.Text" xml:space="preserve">
     <value>SMSを送信できませんでした。</value>
   </data>
+  <data name="MyStamp.Text" xml:space="preserve">
+    <value>マイスタンプ</value>
+  </data>
+  <data name="SendButton.Content" xml:space="preserve">
+    <value>送信</value>
+  </data>
+  <data name="Stamps.Content" xml:space="preserve">
+    <value>スタンプ</value>
+  </data>
 </root>

@@ -21,7 +21,7 @@
                 <ColumnDefinition x:Name="HamburgerPlacement" Width="40" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-            <TextBlock x:Uid="Messenger" Grid.Column="1" Text="マイスタンプ" Margin="10,0,0,0" x:Name="pageTitle" FontWeight="Bold" Style="{StaticResource TagLineTextStyle}"
+            <TextBlock x:Uid="MyStamp" Grid.Column="1" Text="Stamp" Margin="10,0,0,0" x:Name="pageTitle" FontWeight="Bold" Style="{StaticResource TagLineTextStyle}"
                        IsHitTestVisible="false" TextWrapping="NoWrap" TextTrimming="CharacterEllipsis" VerticalAlignment="Center" />
         </Grid>
         <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Visibility="{Binding IsLoading, Converter={StaticResource BooleanToVisibilityConverter}}" Canvas.ZIndex="1" Grid.Row="1">

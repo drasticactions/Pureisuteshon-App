@@ -702,4 +702,10 @@ You can earn trophies by playing games that support them.</value>
   <data name="NoSMS.Text" xml:space="preserve">
     <value>Canot send SMS on this system.</value>
   </data>
+  <data name="MyStamp.Text" xml:space="preserve">
+    <value>My Stamps</value>
+  </data>
+  <data name="Stamps.Content" xml:space="preserve">
+    <value>Stamp</value>
+  </data>
 </root>
