@@ -17,6 +17,8 @@ namespace PlayStation_App.Models.Response
 
         public string Publisher { get; set; }
 
+        public string ManifestUrl { get; set; }
+
         [PrimaryKey]
         [JsonProperty("stickerPackageId")]
         public string StickerPackageId { get; set; }

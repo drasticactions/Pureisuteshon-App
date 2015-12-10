@@ -133,6 +133,7 @@
     <None Include="PlayStation-App_TemporaryKey.pfx" />
     <None Include="project.json" />
     <None Include="Service References\Application Insights\ConnectedService.json" />
+    <PRIResource Include="Strings\es-ES\Resources.resw" />
     <PRIResource Include="Strings\id-ID\Resources.resw" />
     <PRIResource Include="Strings\en-US\Resources.resw" />
     <PRIResource Include="Strings\ja-JP\Resources.resw">
@@ -323,6 +324,9 @@
     </Compile>
     <Compile Include="Views\MessageListPage.xaml.cs">
       <DependentUpon>MessageListPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\StickerDetailSelectionPage.xaml.cs">
+      <DependentUpon>StickerDetailSelectionPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\StickerSelectionPage.xaml.cs">
       <DependentUpon>StickerSelectionPage.xaml</DependentUpon>
@@ -518,6 +522,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Views\StickerDetailSelectionPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\StickerSelectionPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -546,6 +554,7 @@
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>

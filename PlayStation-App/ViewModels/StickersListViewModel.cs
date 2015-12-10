@@ -9,6 +9,7 @@ using PlayStation.Managers;
 using PlayStation_App.Common;
 using PlayStation_App.Database;
 using PlayStation_App.Models.Response;
+using PlayStation_App.Models.Sticker;
 using PlayStation_App.Models.StickerPresetPackage;
 using PlayStation_App.Tools;
 using PlayStation_App.Tools.Debug;
@@ -18,6 +19,18 @@ namespace PlayStation_App.ViewModels
     public class StickersListViewModel : NotifierBase
     {
         public ObservableCollection<StickerResponse> StickerList { get; set; } = new ObservableCollection<StickerResponse>();
+
+        private ObservableCollection<StickerSelection> _stickerCollection;
+
+        public ObservableCollection<StickerSelection> StickerCollection
+        {
+            get { return _stickerCollection; }
+            set
+            {
+                SetProperty(ref _stickerCollection, value);
+                OnPropertyChanged();
+            }
+        }
 
         private readonly StickerManager _stickerManager = new StickerManager();
 
@@ -70,6 +83,7 @@ namespace PlayStation_App.ViewModels
                     manifest.Description = metadata.Description;
                     manifest.Publisher = metadata.Publisher;
                     manifest.Title = metadata.Title;
+                    manifest.ManifestUrl = item.ManifestUrl;
                     stickerList.Add(manifest);
                 }
 
@@ -85,5 +99,53 @@ namespace PlayStation_App.ViewModels
             }
             IsLoading = false;
         }
+
+        public async Task GetStickers(StickerResponse stickerPack)
+        {
+            IsLoading = true;
+            try
+            {
+                var manifestResult = await _stickerManager.GetStickerAndManifestPack(stickerPack.ManifestUrl);
+                var resultCheck = await ResultChecker.CheckSuccess(manifestResult);
+                if (!resultCheck)
+                {
+                    return;
+                }
+                var manifest = JsonConvert.DeserializeObject<StickerResponse>(manifestResult.ResultJson);
+                var newList = SizetypeConverter.ConvertStringToSizeProperty(manifestResult.ResultJson);
+                StickerCollection = new ObservableCollection<StickerSelection>();
+                var stickerUrls = newList.SelectMany(node => node.Urls).ToList();
+                for (int index = 0; index < stickerUrls.Count; index++)
+                {
+                    StickerCollection.Add(new StickerSelection()
+                    {
+                        Number = index + 1,
+                        ManifestUrl = stickerPack.ManifestUrl,
+                        PackageId = stickerPack.StickerPackageId,
+                        Type = stickerPack.Type,
+                        ImageUrl = stickerUrls[index]
+                    });
+                }
+            }
+            catch (Exception ex)
+            {
+                // TODO: Throw error to user.
+            }
+            IsLoading = false;
+
+        }
+    }
+
+    public class StickerSelection
+    {
+        public string ImageUrl { get; set; }
+
+        public int Number { get; set; }
+
+        public string ManifestUrl { get; set; }
+
+        public string PackageId { get; set; }
+
+        public string Type { get; set; }
     }
 }

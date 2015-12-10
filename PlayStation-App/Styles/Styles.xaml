@@ -839,6 +839,21 @@
             </Grid>
         </Border>
     </DataTemplate>
+    <DataTemplate x:Key="StickerPackageListDataTemplate">
+        <Border  HorizontalAlignment="Stretch" BorderBrush="White" Margin="3" BorderThickness="1">
+            <Grid VerticalAlignment="Stretch">
+                <Grid.Background>
+                    <SolidColorBrush Color="#C0000000" />
+                </Grid.Background>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Image VerticalAlignment="Center" Margin="5" HorizontalAlignment="Center" Source="{Binding ThumbnailUrl}"/>
+                <TextBlock Grid.Column="1" FontWeight="Thin" FontSize="20" VerticalAlignment="Center" TextWrapping="Wrap" Text="{Binding Title}"/>
+            </Grid>
+        </Border>
+    </DataTemplate>
     <DataTemplate x:Key="TrophyActivityDataTemplate">
         <Border MaxWidth="500" VerticalAlignment="Stretch" Height="210" HorizontalAlignment="Stretch" BorderBrush="White"  BorderThickness="1">
             <Grid VerticalAlignment="Stretch">
