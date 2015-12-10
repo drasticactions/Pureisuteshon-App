@@ -34,7 +34,7 @@ namespace PlayStation_App.Commands.Messages
             var file = await openPicker.PickSingleFileAsync();
             if (file == null) return;
             var stream = await file.OpenAsync(FileAccessMode.Read);
-            Locator.ViewModels.MessagesVm.AttachedImage = await ImageToBytes(stream);
+            Locator.ViewModels.MessagesVm.AttachedImage = stream;
             Locator.ViewModels.MessagesVm.IsImageAttached = true;
             Locator.ViewModels.MessagesVm.ImagePath = file.Path;
         }

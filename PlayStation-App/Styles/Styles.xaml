@@ -497,26 +497,26 @@
                     <StackPanel.Background>
                         <SolidColorBrush Color="#DBDEE7" Opacity="0.65" />
                     </StackPanel.Background>
+                    <Image MaxHeight="300" MaxWidth="300" Source="{Binding Message.StickerDetail.ImageUrl}">
+                        <FlyoutBase.AttachedFlyout>
+                            <MenuFlyout>
+                                <MenuFlyoutItem x:Uid="ViewImage" Command="{Binding DataContext.ViewImage, ElementName=MessagesList}" CommandParameter="{Binding}"/>
+                                <MenuFlyoutItem x:Uid="SaveImage" Command="{Binding DataContext.DownloadImage, ElementName=MessagesList}" CommandParameter="{Binding}"/>
+                            </MenuFlyout>
+                        </FlyoutBase.AttachedFlyout>
+                        <interactivity:Interaction.Behaviors>
+                            <core:EventTriggerBehavior EventName="Holding">
+                                <tools:OpenMenuFlyoutAction />
+                            </core:EventTriggerBehavior>
+                            <core:EventTriggerBehavior EventName="RightTapped">
+                                <tools:OpenMenuFlyoutAction />
+                            </core:EventTriggerBehavior>
+                        </interactivity:Interaction.Behaviors>
+                    </Image>
                     <TextBlock TextWrapping="Wrap" Margin="5" FontWeight="Bold"
                                    Text="{Binding Message.Body}" />
                     <Border HorizontalAlignment="Left" MaxWidth="400" MaxHeight="400"  Visibility="{Binding ImageAvailable, Converter={StaticResource BooleanToVisibilityConverter}}" BorderBrush="White" BorderThickness="1" Margin="5">
                         <Grid>
-                            <Image Source="{Binding Message.StickerDetail.ImageUrl}">
-                                <FlyoutBase.AttachedFlyout>
-                                    <MenuFlyout>
-                                        <MenuFlyoutItem x:Uid="ViewImage" Command="{Binding DataContext.ViewImage, ElementName=MessagesList}" CommandParameter="{Binding}"/>
-                                        <MenuFlyoutItem x:Uid="SaveImage" Command="{Binding DataContext.DownloadImage, ElementName=MessagesList}" CommandParameter="{Binding}"/>
-                                    </MenuFlyout>
-                                </FlyoutBase.AttachedFlyout>
-                                <interactivity:Interaction.Behaviors>
-                                    <core:EventTriggerBehavior EventName="Holding">
-                                        <tools:OpenMenuFlyoutAction />
-                                    </core:EventTriggerBehavior>
-                                    <core:EventTriggerBehavior EventName="RightTapped">
-                                        <tools:OpenMenuFlyoutAction />
-                                    </core:EventTriggerBehavior>
-                                </interactivity:Interaction.Behaviors>
-                            </Image>
                             <Image Source="{Binding Image}">
                                 <FlyoutBase.AttachedFlyout>
                                     <MenuFlyout>

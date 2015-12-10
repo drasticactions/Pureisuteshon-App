@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using PlayStation.Managers;
+using PlayStation_App.Commands.Messages;
 using PlayStation_App.Common;
 using PlayStation_App.Database;
 using PlayStation_App.Models.Response;
@@ -31,6 +32,8 @@ namespace PlayStation_App.ViewModels
                 OnPropertyChanged();
             }
         }
+
+        public SelectStickerCommand SelectStickerCommand { get; set; } = new SelectStickerCommand();
 
         private readonly StickerManager _stickerManager = new StickerManager();
 
@@ -113,18 +116,21 @@ namespace PlayStation_App.ViewModels
                 }
                 var manifest = JsonConvert.DeserializeObject<StickerResponse>(manifestResult.ResultJson);
                 var newList = SizetypeConverter.ConvertStringToSizeProperty(manifestResult.ResultJson);
-                StickerCollection = new ObservableCollection<StickerSelection>();
-                var stickerUrls = newList.SelectMany(node => node.Urls).ToList();
-                for (int index = 0; index < stickerUrls.Count; index++)
+                if (newList.Any())
                 {
-                    StickerCollection.Add(new StickerSelection()
+                    StickerCollection = new ObservableCollection<StickerSelection>();
+                    var stickerUrls = newList.First().Urls.ToList();
+                    for (int index = 0; index < stickerUrls.Count; index++)
                     {
-                        Number = index + 1,
-                        ManifestUrl = stickerPack.ManifestUrl,
-                        PackageId = stickerPack.StickerPackageId,
-                        Type = stickerPack.Type,
-                        ImageUrl = stickerUrls[index]
-                    });
+                        StickerCollection.Add(new StickerSelection()
+                        {
+                            Number = index + 1,
+                            ManifestUrl = stickerPack.ManifestUrl,
+                            PackageId = stickerPack.StickerPackageId,
+                            Type = stickerPack.Type,
+                            ImageUrl = stickerUrls[index]
+                        });
+                    }
                 }
             }
             catch (Exception ex)
@@ -134,18 +140,5 @@ namespace PlayStation_App.ViewModels
             IsLoading = false;
 
         }
-    }
-
-    public class StickerSelection
-    {
-        public string ImageUrl { get; set; }
-
-        public int Number { get; set; }
-
-        public string ManifestUrl { get; set; }
-
-        public string PackageId { get; set; }
-
-        public string Type { get; set; }
     }
 }

@@ -7,6 +7,10 @@ using System.Net.Http;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.Foundation;
+using Windows.Graphics.Imaging;
+using Windows.Storage;
+using Windows.Storage.Streams;
 using Windows.UI.Xaml.Media.Imaging;
 using Newtonsoft.Json;
 using PlayStation.Managers;
@@ -14,6 +18,7 @@ using PlayStation_App.Commands.Messages;
 using PlayStation_App.Common;
 using PlayStation_App.Models.MessageGroups;
 using PlayStation_App.Models.Response;
+using PlayStation_App.Models.Sticker;
 using PlayStation_App.Models.User;
 using PlayStation_App.Tools.Debug;
 using PlayStation_App.Tools.Helpers;
@@ -44,7 +49,7 @@ namespace PlayStation_App.ViewModels
         public ViewImage ViewImage { get; set; } = new ViewImage();
 
         private MessageGroupResponse _messageGroupEntity;
-        public byte[] AttachedImage { get; set; }
+        public IRandomAccessStream AttachedImage { get; set; }
         public string ImagePath { get; set; } = "";
         public MessageResponse MessageResponse
         {
@@ -120,7 +125,7 @@ namespace PlayStation_App.ViewModels
         {
             SelectedMessageGroup = messageGroup;
             IsSelected = false;
-            MessageCollection = new ObservableCollection<MessageGroupItem>();
+            MessageCollection.Clear();
             IsLoading = true;
             try
             {
@@ -134,12 +139,23 @@ namespace PlayStation_App.ViewModels
                     return;
                 }
                 _messageResponse = JsonConvert.DeserializeObject<MessageResponse>(messageResult.ResultJson);
+                var avatarOnlineId = new Dictionary<string, string>();
+                foreach(var member in messageGroup.MessageGroupDetail.Members)
+                {
+                    var avatar = await GetAvatarUrl(member.OnlineId);
+                    avatarOnlineId.Add(member.OnlineId, avatar);
+                }
                 foreach (
     var newMessage in
         _messageResponse.Messages.Reverse().Select(message => new MessageGroupItem { Message = message }))
                 {
-                    newMessage.AvatarUrl = await GetAvatarUrl(newMessage.Message.SenderOnlineId);
-                    newMessage.ImageAvailable = newMessage.Message.ContentKeys.Contains("image-data-0") || newMessage.Message.StickerDetail != null;
+                    newMessage.AvatarUrl =
+                        avatarOnlineId.First(node => node.Key == newMessage.Message.SenderOnlineId).Value;
+                    if (newMessage.Message.StickerDetail != null)
+                    {
+                        newMessage.Message.Body = string.Empty;
+                    }
+                    newMessage.ImageAvailable = newMessage.Message.ContentKeys.Contains("image-data-0");
                     try
                     {
                         if (newMessage.ImageAvailable)
@@ -149,11 +165,6 @@ namespace PlayStation_App.ViewModels
                                     _messageManager.GetMessageContent(_selectedMessageGroup.MessageGroupId, newMessage.Message.SentMessageId,
                                         Locator.ViewModels.MainPageVm.CurrentTokens, Locator.ViewModels.MainPageVm.CurrentUser.Region, Locator.ViewModels.MainPageVm.CurrentUser.Language);
                             newMessage.Image = await DecodeImage(imageBytes);
-                        }
-
-                        if (newMessage.Message.StickerDetail != null)
-                        {
-                            newMessage.Message.Body = string.Empty;
                         }
                     }
                     catch (Exception ex)
@@ -250,13 +261,52 @@ namespace PlayStation_App.ViewModels
             {
                 await SendMessageWithoutMedia();
             }
+
+            Message = string.Empty;
         }
 
         private async Task SendMessageWithMedia()
         {
+           var realImage = await ConvertToJpeg(AttachedImage);
            var result = await _messageManager.CreatePostWithMedia(_selectedMessageGroup.MessageGroupId, Message, ImagePath,
-                                AttachedImage,
-                                Locator.ViewModels.MainPageVm.CurrentTokens);
+                                realImage,
+                                Locator.ViewModels.MainPageVm.CurrentTokens, Locator.ViewModels.MainPageVm.CurrentUser.Region);
+            await AccountAuthHelpers.UpdateTokens(Locator.ViewModels.MainPageVm.CurrentUser, result);
+            var resultCheck = await ResultChecker.CheckSuccess(result);
+            if (resultCheck)
+            {
+                Locator.ViewModels.MessagesVm.IsImageAttached = false;
+                Locator.ViewModels.MessagesVm.AttachedImage = null;
+                await GetMessages(_selectedMessageGroup);
+            }
+        }
+
+        private async Task<Stream> ConvertToJpeg(IRandomAccessStream stream)
+        {
+            var decoder = await BitmapDecoder.CreateAsync(stream);
+            var pixels = await decoder.GetPixelDataAsync();
+
+            var outStream = new InMemoryRandomAccessStream();
+            // create encoder for saving the tile image
+            BitmapPropertySet propertySet = new BitmapPropertySet();
+            // create class representing target jpeg quality - a bit obscure, but it works
+            BitmapTypedValue qualityValue = new BitmapTypedValue(.7, PropertyType.Single);
+            propertySet.Add("ImageQuality", qualityValue);
+
+            var encoder = await BitmapEncoder.CreateAsync(BitmapEncoder.JpegEncoderId, outStream);
+            encoder.SetPixelData(decoder.BitmapPixelFormat, BitmapAlphaMode.Ignore,
+                decoder.OrientedPixelWidth, decoder.OrientedPixelHeight,
+                decoder.DpiX, decoder.DpiY,
+                pixels.DetachPixelData());
+            await encoder.FlushAsync();
+            return outStream.AsStream();
+        }
+
+        private async Task SendMessageWithoutMedia()
+        {
+            var result = await
+                            _messageManager.CreatePost(_selectedMessageGroup.MessageGroupId, Message,
+                                Locator.ViewModels.MainPageVm.CurrentTokens, Locator.ViewModels.MainPageVm.CurrentUser.Region);
             await AccountAuthHelpers.UpdateTokens(Locator.ViewModels.MainPageVm.CurrentUser, result);
             var resultCheck = await ResultChecker.CheckSuccess(result);
             if (resultCheck)
@@ -265,11 +315,14 @@ namespace PlayStation_App.ViewModels
             }
         }
 
-        private async Task SendMessageWithoutMedia()
+        public async Task SendSticker(StickerSelection stickerSelection)
         {
-            var result = await
-                            _messageManager.CreatePost(_selectedMessageGroup.MessageGroupId, Message,
-                                Locator.ViewModels.MainPageVm.CurrentTokens);
+            var result =
+                await
+                    _messageManager.CreateStickerPost(_selectedMessageGroup.MessageGroupId, stickerSelection.ManifestUrl,
+                        stickerSelection.Number.ToString(), stickerSelection.ImageUrl, stickerSelection.PackageId,
+                        stickerSelection.Type, Locator.ViewModels.MainPageVm.CurrentTokens,
+                        Locator.ViewModels.MainPageVm.CurrentUser.Region);
             await AccountAuthHelpers.UpdateTokens(Locator.ViewModels.MainPageVm.CurrentUser, result);
             var resultCheck = await ResultChecker.CheckSuccess(result);
             if (resultCheck)

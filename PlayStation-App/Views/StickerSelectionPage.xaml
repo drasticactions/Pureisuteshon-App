@@ -6,6 +6,8 @@
     DataContext="{Binding Source={StaticResource Locator}, Path=StickerListVm}"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
+    xmlns:core="using:Microsoft.Xaml.Interactions.Core"
     mc:Ignorable="d">
     <Grid Loaded="LayoutRoot_Loaded">
         <Grid.RowDefinitions>
@@ -69,7 +71,7 @@
                 </ListView>
             </Grid>
             <Grid x:Name="DetailContentPresenter" Grid.Column="1">
-                <GridView ItemsSource="{Binding StickerCollection}">
+                <GridView IsItemClickEnabled="True" ItemsSource="{Binding StickerCollection}">
                     <GridView.ItemTemplate>
                         <DataTemplate>
                             <Border  HorizontalAlignment="Stretch" BorderBrush="White" Margin="3" BorderThickness="1">
@@ -82,6 +84,11 @@
                             </Border>
                         </DataTemplate>
                     </GridView.ItemTemplate>
+                    <interactivity:Interaction.Behaviors>
+                        <core:EventTriggerBehavior EventName="ItemClick">
+                            <core:InvokeCommandAction Command="{Binding SelectStickerCommand}" />
+                        </core:EventTriggerBehavior>
+                    </interactivity:Interaction.Behaviors>
                 </GridView>
             </Grid>
         </Grid>

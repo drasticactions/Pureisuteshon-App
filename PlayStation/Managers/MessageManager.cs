@@ -78,6 +78,37 @@ namespace PlayStation.Managers
             }
         }
 
+        public async Task<Result> CreateStickerPost(string messageUserId, string manifestFileUrl, string number,
+            string imageUrl, string packageId, string type, UserAuthenticationEntity userAuthenticationEntity,
+            string region = "jp")
+        {
+            var url = string.Format(EndPoints.CreatePost, region, messageUserId);
+            const string boundary = "abcdefghijklmnopqrstuvwxyz";
+            var messageJson = new SendMessage
+            {
+                message = new Message()
+                {
+                    body = string.Empty,
+                    fakeMessageUid = 1384958573288,
+                    messageKind = 1013,
+                    stickerDetail = new StickerDetail()
+                    {
+                        imageUrl = imageUrl,
+                        manifestFileUrl = manifestFileUrl,
+                        number = number,
+                        packageId = packageId,
+                        type = type
+                    }
+                }
+            };
+
+            var json = JsonConvert.SerializeObject(messageJson);
+            var stringContent = new StringContent(json, Encoding.UTF8, "application/json");
+            stringContent.Headers.Add("Content-Description", "message");
+            var form = new MultipartContent("mixed", boundary) { stringContent };
+            return await _webManager.PostData(new Uri(url), form, userAuthenticationEntity);
+        }
+
         public async Task<Result> CreatePost(string messageUserId, string post,
             UserAuthenticationEntity userAuthenticationEntity, string region = "jp")
         {
@@ -100,17 +131,17 @@ namespace PlayStation.Managers
             return await _webManager.PostData(new Uri(url), form, userAuthenticationEntity);
         }
 
-        public async Task<Result> CreatePostWithMedia(string messageUserId, string post, string path, byte[] fileStream,
+        public async Task<Result> CreatePostWithMedia(string messageUserId, string post, string path, Stream stream,
             UserAuthenticationEntity userAuthenticationEntity, string region = "jp")
         {
             var url = string.Format(EndPoints.CreatePost, region, messageUserId);
-            const string boundary = "abcdefghijklmnopqrstuvwxyz";
+            const string boundary = "gc0p4Jq0M2Yt08jU534c0p";
             var messageJson = new SendMessage
             {
                 message = new Message()
                 {
                     body = post,
-                    fakeMessageUid = 1445225905274,
+                    fakeMessageUid = 1234,
                     messageKind = 3
                 }
             };
@@ -119,26 +150,8 @@ namespace PlayStation.Managers
             var stringContent = new StringContent(json, Encoding.UTF8, "application/json");
             stringContent.Headers.Add("Content-Description", "message");
             var form = new MultipartContent("mixed", boundary) { stringContent };
-
-            Stream stream = new MemoryStream(fileStream);
             var t = new StreamContent(stream);
-            var s = Path.GetExtension(path);
-            if (s != null && s.Equals(".png"))
-            {
-                t.Headers.ContentType = new MediaTypeHeaderValue("image/png");
-            }
-            else
-            {
-                var extension = Path.GetExtension(path);
-                if (extension != null && (extension.Equals(".jpg") || extension.Equals(".jpeg")))
-                {
-                    t.Headers.ContentType = new MediaTypeHeaderValue("image/jpeg");
-                }
-                else
-                {
-                    t.Headers.ContentType = new MediaTypeHeaderValue("image/gif");
-                }
-            }
+            t.Headers.ContentType = new MediaTypeHeaderValue("image/jpeg");
             t.Headers.ContentDisposition = new ContentDispositionHeaderValue("attachment");
             t.Headers.Add("Content-Description", "image-data-0");
             t.Headers.Add("Content-Transfer-Encoding", "binary");
@@ -162,6 +175,21 @@ namespace PlayStation.Managers
             public int messageKind { get; set; }
 
             public int messageUid { get; set; }
+
+            public StickerDetail stickerDetail { get; set; }
+        }
+
+        public class StickerDetail
+        {
+            public string manifestFileUrl { get; set; }
+
+            public string number { get; set; }
+
+            public string imageUrl { get; set; }
+
+            public string packageId { get; set; }
+
+            public string type { get; set; }
         }
     }
 }

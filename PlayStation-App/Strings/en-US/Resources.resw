@@ -708,4 +708,10 @@ You can earn trophies by playing games that support them.</value>
   <data name="Stamps.Content" xml:space="preserve">
     <value>Stamp</value>
   </data>
+  <data name="AttachImage.Content" xml:space="preserve">
+    <value>Image</value>
+  </data>
+  <data name="RemoveImage.Content" xml:space="preserve">
+    <value>Remove Image</value>
+  </data>
 </root>

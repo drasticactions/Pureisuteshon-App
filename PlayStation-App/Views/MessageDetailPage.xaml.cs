@@ -26,10 +26,13 @@ namespace PlayStation_App.Views
         public MessageDetailPage()
         {
             this.InitializeComponent();
+
         }
 
         private void PageRoot_Loaded(object sender, RoutedEventArgs e)
         {
+            Locator.ViewModels.MessagesVm.MessageCollection.CollectionChanged += (s, args) => ScrollToBottom();
+
             if (ShouldGoToWideState())
             {
                 // We shouldn't see this page since we are in "wide master-detail" mode.
@@ -85,6 +88,25 @@ namespace PlayStation_App.Views
         private async void PullToRefreshBox_OnRefreshInvoked(DependencyObject sender, object args)
         {
             await Locator.ViewModels.MessagesVm.GetMessages(Locator.ViewModels.MessagesVm.SelectedMessageGroup);
+        }
+
+        private void MessagesList_OnLoaded(object sender, RoutedEventArgs e)
+        {
+        }
+
+        private void ScrollToBottom()
+        {
+            if (MessagesList.Items != null)
+            {
+                var selectedIndex = MessagesList.Items.Count - 1;
+                if (selectedIndex < 0)
+                    return;
+
+                MessagesList.SelectedIndex = selectedIndex;
+            }
+            MessagesList.UpdateLayout();
+
+            MessagesList.ScrollIntoView(MessagesList.SelectedItem);
         }
     }
 }

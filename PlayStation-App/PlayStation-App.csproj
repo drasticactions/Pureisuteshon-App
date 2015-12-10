@@ -154,6 +154,7 @@
     <Compile Include="Commands\Messages\AttachImageCommand.cs" />
     <Compile Include="Commands\Messages\NavigateToMessagesViewCommand.cs" />
     <Compile Include="Commands\Messages\NavigateToStickersListView.cs" />
+    <Compile Include="Commands\Messages\SelectStickerCommand.cs" />
     <Compile Include="Commands\Messages\SendMessageCommand.cs" />
     <Compile Include="Commands\Navigation\NavigateToSelectAccountCommand.cs" />
     <Compile Include="Commands\Navigation\NavigateToWhatsNewPage.cs" />
@@ -226,6 +227,7 @@
     <Compile Include="Models\StickerPresetPackage\PresetPackageList.cs" />
     <Compile Include="Models\Sticker\SizeProperty.cs" />
     <Compile Include="Models\Sticker\StickerImagesBySize.cs" />
+    <Compile Include="Models\Sticker\StickerSelection.cs" />
     <Compile Include="Models\Sticker\Zip.cs" />
     <Compile Include="Models\Trophies\ComparedUser.cs" />
     <Compile Include="Models\TrophyDetail\ComparedUser.cs" />

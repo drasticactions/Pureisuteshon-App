@@ -33,6 +33,8 @@ namespace PlayStation_App.Views
 
         private void LayoutRoot_Loaded(object sender, RoutedEventArgs e)
         {
+            Locator.ViewModels.MessagesVm.MessageCollection.CollectionChanged += (s, args) => ScrollToBottom();
+
             // Assure we are displaying the correct item. This is necessary in certain adaptive cases.
             MessageList.SelectedItem = _lastSelectedItem;
         }
@@ -93,6 +95,25 @@ namespace PlayStation_App.Views
         private async void PullToRefreshBoxMessageList_OnRefreshInvoked(DependencyObject sender, object args)
         {
             await Locator.ViewModels.MessagesVm.GetMessageGroups(Locator.ViewModels.MessagesVm.Username);
+        }
+
+        private void MessagesList_OnLoaded(object sender, RoutedEventArgs e)
+        {
+        }
+
+        private void ScrollToBottom()
+        {
+            if (MessagesList.Items != null)
+            {
+                var selectedIndex = MessagesList.Items.Count - 1;
+                if (selectedIndex < 0)
+                    return;
+
+                MessagesList.SelectedIndex = selectedIndex;
+            }
+            MessagesList.UpdateLayout();
+
+            MessagesList.ScrollIntoView(MessagesList.SelectedItem);
         }
     }
 }

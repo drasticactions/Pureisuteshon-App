@@ -495,4 +495,10 @@
   <data name="Stamps.Content" xml:space="preserve">
     <value>スタンプ</value>
   </data>
+  <data name="AttachImage.Content" xml:space="preserve">
+    <value>画像を添付</value>
+  </data>
+  <data name="RemoveImage.Content" xml:space="preserve">
+    <value>添付をやめる</value>
+  </data>
 </root>

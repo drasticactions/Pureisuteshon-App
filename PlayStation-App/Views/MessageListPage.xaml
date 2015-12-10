@@ -122,7 +122,7 @@
                             </userControls:PullToRefresh>
                         </DataTemplate>
                     </uwp:PullToRefreshBox.TopIndicatorTemplate>
-                    <ListView x:Name="MessagesList" ItemTemplate="{StaticResource MessageDetailDataTemplate}" ItemsSource="{Binding MessageCollection}">
+                    <ListView x:Name="MessagesList" Loaded="MessagesList_OnLoaded" ItemTemplate="{StaticResource MessageDetailDataTemplate}" ItemsSource="{Binding MessageCollection}">
                         <ListView.ItemContainerStyle>
                             <Style TargetType="ListViewItem">
                                 <Setter Property="HorizontalContentAlignment" Value="Stretch" />
@@ -137,8 +137,8 @@
                     </Grid.RowDefinitions>
                     <TextBox Text="{Binding Message, Mode=TwoWay}" Margin="5" VerticalAlignment="Top" Height="30"/>
                     <StackPanel HorizontalAlignment="Right" Margin="5" Grid.Row="1" Orientation="Horizontal">
-                        <Button Command="{Binding RemoveImageCommand}" Visibility="{Binding IsImageAttached, Converter={StaticResource BooleanToVisibilityConverter}}" Content="添付をやめる" Margin="0,0,5,0"></Button>
-                        <Button Visibility="Collapsed" Command="{Binding AttachImageCommand}" Content="画像を添付" Margin="0,0,5,0"/>
+                        <Button x:Uid="RemoveImage" Command="{Binding RemoveImageCommand}" Visibility="{Binding IsImageAttached, Converter={StaticResource BooleanToVisibilityConverter}}" Content="Remove Image" Margin="0,0,5,0"></Button>
+                        <Button x:Uid="AttachImage"  Command="{Binding AttachImageCommand}" Content="Image" Margin="0,0,5,0"/>
                         <Button x:Uid="Stamps" Command="{Binding NavigateToStickersListCommand}" Content="Stamp" Margin="0,0,5,0"/>
                         <Button x:Uid="SendButton" Command="{Binding SendMessageCommand}" Content="Send"/>
                     </StackPanel>
