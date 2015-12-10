@@ -19,6 +19,7 @@ namespace PlayStation_App.Common
             builder.RegisterType<LiveFromPlayStationViewModel>().SingleInstance();
             builder.RegisterType<MessagesViewModel>().SingleInstance();
             builder.RegisterType<EventsViewModel>().SingleInstance();
+            builder.RegisterType<StickersListViewModel>().SingleInstance();
             //builder.RegisterType<MainPage>();
             return builder.Build();
         }

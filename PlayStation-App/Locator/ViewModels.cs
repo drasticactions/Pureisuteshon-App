@@ -38,5 +38,7 @@ namespace PlayStation_App.Locator
 
         public static EventsViewModel EventsVm => App.Container.Resolve<EventsViewModel>();
 
+        public static StickersListViewModel StickerListVm => App.Container.Resolve<StickersListViewModel>();
+
     }
 }

@@ -109,6 +109,9 @@
 
         public const string EventDetailFriends = "https://{0}-evnt-edge.np.community.playstation.net/eventsClient/v1/events/{1}/registeredUsers?targetUsers=friends&offset={2}&limit={3}";
 
+        public const string StickerPreset =
+            "http://static-resource.np.community.playstation.net/sticker/presetList_{0}.json";
+
         public const string LiveBroadcast =
             "https://ugc.api.playstation.com/distributor/v1/broadcasts?q=*:*&sort={1}&start=0&rows=80&language={2}&fq={0}&fl=serviceType,countOfViewers,smallStreamPreviewImage,countOfComments,storyId,sceUserOnlineId,sceTitleName,sceTitleProductId,sceTitleId,title,description,id,channelId,eventId";
 

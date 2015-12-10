@@ -47,9 +47,12 @@ namespace PlayStation_App
 
             try
             {
+                StickersDataSource bs = new StickersDataSource();
                 UserAccountDataSource ds = new UserAccountDataSource();
                 ds.InitDatabase();
                 ds.CreateDatabase();
+                bs.InitDatabase();
+                bs.CreateDatabase();
             }
             catch(Exception ex)
             {
