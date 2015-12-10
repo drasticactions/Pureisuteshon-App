@@ -30,7 +30,10 @@ namespace PlayStation_App.ViewModels
                 var stickerList = await _stickersDatabase.GetStickers();
                 if (stickerList.Any())
                 {
-                    StickerList = stickerList.ToObservableCollection();
+                    foreach (var item in stickerList)
+                    {
+                        StickerList.Add(item);
+                    }
                     IsLoading = false;
                     return;
                 }
@@ -70,7 +73,10 @@ namespace PlayStation_App.ViewModels
                     stickerList.Add(manifest);
                 }
 
-                StickerList = stickerList.ToObservableCollection();
+                foreach (var item in stickerList)
+                {
+                    StickerList.Add(item);
+                }
                 await _stickersDatabase.InsertStickers(stickerList);
             }
             catch (Exception ex)

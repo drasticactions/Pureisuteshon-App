@@ -26,9 +26,9 @@ namespace PlayStation.Managers
         {
         }
 
-        public async Task<Result> GetStickerPackList(string region = "jp")
+        public async Task<Result> GetStickerPackList(string region = "JP")
         {
-            var url = string.Format(EndPoints.StickerPreset, region);
+            var url = string.Format(EndPoints.StickerPreset, region.ToUpper());
             return await GetData(new Uri(url));
         }
 

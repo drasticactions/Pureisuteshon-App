@@ -48,6 +48,7 @@
     <Compile Include="Managers\LiveStreamManager.cs" />
     <Compile Include="Managers\MessageManager.cs" />
     <Compile Include="Managers\RecentActivityManager.cs" />
+    <Compile Include="Managers\StickerManager.cs" />
     <Compile Include="Managers\TrophyManager.cs" />
     <Compile Include="Managers\UserManager.cs" />
     <Compile Include="Managers\WebManager.cs" />

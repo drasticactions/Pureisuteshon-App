@@ -34,6 +34,7 @@ namespace PlayStation_App.ViewModels
         private bool _isSelected;
         private bool _isImageAttached;
         private string _message;
+        public NavigateToStickersListView NavigateToStickersListCommand { get; set; } = new NavigateToStickersListView();
         private MessageResponse _messageResponse;
         public AttachImageCommand AttachImageCommand { get; set; } = new AttachImageCommand();
         public RemoveImageCommand RemoveImageCommand { get; set; } = new RemoveImageCommand();

@@ -139,7 +139,8 @@
                     <StackPanel HorizontalAlignment="Right" Margin="5" Grid.Row="1" Orientation="Horizontal">
                         <Button Command="{Binding RemoveImageCommand}" Visibility="{Binding IsImageAttached, Converter={StaticResource BooleanToVisibilityConverter}}" Content="添付をやめる" Margin="0,0,5,0"></Button>
                         <Button Visibility="Collapsed" Command="{Binding AttachImageCommand}" Content="画像を添付" Margin="0,0,5,0"/>
-                        <Button Command="{Binding SendMessageCommand}" Content="送信"/>
+                        <Button Command="{Binding NavigateToStickersListCommand}" Content="Sticker" Margin="0,0,5,0"/>
+                        <Button x:Uid="SendButton" Command="{Binding SendMessageCommand}" Content="送信"/>
                     </StackPanel>
                 </Grid>
             </Grid>

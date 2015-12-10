@@ -151,7 +151,7 @@ namespace PlayStation.Managers
                     result.ResultJson = responseContent;
                     return result;
                 }
-                catch
+                catch(Exception ex)
                 {
                     // TODO: Add detail error result to json object.
                     return new Result(false, string.Empty);
