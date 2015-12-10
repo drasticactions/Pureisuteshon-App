@@ -1,4 +1,4 @@
-﻿﻿<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -526,7 +526,7 @@ Puedes ganar trofeos jugando a juegos.</value>
     <value>Ver Información</value>
   </data>
   <data name="ViewNameRequest.Text" xml:space="preserve">
-    <value>Ver Solicitud de Nombre/value>
+    <value>Ver Solicitud de Nombre</value>
   </data>
   <data name="VoiceMessage.Text" xml:space="preserve">
     <value>Mensaje de Voz</value>
@@ -607,7 +607,7 @@ Puedes ganar trofeos jugando a juegos.</value>
     <value>Guardar</value>
   </data>
   <data name="ViewImage.Text" xml:space="preserve">
-    <value>Ver Imagen/value>
+    <value>Ver Imagen</value>
   </data>
   <data name="ErrorText.Text" xml:space="preserve">
     <value>Hubo un error:</value>
@@ -622,7 +622,7 @@ Puedes ganar trofeos jugando a juegos.</value>
     <value>Añadir Cuenta</value>
   </data>
   <data name="LoginError.Text" xml:space="preserve">
-    <valueTu dirección o Contraseña es Incorrecta, Pruebe de Nuevo.</value>
+    <value>Tu dirección o Contraseña es Incorrecta, Pruebe de Nuevo.</value>
   </data>
   <data name="Home.Text" xml:space="preserve">
     <value>Principal</value>
