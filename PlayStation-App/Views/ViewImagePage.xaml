@@ -35,7 +35,7 @@
                 <ColumnDefinition x:Name="HamburgerPlacement" Width="40" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-            <Button HorizontalAlignment="Right" Margin="0,0,5,0" Grid.Column="1" Command="{Binding DownloadImage}" CommandParameter="{Binding SelectedItem}" x:Uid="SaveImageButton" Content="保存"/>
+            <Button HorizontalAlignment="Right" Margin="0,0,5,0" Grid.Column="1" Command="{Binding DownloadImage}" CommandParameter="{Binding SelectedItem}" x:Uid="SaveImageButton" Content="Save"/>
         </Grid>
         <Grid Grid.Row="1">
             <Image Margin="20" Source="{Binding SelectedItem.Image}"/>

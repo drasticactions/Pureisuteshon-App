@@ -143,7 +143,8 @@ namespace PlayStation_App.ViewModels
                 foreach(var member in messageGroup.MessageGroupDetail.Members)
                 {
                     var avatar = await GetAvatarUrl(member.OnlineId);
-                    avatarOnlineId.Add(member.OnlineId, avatar);
+                    if(avatarOnlineId.All(node => node.Key != member.OnlineId))
+                        avatarOnlineId.Add(member.OnlineId, avatar);
                 }
                 foreach (
     var newMessage in
@@ -210,11 +211,19 @@ namespace PlayStation_App.ViewModels
                     return;
                 }
                 _messageGroupEntity = JsonConvert.DeserializeObject<MessageGroupResponse>(messageResult.ResultJson);
+                var avatarOnlineId = new Dictionary<string, string>();
+                var avatarOnlinelist = _messageGroupEntity.MessageGroups.Select(node => node.LatestMessage);
+                foreach (var member in avatarOnlinelist)
+                {
+                    var avatar = await GetAvatarUrl(member.SenderOnlineId);
+                    if (avatarOnlineId.All(node => node.Key != member.SenderOnlineId))
+                        avatarOnlineId.Add(member.SenderOnlineId, avatar);
+                }
                 foreach (
     var newMessage in
         _messageGroupEntity.MessageGroups.Select(message => new MessageGroupItem { MessageGroup = message }))
                 {
-                    newMessage.AvatarUrl = await GetAvatarUrl(newMessage.MessageGroup.LatestMessage.SenderOnlineId);
+                    newMessage.AvatarUrl = avatarOnlineId.FirstOrDefault(node => node.Key == newMessage.MessageGroup.LatestMessage.SenderOnlineId).Value;
                     MessageGroupCollection.Add(newMessage);
                 }
             }
