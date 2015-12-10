@@ -714,4 +714,7 @@ You can earn trophies by playing games that support them.</value>
   <data name="RemoveImage.Content" xml:space="preserve">
     <value>Remove Image</value>
   </data>
+  <data name="FriendFinderSearchBox.PlaceholderText" xml:space="preserve">
+    <value>Username</value>
+  </data>
 </root>

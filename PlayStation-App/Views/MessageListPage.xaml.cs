@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -29,6 +30,27 @@ namespace PlayStation_App.Views
         public MessageListPage()
         {
             this.InitializeComponent();
+            Locator.ViewModels.MessagesVm.PropertyChanged += MessagesVmOnPropertyChanged;
+        }
+
+        private void MessagesVmOnPropertyChanged(object sender, PropertyChangedEventArgs propertyChangedEventArgs)
+        {
+            switch (propertyChangedEventArgs.PropertyName)
+            {
+                case "IsNewMessage":
+                    if (Locator.ViewModels.MessagesVm.IsNewMessage)
+                    {
+                        _lastSelectedItem = null;
+                        MessageList.SelectedItem = null;
+                        Locator.ViewModels.MessagesVm.MessageCollection.Clear();
+                        if (AdaptiveStates.CurrentState == NarrowState)
+                        {
+                            // Use "drill in" transition for navigating from master list to detail view
+                            App.RootFrame.Navigate(typeof(MessageDetailPage), null, new DrillInNavigationTransitionInfo());
+                        }
+                    }
+                    break;
+            }
         }
 
         private void LayoutRoot_Loaded(object sender, RoutedEventArgs e)
@@ -66,6 +88,8 @@ namespace PlayStation_App.Views
             var clickedItem = (MessageGroupItem)e.ClickedItem;
             _lastSelectedItem = clickedItem;
             await Locator.ViewModels.MessagesVm.GetMessages(clickedItem.MessageGroup);
+            Locator.ViewModels.MessagesVm.IsNewMessage = false;
+
             if (AdaptiveStates.CurrentState == NarrowState)
             {
                 // Use "drill in" transition for navigating from master list to detail view

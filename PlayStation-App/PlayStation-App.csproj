@@ -152,6 +152,7 @@
     <Compile Include="Commands\Live\NavigateToLiveFromPlaystationPage.cs" />
     <Compile Include="Commands\Live\SearchLiveFromPlaystation.cs" />
     <Compile Include="Commands\Messages\AttachImageCommand.cs" />
+    <Compile Include="Commands\Messages\FriendFilters.cs" />
     <Compile Include="Commands\Messages\NavigateToMessagesViewCommand.cs" />
     <Compile Include="Commands\Messages\NavigateToStickersListView.cs" />
     <Compile Include="Commands\Messages\SelectStickerCommand.cs" />
@@ -186,6 +187,8 @@
     <Compile Include="Models\Authentication\Tokens.cs" />
     <Compile Include="Models\Events\Duration.cs" />
     <Compile Include="Models\Events\Event.cs" />
+    <Compile Include="Models\FriendFinder\OnlineIdMatch.cs" />
+    <Compile Include="Models\FriendFinder\SearchResult.cs" />
     <Compile Include="Models\Friends\EarnedTrophies.cs" />
     <Compile Include="Models\Friends\Friend.cs" />
     <Compile Include="Models\Friends\GameTitleInfo.cs" />
@@ -204,6 +207,7 @@
     <Compile Include="Models\MessageGroups\StickerDetail.cs" />
     <Compile Include="Models\MessageGroups\ThumbnailDetail.cs" />
     <Compile Include="Models\Messages\Message.cs" />
+    <Compile Include="Models\Messages\SentMessageResponse.cs" />
     <Compile Include="Models\RecentActivity\CaptionComponent.cs" />
     <Compile Include="Models\RecentActivity\CaptionComponent2.cs" />
     <Compile Include="Models\RecentActivity\CondensedStory.cs" />
@@ -214,6 +218,7 @@
     <Compile Include="Models\RecentActivity\Target.cs" />
     <Compile Include="Models\RecentActivity\Target2.cs" />
     <Compile Include="Models\Response\EventsREsponse.cs" />
+    <Compile Include="Models\Response\FriendFinderResponse.cs" />
     <Compile Include="Models\Response\FriendListResponse.cs" />
     <Compile Include="Models\Response\MessageGroupResponse.cs" />
     <Compile Include="Models\Response\MessageResponse.cs" />

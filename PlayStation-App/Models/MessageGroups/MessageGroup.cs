@@ -29,6 +29,12 @@ namespace PlayStation_App.Models.MessageGroups
 
         [JsonProperty("thumbnailDetail")]
         public ThumbnailDetail ThumbnailDetail { get; set; }
+
+        [JsonProperty("messageUid")]
+        public int MessageUid { get; set; }
+
+        [JsonProperty("sentMessageId")]
+        public string SentMessageId { get; set; }
     }
 
 }

@@ -66,70 +66,62 @@
                 <ColumnDefinition x:Name="DetailColumn" Width="*" />
             </Grid.ColumnDefinitions>
             <Grid Grid.Column="0">
-
-                <uwp:PullToRefreshBox RefreshInvoked="PullToRefreshBoxMessageList_OnRefreshInvoked" RefreshThreshold="100">
-                    <uwp:PullToRefreshBox.TopIndicatorTemplate>
-                        <DataTemplate>
-                            <userControls:PullToRefresh PullProgress="{Binding}" Height="101"
-                                    VerticalAlignment="Bottom">
-                                <userControls:PullToRefresh.SymbolStyle>
-                                    <Style TargetType="SymbolIcon">
-                                        <Setter Property="Foreground"
-                            Value="{StaticResource ApplicationSecondaryForegroundThemeBrush}" />
-                                    </Style>
-                                </userControls:PullToRefresh.SymbolStyle>
-                                <userControls:PullToRefresh.TextStyle>
-                                    <Style TargetType="TextBlock">
-                                        <Setter Property="Foreground"
-                            Value="{StaticResource ApplicationSecondaryForegroundThemeBrush}" />
-                                    </Style>
-                                </userControls:PullToRefresh.TextStyle>
-                            </userControls:PullToRefresh>
-                        </DataTemplate>
-                    </uwp:PullToRefreshBox.TopIndicatorTemplate>
-                    <ListView IsItemClickEnabled="True" ItemClick="MessageGroup_OnClick" ItemTemplate="{StaticResource MessageDataTemplate}" ItemsSource="{Binding MessageGroupCollection}" x:Name="MessageList">
-                        <ListView.ItemContainerStyle>
-                            <Style TargetType="ListViewItem">
-                                <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-                            </Style>
-                        </ListView.ItemContainerStyle>
-                    </ListView>
-
-                </uwp:PullToRefreshBox>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <ListView IsItemClickEnabled="True" ItemClick="MessageGroup_OnClick" ItemTemplate="{StaticResource MessageDataTemplate}" ItemsSource="{Binding MessageGroupCollection}" x:Name="MessageList">
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="ListViewItem">
+                            <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                        </Style>
+                    </ListView.ItemContainerStyle>
+                </ListView>
+                <CommandBar Grid.Row="1">
+                    <CommandBar.Background>
+                        <SolidColorBrush Color="#DBDEE7" Opacity=".05" />
+                    </CommandBar.Background>
+                    <AppBarButton Icon="Add">
+                        <AppBarButton.Flyout>
+                            <Flyout Placement="Full" FlyoutPresenterStyle="{StaticResource PlayStationFlyoutStyle}">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+                                    <TextBox Margin="2" Grid.Row="0" x:Uid="FriendFinderSearchBox" Text="{Binding FriendSearch, Mode=TwoWay}" PlaceholderText="Username" HorizontalAlignment="Stretch"/>
+                                    <Button Margin="2" x:Uid="LiveSearchButton" Grid.Row="1" HorizontalAlignment="Stretch" Command="{Binding FriendFilterButton}"/>
+                                    <ListView Grid.Row="2" ItemsSource="{Binding FriendSearchResults}">
+                                        <ListView.ItemTemplate>
+                                            <DataTemplate>
+                                                <TextBlock VerticalAlignment="Center" FontSize="20" TextWrapping="Wrap" Text="{Binding OnlineId}"/>
+                                            </DataTemplate>
+                                        </ListView.ItemTemplate>
+                                        <ListView.ItemContainerStyle>
+                                            <Style TargetType="ListViewItem">
+                                                <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                                            </Style>
+                                        </ListView.ItemContainerStyle>
+                                    </ListView>
+                                </Grid>
+                            </Flyout>
+                        </AppBarButton.Flyout>
+                    </AppBarButton>
+                </CommandBar>
             </Grid>
             <Grid  x:Name="DetailContentPresenter" Grid.Column="1">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
-                <uwp:PullToRefreshBox RefreshInvoked="PullToRefreshBox_OnRefreshInvoked" RefreshThreshold="100">
-                    <uwp:PullToRefreshBox.TopIndicatorTemplate>
-                        <DataTemplate>
-                            <userControls:PullToRefresh PullProgress="{Binding}" Height="101"
-                                    VerticalAlignment="Bottom">
-                                <userControls:PullToRefresh.SymbolStyle>
-                                    <Style TargetType="SymbolIcon">
-                                        <Setter Property="Foreground"
-                            Value="{StaticResource ApplicationSecondaryForegroundThemeBrush}" />
-                                    </Style>
-                                </userControls:PullToRefresh.SymbolStyle>
-                                <userControls:PullToRefresh.TextStyle>
-                                    <Style TargetType="TextBlock">
-                                        <Setter Property="Foreground"
-                            Value="{StaticResource ApplicationSecondaryForegroundThemeBrush}" />
-                                    </Style>
-                                </userControls:PullToRefresh.TextStyle>
-                            </userControls:PullToRefresh>
-                        </DataTemplate>
-                    </uwp:PullToRefreshBox.TopIndicatorTemplate>
-                    <ListView x:Name="MessagesList" Loaded="MessagesList_OnLoaded" ItemTemplate="{StaticResource MessageDetailDataTemplate}" ItemsSource="{Binding MessageCollection}">
-                        <ListView.ItemContainerStyle>
-                            <Style TargetType="ListViewItem">
-                                <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-                            </Style>
-                        </ListView.ItemContainerStyle>
-                    </ListView>
-                </uwp:PullToRefreshBox>
+                <ListView x:Name="MessagesList" Loaded="MessagesList_OnLoaded" ItemTemplate="{StaticResource MessageDetailDataTemplate}" ItemsSource="{Binding MessageCollection}">
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="ListViewItem">
+                            <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                        </Style>
+                    </ListView.ItemContainerStyle>
+                </ListView>
                 <Grid Visibility="{Binding IsSelected, Converter={StaticResource BooleanToVisibilityConverter}}" Grid.Row="1">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="45"/>
