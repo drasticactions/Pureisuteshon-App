@@ -49,7 +49,7 @@
             </Grid.Background>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition x:Name="HamburgerPlacement" Width="40" />
-                <ColumnDefinition Width="400" />
+                <ColumnDefinition Width="420" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
             <TextBlock x:Uid="Messenger" Grid.Column="1" Text="Messages" Margin="10,0,0,0" x:Name="pageTitle" FontWeight="Bold" Style="{StaticResource TagLineTextStyle}"

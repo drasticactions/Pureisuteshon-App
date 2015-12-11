@@ -1,0 +1,2 @@
+MainPackage=C:\Users\t_mil\Documents\GitHub\PlayStation-App\PlayStation-App\bin\x86\Release\Upload\PlayStation-App_1.6.9.0_x86.appx
+SymbolPackage=C:\Users\t_mil\Documents\GitHub\PlayStation-App\PlayStation-App\AppPackages\PlayStation-App_1.6.9.0\PlayStation-App_1.6.9.0_x86.appxsym

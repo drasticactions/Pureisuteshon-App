@@ -36,15 +36,22 @@ namespace PlayStation_App.Tools
             if (fb == null)
                 return;
 
-            if ((bool)e.NewValue)
+            try
             {
-                fb.Closed += flyout_Closed;
-                fb.ShowAt(GetParent(d));
+                if ((bool)e.NewValue)
+                {
+                    fb.Closed += flyout_Closed;
+                    fb.ShowAt(GetParent(d));
+                }
+                else
+                {
+                    fb.Closed -= flyout_Closed;
+                    fb.Hide();
+                }
             }
-            else
+            catch (Exception)
             {
-                fb.Closed -= flyout_Closed;
-                fb.Hide();
+
             }
         }
 

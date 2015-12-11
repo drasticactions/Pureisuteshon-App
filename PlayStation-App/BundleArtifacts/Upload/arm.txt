@@ -1,0 +1,9 @@
+MainPackage=C:\Users\t_mil\Documents\GitHub\PlayStation-App\PlayStation-App\bin\ARM\Release\Upload\PlayStation-App_1.6.9.0_ARM.appx
+SymbolPackage=C:\Users\t_mil\Documents\GitHub\PlayStation-App\PlayStation-App\AppPackages\PlayStation-App_1.6.9.0\PlayStation-App_1.6.9.0_ARM.appxsym
+ResourcePack=C:\Users\t_mil\Documents\GitHub\PlayStation-App\PlayStation-App\_language-es.appx
+ResourcePack=C:\Users\t_mil\Documents\GitHub\PlayStation-App\PlayStation-App\_language-id.appx
+ResourcePack=C:\Users\t_mil\Documents\GitHub\PlayStation-App\PlayStation-App\_language-ja.appx
+ResourcePack=C:\Users\t_mil\Documents\GitHub\PlayStation-App\PlayStation-App\_scale-100.appx
+ResourcePack=C:\Users\t_mil\Documents\GitHub\PlayStation-App\PlayStation-App\_scale-125.appx
+ResourcePack=C:\Users\t_mil\Documents\GitHub\PlayStation-App\PlayStation-App\_scale-150.appx
+ResourcePack=C:\Users\t_mil\Documents\GitHub\PlayStation-App\PlayStation-App\_scale-400.appx
