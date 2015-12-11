@@ -28,6 +28,7 @@ namespace PlayStation_App.Commands.Messages
             {
                 searchResult.OnlineId
             };
+            Locator.ViewModels.MessagesVm.GroupMemberSeperatedList = searchResult.OnlineId;
             Locator.ViewModels.MessagesVm.SelectedMessageGroup = null;
             Locator.ViewModels.MessagesVm.IsNewMessage = true;
             Locator.ViewModels.MessagesVm.IsSelected = true;

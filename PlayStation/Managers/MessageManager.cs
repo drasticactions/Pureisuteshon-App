@@ -53,7 +53,6 @@ namespace PlayStation.Managers
            UserAuthenticationEntity userAuthenticationEntity, string region = "jp")
         {
             var url = string.Format(EndPoints.DeleteThread, region, messageGroupId, onlineId);
-            url += "&r=" + Guid.NewGuid();
             return await _webManager.DeleteData(new Uri(url), null, userAuthenticationEntity);
         }
 

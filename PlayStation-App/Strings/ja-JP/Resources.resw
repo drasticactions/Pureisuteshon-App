@@ -504,4 +504,7 @@
   <data name="FriendFinderSearchBox.PlaceholderText" xml:space="preserve">
     <value>ユーザー</value>
   </data>
+  <data name="LeaveMessageGroup.Text" xml:space="preserve">
+    <value>退出</value>
+  </data>
 </root>

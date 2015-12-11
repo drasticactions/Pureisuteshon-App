@@ -21,7 +21,7 @@
             <VisualStateGroup x:Name="AdaptiveStates">
                 <VisualState x:Name="DefaultState">
                     <VisualState.StateTriggers>
-                        <AdaptiveTrigger MinWindowWidth="380" />
+                        <AdaptiveTrigger MinWindowWidth="800" />
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
                         <Setter Target="HamburgerPlacement.Width" Value="0" />
@@ -39,6 +39,12 @@
             </Grid.ColumnDefinitions>
             <TextBlock x:Uid="MyStamps" Grid.Column="1" Text="Stamp" Margin="10,0,0,0" x:Name="pageTitle" FontWeight="Bold" Style="{StaticResource TagLineTextStyle}"
                        IsHitTestVisible="false" TextWrapping="NoWrap" TextTrimming="CharacterEllipsis" VerticalAlignment="Center" />
+        </Grid>
+        <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Visibility="{Binding IsLoading, Converter={StaticResource BooleanToVisibilityConverter}}" Canvas.ZIndex="1" Grid.Row="1">
+            <Grid.Background>
+                <SolidColorBrush Color="Black" Opacity=".25"/>
+            </Grid.Background>
+            <ProgressRing Foreground="White" Width="50" Height="50" IsActive="{Binding IsLoading}" Style="{StaticResource WaveProgressRingStyle}" />
         </Grid>
         <ListView IsItemClickEnabled="True" Grid.Row="1" ItemsSource="{Binding StickerCollection}">
             <ListView.ItemTemplate>
@@ -60,7 +66,7 @@
             </ListView.ItemContainerStyle>
             <interactivity:Interaction.Behaviors>
                 <core:EventTriggerBehavior EventName="ItemClick">
-                    <core:InvokeCommandAction Command="{Binding NavigateToThreadListPageCommand}" />
+                    <core:InvokeCommandAction Command="{Binding SelectStickerCommand}" />
                 </core:EventTriggerBehavior>
             </interactivity:Interaction.Behaviors>
         </ListView>

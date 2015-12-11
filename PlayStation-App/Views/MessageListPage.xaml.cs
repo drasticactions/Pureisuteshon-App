@@ -139,5 +139,10 @@ namespace PlayStation_App.Views
 
             MessagesList.ScrollIntoView(MessagesList.SelectedItem);
         }
+
+        private async void RefreshMessage_OnClick(object sender, RoutedEventArgs e)
+        {
+            await Locator.ViewModels.MessagesVm.GetMessageGroups(Locator.ViewModels.MessagesVm.Username);
+        }
     }
 }

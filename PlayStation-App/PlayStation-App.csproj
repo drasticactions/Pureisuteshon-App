@@ -153,6 +153,7 @@
     <Compile Include="Commands\Live\SearchLiveFromPlaystation.cs" />
     <Compile Include="Commands\Messages\AttachImageCommand.cs" />
     <Compile Include="Commands\Messages\FriendFilters.cs" />
+    <Compile Include="Commands\Messages\LeaveMessageGroup.cs" />
     <Compile Include="Commands\Messages\NavigateToMessagesViewCommand.cs" />
     <Compile Include="Commands\Messages\NavigateToStickersListView.cs" />
     <Compile Include="Commands\Messages\SelectStickerCommand.cs" />

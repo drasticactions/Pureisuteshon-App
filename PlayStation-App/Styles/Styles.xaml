@@ -567,6 +567,19 @@
                 <TextBlock FontSize="15" HorizontalAlignment="Right" TextWrapping="Wrap"
                                Text="{Binding MessageGroup.LatestMessage.ReceivedDate, Converter={StaticResource DateConverter}}" />
             </StackPanel>
+            <FlyoutBase.AttachedFlyout>
+                <MenuFlyout>
+                    <MenuFlyoutItem x:Uid="LeaveMessageGroup" Command="{Binding DataContext.LeaveMessageGroup, ElementName=MessageList}" CommandParameter="{Binding}"/>
+                </MenuFlyout>
+            </FlyoutBase.AttachedFlyout>
+            <interactivity:Interaction.Behaviors>
+                <core:EventTriggerBehavior EventName="Holding">
+                    <tools:OpenMenuFlyoutAction />
+                </core:EventTriggerBehavior>
+                <core:EventTriggerBehavior EventName="RightTapped">
+                    <tools:OpenMenuFlyoutAction />
+                </core:EventTriggerBehavior>
+            </interactivity:Interaction.Behaviors>
         </Grid>
     </DataTemplate>
     <DataTemplate x:Key="LiveBroadcastTemplate">
