@@ -44,6 +44,7 @@
     <Compile Include="Interfaces\IWebManager.cs" />
     <Compile Include="Managers\AuthenticationManager.cs" />
     <Compile Include="Managers\EventManager.cs" />
+    <Compile Include="Managers\FriendFinderManager.cs" />
     <Compile Include="Managers\FriendManager.cs" />
     <Compile Include="Managers\LiveStreamManager.cs" />
     <Compile Include="Managers\MessageManager.cs" />

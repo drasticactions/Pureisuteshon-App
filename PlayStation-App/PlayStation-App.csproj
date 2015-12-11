@@ -270,6 +270,7 @@
     <Compile Include="Tools\Converter\ValuePrecentConverter.cs" />
     <Compile Include="Tools\Debug\ResultChecker.cs" />
     <Compile Include="Tools\Debug\SampleData.cs" />
+    <Compile Include="Tools\FlyoutHelper.cs" />
     <Compile Include="Tools\Helpers\AuthHelpers.cs" />
     <Compile Include="Tools\Converter\OnlineConverter.cs" />
     <Compile Include="Tools\LinqExtensions.cs" />

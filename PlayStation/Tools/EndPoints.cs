@@ -29,6 +29,9 @@
 
         public const int DefaultTimeoutInMilliseconds = 60000;
 
+        public const string FriendFinder =
+            "https://friendfinder.api.np.km.playstation.net/friend-finder/api/v1/users/me/search?fields=onlineId&limit=10000&query={0}&rounded=true&searchFields=onlineId%2CpersonalDetail%2CpersonalDetail.displayName&searchTarget=fof";
+
         public const string RecentlyPlayed =
     "https://activity.api.np.km.playstation.net/activity/api/v1/users/{0}/recentlyplayed?";
 
@@ -90,6 +93,9 @@
 
         public const string CreatePost =
             "https://{0}-gmsg.np.community.playstation.net/groupMessaging/v1/messageGroups/{1}/messages";
+
+        public const string CreateNewGroupPost =
+            "https://{0}-gmsg.np.community.playstation.net/groupMessaging/v1/messageGroups";
 
         public const string MyEvents =
             "https://{0}-evnt-edge.np.community.playstation.net/eventsClient/v1/users/me/myEvents?fields=eventId,eventType,eventName,lastUpdate,duration,registeredUserCount,bannerImageUrl&targetEvents={1}&limit=100";

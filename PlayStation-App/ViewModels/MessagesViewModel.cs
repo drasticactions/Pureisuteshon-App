@@ -31,6 +31,11 @@ namespace PlayStation_App.ViewModels
 {
     public class MessagesViewModel : NotifierBase
     {
+        public MessagesViewModel()
+        {
+            OpenCommand = new RelayCommand(() => IsOpen = true);
+            CloseCommand = new RelayCommand(() => IsOpen = false);
+        }
         private ObservableCollection<MessageGroupItem> _messageGroupCollection =
             new ObservableCollection<MessageGroupItem>();
 
@@ -44,20 +49,16 @@ namespace PlayStation_App.ViewModels
         private bool _isImageAttached;
         private string _message;
         private string _friendSearch;
+        private string _groupMemberSeperatedList;
         private List<SearchResult> _friendSearchResult; 
-        public List<string> NewGroupMembers { get; set; } = new List<string>();
+        public List<string> GroupMembers { get; set; } = new List<string>();
         public NavigateToStickersListView NavigateToStickersListCommand { get; set; } = new NavigateToStickersListView();
         private MessageResponse _messageResponse;
-
-        public FriendFilterOnChangedQuery FriendFilterOnChangedQuery { get; set; } = new FriendFilterOnChangedQuery();
-
-        public FriendMessageFilterOnSubmittedQuery FriendMessageFilterOnSubmittedQuery { get; set; } = new FriendMessageFilterOnSubmittedQuery();
-
-        public FriendMessageFilterOnSuggestedQuery FriendMessageFilterOnSuggestedQuery { get; set; } = new FriendMessageFilterOnSuggestedQuery();
         public FriendFilterButton FriendFilterButton { get; set; } = new FriendFilterButton();
         public AttachImageCommand AttachImageCommand { get; set; } = new AttachImageCommand();
         public RemoveImageCommand RemoveImageCommand { get; set; } = new RemoveImageCommand();
         public SendMessageCommand SendMessageCommand { get; set; } = new SendMessageCommand();
+        public FriendFilterSelection FriendFilterSelection { get; set; } = new FriendFilterSelection();
         public DownloadImage DownloadImage { get; set; } = new DownloadImage();
 
         public ViewImage ViewImage { get; set; } = new ViewImage();
@@ -65,6 +66,16 @@ namespace PlayStation_App.ViewModels
         private MessageGroupResponse _messageGroupEntity;
         public IRandomAccessStream AttachedImage { get; set; }
         public string ImagePath { get; set; } = "";
+        public string GroupMemberSeperatedList
+        {
+            get { return _groupMemberSeperatedList; }
+            set
+            {
+                SetProperty(ref _groupMemberSeperatedList, value);
+                OnPropertyChanged();
+            }
+        }
+
         public string FriendSearch
         {
             get { return _friendSearch; }
@@ -157,6 +168,21 @@ namespace PlayStation_App.ViewModels
                 OnPropertyChanged();
             }
         }
+
+        private bool _isOpen;
+        public bool IsOpen
+        {
+            get { return _isOpen; }
+            set
+            {
+                SetProperty(ref _isOpen, value);
+                OnPropertyChanged();
+            }
+        }
+
+        public RelayCommand OpenCommand { get; set; }
+        public RelayCommand CloseCommand { get; set; }
+
         private readonly MessageManager _messageManager = new MessageManager();
         private readonly UserManager _userManager = new UserManager();
 
@@ -184,9 +210,13 @@ namespace PlayStation_App.ViewModels
                 foreach(var member in messageGroup.MessageGroupDetail.Members)
                 {
                     var avatar = await GetAvatarUrl(member.OnlineId);
-                    if(avatarOnlineId.All(node => node.Key != member.OnlineId))
+                    if (avatarOnlineId.All(node => node.Key != member.OnlineId))
+                    {
                         avatarOnlineId.Add(member.OnlineId, avatar);
+                    }
                 }
+                var newList = avatarOnlineId.Where(node => node.Key != Locator.ViewModels.MainPageVm.CurrentUser.Username).Select(node => node.Key);
+                GroupMemberSeperatedList = string.Join(", ", newList);
                 foreach (
     var newMessage in
         _messageResponse.Messages.Reverse().Select(message => new MessageGroupItem { Message = message }))
@@ -258,7 +288,9 @@ namespace PlayStation_App.ViewModels
                 {
                     var avatar = await GetAvatarUrl(member.SenderOnlineId);
                     if (avatarOnlineId.All(node => node.Key != member.SenderOnlineId))
+                    {
                         avatarOnlineId.Add(member.SenderOnlineId, avatar);
+                    }
                 }
                 foreach (
     var newMessage in
@@ -319,9 +351,9 @@ namespace PlayStation_App.ViewModels
         {
            var realImage = await ConvertToJpeg(AttachedImage);
             var result = new Result();
-            if (NewGroupMembers.Any() && IsNewMessage)
+            if (GroupMembers.Any() && IsNewMessage)
             {
-                result = await _messageManager.CreateNewGroupMessageWithMedia(NewGroupMembers.ToArray(), Message, ImagePath,
+                result = await _messageManager.CreateNewGroupMessageWithMedia(GroupMembers.ToArray(), Message, ImagePath,
                      realImage,
                      Locator.ViewModels.MainPageVm.CurrentTokens, Locator.ViewModels.MainPageVm.CurrentUser.Region);
             }
@@ -374,9 +406,9 @@ namespace PlayStation_App.ViewModels
         private async Task SendMessageWithoutMedia()
         {
             var result = new Result();
-            if (NewGroupMembers.Any() && IsNewMessage)
+            if (GroupMembers.Any() && IsNewMessage)
             {
-                result = await _messageManager.CreateNewGroupMessage(NewGroupMembers.ToArray(), Message,
+                result = await _messageManager.CreateNewGroupMessage(GroupMembers.ToArray(), Message,
                   Locator.ViewModels.MainPageVm.CurrentTokens, Locator.ViewModels.MainPageVm.CurrentUser.Region);
             }
             else
@@ -405,11 +437,11 @@ namespace PlayStation_App.ViewModels
         public async Task SendSticker(StickerSelection stickerSelection)
         {
             var result = new Result();
-            if (NewGroupMembers.Any() && IsNewMessage)
+            if (GroupMembers.Any() && IsNewMessage)
             {
                 result =
                 await
-                    _messageManager.CreateStickerPostWithNewGroupMessage(NewGroupMembers.ToArray(), stickerSelection.ManifestUrl,
+                    _messageManager.CreateStickerPostWithNewGroupMessage(GroupMembers.ToArray(), stickerSelection.ManifestUrl,
                         stickerSelection.Number.ToString(), stickerSelection.ImageUrl, stickerSelection.PackageId,
                         stickerSelection.Type, Locator.ViewModels.MainPageVm.CurrentTokens,
                         Locator.ViewModels.MainPageVm.CurrentUser.Region);

@@ -49,9 +49,12 @@
             </Grid.Background>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition x:Name="HamburgerPlacement" Width="40" />
+                <ColumnDefinition Width="350" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
             <TextBlock x:Uid="Messenger" Grid.Column="1" Text="Messages" Margin="10,0,0,0" x:Name="pageTitle" FontWeight="Bold" Style="{StaticResource TagLineTextStyle}"
+                       IsHitTestVisible="false" TextWrapping="NoWrap" TextTrimming="CharacterEllipsis" VerticalAlignment="Center" />
+            <TextBlock Grid.Column="2" Text="{Binding GroupMemberSeperatedList}" Margin="10,0,0,0"  FontWeight="Bold" Style="{StaticResource TagLineTextStyle}"
                        IsHitTestVisible="false" TextWrapping="NoWrap" TextTrimming="CharacterEllipsis" VerticalAlignment="Center" />
         </Grid>
         <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Visibility="{Binding IsLoading, Converter={StaticResource BooleanToVisibilityConverter}}" Canvas.ZIndex="1" Grid.Row="1">
@@ -81,9 +84,10 @@
                     <CommandBar.Background>
                         <SolidColorBrush Color="#DBDEE7" Opacity=".05" />
                     </CommandBar.Background>
-                    <AppBarButton Icon="Add">
+                    <AppBarButton x:Name="AddButton" Command="{Binding OpenCommand}" Icon="Add">
                         <AppBarButton.Flyout>
-                            <Flyout Placement="Full" FlyoutPresenterStyle="{StaticResource PlayStationFlyoutStyle}">
+                            <Flyout Placement="Full" tools:FlyoutHelper.IsOpen="{Binding IsOpen, Mode=TwoWay}"
+                tools:FlyoutHelper.Parent="{Binding ElementName=AddButton}" FlyoutPresenterStyle="{StaticResource PlayStationFlyoutStyle}">
                                 <Grid>
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="Auto"/>
@@ -92,7 +96,7 @@
                                     </Grid.RowDefinitions>
                                     <TextBox Margin="2" Grid.Row="0" x:Uid="FriendFinderSearchBox" Text="{Binding FriendSearch, Mode=TwoWay}" PlaceholderText="Username" HorizontalAlignment="Stretch"/>
                                     <Button Margin="2" x:Uid="LiveSearchButton" Grid.Row="1" HorizontalAlignment="Stretch" Command="{Binding FriendFilterButton}"/>
-                                    <ListView Grid.Row="2" ItemsSource="{Binding FriendSearchResults}">
+                                    <ListView Grid.Row="2" SelectionMode="None" IsItemClickEnabled="True" ItemsSource="{Binding FriendSearchResults}">
                                         <ListView.ItemTemplate>
                                             <DataTemplate>
                                                 <TextBlock VerticalAlignment="Center" FontSize="20" TextWrapping="Wrap" Text="{Binding OnlineId}"/>
@@ -103,6 +107,11 @@
                                                 <Setter Property="HorizontalContentAlignment" Value="Stretch" />
                                             </Style>
                                         </ListView.ItemContainerStyle>
+                                        <interactivity:Interaction.Behaviors>
+                                            <core:EventTriggerBehavior EventName="ItemClick">
+                                                <core:InvokeCommandAction Command="{Binding FriendFilterSelection}" />
+                                            </core:EventTriggerBehavior>
+                                        </interactivity:Interaction.Behaviors>
                                     </ListView>
                                 </Grid>
                             </Flyout>

@@ -24,13 +24,14 @@ namespace PlayStation_App.Commands.Messages
                 return;
             }
 
-            Locator.ViewModels.MessagesVm.NewGroupMembers = new List<string>
+            Locator.ViewModels.MessagesVm.GroupMembers = new List<string>
             {
                 searchResult.OnlineId
             };
             Locator.ViewModels.MessagesVm.SelectedMessageGroup = null;
             Locator.ViewModels.MessagesVm.IsNewMessage = true;
             Locator.ViewModels.MessagesVm.IsSelected = true;
+            Locator.ViewModels.MessagesVm.CloseCommand.Execute(null);
         }
     }
 
@@ -122,7 +123,7 @@ namespace PlayStation_App.Commands.Messages
                 return;
             }
 
-            Locator.ViewModels.MessagesVm.NewGroupMembers = new List<string>
+            Locator.ViewModels.MessagesVm.GroupMembers = new List<string>
             {
                 friendFinderResult.SearchResults.First().OnlineId
             };

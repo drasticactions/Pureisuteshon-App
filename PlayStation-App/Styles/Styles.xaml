@@ -1492,12 +1492,12 @@
         <Setter Property="IsTabStop" Value="False"/>
         <Setter Property="Background">
             <Setter.Value>
-                <SolidColorBrush Color="#CC000000" Opacity=".85"/>
+                <SolidColorBrush Color="#000000" Opacity=".90"/>
             </Setter.Value>
         </Setter>
         <Setter Property="BorderBrush">
             <Setter.Value>
-                <SolidColorBrush Color="#CC000000" Opacity=".85"/>
+                <SolidColorBrush Color="#000000" Opacity=".90"/>
             </Setter.Value>
         </Setter>
         <Setter Property="BorderThickness" Value="{ThemeResource FlyoutBorderThemeThickness}"/>

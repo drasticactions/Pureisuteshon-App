@@ -163,6 +163,8 @@ namespace PlayStation.Managers
 
         public class SendMessage
         {
+            public string[] to { get; set; }
+
             public Message message { get; set; }
         }
 
@@ -190,6 +192,88 @@ namespace PlayStation.Managers
             public string packageId { get; set; }
 
             public string type { get; set; }
+        }
+
+        public async Task<Result> CreateNewGroupMessageWithMedia(string[] toArray, string message, string imagePath, Stream realImage, UserAuthenticationEntity currentTokens, string region)
+        {
+            var url = string.Format(EndPoints.CreateNewGroupPost, region);
+            const string boundary = "gc0p4Jq0M2Yt08jU534c0p";
+            var messageJson = new SendMessage
+            {
+                to = toArray,
+                message = new Message()
+                {
+                    body = message,
+                    fakeMessageUid = 1234,
+                    messageKind = 3
+                }
+            };
+
+            var json = JsonConvert.SerializeObject(messageJson);
+            var stringContent = new StringContent(json, Encoding.UTF8, "application/json");
+            stringContent.Headers.Add("Content-Description", "message");
+            var form = new MultipartContent("mixed", boundary) { stringContent };
+            var t = new StreamContent(realImage);
+            t.Headers.ContentType = new MediaTypeHeaderValue("image/jpeg");
+            t.Headers.ContentDisposition = new ContentDispositionHeaderValue("attachment");
+            t.Headers.Add("Content-Description", "image-data-0");
+            t.Headers.Add("Content-Transfer-Encoding", "binary");
+            t.Headers.ContentLength = realImage.Length;
+            form.Add(t);
+
+            return await _webManager.PostData(new Uri(url), form, currentTokens);
+        }
+
+        public async Task<Result> CreateNewGroupMessage(string[] toArray, string message, UserAuthenticationEntity currentTokens, string region)
+        {
+            var url = string.Format(EndPoints.CreateNewGroupPost, region);
+            const string boundary = "abcdefghijklmnopqrstuvwxyz";
+            var messageJson = new SendMessage
+            {
+                to = toArray,
+                message = new Message()
+                {
+                    body = message,
+                    fakeMessageUid = 1384958573288,
+                    messageKind = 1
+                }
+            };
+
+            var json = JsonConvert.SerializeObject(messageJson);
+            var stringContent = new StringContent(json, Encoding.UTF8, "application/json");
+            stringContent.Headers.Add("Content-Description", "message");
+            var form = new MultipartContent("mixed", boundary) { stringContent };
+            return await _webManager.PostData(new Uri(url), form, currentTokens);
+        }
+
+        public async Task<Result> CreateStickerPostWithNewGroupMessage(string[] toArray, string manifestUrl, string toString, string imageUrl, string packageId, string type, UserAuthenticationEntity currentTokens, string region)
+        {
+            var url = string.Format(EndPoints.CreateNewGroupPost, region);
+            const string boundary = "abcdefghijklmnopqrstuvwxyz";
+            var messageJson = new SendMessage
+            {
+                to = toArray,
+                message = new Message()
+                {
+                    body = string.Empty,
+                    fakeMessageUid = 1384958573288,
+                    messageKind = 1013,
+                    stickerDetail = new StickerDetail()
+                    {
+                        imageUrl = imageUrl,
+                        manifestFileUrl = manifestUrl,
+                        number = toString,
+                        packageId = packageId,
+                        type = type
+                    }
+                }
+            };
+
+            var json = JsonConvert.SerializeObject(messageJson);
+            var stringContent = new StringContent(json, Encoding.UTF8, "application/json");
+            stringContent.Headers.Add("Content-Description", "message");
+            var form = new MultipartContent("mixed", boundary) { stringContent };
+            return await _webManager.PostData(new Uri(url), form, currentTokens);
         }
     }
 }

@@ -47,7 +47,7 @@
         <tools:SwipeableSplitView  IsSwipeablePaneOpen="{Binding IsSplitViewPaneOpen, Mode=TwoWay}" Grid.Row="0" x:Name="Splitter" Opacity=".95" VerticalAlignment="Stretch">
             <SplitView.Pane>
                 <RelativePanel  VerticalAlignment="Stretch">
-                    <ListView ItemClick="MenuClick" RelativePanel.AlignTopWithPanel="True" RelativePanel.Above="FooterPanel" ItemsSource="{Binding MenuItems}" IsItemClickEnabled="{Binding IsLoggedIn}" 
+                    <ListView RelativePanel.AlignTopWithPanel="True" RelativePanel.Above="FooterPanel" ItemsSource="{Binding MenuItems}" IsItemClickEnabled="{Binding IsLoggedIn}" 
                  SelectionMode="Single" HorizontalAlignment="Left" SelectionChanged="MenuSelection_Click"
                  VerticalAlignment="Top" Margin="-2,40,0,0" >
                         <ListView.ItemTemplate>
