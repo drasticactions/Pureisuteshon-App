@@ -1,1 +1,1 @@
-C:\Users\t_mil\Documents\GitHub\PlayStation-App\PlayStation-App\AppPackages\PlayStation-App_1.6.9.0\PlayStation-App_1.6.9.0_x86_x64_arm.appxbundle
+C:\Users\t_mil\Documents\GitHub\PlayStation-App\PlayStation-App\AppPackages\PlayStation-App_1.7.13.0\PlayStation-App_1.7.13.0_x86_x64_arm.appxbundle

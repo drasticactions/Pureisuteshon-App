@@ -81,12 +81,23 @@ namespace PlayStation_App.Commands.Messages
 
     public class DownloadImage : AlwaysExecutableCommand
     {
-        public async override void Execute(object parameter)
+        public override async void Execute(object parameter)
         {
             var message = parameter as MessageGroupItem;
             if (message == null)
                 return;
             await Locator.ViewModels.MessagesVm.DownloadImageAsync(message);
+        }
+    }
+
+    public class LoadImage : AlwaysExecutableCommand
+    {
+        public override async void Execute(object parameter)
+        {
+            var message = parameter as MessageGroupItem;
+            if (message == null || message.Image != null)
+                return;
+            await Locator.ViewModels.MessagesVm.LoadMessageImage(message);
         }
     }
 

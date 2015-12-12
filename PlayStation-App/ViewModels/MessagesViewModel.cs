@@ -62,6 +62,7 @@ namespace PlayStation_App.ViewModels
         public NavigateToStickersListView NavigateToStickersListCommand { get; set; } = new NavigateToStickersListView()
             ;
 
+        public LoadImage LoadImage { get; set; } = new LoadImage();
         public FriendFilterButton FriendFilterButton { get; set; } = new FriendFilterButton();
         public AttachImageCommand AttachImageCommand { get; set; } = new AttachImageCommand();
         public RemoveImageCommand RemoveImageCommand { get; set; } = new RemoveImageCommand();
@@ -249,14 +250,14 @@ namespace PlayStation_App.ViewModels
                     {
                         if (newMessage.ImageAvailable)
                         {
-                            var imageBytes =
-                                await
-                                    _messageManager.GetMessageContent(SelectedMessageGroup.MessageGroupId,
-                                        newMessage.Message.SentMessageId,
-                                        Locator.ViewModels.MainPageVm.CurrentTokens,
-                                        Locator.ViewModels.MainPageVm.CurrentUser.Region,
-                                        Locator.ViewModels.MainPageVm.CurrentUser.Language);
-                            newMessage.Image = await DecodeImage(imageBytes);
+                            //var imageBytes =
+                            //    await
+                            //        _messageManager.GetMessageContent(SelectedMessageGroup.MessageGroupId,
+                            //            newMessage.Message.SentMessageId,
+                            //            Locator.ViewModels.MainPageVm.CurrentTokens,
+                            //            Locator.ViewModels.MainPageVm.CurrentUser.Region,
+                            //            Locator.ViewModels.MainPageVm.CurrentUser.Language);
+                            //newMessage.Image = await DecodeImage(imageBytes);
                         }
                     }
                     catch (Exception ex)
@@ -282,6 +283,20 @@ namespace PlayStation_App.ViewModels
 
             IsLoading = false;
             IsSelected = true;
+        }
+
+        public async Task LoadMessageImage(MessageGroupItem item)
+        {
+            IsLoading = true;
+            var imageBytes =
+                await
+                    _messageManager.GetMessageContent(SelectedMessageGroup.MessageGroupId,
+                        item.Message.SentMessageId,
+                        Locator.ViewModels.MainPageVm.CurrentTokens,
+                        Locator.ViewModels.MainPageVm.CurrentUser.Region,
+                        Locator.ViewModels.MainPageVm.CurrentUser.Language);
+            item.Image = await DecodeImage(imageBytes);
+            IsLoading = false;
         }
 
         private async Task<BitmapImage> DecodeImage(Stream stream)

@@ -35,7 +35,17 @@ namespace PlayStation_App.ViewModels
             }
         }
 
-        public BitmapImage Image { get; set; }
+        private BitmapImage _image;
+
+        public BitmapImage Image
+        {
+            get { return _image; }
+            set
+            {
+                SetProperty(ref _image, value);
+                OnPropertyChanged();
+            }
+        }
 
         public Message Message { get; set; }
 
