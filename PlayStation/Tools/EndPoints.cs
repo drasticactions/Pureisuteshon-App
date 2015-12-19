@@ -23,9 +23,31 @@
 
         public const string NicoNicoBaseUrl = "http://edn.live.nicovideo.jp/api/v1.0/programs?";
 
+        public const string SsoCookie = "https://auth.api.sonyentertainmentnetwork.com/2.0/ssocookie";
+
+        public const string AuthorizeCheck = "https://auth.api.sonyentertainmentnetwork.com/2.0/oauth/authorizeCheck";
+
+        public const string AuthReferrer =
+            "https://id.sonyentertainmentnetwork.com/signin/?response_type=code&state=EFuTivOYGVREIoxkYad2NA5NSfw&app_context=inapp_ios&device_profile=mobile&scope=psn:sceapp,user:account.get,user:account.settings.privacy.get,user:account.settings.privacy.update,user:account.realName.get,user:account.realName.update,kamaji:get_account_hash,kamaji:ugc:distributor,oauth:manage_device_usercodes&service_entity=urn:service-entity:psn&ui=pr&smcid=psmsgr:signin&support_scheme=sneiprls&redirect_uri=com.playstation.mobilemessenger://redirect/&device_base_font_size=10&client_secret=zsISsjmCx85zgCJg&client_id=b7cbf451-6bb6-4a5a-8913-71e61f462787&service_logo=ps&error=login_required&error_code=4165&error_description=User+is+not+authenticated";
+
+        public const string Scope =
+            "psn:sceapp,user:account.get,user:account.settings.privacy.get,user:account.settings.privacy.update,user:account.realName.get,user:account.realName.update,kamaji:get_account_hash,kamaji:ugc:distributor,oauth:manage_device_usercodes";
+
+        public const string MessengerConsumerKey = "b7cbf451-6bb6-4a5a-8913-71e61f462787";
+
+        public const string MessengerConsumerSecret = "zsISsjmCx85zgCJg";
+
         public const string ConsumerKey = "4db3729d-4591-457a-807a-1cf01e60c3ac";
 
         public const string ConsumerSecret = "criemouwIuVoa4iU";
+
+        public const string LoginKey = "71a7beb8-f21a-47d9-a604-2e71bee24fe0";
+
+        public const string Duid = "0000000d000400808EE2F7D3C6394C6CB08D533CDF669378";
+
+        public const string ServiceEntity = "urn:service-entity:psn";
+
+        public const string State = "ExeVzxgtjZG24jFDYRwBdrRVbcI";
 
         public const int DefaultTimeoutInMilliseconds = 60000;
 
@@ -124,6 +146,6 @@
         public const string EventLiveBroadcast =
             "https://ugc.api.playstation.com/distributor/v1/broadcasts?q=*:*&sort=countOfViewers%20desc&start=0&rows=80&language=all&fq=serviceType:YTLIVE%20OR%20serviceType:USTREAM%20OR%20serviceType:TWITCH%20OR%20serviceType:NICOLIVE&fq=eventId:{0}&fl=serviceType,countOfViewers,smallStreamPreviewImage,countOfComments,storyId,sceUserOnlineId,sceTitleName,sceTitleProductId,sceTitleId,title,description,id,channelId,eventId";
         public const string Login =
-            "https://auth.api.sonyentertainmentnetwork.com/2.0/oauth/authorize?response_type=code&returnAuthCode=true&service_entity=urn:service-entity:psn&client_id=4db3729d-4591-457a-807a-1cf01e60c3ac&redirect_uri=com.playstation.PlayStationApp://redirect&scope=psn:sceapp";
+            "https://auth.api.sonyentertainmentnetwork.com/2.0/oauth/authorize?state=ExeVzxgtjZG24jFDYRwBdrRVbcI&ui=pr&client_secret=criemouwIuVoa4iU&duid=0000000d000400808EE2F7D3C6394C6CB08D533CDF669378&app_context=inapp_ios&client_id=4db3729d-4591-457a-807a-1cf01e60c3ac&device_base_font_size=10&device_profile=mobile&redirect_uri=com.playstation.PlayStationApp://redirect&response_type=code&scope=psn:sceapp,user:account.get,user:account.settings.privacy.get,user:account.settings.privacy.update,user:account.realName.get,user:account.realName.update,kamaji:get_account_hash,kamaji:ugc:distributor,oauth:manage_device_usercodes&service_entity=urn:service-entity:psn&service_logo=ps&support_scheme=sneiprls&smcid=psapp:signin";
     }
 }

@@ -67,7 +67,6 @@ namespace PlayStation_App
         /// <param name="e">Details about the launch request and process.</param>
         protected async override void OnLaunched(LaunchActivatedEventArgs e)
         {
-            ////Insights.Initialize("0cd564b17c7afd17e9f5c3577fb71babd9bcc209");
 
 #if DEBUG
             if (System.Diagnostics.Debugger.IsAttached)
@@ -79,7 +78,7 @@ namespace PlayStation_App
             RootFrame = Window.Current.Content as Frame;
 
             // Used for testing translations
-            // Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride = "id-ID";
+            Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride = "en-US";
 
             // Do not repeat app initialization when the Window already has content,
             // just ensure that the window is active
