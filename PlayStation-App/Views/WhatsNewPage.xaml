@@ -22,16 +22,9 @@
                         <AdaptiveTrigger MinWindowWidth="800" />
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
+                        <Setter Target="HeaderGrid.Visibility" Value="Collapsed"/>
                         <Setter Target="NarrowListView.Visibility" Value="Collapsed"/>
                         <Setter Target="FullGridView.Visibility" Value="Visible"/>
-                    </VisualState.Setters>
-                </VisualState>
-                <VisualState x:Name="midState">
-                    <VisualState.StateTriggers>
-                        <AdaptiveTrigger MinWindowWidth="450" />
-                    </VisualState.StateTriggers>
-                    <VisualState.Setters>
-                        <Setter Target="HeaderGrid.Visibility" Value="Collapsed"/>
                     </VisualState.Setters>
                 </VisualState>
                 <VisualState x:Name="narrowState">
