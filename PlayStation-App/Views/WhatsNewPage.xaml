@@ -17,12 +17,14 @@
     <Grid>
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup>
-                <VisualState x:Name="midState">
+                <VisualState x:Name="DefaultState">
                     <VisualState.StateTriggers>
-                        <AdaptiveTrigger MinWindowWidth="450" />
+                        <AdaptiveTrigger MinWindowWidth="800" />
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
                         <Setter Target="HeaderGrid.Visibility" Value="Collapsed"/>
+                        <Setter Target="NarrowListView.Visibility" Value="Collapsed"/>
+                        <Setter Target="FullGridView.Visibility" Value="Visible"/>
                     </VisualState.Setters>
                 </VisualState>
                 <VisualState x:Name="narrowState">
@@ -31,6 +33,8 @@
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
                         <Setter Target="HeaderGrid.Visibility" Value="Visible"/>
+                        <Setter Target="NarrowListView.Visibility" Value="Visible"/>
+                        <Setter Target="FullGridView.Visibility" Value="Collapsed"/>
                     </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>
@@ -50,7 +54,16 @@
             <ProgressRing Foreground="White" Width="50" Height="50" IsActive="{Binding IsLoading}" Style="{StaticResource WaveProgressRingStyle}" />
         </Grid>
         <Grid Canvas.ZIndex="0" Grid.Row="1" Padding="5">
-            <GridView IsItemClickEnabled="True" ItemsSource="{Binding RecentActivityScrollingCollection}" 
+            <ListView x:Name="NarrowListView" Visibility="Collapsed" IsItemClickEnabled="True" ItemsSource="{Binding RecentActivityScrollingCollection}" 
+                  ItemTemplateSelector="{StaticResource WhatsNewTemplateSelector}">
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <Setter Property="Margin" Value="5" />
+                        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                    </Style>
+                </ListView.ItemContainerStyle>
+            </ListView>
+            <GridView x:Name="FullGridView" IsItemClickEnabled="True" ItemsSource="{Binding RecentActivityScrollingCollection}" 
                   ItemTemplateSelector="{StaticResource WhatsNewTemplateSelector}">
                 <interactivity:Interaction.Behaviors>
                     <core:EventTriggerBehavior EventName="ItemClick">

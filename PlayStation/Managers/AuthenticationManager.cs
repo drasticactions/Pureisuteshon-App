@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
+using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 using PlayStation.Entities.User;
 using PlayStation.Entities.Web;
 using PlayStation.Interfaces;
@@ -33,14 +35,17 @@ namespace PlayStation.Managers
         {
             try
             {
-                var dic = new Dictionary<String, String>();
-                dic["grant_type"] = "authorization_code";
-                dic["client_id"] = EndPoints.ConsumerKey;
-                dic["client_secret"] = EndPoints.ConsumerSecret;
-                dic["redirect_uri"] = "com.playstation.PlayStationApp://redirect";
-                dic["state"] = "x";
-                dic["scope"] = "psn:sceapp";
-                dic["code"] = code;
+                var dic = new Dictionary<string, string>
+                {
+                    ["grant_type"] = "authorization_code",
+                    ["client_id"] = EndPoints.ConsumerKey,
+                    ["client_secret"] = EndPoints.ConsumerSecret,
+                    ["redirect_uri"] = "com.playstation.PlayStationApp://redirect",
+                    ["duid"] = EndPoints.Duid,
+                    ["scope"] = EndPoints.Scope,
+                    ["code"] = code,
+                    ["service_entity"] = "urn:service-entity:psn"
+                };
                 var theAuthClient = new HttpClient();
                 var header = new FormUrlEncodedContent(dic);
                 var response = await theAuthClient.PostAsync(EndPoints.OauthToken, header);
@@ -61,12 +66,14 @@ namespace PlayStation.Managers
         {
             try
             {
-                var dic = new Dictionary<String, String>();
-                dic["grant_type"] = "refresh_token";
-                dic["client_id"] = EndPoints.ConsumerKey;
-                dic["client_secret"] = EndPoints.ConsumerSecret;
-                dic["refresh_token"] = refreshToken;
-                dic["scope"] = "psn:sceapp";
+                var dic = new Dictionary<string, string>
+                {
+                    ["grant_type"] = "refresh_token",
+                    ["client_id"] = EndPoints.ConsumerKey,
+                    ["client_secret"] = EndPoints.ConsumerSecret,
+                    ["refresh_token"] = refreshToken,
+                    ["scope"] = EndPoints.Scope
+                };
                 var theAuthClient = new HttpClient();
                 HttpContent header = new FormUrlEncodedContent(dic);
                 var response = await theAuthClient.PostAsync(EndPoints.OauthToken, header);
@@ -88,7 +95,83 @@ namespace PlayStation.Managers
             }
         }
 
-        public async Task<Result> SendLoginData(string userName, string password)
+        public async Task<Result> SendLoginData(string username, string password)
+        {
+            try
+            {
+                using (var httpClient = new HttpClient())
+                {
+                    // Set the default headers
+                    // These are needed so the PSN Auth server will accept our username and password
+                    // and hand us a token
+                    // If we don't, we will get an HTML page back with no codes
+
+                    httpClient.DefaultRequestHeaders.Add("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8");
+                    httpClient.DefaultRequestHeaders.Add("User-Agent", "Mozilla/5.0 (iPhone; CPU iPhone OS 9_2 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Mobile/13C75 PlayStation Messages App/3.10.67");
+                    httpClient.DefaultRequestHeaders.Add("Accept-Language", "ja-jp");
+                    httpClient.DefaultRequestHeaders.Add("Accept-Encoding", "gzip, deflate");
+                    httpClient.DefaultRequestHeaders.Referrer = new Uri(EndPoints.AuthReferrer);
+                    httpClient.DefaultRequestHeaders.Add("Origin", "https://id.sonyentertainmentnetwork.com");
+
+                    var nameValueCollection = new Dictionary<string, string>
+                    {
+                        {"authentication_type", "password"},
+                        {"client_id", EndPoints.LoginKey},
+                        {"username", username},
+                        {"password", password},
+                    };
+                    var form = new FormUrlEncodedContent(nameValueCollection);
+
+                    // Send out initial request to get an "SSO Cookie", which is actually in JSON too. For some reason.
+                    var response = await httpClient.PostAsync(EndPoints.SsoCookie, form);
+
+                    if (!response.IsSuccessStatusCode)
+                    {
+                        return ErrorHandler.CreateErrorObject(new Result(), "Username/Password Failed", "Auth");
+                    }
+
+                    var responseJson = await response.Content.ReadAsStringAsync();
+
+                    // Get the npsso key. Add the client id, scope, and service entity and send it back.
+                    var authorizeCheck = JsonConvert.DeserializeObject<AuthorizeCheck>(responseJson);
+                    authorizeCheck.client_id = EndPoints.LoginKey;
+                    authorizeCheck.scope = EndPoints.Scope;
+                    authorizeCheck.service_entity = "urn:service-entity:psn";
+
+                    var json = JsonConvert.SerializeObject(authorizeCheck);
+                    var stringContent = new StringContent(json, Encoding.UTF8, "application/json");
+
+                    // Call auth check so we can continue the flow...
+                    await httpClient.PostAsync(EndPoints.AuthorizeCheck, stringContent);
+
+                    // Get our code, so we can get our access tokens.
+                    var testResult = await httpClient.GetAsync(new Uri(EndPoints.Login));
+
+                    var codeUrl = testResult.Headers.Location;
+                    var queryString = UriExtensions.ParseQueryString(codeUrl.ToString());
+                    if (queryString.ContainsKey("authentication_error"))
+                    {
+                        return ErrorHandler.CreateErrorObject(new Result(), "Failed to get OAuth Code (Authentication_error)", "Auth");
+                    }
+
+                    if (!queryString.ContainsKey("code"))
+                    {
+                        return ErrorHandler.CreateErrorObject(new Result(), "Failed to get OAuth Code (No code)", "Auth");
+                    }
+
+                    var authManager = new AuthenticationManager();
+                    var authEntity = await authManager.RequestAccessToken(queryString["code"]);
+                    return !string.IsNullOrEmpty(authEntity) ? new Result(true, null, authEntity) : new Result(false, null, null);
+                }
+            }
+            catch (Exception ex)
+            {
+                // All else fails, send back the stack trace.
+                return ErrorHandler.CreateErrorObject(new Result(), ex.Message, ex.StackTrace);
+            }
+        }
+
+        public async Task<Result> OldSendLoginData(string userName, string password)
         {
             var httpClient = new HttpClient();
             httpClient.DefaultRequestHeaders.Add("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8");
@@ -128,6 +211,17 @@ namespace PlayStation.Managers
             var authManager = new AuthenticationManager();
             var authEntity = await authManager.RequestAccessToken(queryString["code"]);
             return !string.IsNullOrEmpty(authEntity) ? new Result(true, null, authEntity) : new Result(false, null, null);
+        }
+
+        private class AuthorizeCheck
+        {
+            public string client_id { get; set; }
+
+            public string npsso { get; set; }
+
+            public string scope { get; set; }
+
+            public string service_entity { get; set; }
         }
     }
 }

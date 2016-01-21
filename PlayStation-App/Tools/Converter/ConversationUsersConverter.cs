@@ -13,6 +13,10 @@ namespace PlayStation_App.Tools.Converter
             if (value == null) return null;
             var message = (MessageGroup) value;
             MessageGroupDetail messageGroupDetail = message.MessageGroupDetail;
+            if (!string.IsNullOrEmpty(messageGroupDetail.MessageGroupName))
+            {
+                return messageGroupDetail.MessageGroupName;
+            }
             var currentUsername = Locator.ViewModels.MainPageVm.CurrentUser.Username;
             List<string> stringEnumerable =
                 messageGroupDetail.Members.Where(member => !member.OnlineId.Equals(currentUsername))
