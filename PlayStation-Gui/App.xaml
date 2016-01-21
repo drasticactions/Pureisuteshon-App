@@ -1,0 +1,22 @@
+<common:BootStrapper x:Class="PlayStation_Gui.App" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:common="using:Template10.Common"
+                     xmlns:controls="using:Template10.Controls"
+                     xmlns:converters="using:Template10.Converters">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Styles\Custom.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+            <Style TargetType="controls:CustomTitleBar"/>
+            <converters:ValueWhenConverter 
+    Value="Collapsed" 
+    Otherwise="Visible"
+    When="{x:Null}"
+    x:Key="NullVisibilityConverter" />
+            <converters:ValueWhenConverter 
+    Value="Visible" 
+    Otherwise="Collapsed"
+    When="{x:Null}"
+    x:Key="NullVisibilityInverter" />
+        </ResourceDictionary>
+    </Application.Resources>
+</common:BootStrapper>
