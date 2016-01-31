@@ -598,7 +598,7 @@ Kamu bisa meraih piala dengan memainkan game yang punya piala.</value>
     <value>Ajak aku sebagai teman!</value>
   </data>
   <data name="SentFromPlayStationApp.Text" xml:space="preserve">
-    <value>Dikirim via PSN.appx</value>
+    <value>Dikirim via PSX.appx</value>
   </data>
   <data name="ErrorSaveImage.Text" xml:space="preserve">
     <value>Ngga bisa simpan gambar.</value>

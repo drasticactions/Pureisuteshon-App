@@ -362,6 +362,7 @@
     <ReservedNames>
       <ReservedName>PSN.appx</ReservedName>
       <ReservedName>PSNAppx</ReservedName>
+      <ReservedName>PSX.appx</ReservedName>
     </ReservedNames>
   </ProductReservedInfo>
   <AccountPackageIdentityNames>

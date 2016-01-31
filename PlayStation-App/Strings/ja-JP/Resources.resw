@@ -394,7 +394,7 @@
     <value>私にPSNのフレンド依頼を送ってください！</value>
   </data>
   <data name="SentFromPlayStationApp.Text" xml:space="preserve">
-    <value>PSN.Appxから送信</value>
+    <value>PSX.Appxから送信</value>
   </data>
   <data name="ErrorSaveImage.Text" xml:space="preserve">
     <value>画像を保存できませんでした。</value>
