@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlayStation-App", "PlayStation-App\PlayStation-App.csproj", "{B5AE7C13-5B05-419B-9E9F-8783163C41A7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PSX-App", "PSX-App\PSX-App.csproj", "{B5AE7C13-5B05-419B-9E9F-8783163C41A7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlayStation", "PlayStation\PlayStation.csproj", "{EDF72919-CA43-4B95-8D52-EF4821BF5432}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PSX.Core", "PSX\PSX.Core.csproj", "{EDF72919-CA43-4B95-8D52-EF4821BF5432}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlayStation-Gui", "PlayStation-Gui\PlayStation-Gui.csproj", "{C76E5D1F-FAC8-4904-B0BB-6A91E80C04FF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PSX-Gui", "PSX-Gui\PSX-Gui.csproj", "{C76E5D1F-FAC8-4904-B0BB-6A91E80C04FF}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core Functions", "Core Functions", "{975E8084-65F6-4416-8F2A-40F3935BABF8}"
 EndProject

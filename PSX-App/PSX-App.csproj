@@ -460,9 +460,9 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\PlayStation\PlayStation.csproj">
+    <ProjectReference Include="..\PSX\PSX.Core.csproj">
       <Project>{edf72919-ca43-4b95-8d52-ef4821bf5432}</Project>
-      <Name>PlayStation</Name>
+      <Name>PSX.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
