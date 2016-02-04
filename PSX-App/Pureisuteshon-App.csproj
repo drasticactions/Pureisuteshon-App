@@ -462,9 +462,9 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\PSX\PSX.Core.csproj">
+    <ProjectReference Include="..\PSX\Pureisuteshon.Core.csproj">
       <Project>{edf72919-ca43-4b95-8d52-ef4821bf5432}</Project>
-      <Name>PSX.Core</Name>
+      <Name>Pureisuteshon.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
