@@ -1,9 +1,9 @@
-# PSX.Appx
-### A PSX Client for Windows 10
+# Pureisuteshon
+### A Client for Windows 10
 
 [Download from the Windows Store](https://www.microsoft.com/en-us/store/apps/psxappx/9nblggh6cvbj)
 
-PSX.Appx is a UWP app that lets you connect to the psx on any of your devices running Windows 10. Right now it's pretty basic, supporting the following.
+Pureisuteshon is a UWP app that lets you connect to the Pureisuteshon on any of your devices running Windows 10. Right now it's pretty basic, supporting the following.
 
 ![Trophy list](http://i.imgur.com/Nfftuj6.png "Trophy List")
 
@@ -32,13 +32,13 @@ This app is seperated into two parts, the core library and the UWP app. The core
 
 ### Authentication
 
-Authentication is handled in the [Authentication Manager](https://github.com/drasticactions/PSX-App/blob/master/PSX/Managers/AuthenticationManager.cs). Normally, in the official psx apps on iOS and Android, there is an OAuth 2 based dance between a webview and the client, passing an oauth token back and forth between the webview and the client. Now, this works great for their app, but it's a pain for any other app trying to gain proper credentials, because they except a specific return URI to be on the query string to launch their app on the client. We don't want that.
+Authentication is handled in the [Authentication Manager](https://github.com/drasticactions/Pureisuteshon-App/blob/master/PSX/Managers/AuthenticationManager.cs). Normally, in the official Pureisuteshon apps on iOS and Android, there is an OAuth 2 based dance between a webview and the client, passing an oauth token back and forth between the webview and the client. Now, this works great for their app, but it's a pain for any other app trying to gain proper credentials, because they except a specific return URI to be on the query string to launch their app on the client. We don't want that.
 
 So I basically brute forced my way around their system by matching the calls their view expects, so I can fake being their page. Then I can parse out the Oauth code from their return URI and then finish the handoff myself. The user just has to enter their username and password, and the library takes care of the rest.
 
 ### Tokens
 
-Once authenticated, their access and refresh tokens are stored in a SQlite database on the client. Any time a psx function is accessed, a user authentication object is passed along with the request. Should the token need refreshing, it can be refreshed along side the users request, and then passed back to the client.
+Once authenticated, their access and refresh tokens are stored in a SQlite database on the client. Any time a Pureisuteshon function is accessed, a user authentication object is passed along with the request. Should the token need refreshing, it can be refreshed along side the users request, and then passed back to the client.
 
 Passwords are not stored on the client, only Oauth tokens.
 
