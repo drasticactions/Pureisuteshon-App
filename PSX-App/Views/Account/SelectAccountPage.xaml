@@ -24,7 +24,7 @@
                 <RowDefinition Height="*"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <TextBlock FontSize="30" FontWeight="Thin" VerticalAlignment="Bottom" Margin="0,0,0,15" HorizontalAlignment="Center" Text="PSX.Appx"></TextBlock>
+            <TextBlock FontSize="30" FontWeight="Thin" VerticalAlignment="Bottom" Margin="0,0,0,15" HorizontalAlignment="Center" Text="FoulPlay"></TextBlock>
             <GridView x:Name="AccountList" Grid.Row="1" IsItemClickEnabled="True" VerticalAlignment="Center" HorizontalAlignment="Center" ItemsSource="{Binding AccountUsers}">
                 <interactivity:Interaction.Behaviors>
                     <core:EventTriggerBehavior EventName="ItemClick">

@@ -78,7 +78,7 @@ namespace PlayStation_App
             RootFrame = Window.Current.Content as Frame;
 
             // Used for testing translations
-            Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride = "en-US";
+            //Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride = "en-US";
 
             // Do not repeat app initialization when the Window already has content,
             // just ensure that the window is active

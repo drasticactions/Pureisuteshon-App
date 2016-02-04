@@ -23,7 +23,7 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <TextBlock FontSize="30" FontWeight="Thin" Margin="0,25,0,0" HorizontalAlignment="Center" Text="PSX.Appx"></TextBlock>
+            <TextBlock FontSize="30" FontWeight="Thin" Margin="0,25,0,0" HorizontalAlignment="Center" Text="FoulPlay"></TextBlock>
             <Grid Grid.Row="1">
                 <StackPanel Margin="0,25,0,0" Width="300">
                     <TextBox x:Uid="EmailAddress"  x:Name="Username" IsSpellCheckEnabled="False" PlaceholderText="Eメールアドレス" Margin="0,0,0,15"

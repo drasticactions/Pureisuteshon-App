@@ -595,7 +595,7 @@ Puedes ganar trofeos jugando a juegos.</value>
     <value>Enviame una solicutud de amigo!</value>
   </data>
   <data name="SentFromPlayStationApp.Text" xml:space="preserve">
-    <value>Enviar desde PSX.appx</value>
+    <value>Enviar desde FoulPlay</value>
   </data>
   <data name="ErrorSaveImage.Text" xml:space="preserve">
     <value>No se pudo guardar la imagen.</value>

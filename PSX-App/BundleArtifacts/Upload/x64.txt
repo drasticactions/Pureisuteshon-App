@@ -1,2 +1,2 @@
-MainPackage=C:\Users\t_mil\Documents\GitHub\PlayStation-App\PlayStation-App\bin\x64\Release\Upload\PlayStation-App_1.7.17.0_x64.appx
-SymbolPackage=C:\Users\t_mil\Documents\GitHub\PlayStation-App\PlayStation-App\AppPackages\PlayStation-App_1.7.17.0\PlayStation-App_1.7.17.0_x64.appxsym
+MainPackage=C:\Users\t_mil\Documents\Other-Apps\PlayStation-App\PSX-App\bin\x64\Release\Upload\PSX-App_1.5.1.0_x64.appx
+SymbolPackage=C:\Users\t_mil\Documents\Other-Apps\PlayStation-App\PSX-App\AppPackages\PSX-App_1.5.1.0\PSX-App_1.5.1.0_x64.appxsym

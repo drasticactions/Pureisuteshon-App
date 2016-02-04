@@ -358,21 +358,42 @@
     <Language Code="zu-za" InMinimumRequirementSet="true" />
   </SupportedLocales>
   <ProductReservedInfo>
-    <MainPackageIdentityName>52978DrasticActions.PSN.appx</MainPackageIdentityName>
+    <MainPackageIdentityName>52978DrasticActions.FoulPlayTheUnofficialPlayStati</MainPackageIdentityName>
     <ReservedNames>
-      <ReservedName>PSN.appx</ReservedName>
-      <ReservedName>PSNAppx</ReservedName>
-      <ReservedName>PSX.appx</ReservedName>
+      <ReservedName>FoulPlay: The Unofficial PlayStation Network App</ReservedName>
     </ReservedNames>
   </ProductReservedInfo>
   <AccountPackageIdentityNames>
     <MainPackageIdentityName>52978DrasticActions.AwfulForumsReader</MainPackageIdentityName>
     <MainPackageIdentityName>52978DrasticActions.AwfulForumsReaderBeta</MainPackageIdentityName>
     <MainPackageIdentityName>52978DrasticActions.AwfulMusic</MainPackageIdentityName>
-    <MainPackageIdentityName>52978DrasticActions.FoulPlayTheUnofficialPlayStati</MainPackageIdentityName>
     <MainPackageIdentityName>52978DrasticActions.PSNMessenger</MainPackageIdentityName>
+    <MainPackageIdentityName>52978DrasticActions.PSN.appx</MainPackageIdentityName>
     <MainPackageIdentityName>52978DrasticActions.Slowbeef</MainPackageIdentityName>
     <MainPackageIdentityName>52978DrasticActions.388975AE0B893</MainPackageIdentityName>
   </AccountPackageIdentityNames>
-  <PackageInfoList LandingUrl="https://dev.windows.com/dashboard/Application?appId=9NBLGGH6CVBJ" />
+  <PackageInfoList LandingUrl="https://dev.windows.com/dashboard/Application?appId=9WZDNCRDSXMZ">
+    <BundleInfo>
+      <PackageInfo>
+        <OsMinVersion>6.3.0.0</OsMinVersion>
+        <PackageArchitecture>Neutral</PackageArchitecture>
+        <PackageMaxArchitectureVersion>1.5.8.13</PackageMaxArchitectureVersion>
+      </PackageInfo>
+      <PackageInfo>
+        <OsMinVersion>6.3.0.0</OsMinVersion>
+        <PackageArchitecture>Neutral</PackageArchitecture>
+        <PackageMaxArchitectureVersion>1.5.8.13</PackageMaxArchitectureVersion>
+      </PackageInfo>
+      <PackageInfo>
+        <OsMinVersion>6.3.0.0</OsMinVersion>
+        <PackageArchitecture>Neutral</PackageArchitecture>
+        <PackageMaxArchitectureVersion>1.5.8.13</PackageMaxArchitectureVersion>
+      </PackageInfo>
+      <PackageInfo>
+        <OsMinVersion>6.3.0.0</OsMinVersion>
+        <PackageArchitecture>Neutral</PackageArchitecture>
+        <PackageMaxArchitectureVersion>1.5.8.13</PackageMaxArchitectureVersion>
+      </PackageInfo>
+    </BundleInfo>
+  </PackageInfoList>
 </StoreAssociation>

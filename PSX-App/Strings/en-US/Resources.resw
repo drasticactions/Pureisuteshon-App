@@ -595,7 +595,7 @@ You can earn trophies by playing games that support them.</value>
     <value>Send me a PSN Friend request!</value>
   </data>
   <data name="SentFromPlayStationApp.Text" xml:space="preserve">
-    <value>Sent from PSX.appx</value>
+    <value>Sent from FoulPlay</value>
   </data>
   <data name="ErrorSaveImage.Text" xml:space="preserve">
     <value>Could not save image.</value>
