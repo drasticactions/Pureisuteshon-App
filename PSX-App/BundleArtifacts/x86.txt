@@ -1,2 +1,2 @@
-MainPackage=C:\Users\t_mil\Documents\Other-Apps\PlayStation-App\PSX-App\bin\x86\Release\PSX-App_1.5.1.0_x86.appx
-SymbolPackage=C:\Users\t_mil\Documents\Other-Apps\PlayStation-App\PSX-App\AppPackages\PSX-App_1.5.1.0_Test\PSX-App_1.5.1.0_x86.appxsym
+MainPackage=C:\Users\t_mil\Documents\Other-Apps\PlayStation-App\PSX-App\bin\x86\Release\PSX-App_4.5.2.0_x86.appx
+SymbolPackage=C:\Users\t_mil\Documents\Other-Apps\PlayStation-App\PSX-App\AppPackages\PSX-App_4.5.2.0_Test\PSX-App_4.5.2.0_x86.appxsym
