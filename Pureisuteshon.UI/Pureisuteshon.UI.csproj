@@ -1,0 +1,141 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <MinimumVisualStudioVersion>10.0</MinimumVisualStudioVersion>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{713460F4-EBD7-4846-9881-F6681C310847}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Pureisuteshon.UI</RootNamespace>
+    <AssemblyName>Pureisuteshon.UI</AssemblyName>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <TargetFrameworkProfile>Profile111</TargetFrameworkProfile>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Models\Authentication\AccountUser.cs" />
+    <Compile Include="Models\Authentication\LogInUser.cs" />
+    <Compile Include="Models\Authentication\ParentalControl.cs" />
+    <Compile Include="Models\Authentication\Tokens.cs" />
+    <Compile Include="Models\Events\Duration.cs" />
+    <Compile Include="Models\Events\Event.cs" />
+    <Compile Include="Models\FriendFinder\OnlineIdMatch.cs" />
+    <Compile Include="Models\FriendFinder\SearchResult.cs" />
+    <Compile Include="Models\Friends\EarnedTrophies.cs" />
+    <Compile Include="Models\Friends\Friend.cs" />
+    <Compile Include="Models\Friends\GameTitleInfo.cs" />
+    <Compile Include="Models\Friends\Presence.cs" />
+    <Compile Include="Models\Friends\PrimaryInfo.cs" />
+    <Compile Include="Models\Friends\TrophySummary.cs" />
+    <Compile Include="Models\Live\LiveBroadcastEntity.cs" />
+    <Compile Include="Models\Live\NicoNicoEntity.cs" />
+    <Compile Include="Models\Live\TwitchEntity.cs" />
+    <Compile Include="Models\Live\UstreamEntity.cs" />
+    <Compile Include="Models\MessageGroups\LatestMessage.cs" />
+    <Compile Include="Models\MessageGroups\Member.cs" />
+    <Compile Include="Models\MessageGroups\MessageGroup.cs" />
+    <Compile Include="Models\MessageGroups\MessageGroupDetail.cs" />
+    <Compile Include="Models\MessageGroups\StickerDetail.cs" />
+    <Compile Include="Models\MessageGroups\ThumbnailDetail.cs" />
+    <Compile Include="Models\Messages\Message.cs" />
+    <Compile Include="Models\Messages\SentMessageResponse.cs" />
+    <Compile Include="Models\RecentActivity\CaptionComponent.cs" />
+    <Compile Include="Models\RecentActivity\CaptionComponent2.cs" />
+    <Compile Include="Models\RecentActivity\CondensedStory.cs" />
+    <Compile Include="Models\RecentActivity\Feed.cs" />
+    <Compile Include="Models\RecentActivity\Param.cs" />
+    <Compile Include="Models\RecentActivity\Source.cs" />
+    <Compile Include="Models\RecentActivity\Source2.cs" />
+    <Compile Include="Models\RecentActivity\Target.cs" />
+    <Compile Include="Models\RecentActivity\Target2.cs" />
+    <Compile Include="Models\Response\EventsREsponse.cs" />
+    <Compile Include="Models\Response\FriendFinderResponse.cs" />
+    <Compile Include="Models\Response\FriendListResponse.cs" />
+    <Compile Include="Models\Response\MessageGroupResponse.cs" />
+    <Compile Include="Models\Response\MessageResponse.cs" />
+    <Compile Include="Models\Response\MetadataResponse.cs" />
+    <Compile Include="Models\Response\RecentActivityResponse.cs" />
+    <Compile Include="Models\Response\StickerPresetPackageListResponse.cs" />
+    <Compile Include="Models\Response\StickerResponse.cs" />
+    <Compile Include="Models\Response\TokenResponse.cs" />
+    <Compile Include="Models\Response\TrophyDetailResponse.cs" />
+    <Compile Include="Models\Response\TrophyResponse.cs" />
+    <Compile Include="Models\StickerPresetPackage\PresetPackageList.cs" />
+    <Compile Include="Models\Sticker\SizeProperty.cs" />
+    <Compile Include="Models\Sticker\StickerImagesBySize.cs" />
+    <Compile Include="Models\Sticker\StickerSelection.cs" />
+    <Compile Include="Models\Sticker\Zip.cs" />
+    <Compile Include="Models\Trophies\ComparedUser.cs" />
+    <Compile Include="Models\Trophies\FromUser.cs" />
+    <Compile Include="Models\Trophies\Trophy.cs" />
+    <Compile Include="Models\TrophyDetail\ComparedUser.cs" />
+    <Compile Include="Models\TrophyDetail\DefinedTrophies.cs" />
+    <Compile Include="Models\TrophyDetail\EarnedTrophies.cs" />
+    <Compile Include="Models\TrophyDetail\EarnedTrophies2.cs" />
+    <Compile Include="Models\TrophyDetail\FromUser.cs" />
+    <Compile Include="Models\TrophyDetail\TrophyTitle.cs" />
+    <Compile Include="Models\User\AvatarUrl.cs" />
+    <Compile Include="Models\User\EarnedTrophies.cs" />
+    <Compile Include="Models\User\PersonalDetail.cs" />
+    <Compile Include="Models\User\Presence.cs" />
+    <Compile Include="Models\User\PrimaryInfo.cs" />
+    <Compile Include="Models\User\TrophySummary.cs" />
+    <Compile Include="Models\User\User.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.8.0.2\lib\portable-net40+sl5+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="SQLite.Net, Version=3.0.5.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\SQLite.Net-PCL.3.0.5\lib\portable-win8+net45+wp8+wpa81+MonoAndroid1+MonoTouch1\SQLite.Net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="SQLite.Net.Async, Version=3.0.5.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\SQLite.Net.Async-PCL.3.0.5\lib\portable-win8+net45+wp8+wpa81+MonoAndroid1+MonoTouch1\SQLite.Net.Async.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="SQLiteNetExtensions, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\SQLiteNetExtensions.1.3.0\lib\portable-net45+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1\SQLiteNetExtensions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="SQLiteNetExtensionsAsync, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\SQLiteNetExtensions.Async.1.3.0\lib\portable-net45+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1\SQLiteNetExtensionsAsync.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
