@@ -14,11 +14,44 @@ namespace PlayStation_App.Database
 
         public static string DbLocation { get; set; }
 
+        public UserAccountDatabase(ISQLitePlatform platform, string dblocation)
+        {
+            Platform = platform;
+            DbLocation = dblocation;
+        }
+
+        public async Task<bool> HasAccounts()
+        {
+            using (var ds = new UserAccountDataSource(Platform, DbLocation))
+            {
+                var accounts = await ds.AccountUserRepository.GetAllWithChildren();
+                return accounts.Any();
+            }
+        }
+
+        public async Task<bool> HasDefaultAccounts()
+        {
+            using (var ds = new UserAccountDataSource(Platform, DbLocation))
+            {
+                var accounts = await ds.AccountUserRepository.GetAllWithChildren();
+                return accounts.Any(node => node.IsDefaultLogin);
+            }
+        }
+
         public async Task<List<AccountUser>> GetUserAccounts()
         {
             using (var ds = new UserAccountDataSource(Platform, DbLocation))
             {
                 return await ds.AccountUserRepository.GetAllWithChildren();
+            }
+        }
+
+        public async Task<List<AccountUser>> GetDefaultUserAccounts()
+        {
+            using (var ds = new UserAccountDataSource(Platform, DbLocation))
+            {
+                var accounts = await ds.AccountUserRepository.GetAllWithChildren();
+                return accounts.Where(node => node.IsDefaultLogin).ToList();
             }
         }
 

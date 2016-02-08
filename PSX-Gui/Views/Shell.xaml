@@ -14,29 +14,36 @@
     <Page.DataContext>
         <viewModels:ShellViewModel />
     </Page.DataContext>
+    <Page.Background>
+        <ImageBrush ImageSource="../../Assets/Main/background.png"></ImageBrush>
+    </Page.Background>
     <Controls:ModalDialog IsModal="{x:Bind IsBusy, Mode=OneWay}">
         <Controls:ModalDialog.Content>
-            <Controls:HamburgerMenu x:Name="MyHamburgerMenu" IsFullScreen="False">
+            <Controls:HamburgerMenu x:Name="MyHamburgerMenu" SecondaryButtonOrientation="Horizontal" Opacity=".95" VisualStateNormalMinWidth="720" VisualStateWideMinWidth="1020">
 
                 <Controls:HamburgerMenu.PrimaryButtons>
                     <Controls:HamburgerButtonInfo IsEnabled="{x:Bind ViewModel.IsLoggedIn, Mode=OneWay}" ClearHistory="True" PageType="views:MainPage">
                         <StackPanel Orientation="Horizontal">
-                            <Image Width="27" Height="27" Stretch="UniformToFill" Source="/Assets/Icons/Home.png" />
-                            <TextBlock Margin="12,0,0,0" VerticalAlignment="Center" Text="What's New" />
+                            <Border Width="48" Height="48">
+                                <Image Width="27" Height="27" VerticalAlignment="Center" HorizontalAlignment="Center" Stretch="UniformToFill" Source="/Assets/Icons/Home.png" />
+                            </Border>
+                            <TextBlock x:Uid="Home" Margin="12,0,0,0" VerticalAlignment="Center" Text="What's New" />
                         </StackPanel>
                     </Controls:HamburgerButtonInfo>
                 </Controls:HamburgerMenu.PrimaryButtons>
 
                 <Controls:HamburgerMenu.SecondaryButtons>
-                    <Controls:HamburgerButtonInfo x:Name="LoginButton" MaxWidth="48" PageType="local:LoginPage">
+                    <Controls:HamburgerButtonInfo x:Name="LoginButton" IsEnabled="{x:Bind ViewModel.IsLoggedIn, Mode=OneWay}" MaxWidth="48" PageType="views:AccountPage">
                         <StackPanel Orientation="Horizontal">
                             <SymbolIcon Width="48" Height="48" Symbol="Contact" />
                         </StackPanel>
                     </Controls:HamburgerButtonInfo>
-                    
-                    <Controls:HamburgerButtonInfo PageType="views:SettingsPage">
+
+                    <Controls:HamburgerButtonInfo IsEnabled="{x:Bind ViewModel.IsLoggedIn, Mode=OneWay}" PageType="views:SettingsPage">
                         <StackPanel Orientation="Horizontal">
-                            <Image Width="27" Height="27" Stretch="UniformToFill" Source="/Assets/Icons/Settings.png" />
+                            <Border Width="48" Height="48">
+                                <Image Width="27" Height="27" VerticalAlignment="Center" HorizontalAlignment="Center" Stretch="UniformToFill" Source="/Assets/Icons/Settings.png" />
+                            </Border>
                             <TextBlock Margin="12,0,0,0" VerticalAlignment="Center" Text="Settings" />
                         </StackPanel>
                     </Controls:HamburgerButtonInfo>

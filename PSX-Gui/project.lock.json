@@ -219,6 +219,59 @@
           "lib/portable-net45+wp80+win8+wpa81+dnxcore50/Newtonsoft.Json.dll": {}
         }
       },
+      "SQLite.Net-PCL/3.0.5": {
+        "compile": {
+          "lib/Windows8/SQLite.Net.dll": {},
+          "lib/Windows8/SQLite.Net.Platform.WinRT.dll": {}
+        },
+        "runtime": {
+          "lib/Windows8/SQLite.Net.dll": {},
+          "lib/Windows8/SQLite.Net.Platform.WinRT.dll": {}
+        }
+      },
+      "SQLite.Net.Async-PCL/3.0.5": {
+        "dependencies": {
+          "SQLite.Net-PCL": "[3.0.5, )"
+        },
+        "compile": {
+          "lib/portable-win8+net45+wp8+wpa81+MonoAndroid1+MonoTouch1/SQLite.Net.Async.dll": {}
+        },
+        "runtime": {
+          "lib/portable-win8+net45+wp8+wpa81+MonoAndroid1+MonoTouch1/SQLite.Net.Async.dll": {}
+        }
+      },
+      "SQLite.WinRT/3.8.11.158": {
+        "compile": {
+          "lib/portable-net45+win81+wpa81+wp8/SQLite.WinRT.dll": {}
+        },
+        "runtime": {
+          "lib/portable-net45+win81+wpa81+wp8/SQLite.WinRT.dll": {}
+        }
+      },
+      "SQLiteNetExtensions/1.3.0": {
+        "dependencies": {
+          "Newtonsoft.Json": "[6.0.8, )",
+          "SQLite.Net-PCL": "[3.0.5, )"
+        },
+        "compile": {
+          "lib/portable-net45+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1/SQLiteNetExtensions.dll": {}
+        },
+        "runtime": {
+          "lib/portable-net45+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1/SQLiteNetExtensions.dll": {}
+        }
+      },
+      "SQLiteNetExtensions.Async/1.3.0": {
+        "dependencies": {
+          "SQLite.Net.Async-PCL": "[3.0.5, )",
+          "SQLiteNetExtensions": "[1.3.0, )"
+        },
+        "compile": {
+          "lib/portable-net45+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1/SQLiteNetExtensionsAsync.dll": {}
+        },
+        "runtime": {
+          "lib/portable-net45+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1/SQLiteNetExtensionsAsync.dll": {}
+        }
+      },
       "System.AppContext/4.0.0": {
         "dependencies": {
           "System.Collections": "[4.0.0, )",
@@ -1813,6 +1866,59 @@
         },
         "runtime": {
           "lib/portable-net45+wp80+win8+wpa81+dnxcore50/Newtonsoft.Json.dll": {}
+        }
+      },
+      "SQLite.Net-PCL/3.0.5": {
+        "compile": {
+          "lib/Windows8/SQLite.Net.dll": {},
+          "lib/Windows8/SQLite.Net.Platform.WinRT.dll": {}
+        },
+        "runtime": {
+          "lib/Windows8/SQLite.Net.dll": {},
+          "lib/Windows8/SQLite.Net.Platform.WinRT.dll": {}
+        }
+      },
+      "SQLite.Net.Async-PCL/3.0.5": {
+        "dependencies": {
+          "SQLite.Net-PCL": "[3.0.5, )"
+        },
+        "compile": {
+          "lib/portable-win8+net45+wp8+wpa81+MonoAndroid1+MonoTouch1/SQLite.Net.Async.dll": {}
+        },
+        "runtime": {
+          "lib/portable-win8+net45+wp8+wpa81+MonoAndroid1+MonoTouch1/SQLite.Net.Async.dll": {}
+        }
+      },
+      "SQLite.WinRT/3.8.11.158": {
+        "compile": {
+          "lib/portable-net45+win81+wpa81+wp8/SQLite.WinRT.dll": {}
+        },
+        "runtime": {
+          "lib/portable-net45+win81+wpa81+wp8/SQLite.WinRT.dll": {}
+        }
+      },
+      "SQLiteNetExtensions/1.3.0": {
+        "dependencies": {
+          "Newtonsoft.Json": "[6.0.8, )",
+          "SQLite.Net-PCL": "[3.0.5, )"
+        },
+        "compile": {
+          "lib/portable-net45+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1/SQLiteNetExtensions.dll": {}
+        },
+        "runtime": {
+          "lib/portable-net45+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1/SQLiteNetExtensions.dll": {}
+        }
+      },
+      "SQLiteNetExtensions.Async/1.3.0": {
+        "dependencies": {
+          "SQLite.Net.Async-PCL": "[3.0.5, )",
+          "SQLiteNetExtensions": "[1.3.0, )"
+        },
+        "compile": {
+          "lib/portable-net45+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1/SQLiteNetExtensionsAsync.dll": {}
+        },
+        "runtime": {
+          "lib/portable-net45+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1/SQLiteNetExtensionsAsync.dll": {}
         }
       },
       "System.AppContext/4.0.0": {
@@ -3442,6 +3548,59 @@
         },
         "runtime": {
           "lib/portable-net45+wp80+win8+wpa81+dnxcore50/Newtonsoft.Json.dll": {}
+        }
+      },
+      "SQLite.Net-PCL/3.0.5": {
+        "compile": {
+          "lib/Windows8/SQLite.Net.dll": {},
+          "lib/Windows8/SQLite.Net.Platform.WinRT.dll": {}
+        },
+        "runtime": {
+          "lib/Windows8/SQLite.Net.dll": {},
+          "lib/Windows8/SQLite.Net.Platform.WinRT.dll": {}
+        }
+      },
+      "SQLite.Net.Async-PCL/3.0.5": {
+        "dependencies": {
+          "SQLite.Net-PCL": "[3.0.5, )"
+        },
+        "compile": {
+          "lib/portable-win8+net45+wp8+wpa81+MonoAndroid1+MonoTouch1/SQLite.Net.Async.dll": {}
+        },
+        "runtime": {
+          "lib/portable-win8+net45+wp8+wpa81+MonoAndroid1+MonoTouch1/SQLite.Net.Async.dll": {}
+        }
+      },
+      "SQLite.WinRT/3.8.11.158": {
+        "compile": {
+          "lib/portable-net45+win81+wpa81+wp8/SQLite.WinRT.dll": {}
+        },
+        "runtime": {
+          "lib/portable-net45+win81+wpa81+wp8/SQLite.WinRT.dll": {}
+        }
+      },
+      "SQLiteNetExtensions/1.3.0": {
+        "dependencies": {
+          "Newtonsoft.Json": "[6.0.8, )",
+          "SQLite.Net-PCL": "[3.0.5, )"
+        },
+        "compile": {
+          "lib/portable-net45+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1/SQLiteNetExtensions.dll": {}
+        },
+        "runtime": {
+          "lib/portable-net45+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1/SQLiteNetExtensions.dll": {}
+        }
+      },
+      "SQLiteNetExtensions.Async/1.3.0": {
+        "dependencies": {
+          "SQLite.Net.Async-PCL": "[3.0.5, )",
+          "SQLiteNetExtensions": "[1.3.0, )"
+        },
+        "compile": {
+          "lib/portable-net45+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1/SQLiteNetExtensionsAsync.dll": {}
+        },
+        "runtime": {
+          "lib/portable-net45+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1/SQLiteNetExtensionsAsync.dll": {}
         }
       },
       "System.AppContext/4.0.0": {
@@ -5078,6 +5237,59 @@
           "lib/portable-net45+wp80+win8+wpa81+dnxcore50/Newtonsoft.Json.dll": {}
         }
       },
+      "SQLite.Net-PCL/3.0.5": {
+        "compile": {
+          "lib/Windows8/SQLite.Net.dll": {},
+          "lib/Windows8/SQLite.Net.Platform.WinRT.dll": {}
+        },
+        "runtime": {
+          "lib/Windows8/SQLite.Net.dll": {},
+          "lib/Windows8/SQLite.Net.Platform.WinRT.dll": {}
+        }
+      },
+      "SQLite.Net.Async-PCL/3.0.5": {
+        "dependencies": {
+          "SQLite.Net-PCL": "[3.0.5, )"
+        },
+        "compile": {
+          "lib/portable-win8+net45+wp8+wpa81+MonoAndroid1+MonoTouch1/SQLite.Net.Async.dll": {}
+        },
+        "runtime": {
+          "lib/portable-win8+net45+wp8+wpa81+MonoAndroid1+MonoTouch1/SQLite.Net.Async.dll": {}
+        }
+      },
+      "SQLite.WinRT/3.8.11.158": {
+        "compile": {
+          "lib/portable-net45+win81+wpa81+wp8/SQLite.WinRT.dll": {}
+        },
+        "runtime": {
+          "lib/portable-net45+win81+wpa81+wp8/SQLite.WinRT.dll": {}
+        }
+      },
+      "SQLiteNetExtensions/1.3.0": {
+        "dependencies": {
+          "Newtonsoft.Json": "[6.0.8, )",
+          "SQLite.Net-PCL": "[3.0.5, )"
+        },
+        "compile": {
+          "lib/portable-net45+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1/SQLiteNetExtensions.dll": {}
+        },
+        "runtime": {
+          "lib/portable-net45+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1/SQLiteNetExtensions.dll": {}
+        }
+      },
+      "SQLiteNetExtensions.Async/1.3.0": {
+        "dependencies": {
+          "SQLite.Net.Async-PCL": "[3.0.5, )",
+          "SQLiteNetExtensions": "[1.3.0, )"
+        },
+        "compile": {
+          "lib/portable-net45+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1/SQLiteNetExtensionsAsync.dll": {}
+        },
+        "runtime": {
+          "lib/portable-net45+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1/SQLiteNetExtensionsAsync.dll": {}
+        }
+      },
       "System.AppContext/4.0.0": {
         "dependencies": {
           "System.Collections": "[4.0.0, )",
@@ -6705,6 +6917,59 @@
         },
         "runtime": {
           "lib/portable-net45+wp80+win8+wpa81+dnxcore50/Newtonsoft.Json.dll": {}
+        }
+      },
+      "SQLite.Net-PCL/3.0.5": {
+        "compile": {
+          "lib/Windows8/SQLite.Net.dll": {},
+          "lib/Windows8/SQLite.Net.Platform.WinRT.dll": {}
+        },
+        "runtime": {
+          "lib/Windows8/SQLite.Net.dll": {},
+          "lib/Windows8/SQLite.Net.Platform.WinRT.dll": {}
+        }
+      },
+      "SQLite.Net.Async-PCL/3.0.5": {
+        "dependencies": {
+          "SQLite.Net-PCL": "[3.0.5, )"
+        },
+        "compile": {
+          "lib/portable-win8+net45+wp8+wpa81+MonoAndroid1+MonoTouch1/SQLite.Net.Async.dll": {}
+        },
+        "runtime": {
+          "lib/portable-win8+net45+wp8+wpa81+MonoAndroid1+MonoTouch1/SQLite.Net.Async.dll": {}
+        }
+      },
+      "SQLite.WinRT/3.8.11.158": {
+        "compile": {
+          "lib/portable-net45+win81+wpa81+wp8/SQLite.WinRT.dll": {}
+        },
+        "runtime": {
+          "lib/portable-net45+win81+wpa81+wp8/SQLite.WinRT.dll": {}
+        }
+      },
+      "SQLiteNetExtensions/1.3.0": {
+        "dependencies": {
+          "Newtonsoft.Json": "[6.0.8, )",
+          "SQLite.Net-PCL": "[3.0.5, )"
+        },
+        "compile": {
+          "lib/portable-net45+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1/SQLiteNetExtensions.dll": {}
+        },
+        "runtime": {
+          "lib/portable-net45+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1/SQLiteNetExtensions.dll": {}
+        }
+      },
+      "SQLiteNetExtensions.Async/1.3.0": {
+        "dependencies": {
+          "SQLite.Net.Async-PCL": "[3.0.5, )",
+          "SQLiteNetExtensions": "[1.3.0, )"
+        },
+        "compile": {
+          "lib/portable-net45+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1/SQLiteNetExtensionsAsync.dll": {}
+        },
+        "runtime": {
+          "lib/portable-net45+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1/SQLiteNetExtensionsAsync.dll": {}
         }
       },
       "System.AppContext/4.0.0": {
@@ -8341,6 +8606,59 @@
           "lib/portable-net45+wp80+win8+wpa81+dnxcore50/Newtonsoft.Json.dll": {}
         }
       },
+      "SQLite.Net-PCL/3.0.5": {
+        "compile": {
+          "lib/Windows8/SQLite.Net.dll": {},
+          "lib/Windows8/SQLite.Net.Platform.WinRT.dll": {}
+        },
+        "runtime": {
+          "lib/Windows8/SQLite.Net.dll": {},
+          "lib/Windows8/SQLite.Net.Platform.WinRT.dll": {}
+        }
+      },
+      "SQLite.Net.Async-PCL/3.0.5": {
+        "dependencies": {
+          "SQLite.Net-PCL": "[3.0.5, )"
+        },
+        "compile": {
+          "lib/portable-win8+net45+wp8+wpa81+MonoAndroid1+MonoTouch1/SQLite.Net.Async.dll": {}
+        },
+        "runtime": {
+          "lib/portable-win8+net45+wp8+wpa81+MonoAndroid1+MonoTouch1/SQLite.Net.Async.dll": {}
+        }
+      },
+      "SQLite.WinRT/3.8.11.158": {
+        "compile": {
+          "lib/portable-net45+win81+wpa81+wp8/SQLite.WinRT.dll": {}
+        },
+        "runtime": {
+          "lib/portable-net45+win81+wpa81+wp8/SQLite.WinRT.dll": {}
+        }
+      },
+      "SQLiteNetExtensions/1.3.0": {
+        "dependencies": {
+          "Newtonsoft.Json": "[6.0.8, )",
+          "SQLite.Net-PCL": "[3.0.5, )"
+        },
+        "compile": {
+          "lib/portable-net45+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1/SQLiteNetExtensions.dll": {}
+        },
+        "runtime": {
+          "lib/portable-net45+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1/SQLiteNetExtensions.dll": {}
+        }
+      },
+      "SQLiteNetExtensions.Async/1.3.0": {
+        "dependencies": {
+          "SQLite.Net.Async-PCL": "[3.0.5, )",
+          "SQLiteNetExtensions": "[1.3.0, )"
+        },
+        "compile": {
+          "lib/portable-net45+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1/SQLiteNetExtensionsAsync.dll": {}
+        },
+        "runtime": {
+          "lib/portable-net45+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1/SQLiteNetExtensionsAsync.dll": {}
+        }
+      },
       "System.AppContext/4.0.0": {
         "dependencies": {
           "System.Collections": "[4.0.0, )",
@@ -9968,6 +10286,59 @@
         },
         "runtime": {
           "lib/portable-net45+wp80+win8+wpa81+dnxcore50/Newtonsoft.Json.dll": {}
+        }
+      },
+      "SQLite.Net-PCL/3.0.5": {
+        "compile": {
+          "lib/Windows8/SQLite.Net.dll": {},
+          "lib/Windows8/SQLite.Net.Platform.WinRT.dll": {}
+        },
+        "runtime": {
+          "lib/Windows8/SQLite.Net.dll": {},
+          "lib/Windows8/SQLite.Net.Platform.WinRT.dll": {}
+        }
+      },
+      "SQLite.Net.Async-PCL/3.0.5": {
+        "dependencies": {
+          "SQLite.Net-PCL": "[3.0.5, )"
+        },
+        "compile": {
+          "lib/portable-win8+net45+wp8+wpa81+MonoAndroid1+MonoTouch1/SQLite.Net.Async.dll": {}
+        },
+        "runtime": {
+          "lib/portable-win8+net45+wp8+wpa81+MonoAndroid1+MonoTouch1/SQLite.Net.Async.dll": {}
+        }
+      },
+      "SQLite.WinRT/3.8.11.158": {
+        "compile": {
+          "lib/portable-net45+win81+wpa81+wp8/SQLite.WinRT.dll": {}
+        },
+        "runtime": {
+          "lib/portable-net45+win81+wpa81+wp8/SQLite.WinRT.dll": {}
+        }
+      },
+      "SQLiteNetExtensions/1.3.0": {
+        "dependencies": {
+          "Newtonsoft.Json": "[6.0.8, )",
+          "SQLite.Net-PCL": "[3.0.5, )"
+        },
+        "compile": {
+          "lib/portable-net45+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1/SQLiteNetExtensions.dll": {}
+        },
+        "runtime": {
+          "lib/portable-net45+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1/SQLiteNetExtensions.dll": {}
+        }
+      },
+      "SQLiteNetExtensions.Async/1.3.0": {
+        "dependencies": {
+          "SQLite.Net.Async-PCL": "[3.0.5, )",
+          "SQLiteNetExtensions": "[1.3.0, )"
+        },
+        "compile": {
+          "lib/portable-net45+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1/SQLiteNetExtensionsAsync.dll": {}
+        },
+        "runtime": {
+          "lib/portable-net45+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1/SQLiteNetExtensionsAsync.dll": {}
         }
       },
       "System.AppContext/4.0.0": {
@@ -12035,6 +12406,119 @@
         "Newtonsoft.Json.nuspec",
         "package/services/metadata/core-properties/cc8c591d554640789c6a6ef6456f7772.psmdcp",
         "tools/install.ps1"
+      ]
+    },
+    "SQLite.Net-PCL/3.0.5": {
+      "sha512": "K2La4B09cI6LXNaNiVhzUdRnoTw1Yyn5Rmb85/l7UXkF6vo/MOnJch8KBvzErbzxcxhoST/tb2t5ZO41iJWC0A==",
+      "type": "Package",
+      "files": [
+        "[Content_Types].xml",
+        "_rels/.rels",
+        "lib/MonoAndroid/SQLite.Net.dll",
+        "lib/MonoAndroid/SQLite.Net.Platform.XamarinAndroid.dll",
+        "lib/monotouch/SQLite.Net.dll",
+        "lib/monotouch/SQLite.Net.Platform.XamarinIOS.dll",
+        "lib/net4/SQLite.Net.dll",
+        "lib/net4/SQLite.Net.Platform.Win32.dll",
+        "lib/net40/SQLite.Net.dll",
+        "lib/net40/SQLite.Net.Platform.Generic.dll",
+        "lib/portable-win8+net45+wp8+wpa81+MonoAndroid1+MonoTouch1/SQLite.Net.dll",
+        "lib/portable-win81+wpa81/SQLite.Net.dll",
+        "lib/portable-win81+wpa81/SQLite.Net.Platform.WinRT.dll",
+        "lib/Windows8/SQLite.Net.dll",
+        "lib/Windows8/SQLite.Net.Platform.WinRT.dll",
+        "lib/windowsphone8/ARM/SQLite.Net.dll",
+        "lib/windowsphone8/ARM/SQLite.Net.Platform.WindowsPhone8.dll",
+        "lib/windowsphone8/x86/SQLite.Net.dll",
+        "lib/windowsphone8/x86/SQLite.Net.Platform.WindowsPhone8.dll",
+        "lib/Xamarin.iOS10/SQLite.Net.dll",
+        "lib/Xamarin.iOS10/SQLite.Net.Platform.XamarinIOS.Unified.dll",
+        "package/services/metadata/core-properties/0ce7ba880c5a46fb85a378331db2636b.psmdcp",
+        "SQLite.Net-PCL.nuspec"
+      ]
+    },
+    "SQLite.Net.Async-PCL/3.0.5": {
+      "sha512": "0K/DHn5NHJqRHh/zlhlw5PcOjCIlvoo3bsQTbTt/46ywpMIxy0R9Bi7/iHRNKBv2FRVv0vQIWHlYtBDDRt790g==",
+      "type": "Package",
+      "files": [
+        "[Content_Types].xml",
+        "_rels/.rels",
+        "lib/portable-win8+net45+wp8+wpa81+MonoAndroid1+MonoTouch1/SQLite.Net.Async.dll",
+        "package/services/metadata/core-properties/5251d17295fe4e039632facd0f7993f2.psmdcp",
+        "SQLite.Net.Async-PCL.nuspec"
+      ]
+    },
+    "SQLite.WinRT/3.8.11.158": {
+      "sha512": "kCcan7pv45CCvFxRdOegB7kxzBwpCwWZOYWVGImJNyDyDfrdlrlKVEej+gk3xjA2pvmeWuVpg1IYs+hr36INuA==",
+      "type": "Package",
+      "files": [
+        "[Content_Types].xml",
+        "_rels/.rels",
+        "lib/portable-net45+win81+wpa81+wp8/SQLite.WinRT.dll",
+        "package/services/metadata/core-properties/2c9961813ffa46aab27f5f0d88e6b9bc.psmdcp",
+        "SQLite.WinRT.nuspec"
+      ]
+    },
+    "SQLiteNetExtensions/1.3.0": {
+      "sha512": "XYt89yGciul0pPbZDxrl9Gnj3r8NmFbxC0dfjw7HqRCaSsCxjj9LGy3bBTW4/gykdQ7S3fvAx71f8orROfc9Hg==",
+      "type": "Package",
+      "files": [
+        "[Content_Types].xml",
+        "_rels/.rels",
+        "lib/portable-net45+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1/SQLiteNetExtensions.dll",
+        "lib/portable-net45+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1/SQLiteNetExtensions.dll.mdb",
+        "package/services/metadata/core-properties/1.psmdcp",
+        "SQLiteNetExtensions.nuspec",
+        "src/Attributes/CascadeOperation.cs",
+        "src/Attributes/ForeignKeyAttribute.cs",
+        "src/Attributes/ManyToManyAttribute.cs",
+        "src/Attributes/ManyToOneAttribute.cs",
+        "src/Attributes/OneToManyAttribute.cs",
+        "src/Attributes/OneToOneAttribute.cs",
+        "src/Attributes/RelationshipAttribute.cs",
+        "src/Attributes/TextBlobAttribute.cs",
+        "src/Exceptions/IncorrectRelationshipException.cs",
+        "src/Extensions/ReadOperations.cs",
+        "src/Extensions/ReflectionExtensions.cs",
+        "src/Extensions/TextBlob/ITextBlobSerializer.cs",
+        "src/Extensions/TextBlob/Serializers/JsonBlobSerializer.cs",
+        "src/Extensions/TextBlob/TextBlobOperations.cs",
+        "src/Extensions/WriteOperations.cs",
+        "src/obj/Debug/.NETPortable,Version=v4.0,Profile=Profile136.AssemblyAttribute.cs",
+        "src/obj/Debug/.NETPortable,Version=v4.5,Profile=Profile259.AssemblyAttribute.cs",
+        "src/obj/Release/.NETPortable,Version=v4.5,Profile=Profile259.AssemblyAttribute.cs",
+        "src/Properties/AssemblyInfo.cs"
+      ]
+    },
+    "SQLiteNetExtensions.Async/1.3.0": {
+      "sha512": "YYle51g50CWupr4m6WAXSX8uqIGIc25cvzDlpULdMD8sicYTFq3oaUoYDSHHfPf4EKUS0IPK7T6z27VDG2No1A==",
+      "type": "Package",
+      "files": [
+        "[Content_Types].xml",
+        "_rels/.rels",
+        "lib/portable-net45+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1/SQLiteNetExtensionsAsync.dll",
+        "lib/portable-net45+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1/SQLiteNetExtensionsAsync.dll.mdb",
+        "package/services/metadata/core-properties/1.psmdcp",
+        "SQLiteNetExtensions.Async.nuspec",
+        "src/Attributes/CascadeOperation.cs",
+        "src/Attributes/ForeignKeyAttribute.cs",
+        "src/Attributes/ManyToManyAttribute.cs",
+        "src/Attributes/ManyToOneAttribute.cs",
+        "src/Attributes/OneToManyAttribute.cs",
+        "src/Attributes/OneToOneAttribute.cs",
+        "src/Attributes/RelationshipAttribute.cs",
+        "src/Attributes/TextBlobAttribute.cs",
+        "src/Exceptions/IncorrectRelationshipException.cs",
+        "src/Extensions/ReadOperations.cs",
+        "src/Extensions/ReflectionExtensions.cs",
+        "src/Extensions/TextBlob/ITextBlobSerializer.cs",
+        "src/Extensions/TextBlob/Serializers/JsonBlobSerializer.cs",
+        "src/Extensions/TextBlob/TextBlobOperations.cs",
+        "src/Extensions/WriteOperations.cs",
+        "src/obj/Debug/.NETPortable,Version=v4.0,Profile=Profile136.AssemblyAttribute.cs",
+        "src/obj/Debug/.NETPortable,Version=v4.5,Profile=Profile259.AssemblyAttribute.cs",
+        "src/obj/Release/.NETPortable,Version=v4.5,Profile=Profile259.AssemblyAttribute.cs",
+        "src/Properties/AssemblyInfo.cs"
       ]
     },
     "System.AppContext/4.0.0": {
@@ -14735,7 +15219,10 @@
   },
   "projectFileDependencyGroups": {
     "": [
-      "Microsoft.NETCore.UniversalWindowsPlatform >= 5.0.0"
+      "Microsoft.NETCore.UniversalWindowsPlatform >= 5.0.0",
+      "Newtonsoft.Json >= 8.0.2",
+      "SQLite.WinRT >= 3.8.11.158",
+      "SQLiteNetExtensions.Async >= 1.3.0"
     ],
     "UAP,Version=v10.0": []
   }

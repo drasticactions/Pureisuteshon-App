@@ -1,0 +1,65 @@
+﻿<Page
+    x:Class="PlayStation_Gui.Views.AccountPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:PlayStation_Gui.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewModels="using:PlayStation_Gui.ViewModels"
+    xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
+    xmlns:core="using:Microsoft.Xaml.Interactions.Core"
+    xmlns:tools="using:PlayStation_App.Tools"
+    xmlns:behaviors="using:Template10.Behaviors"
+    xmlns:authentication="using:PlayStation_App.Models.Authentication"
+    mc:Ignorable="d">
+    <Page.DataContext>
+        <viewModels:AccountViewModel />
+    </Page.DataContext>
+    <Grid>
+        <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Visibility="{Binding IsLoading, Converter={StaticResource BooleanToVisibilityConverter}}" Canvas.ZIndex="1" Grid.Row="1">
+            <Grid.Background>
+                <SolidColorBrush Color="Black" Opacity=".25"/>
+            </Grid.Background>
+            <ProgressRing Foreground="White" Width="50" Height="50" IsActive="{Binding IsLoading}" Style="{StaticResource WaveProgressRingStyle}" />
+        </Grid>
+        <Grid VerticalAlignment="Center">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition Height="*"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <TextBlock FontSize="30" FontWeight="Thin" VerticalAlignment="Bottom" Margin="0,0,0,15" HorizontalAlignment="Center" Text="FoulPlay"></TextBlock>
+            <GridView x:Name="AccountList" Grid.Row="1" IsItemClickEnabled="True" VerticalAlignment="Center" HorizontalAlignment="Center" ItemClick="{x:Bind Path=ViewModel.CheckAndNavigateToMainShell}" ItemsSource="{Binding AccountUsers}">
+                <GridView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Height="150" Width="150">
+                            <Grid.Background>
+                                <SolidColorBrush Color="Black" Opacity="0.25" />
+                            </Grid.Background>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="110"/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Image Margin="3" Width="110" Height="110" Source="{Binding AvatarUrl}"/>
+                            <TextBlock TextWrapping="NoWrap" TextTrimming="CharacterEllipsis" VerticalAlignment="Top" Margin="1" Padding="0,5,0,0" Grid.Row="1" HorizontalAlignment="Center" Text="{Binding Username}"/>
+                            <FlyoutBase.AttachedFlyout>
+                                <MenuFlyout>
+                                    <MenuFlyoutItem x:Uid="DeleteAccount" Command="{Binding Source={ } }" CommandParameter="{Binding}" />
+                                </MenuFlyout>
+                            </FlyoutBase.AttachedFlyout>
+                            <interactivity:Interaction.Behaviors>
+                                <core:EventTriggerBehavior EventName="Holding">
+                                    <behaviors:OpenFlyoutAction />
+                                </core:EventTriggerBehavior>
+                                <core:EventTriggerBehavior EventName="RightTapped">
+                                    <behaviors:OpenFlyoutAction />
+                                </core:EventTriggerBehavior>
+                            </interactivity:Interaction.Behaviors>
+                        </Grid>
+                    </DataTemplate>
+                </GridView.ItemTemplate>
+            </GridView>
+            <Button Margin="15" HorizontalAlignment="Center" VerticalAlignment="Top" Grid.Row="2"  x:Uid="AddUserAccount" Content="Add User"/>
+        </Grid>
+    </Grid>
+</Page>

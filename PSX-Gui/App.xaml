@@ -1,10 +1,15 @@
 <common:BootStrapper x:Class="PlayStation_Gui.App" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:common="using:Template10.Common"
                      xmlns:controls="using:Template10.Controls"
-                     xmlns:converters="using:Template10.Converters">
+                     xmlns:converters="using:Template10.Converters"
+                     xmlns:converter="using:PlayStation_App.Tools.Converter"
+                     RequestedTheme="Dark"
+                     xmlns:templateSelector="using:PlayStation_App.Tools.TemplateSelector">
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Styles\Custom.xaml" />
+                <ResourceDictionary Source="/Styles/Styles.xaml"/>
+                <ResourceDictionary Source="Styles/Spinkit.Styles.xaml" />
             </ResourceDictionary.MergedDictionaries>
             <Style TargetType="controls:CustomTitleBar"/>
             <converters:ValueWhenConverter 
@@ -17,6 +22,26 @@
     Otherwise="Collapsed"
     When="{x:Null}"
     x:Key="NullVisibilityInverter" />
+            <converter:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+            <converter:TrophyImageConverter x:Key="TrophyImageConverter" />
+            <converter:BroadcastImageConverter x:Key="BroadcastImageConverter"/>
+            <converter:OnlineConverter x:Key="OnlineConverter"/>
+            <templateSelector:RecentActivityTemplateSelector x:Key="RecentActivityTemplateSelector"/>
+            <converter:BooleanToVisibilityInverter x:Key="BooleanToVisibilityInverter" />
+            <converter:HasTrophiesConverter x:Key="HasTrophiesConverter" />
+            <converter:ValuePercentConverter x:Key="ValuePercentConverter" />
+            <converter:TrophyTypeConverter x:Key="TrophyTypeConverter" />
+            <converter:TrophyRareConverter x:Key="TrophyRareConverter" />
+            <converter:TrophyHiddenConverter x:Key="TrophyHiddenConverter" />
+            <converter:TrophyHiddenIconConverter x:Key="TrophyHiddenIconConverter" />
+            <converter:TrophyEarnedVisibilityConverter x:Key="TrophyEarnedVisibilityConverter" />
+            <converter:TrophyDateConverter x:Key="TrophyDateConverter" />
+            <converter:TrophyGradeConverter x:Key="TrophyGradeConverter" />
+            <converter:TrophyRareTextConverter x:Key="TrophyRareTextConverter" />
+            <converter:TrophyStatusConverter x:Key="TrophyStatusConverter" />
+            <converter:HasSeenConverter x:Key="HasSeenConverter" />
+            <converter:ConversationUsersConverter x:Key="ConversationUsersConverter" />
+            <converter:DateConverter x:Key="DateConverter" />
         </ResourceDictionary>
     </Application.Resources>
 </common:BootStrapper>

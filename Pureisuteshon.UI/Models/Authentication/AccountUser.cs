@@ -23,5 +23,7 @@ namespace PlayStation_App.Models.Authentication
         public long RefreshDate { get; set; }
         public string Region { get; set; }
         public string Language { get; set; }
+
+        public bool IsDefaultLogin { get; set; }
     }
 }

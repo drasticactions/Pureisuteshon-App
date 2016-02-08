@@ -115,6 +115,12 @@
     <Content Include="Assets\Fonts\Other\Locator-UltraLight.otf" />
     <None Include="PlayStation-Gui_TemporaryKey.pfx" />
     <None Include="project.json" />
+    <PRIResource Include="Strings\ja-JP\Resources.resw">
+      <SubType>Designer</SubType>
+    </PRIResource>
+    <PRIResource Include="Strings\id-ID\Resources.resw" />
+    <PRIResource Include="Strings\es-ES\Resources.resw" />
+    <PRIResource Include="Strings\en-US\Resources.resw" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.xaml.cs">
@@ -124,9 +130,46 @@
     <Compile Include="Services\SettingsServices\ISettingsService.cs" />
     <Compile Include="Services\SettingsServices\SettingsService.Apply.cs" />
     <Compile Include="Services\SettingsServices\SettingsService.cs" />
+    <Compile Include="Tools\AlwaysExecutableCommand.cs" />
+    <Compile Include="Tools\AsyncDelegateCommand.cs" />
+    <Compile Include="Tools\Converter\BooleanToVisibilityConverter.cs" />
+    <Compile Include="Tools\Converter\BooleanToVisibilityInverter.cs" />
+    <Compile Include="Tools\Converter\BroadcastImageConverter.cs" />
+    <Compile Include="Tools\Converter\ConversationUsersConverter.cs" />
+    <Compile Include="Tools\Converter\DateConverter.cs" />
+    <Compile Include="Tools\Converter\HasSeenConverter.cs" />
+    <Compile Include="Tools\Converter\HasTrophiesConverter.cs" />
+    <Compile Include="Tools\Converter\OnlineConverter.cs" />
+    <Compile Include="Tools\Converter\TrophyDateConverter.cs" />
+    <Compile Include="Tools\Converter\TrophyEarnedVisibilityConverter.cs" />
+    <Compile Include="Tools\Converter\TrophyGradeConverter.cs" />
+    <Compile Include="Tools\Converter\TrophyHiddenConverter.cs" />
+    <Compile Include="Tools\Converter\TrophyHiddenIconConverter.cs" />
+    <Compile Include="Tools\Converter\TrophyImageConverter.cs" />
+    <Compile Include="Tools\Converter\TrophyRareConverter.cs" />
+    <Compile Include="Tools\Converter\TrophyRareTextConverter.cs" />
+    <Compile Include="Tools\Converter\TrophyStatusConverter.cs" />
+    <Compile Include="Tools\Converter\TrophyTypeConverter.cs" />
+    <Compile Include="Tools\Converter\ValuePrecentConverter.cs" />
+    <Compile Include="Tools\Database\DatabaseWinRTHelpers.cs" />
+    <Compile Include="Tools\Debug\ResultChecker.cs" />
+    <Compile Include="Tools\Debug\SampleData.cs" />
+    <Compile Include="Tools\Debug\StringConstants.cs" />
+    <Compile Include="Tools\FlyoutHelper.cs" />
+    <Compile Include="Tools\Helpers\AuthHelpers.cs" />
+    <Compile Include="Tools\LinqExtensions.cs" />
+    <Compile Include="Tools\OpenMenuFlyoutAction.cs" />
+    <Compile Include="Tools\SizetypeConverter.cs" />
+    <Compile Include="Tools\SwipeableSplitView.cs" />
+    <Compile Include="Tools\TemplateSelector\RecentActivityTemplateSelector.cs" />
+    <Compile Include="ViewModels\AccountViewModel.cs" />
+    <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\MainPageViewModel.cs" />
     <Compile Include="ViewModels\SettingsPageViewModel.cs" />
     <Compile Include="ViewModels\ShellViewModel.cs" />
+    <Compile Include="Views\AccountPage.xaml.cs">
+      <DependentUpon>AccountPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
     </Compile>
@@ -254,6 +297,19 @@
       <Generator>MSBuild:Compile</Generator>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Page>
+    <Page Include="Styles\Spinkit.Styles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\Styles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Page>
+    <Page Include="Views\AccountPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\LoginPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -272,8 +328,8 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Commands\SelectAccount\" />
     <Folder Include="Models\" />
-    <Folder Include="Strings\" />
   </ItemGroup>
   <ItemGroup>
     <SDKReference Include="SQLite.UAP.2015, Version=3.10.2">

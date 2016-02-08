@@ -1,10 +1,12 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Windows.UI.Xaml.Navigation;
+using Template10.Mvvm;
+using Template10.Utils;
 
 namespace PlayStation_Gui.ViewModels
 {
-    public class MainPageViewModel : Mvvm.ViewModelBase
+    public class MainPageViewModel : ViewModelBase
     {
         public MainPageViewModel()
         {

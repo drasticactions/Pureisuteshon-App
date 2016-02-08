@@ -5,9 +5,35 @@
     xmlns:local="using:PlayStation_Gui.Views"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewModels="using:PlayStation_Gui.ViewModels"
     mc:Ignorable="d">
-
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
+    <Page.DataContext>
+        <viewModels:LoginViewModel />
+    </Page.DataContext>
+    <Grid>
+        <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Visibility="{Binding IsLoading, Converter={StaticResource BooleanToVisibilityConverter}}" Canvas.ZIndex="1" Grid.Row="1">
+            <Grid.Background>
+                <SolidColorBrush Color="Black" Opacity=".25"/>
+            </Grid.Background>
+            <ProgressRing Foreground="White" Width="50" Height="50" IsActive="{Binding IsLoading}" Style="{StaticResource WaveProgressRingStyle}" />
+        </Grid>
+        <Grid VerticalAlignment="Center">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <TextBlock FontSize="30" FontWeight="Thin" Margin="0,25,0,0" HorizontalAlignment="Center" Text="FoulPlay"></TextBlock>
+            <Grid Grid.Row="1">
+                <StackPanel Margin="0,25,0,0" Width="300">
+                    <TextBox x:Uid="EmailAddress"  x:Name="Username" IsSpellCheckEnabled="False" PlaceholderText="Eメールアドレス" Margin="0,0,0,15"
+                         Text="{Binding UserName, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
+                    <PasswordBox x:Uid="Password" PasswordRevealMode="Peek" x:Name="Password" PlaceholderText="パスワード" Margin="0,0,0,15"
+                             Password="{Binding Password, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
+                    <Button x:Uid="Signin" x:Name="LoginButton" Content="サインイン" HorizontalAlignment="Center"
+                        Command="{Binding ClickLoginButtonCommand}" />
+                </StackPanel>
+            </Grid>
+        </Grid>
     </Grid>
 </Page>

@@ -1,15 +1,16 @@
 using System;
 using Windows.UI.Xaml;
+using Template10.Mvvm;
 
 namespace PlayStation_Gui.ViewModels
 {
-    public class SettingsPageViewModel : PlayStation_Gui.Mvvm.ViewModelBase
+    public class SettingsPageViewModel : ViewModelBase
     {
         public SettingsPartViewModel SettingsPartViewModel { get; } = new SettingsPartViewModel();
         public AboutPartViewModel AboutPartViewModel { get; } = new AboutPartViewModel();
     }
 
-    public class SettingsPartViewModel : Mvvm.ViewModelBase
+    public class SettingsPartViewModel : ViewModelBase
     {
         Services.SettingsServices.SettingsService _settings;
 
@@ -43,7 +44,7 @@ namespace PlayStation_Gui.ViewModels
         }
     }
 
-    public class AboutPartViewModel : Mvvm.ViewModelBase
+    public class AboutPartViewModel : ViewModelBase
     {
         public Uri Logo => Windows.ApplicationModel.Package.Current.Logo;
 
