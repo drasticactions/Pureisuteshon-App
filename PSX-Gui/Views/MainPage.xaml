@@ -8,12 +8,18 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:local="using:PlayStation_Gui.Views"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-      xmlns:vm="using:PlayStation_Gui.ViewModels" mc:Ignorable="d">
+      xmlns:vm="using:PlayStation_Gui.ViewModels"
+      xmlns:templateSelector="using:PlayStation_App.Tools.TemplateSelector"
+      xmlns:listControls="using:PlayStation_Gui.Controls.ListControls"
+      mc:Ignorable="d">
 
     <Page.DataContext>
         <vm:MainPageViewModel />
     </Page.DataContext>
-
+    <Page.Resources>
+        <templateSelector:RecentActivityTemplateSelector x:Name="WhatsNewTemplateSelector" PlayedGameActivityDataTemplate="{StaticResource PlayedGameDataTemplate}"
+                 ReloadActivityDataTemplate="{StaticResource ReloadActivityDataTemplate}" PreviousActivityDataTemplate="{StaticResource PreviousActivityDataTemplate}"  LoadMoreActivityDataTemplate="{StaticResource LoadMoreActivityDataTemplate}"  ProfilePicDataTemplate="{StaticResource ProfilePicDataTemplate}"  BroadcastDataTemplate="{StaticResource BroadcastingDataTemplate}"  TrophyActivityDataTemplate="{StaticResource TrophyActivityDataTemplate}"    MultipleTrophyActivityDataTemplate="{StaticResource MultipleTrophyActivityDataTemplate}"   FriendedActivityDataTemplate="{StaticResource FriendedDataTemplate}"    MultiplePeoplePlayActivityDataTemplate="{StaticResource MultiplePeoplePlayActivityDataTemplate}"   StoreActivityDataTemplate="{StaticResource StoreActivityDataTemplate}" />
+    </Page.Resources>
     <Grid>
 
         <!--  #region default visual states  -->
@@ -25,7 +31,8 @@
                         <AdaptiveTrigger MinWindowWidth="{StaticResource NarrowMinWidth}" />
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
-                        <!--  TODO  -->
+                        <Setter Target="FullGridView.Visibility" Value="Collapsed"/>
+                        <Setter Target="NarrowListView.Visibility" Value="Visible"/>
                     </VisualState.Setters>
                 </VisualState>
                 <VisualState x:Name="VisualStateNormal">
@@ -33,7 +40,8 @@
                         <AdaptiveTrigger MinWindowWidth="{StaticResource NormalMinWidth}" />
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
-                        <!--  TODO  -->
+                        <Setter Target="FullGridView.Visibility" Value="Visible"/>
+                        <Setter Target="NarrowListView.Visibility" Value="Collapsed"/>
                     </VisualState.Setters>
                 </VisualState>
                 <VisualState x:Name="VisualStateWide">
@@ -64,7 +72,42 @@
 
         <!--  page content  -->
 
-
+        <Grid Grid.Row="1">
+            <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Visibility="{Binding IsLoading, Converter={StaticResource BooleanToVisibilityConverter}}" Canvas.ZIndex="1" Grid.Row="1">
+                <Grid.Background>
+                    <SolidColorBrush Color="Black" Opacity=".25"/>
+                </Grid.Background>
+                <ProgressRing Foreground="White" Width="50" Height="50" IsActive="{Binding IsLoading}" Style="{StaticResource WaveProgressRingStyle}" />
+            </Grid>
+            <Grid Canvas.ZIndex="0" Grid.Row="1" Padding="5">
+                <ListView x:Name="NarrowListView" Visibility="Collapsed" IsItemClickEnabled="True" ItemClick="{x:Bind ViewModel.SelectRecentItem}" ItemsSource="{Binding RecentActivityScrollingCollection}" 
+                  ItemTemplateSelector="{StaticResource WhatsNewTemplateSelector}">
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="ListViewItem">
+                            <Setter Property="Margin" Value="5" />
+                            <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                        </Style>
+                    </ListView.ItemContainerStyle>
+                </ListView>
+                <GridView x:Name="FullGridView" IsItemClickEnabled="True" ItemClick="{x:Bind ViewModel.SelectRecentItem}" ItemsSource="{Binding RecentActivityScrollingCollection}" 
+                  ItemTemplateSelector="{StaticResource WhatsNewTemplateSelector}">
+                    <GridView.ItemContainerStyle>
+                        <Style TargetType="GridViewItem">
+                            <Setter Property="Margin" Value="5" />
+                            <Setter Property="MinWidth" Value="290" />
+                            <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                        </Style>
+                    </GridView.ItemContainerStyle>
+                    <GridView.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <VariableSizedWrapGrid Orientation="Horizontal" />
+                        </ItemsPanelTemplate>
+                    </GridView.ItemsPanel>
+                </GridView>
+            </Grid>
+        </Grid>
     </Grid>
 </Page>
+
+
 

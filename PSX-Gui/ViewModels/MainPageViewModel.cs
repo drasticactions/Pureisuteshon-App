@@ -1,6 +1,18 @@
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Threading.Tasks;
+using Windows.ApplicationModel;
+using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
+using Newtonsoft.Json;
+using PlayStation.Entities.Web;
+using PlayStation.Managers;
+using PlayStation_App.Models.RecentActivity;
+using PlayStation_App.Models.Response;
+using PlayStation_App.Tools.Debug;
+using PlayStation_App.Tools.ScrollingCollection;
+using PlayStation_Gui.Views;
 using Template10.Mvvm;
 using Template10.Utils;
 
@@ -8,27 +20,141 @@ namespace PlayStation_Gui.ViewModels
 {
     public class MainPageViewModel : ViewModelBase
     {
-        public MainPageViewModel()
+        private bool _isLoading;
+
+        public bool IsLoading
         {
-            if (Windows.ApplicationModel.DesignMode.DesignModeEnabled)
-                Value = "Designtime value";
+            get { return _isLoading; }
+            set
+            {
+                Set(ref _isLoading, value);
+            }
         }
 
-        string _Value = string.Empty;
-        public string Value { get { return _Value; } set { Set(ref _Value, value); } }
-
-        public override void OnNavigatedTo(object parameter, NavigationMode mode, IDictionary<string, object> state)
+        public override async void OnNavigatedTo(object parameter, NavigationMode mode,
+            IDictionary<string, object> state)
         {
-            //if (state.ContainsKey(nameof(Value)))
-            //    Value = state[nameof(Value)]?.ToString();
-            state.Clear();
+            await Initialize();
         }
 
-        public override async Task OnNavigatedFromAsync(IDictionary<string, object> state, bool suspending)
+        public async Task SelectRecentItem(object sender, ItemClickEventArgs e)
         {
-            //if (suspending)
-            //    state[nameof(Value)] = Value;
-            await Task.Yield();
+            var args = e;
+            var feed = args.ClickedItem as Feed;
+            if (feed == null)
+                return;
+            if (feed.IsPreviousButton)
+                await LoadPreviousPages();
+            if (feed.IsNextButton)
+                await LoadNextPages();
+        }
+
+        public async Task Initialize()
+        {
+            if (DesignMode.DesignModeEnabled)
+            {
+                SetupSampleData();
+            }
+            else
+            {
+                //SetupSampleData();
+                _page = 0;
+                await LoadNextPages();
+            }
+        }
+
+        public async Task LoadPreviousPages()
+        {
+            // TODO: Fix this crap. This sort of paging is weird and makes no sense.
+            _page = _page - 4;
+            if (_page < 0) _page = 0;
+            await LoadPage();
+        }
+
+        public async Task LoadNextPages()
+        {
+            IsLoading = true;
+            var result = new Result();
+            try
+            {
+                await LoadPage();
+                result.IsSuccess = true;
+            }
+            catch (Exception ex)
+            {
+                result.IsSuccess = false;
+                result.Error = ex.Message;
+            }
+            await ResultChecker.CheckSuccess(result);
+            IsLoading = false;
+        }
+
+        public async Task LoadPage()
+        {
+            var testFeed = new RecentActivityScrollingCollection
+            {
+                _page == 0
+                    ? new Feed() {IsPreviousButton = true, IsReloadButton = true}
+                    : new Feed() {IsPreviousButton = true}
+            };
+            var result = await LoadFeed(testFeed);
+            if (result)
+            {
+                result = await LoadFeed(testFeed);
+            }
+            if (result)
+            {
+                testFeed.Add(new Feed() { IsNextButton = true });
+            }
+            RecentActivityScrollingCollection = testFeed;
+        }
+
+        private async Task<bool> LoadFeed(ObservableCollection<Feed> testFeed)
+        {
+            var feedResultEntity =
+                await _recentActivityManager.GetActivityFeed(Shell.Instance.ViewModel.CurrentUser.Username, _page, true, true, Shell.Instance.ViewModel.CurrentTokens, Shell.Instance.ViewModel.CurrentUser.Region, Shell.Instance.ViewModel.CurrentUser.Language);
+            var result = await ResultChecker.CheckSuccess(feedResultEntity);
+            if (!result)
+            {
+                return false;
+            }
+            if (string.IsNullOrEmpty(feedResultEntity.ResultJson))
+            {
+                // No Items, return false.
+                return false;
+            }
+            var feedEntity = JsonConvert.DeserializeObject<RecentActivityResponse>(feedResultEntity.ResultJson);
+            foreach (var feed in feedEntity.Feed)
+            {
+                testFeed.Add(feed);
+            }
+            _page++;
+            return true;
+        }
+
+        private async void SetupSampleData()
+        {
+            RecentActivityScrollingCollection = new RecentActivityScrollingCollection();
+            var items = await SampleData.GetSampleRecentActivityFeed();
+            foreach (var item in items)
+            {
+                RecentActivityScrollingCollection.Add(item);
+            }
+            RecentActivityScrollingCollection.Add(new Feed() { IsNextButton = true });
+        }
+
+        private readonly RecentActivityManager _recentActivityManager = new RecentActivityManager();
+        private int _page;
+
+        private ObservableCollection<Feed> _recentActivityScrollingCollection;
+
+        public ObservableCollection<Feed> RecentActivityScrollingCollection
+        {
+            get { return _recentActivityScrollingCollection; }
+            set
+            {
+                Set(ref _recentActivityScrollingCollection, value);
+            }
         }
     }
 }
