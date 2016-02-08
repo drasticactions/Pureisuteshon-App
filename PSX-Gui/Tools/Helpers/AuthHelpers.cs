@@ -46,10 +46,32 @@ namespace PlayStation_App.Tools.Helpers
             }
         }
 
+        public async static Task<bool> UpdateUserIsDefault(AccountUser user, bool isDefault = false)
+        {
+            user.IsDefaultLogin = isDefault;
+            var result = await Db.AccountUserRepository.Update(user);
+            return result > 0;
+        }
+
+        public async static Task<bool> UpdateAllUserAccountsDefaultFalse()
+        {
+            var defaultUserAccounts = await Db.AccountUserRepository.Items.Where(node => node.IsDefaultLogin).ToListAsync();
+            if (defaultUserAccounts.Any())
+            {
+                foreach (var account in defaultUserAccounts)
+                {
+                    account.IsDefaultLogin = false;
+                }
+                var result = await Db.AccountUserRepository.UpdateAll(defaultUserAccounts);
+                return result > 0;
+            }
+
+            return true;
+        }
+
         public async static Task<bool> CreateUserAccount(Tokens tokens, LogInUser loginUser, User userUpdate)
         {
             var user = new AccountUser();
-            user.IsDefaultLogin = true;
             UpdateUserObject(user, tokens, loginUser, userUpdate);
             var result = await Db.AccountUserRepository.Create(user);
             return result > 0;

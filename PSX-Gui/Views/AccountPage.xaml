@@ -59,7 +59,7 @@
                     </DataTemplate>
                 </GridView.ItemTemplate>
             </GridView>
-            <Button Margin="15" HorizontalAlignment="Center" VerticalAlignment="Top" Grid.Row="2"  x:Uid="AddUserAccount" Content="Add User"/>
+            <Button Margin="15" HorizontalAlignment="Center" VerticalAlignment="Top" Grid.Row="2"  x:Uid="AddUserAccount" Click="{x:Bind ViewModel.NavigateToLoginPage}" Content="Add User"/>
         </Grid>
     </Grid>
 </Page>

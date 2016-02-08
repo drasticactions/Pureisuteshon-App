@@ -33,6 +33,11 @@ namespace PlayStation_App.Database
             return await _db.InsertAllAsync(newEntity);
         }
 
+        public async Task<int> UpdateAll(List<T> newEntity)
+        {
+            return await _db.UpdateAllAsync(newEntity);
+        }
+
         public async Task CreateWithChildren(T newEntity)
         {
             await _db.InsertWithChildrenAsync(newEntity);

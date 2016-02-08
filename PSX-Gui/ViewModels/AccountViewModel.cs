@@ -92,12 +92,18 @@ namespace PlayStation_Gui.ViewModels
                 return;
             }
             var user = e.ClickedItem as AccountUser;
+            if (user == null) return;
             var loginResult = false;
             loginResult = await LoginTest(user);
             if (loginResult)
             {
+                if (Shell.Instance.ViewModel.CurrentUser != null)
+                {
+                    await AccountAuthHelpers.UpdateUserIsDefault(Shell.Instance.ViewModel.CurrentUser);
+                }
                 Shell.Instance.ViewModel.CurrentUser = user;
                 Shell.Instance.ViewModel.IsLoggedIn = true;
+                await AccountAuthHelpers.UpdateUserIsDefault(user, true);
                 NavigationService.Navigate(typeof (MainPage));
                 //new NavigateToWhatsNewPage().Execute(null);
             }
@@ -151,11 +157,7 @@ namespace PlayStation_Gui.ViewModels
             if (resultCheck)
             {
                 AccountUsers.Remove(user);
-                if (AccountUsers.Any())
-                {
-                    return true;
-                }
-                if (Shell.Instance.ViewModel.CurrentUser.Username == user.Username)
+                if (Shell.Instance.ViewModel.CurrentUser != null && Shell.Instance.ViewModel.CurrentUser.Username == user.Username)
                 {
                     Shell.Instance.ViewModel.CurrentUser = null;
                     Shell.Instance.ViewModel.IsLoggedIn = false;
@@ -171,6 +173,9 @@ namespace PlayStation_Gui.ViewModels
                     {
                         // Failed to delete backstack :\
                     }
+                }
+                if (!AccountUsers.Any())
+                {
                     NavigationService.Navigate(typeof(LoginPage));
                 }
             }
