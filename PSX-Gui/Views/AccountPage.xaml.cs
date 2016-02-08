@@ -12,6 +12,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using PlayStation_App.Models.Authentication;
 using PlayStation_Gui.ViewModels;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
@@ -32,7 +33,9 @@ namespace PlayStation_Gui.Views
 
         private async void DeleteAccount_OnClick(object sender, RoutedEventArgs e)
         {
-            //await ViewModel.DeleteUserAccount(sender, e);
+            var menuFlyout = sender as MenuFlyoutItem;
+            if (menuFlyout == null) return;
+            await ViewModel.DeleteUserAccount(menuFlyout.CommandParameter as AccountUser);
         }
     }
 }

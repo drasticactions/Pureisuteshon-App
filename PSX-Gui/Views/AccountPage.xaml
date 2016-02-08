@@ -44,7 +44,7 @@
                             <TextBlock TextWrapping="NoWrap" TextTrimming="CharacterEllipsis" VerticalAlignment="Top" Margin="1" Padding="0,5,0,0" Grid.Row="1" HorizontalAlignment="Center" Text="{Binding Username}"/>
                             <FlyoutBase.AttachedFlyout>
                                 <MenuFlyout>
-                                    <MenuFlyoutItem x:Uid="DeleteAccount" Command="{Binding Source={ } }" CommandParameter="{Binding}" />
+                                    <MenuFlyoutItem x:Uid="DeleteAccount" Click="DeleteAccount_OnClick" CommandParameter="{Binding}" />
                                 </MenuFlyout>
                             </FlyoutBase.AttachedFlyout>
                             <interactivity:Interaction.Behaviors>
