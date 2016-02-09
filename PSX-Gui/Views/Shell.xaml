@@ -46,6 +46,14 @@
                             <TextBlock x:Uid="Trophy" Margin="12,0,0,0" VerticalAlignment="Center" Text="Trophy" />
                         </StackPanel>
                     </Controls:HamburgerButtonInfo>
+                    <Controls:HamburgerButtonInfo IsEnabled="{x:Bind ViewModel.IsLoggedIn, Mode=OneWay}" PageType="views:FriendLinkPage">
+                        <StackPanel Orientation="Horizontal">
+                            <Border Width="48" Height="48">
+                                <Image Width="27" Height="27" VerticalAlignment="Center" HorizontalAlignment="Center" Stretch="UniformToFill" Source="/Assets/Icons/AddFriendLink.png" />
+                            </Border>
+                            <TextBlock x:Uid="InviteFriendsToPsn" Margin="12,0,0,0" VerticalAlignment="Center" Text="Trophy" />
+                        </StackPanel>
+                    </Controls:HamburgerButtonInfo>
                 </Controls:HamburgerMenu.PrimaryButtons>
 
                 <Controls:HamburgerMenu.SecondaryButtons>
