@@ -593,10 +593,10 @@
         </Grid>
     </DataTemplate>
     <DataTemplate x:Key="LiveBroadcastTemplate">
-        <Border MaxWidth="350" Height="300" Margin="5" BorderBrush="White" BorderThickness="1">
+        <Border Margin="5" BorderBrush="White" BorderThickness="1">
             <Grid>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="180" />
+                    <RowDefinition Height="Auto" />
                     <RowDefinition Height="*" />
                     <RowDefinition Height="25" />
                 </Grid.RowDefinitions>
@@ -606,9 +606,9 @@
                 <Image Grid.Row="0" VerticalAlignment="Top"
                                            Source="{Binding PreviewThumbnail}" />
                 <StackPanel Margin="1" Grid.Row="1">
-                    <TextBlock FontSize="25" FontWeight="SemiLight" TextWrapping="NoWrap"
+                    <TextBlock FontWeight="SemiLight" TextWrapping="NoWrap"
                                                    TextTrimming="WordEllipsis" Text="{Binding Title}" />
-                    <TextBlock FontSize="20" FontWeight="ExtraLight" TextWrapping="Wrap"
+                    <TextBlock FontWeight="ExtraLight" TextWrapping="Wrap"
                                                    Text="{Binding GameTitle}" />
                 </StackPanel>
                 <Grid Grid.Row="2">
