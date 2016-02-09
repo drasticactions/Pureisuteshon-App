@@ -630,6 +630,9 @@ Puedes ganar trofeos jugando a juegos.</value>
   <data name="Friends.Text" xml:space="preserve">
     <value>Amigos</value>
   </data>
+  <data name="FriendsContent.Content" xml:space="preserve">
+    <value>Amigos</value>
+  </data>
   <data name="Trophy.Text" xml:space="preserve">
     <value>Trofeos</value>
   </data>

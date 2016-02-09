@@ -64,7 +64,7 @@
 
         <!--  page header  -->
 
-        <controls:PageHeader BackButtonVisibility="Collapsed" x:Uid="WhatsNew" Content="What's New" Frame="{x:Bind Frame}">
+        <controls:PageHeader BackButtonVisibility="Collapsed"  VisualStateNormalMinWidth="720"  HorizontalAlignment="Stretch" x:Uid="WhatsNew" Content="What's New" Frame="{x:Bind Frame}">
             <Interactivity:Interaction.Behaviors>
                 <Behaviors:EllipsisBehavior Visibility="Collapsed" />
             </Interactivity:Interaction.Behaviors>

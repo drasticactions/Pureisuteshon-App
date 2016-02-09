@@ -52,7 +52,7 @@
 
         <!--  header  -->
 
-        <controls:PageHeader Content="Settings Page" Frame="{x:Bind Frame}">
+        <controls:PageHeader BackButtonVisibility="Collapsed"  VisualStateNormalMinWidth="720"  HorizontalAlignment="Stretch" Content="Settings Page" Frame="{x:Bind Frame}">
             <Interactivity:Interaction.Behaviors>
                 <Behaviors:EllipsisBehavior Visibility="Auto" />
             </Interactivity:Interaction.Behaviors>

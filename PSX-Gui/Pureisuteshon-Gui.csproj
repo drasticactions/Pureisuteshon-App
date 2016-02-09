@@ -126,6 +126,9 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\FriendView.xaml.cs">
+      <DependentUpon>FriendView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\ListControls\AdaptiveGridView.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -141,6 +144,7 @@
     <Compile Include="Tools\Converter\DateConverter.cs" />
     <Compile Include="Tools\Converter\HasSeenConverter.cs" />
     <Compile Include="Tools\Converter\HasTrophiesConverter.cs" />
+    <Compile Include="Tools\Converter\NullVisibilityInverter.cs" />
     <Compile Include="Tools\Converter\OnlineConverter.cs" />
     <Compile Include="Tools\Converter\TrophyDateConverter.cs" />
     <Compile Include="Tools\Converter\TrophyEarnedVisibilityConverter.cs" />
@@ -168,12 +172,18 @@
     <Compile Include="Tools\SwipeableSplitView.cs" />
     <Compile Include="Tools\TemplateSelector\RecentActivityTemplateSelector.cs" />
     <Compile Include="ViewModels\AccountViewModel.cs" />
+    <Compile Include="ViewModels\FriendsViewModel.cs" />
+    <Compile Include="ViewModels\FriendViewModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\MainPageViewModel.cs" />
+    <Compile Include="ViewModels\MessageGroupItem.cs" />
     <Compile Include="ViewModels\SettingsPageViewModel.cs" />
     <Compile Include="ViewModels\ShellViewModel.cs" />
     <Compile Include="Views\AccountPage.xaml.cs">
       <DependentUpon>AccountPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FriendsPage.xaml.cs">
+      <DependentUpon>FriendsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
@@ -297,6 +307,10 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Controls\FriendView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Styles\Custom.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -312,6 +326,10 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Page>
     <Page Include="Views\AccountPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\FriendsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

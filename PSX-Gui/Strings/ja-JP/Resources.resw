@@ -144,6 +144,9 @@
   <data name="Friends.Text" xml:space="preserve">
     <value>フレンド</value>
   </data>
+  <data name="FriendsContent.Content" xml:space="preserve">
+    <value>フレンド</value>
+  </data>
   <data name="RecentActivity.Text" xml:space="preserve">
     <value>最近のアクティビティー</value>
   </data>

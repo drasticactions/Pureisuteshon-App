@@ -112,6 +112,7 @@ namespace PlayStation_App.Tools.ScrollingCollection
             {
                 //HasMoreItems = false;
                 IsEmpty = true;
+                IsLoading = false;
                 return false;
             }
             foreach (var trophy in trophyList.TrophyTitles)

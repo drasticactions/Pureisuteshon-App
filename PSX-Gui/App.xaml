@@ -3,7 +3,8 @@
                      xmlns:converters="using:Template10.Converters"
                      xmlns:converter="using:PlayStation_App.Tools.Converter"
                      RequestedTheme="Dark"
-                     xmlns:templateSelector="using:PlayStation_App.Tools.TemplateSelector">
+                     xmlns:templateSelector="using:PlayStation_App.Tools.TemplateSelector"
+                     xmlns:converter1="using:PlayStation_Gui.Tools.Converter">
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -12,16 +13,8 @@
                 <ResourceDictionary Source="Styles/Spinkit.Styles.xaml" />
             </ResourceDictionary.MergedDictionaries>
             <Style TargetType="controls:CustomTitleBar"/>
-            <converters:ValueWhenConverter 
-    Value="Collapsed" 
-    Otherwise="Visible"
-    When="{x:Null}"
-    x:Key="NullVisibilityConverter" />
-            <converters:ValueWhenConverter 
-    Value="Visible" 
-    Otherwise="Collapsed"
-    When="{x:Null}"
-    x:Key="NullVisibilityInverter" />
+            <converter1:NullVisibilityConverter x:Key="NullVisibilityConverter"/>
+            <converter1:NullVisibilityInverter x:Key="NullVisibilityInverter"/>
             <converter:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
             <converter:TrophyImageConverter x:Key="TrophyImageConverter" />
             <converter:BroadcastImageConverter x:Key="BroadcastImageConverter"/>

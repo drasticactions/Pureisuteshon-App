@@ -3,6 +3,14 @@
   "version": 1,
   "targets": {
     "UAP,Version=v10.0": {
+      "AmazingPullToRefresh/0.9.0": {
+        "compile": {
+          "lib/uap10.0/AmazingPullToRefresh.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/AmazingPullToRefresh.dll": {}
+        }
+      },
       "Microsoft.CSharp/4.0.0": {
         "dependencies": {
           "System.Collections": "[4.0.10, )",
@@ -1609,6 +1617,14 @@
       }
     },
     "UAP,Version=v10.0/win10-arm": {
+      "AmazingPullToRefresh/0.9.0": {
+        "compile": {
+          "lib/uap10.0/AmazingPullToRefresh.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/AmazingPullToRefresh.dll": {}
+        }
+      },
       "Microsoft.CSharp/4.0.0": {
         "dependencies": {
           "System.Collections": "[4.0.10, )",
@@ -3305,6 +3321,14 @@
       }
     },
     "UAP,Version=v10.0/win10-arm-aot": {
+      "AmazingPullToRefresh/0.9.0": {
+        "compile": {
+          "lib/uap10.0/AmazingPullToRefresh.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/AmazingPullToRefresh.dll": {}
+        }
+      },
       "Microsoft.CSharp/4.0.0": {
         "dependencies": {
           "System.Collections": "[4.0.10, )",
@@ -4973,6 +4997,14 @@
       }
     },
     "UAP,Version=v10.0/win10-x64": {
+      "AmazingPullToRefresh/0.9.0": {
+        "compile": {
+          "lib/uap10.0/AmazingPullToRefresh.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/AmazingPullToRefresh.dll": {}
+        }
+      },
       "Microsoft.CSharp/4.0.0": {
         "dependencies": {
           "System.Collections": "[4.0.10, )",
@@ -6674,6 +6706,14 @@
       }
     },
     "UAP,Version=v10.0/win10-x64-aot": {
+      "AmazingPullToRefresh/0.9.0": {
+        "compile": {
+          "lib/uap10.0/AmazingPullToRefresh.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/AmazingPullToRefresh.dll": {}
+        }
+      },
       "Microsoft.CSharp/4.0.0": {
         "dependencies": {
           "System.Collections": "[4.0.10, )",
@@ -8342,6 +8382,14 @@
       }
     },
     "UAP,Version=v10.0/win10-x86": {
+      "AmazingPullToRefresh/0.9.0": {
+        "compile": {
+          "lib/uap10.0/AmazingPullToRefresh.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/AmazingPullToRefresh.dll": {}
+        }
+      },
       "Microsoft.CSharp/4.0.0": {
         "dependencies": {
           "System.Collections": "[4.0.10, )",
@@ -10043,6 +10091,14 @@
       }
     },
     "UAP,Version=v10.0/win10-x86-aot": {
+      "AmazingPullToRefresh/0.9.0": {
+        "compile": {
+          "lib/uap10.0/AmazingPullToRefresh.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/AmazingPullToRefresh.dll": {}
+        }
+      },
       "Microsoft.CSharp/4.0.0": {
         "dependencies": {
           "System.Collections": "[4.0.10, )",
@@ -11712,6 +11768,21 @@
     }
   },
   "libraries": {
+    "AmazingPullToRefresh/0.9.0": {
+      "sha512": "9lbbpLSEFRzlMCVgRh9uBGlyHKAIp0ZRKUSuRC2I3LHMd8AM+qR4ec3vJ/XgfTXVxm4LmnNZjWEpMetZJF6gEw==",
+      "type": "Package",
+      "files": [
+        "[Content_Types].xml",
+        "_rels/.rels",
+        "AmazingPullToRefresh.nuspec",
+        "lib/uap10.0/AmazingPullToRefresh.dll",
+        "lib/uap10.0/AmazingPullToRefresh.pri",
+        "lib/uap10.0/AmazingPulltoRefresh/AmazingPullToRefresh.xr.xml",
+        "lib/uap10.0/AmazingPullTorefresh/Properties/AmazingPullToRefresh.rd.xml",
+        "lib/uap10.0/AmazingPulltoRefresh/Themes/Generic.xbf",
+        "package/services/metadata/core-properties/413c9a54e0564c57969e9ca39fe53223.psmdcp"
+      ]
+    },
     "Microsoft.CSharp/4.0.0": {
       "sha512": "oWqeKUxHXdK6dL2CFjgMcaBISbkk+AqEg+yvJHE4DElNzS4QaTsCflgkkqZwVlWby1Dg9zo9n+iCAMFefFdJ/A==",
       "type": "Package",
@@ -15219,6 +15290,7 @@
   },
   "projectFileDependencyGroups": {
     "": [
+      "AmazingPullToRefresh >= 0.9.0",
       "Microsoft.NETCore.UniversalWindowsPlatform >= 5.0.0",
       "Newtonsoft.Json >= 8.0.2",
       "SQLite.WinRT >= 3.8.11.158",
