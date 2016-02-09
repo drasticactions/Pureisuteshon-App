@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Windows.ApplicationModel.Resources;
 using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
 using Newtonsoft.Json;
 using PlayStation.Managers;
 using PlayStation_App.Models.Response;
@@ -117,6 +118,11 @@ namespace PlayStation_Gui.ViewModels
                 Username = userName,
                 Offset = 0
             };
+        }
+
+        public void SelectFriend(object sender, ItemClickEventArgs e)
+        {
+            Template10.Common.BootStrapper.Current.NavigationService.Navigate(typeof(FriendPage), JsonConvert.SerializeObject(e.ClickedItem));
         }
 
         public async Task SetUser(string userName)

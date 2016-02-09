@@ -182,6 +182,9 @@
     <Compile Include="Views\AccountPage.xaml.cs">
       <DependentUpon>AccountPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\FriendPage.xaml.cs">
+      <DependentUpon>FriendPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\FriendsPage.xaml.cs">
       <DependentUpon>FriendsPage.xaml</DependentUpon>
     </Compile>
@@ -326,6 +329,10 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Page>
     <Page Include="Views\AccountPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\FriendPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -31,7 +31,17 @@ namespace Kimono.Controls
         public MasterDetailViewControl()
         {
             this.InitializeComponent();
-            this.Loaded += MasterDetailViewControl_Loaded;
+        }
+
+        public void LoadLayout()
+        {
+            this.Unloaded += MasterDetailViewControl_Unloaded;
+            ApplicationView.GetForCurrentView().VisibleBoundsChanged += OnVisibleBoundsChanged;
+            this.DataContextChanged += MasterDetailViewControl_DataContextChanged;
+
+            Window.Current.SizeChanged += Current_SizeChanged;
+
+            EvaluateLayout();
         }
 
         private void MasterDetailViewControl_Loaded(object sender, RoutedEventArgs e)

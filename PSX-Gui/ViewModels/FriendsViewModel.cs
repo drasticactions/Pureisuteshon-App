@@ -47,6 +47,7 @@ namespace PlayStation_Gui.ViewModels
         public override async void OnNavigatedTo(object parameter, NavigationMode mode, IDictionary<string, object> state)
         {
             Template10.Common.BootStrapper.Current.NavigationService.FrameFacade.BackRequested += MasterDetailViewControl.NavigationManager_BackRequested;
+            MasterDetailViewControl.LoadLayout();
             if (state.ContainsKey(nameof(Selected)))
             {
                 if (Selected == null)
@@ -56,23 +57,19 @@ namespace PlayStation_Gui.ViewModels
                     state.Clear();
                 }
             }
-            else
+
+            if (FriendScrollingCollection == null || !FriendScrollingCollection.Any())
             {
-                Selected = null;
+                SetFriendList();
             }
-            SetFriendList();
         }
 
         public override Task OnNavigatedFromAsync(IDictionary<string, object> state, bool suspending)
         {
             Template10.Common.BootStrapper.Current.NavigationService.FrameFacade.BackRequested -= MasterDetailViewControl.NavigationManager_BackRequested;
-            if (suspending)
+            if (Selected != null)
             {
-                if (Selected != null)
-                {
-                    state[nameof(Selected)] = Selected.OnlineId;
-                }
-
+                state[nameof(Selected)] = JsonConvert.SerializeObject(Selected);
             }
             return Task.CompletedTask;
         }
@@ -84,11 +81,6 @@ namespace PlayStation_Gui.ViewModels
             {
                 Set(ref _filterComboBox, value);
             }
-        }
-
-        public async Task SelectFriend(object sender, ItemClickEventArgs e)
-        {
-            
         }
 
         public void FilterComboBox_OnSelectionChanged(object sender, SelectionChangedEventArgs e)

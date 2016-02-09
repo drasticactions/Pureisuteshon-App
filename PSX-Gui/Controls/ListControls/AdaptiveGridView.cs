@@ -129,7 +129,7 @@ namespace PlayStation_Gui.Controls.ListControls
 
         protected override Size MeasureOverride(Size availableSize)
         {
-            var panel = this.ItemsPanelRoot as VariableSizedWrapGrid;
+            var panel = this.ItemsPanelRoot as ItemsWrapGrid;
             if (panel != null)
             {
                 if (MinItemWidth == 0)
