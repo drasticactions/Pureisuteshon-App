@@ -102,8 +102,8 @@ namespace PlayStation_Gui
                     {
                         try
                         {
-                            await Shell.Instance.ViewModel.LoginDefaultUser();
-                            NavigationService.Navigate(typeof(Views.MainPage));
+                            var result = await Shell.Instance.ViewModel.LoginDefaultUser();
+                            NavigationService.Navigate(result ? typeof (Views.MainPage) : typeof (Views.AccountPage));
                         }
                         catch (Exception)
                         {
