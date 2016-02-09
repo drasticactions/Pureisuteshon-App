@@ -636,6 +636,9 @@ You can earn trophies by playing games that support them.</value>
   <data name="Trophy.Text" xml:space="preserve">
     <value>Trophies</value>
   </data>
+  <data name="TrophyContent.Content" xml:space="preserve">
+    <value>Trophies</value>
+  </data>
   <data name="Messenger.Text" xml:space="preserve">
     <value>Messages</value>
   </data>

@@ -130,6 +130,10 @@
       <DependentUpon>FriendView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\ListControls\AdaptiveGridView.cs" />
+    <Compile Include="Controls\TrophyView.xaml.cs">
+      <DependentUpon>TrophyView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TrophyNavProperties.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\SettingsServices\ISettingsService.cs" />
@@ -162,6 +166,7 @@
     <Compile Include="Tools\Debug\SampleData.cs" />
     <Compile Include="Tools\Debug\StringConstants.cs" />
     <Compile Include="Tools\FlyoutHelper.cs" />
+    <Compile Include="Tools\Flyout\FlyoutHelper.cs" />
     <Compile Include="Tools\Helpers\AuthHelpers.cs" />
     <Compile Include="Tools\LinqExtensions.cs" />
     <Compile Include="Tools\OpenMenuFlyoutAction.cs" />
@@ -179,6 +184,9 @@
     <Compile Include="ViewModels\MessageGroupItem.cs" />
     <Compile Include="ViewModels\SettingsPageViewModel.cs" />
     <Compile Include="ViewModels\ShellViewModel.cs" />
+    <Compile Include="ViewModels\TrophyDetailListViewModel.cs" />
+    <Compile Include="ViewModels\TrophyListViewModel.cs" />
+    <Compile Include="ViewModels\TrophyViewModel.cs" />
     <Compile Include="Views\AccountPage.xaml.cs">
       <DependentUpon>AccountPage.xaml</DependentUpon>
     </Compile>
@@ -199,6 +207,12 @@
     </Compile>
     <Compile Include="Views\Shell.xaml.cs">
       <DependentUpon>Shell.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TrophyDetailListPage.xaml.cs">
+      <DependentUpon>TrophyDetailListPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TrophyListPage.xaml.cs">
+      <DependentUpon>TrophyListPage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -314,6 +328,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Controls\TrophyView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Styles\Custom.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -356,10 +374,17 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\TrophyDetailListPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TrophyListPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Commands\SelectAccount\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <SDKReference Include="SQLite.UAP.2015, Version=3.10.2">

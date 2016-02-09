@@ -38,6 +38,14 @@
                             <TextBlock x:Uid="Friends" Margin="12,0,0,0" VerticalAlignment="Center" Text="Friends" />
                         </StackPanel>
                     </Controls:HamburgerButtonInfo>
+                    <Controls:HamburgerButtonInfo IsEnabled="{x:Bind ViewModel.IsLoggedIn, Mode=OneWay}" PageType="views:TrophyListPage">
+                        <StackPanel Orientation="Horizontal">
+                            <Border Width="48" Height="48">
+                                <Image Width="27" Height="27" VerticalAlignment="Center" HorizontalAlignment="Center" Stretch="UniformToFill" Source="/Assets/Icons/Trophy.png" />
+                            </Border>
+                            <TextBlock x:Uid="Trophy" Margin="12,0,0,0" VerticalAlignment="Center" Text="Trophy" />
+                        </StackPanel>
+                    </Controls:HamburgerButtonInfo>
                 </Controls:HamburgerMenu.PrimaryButtons>
 
                 <Controls:HamburgerMenu.SecondaryButtons>

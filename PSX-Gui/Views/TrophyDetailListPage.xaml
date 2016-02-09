@@ -1,0 +1,59 @@
+﻿<Page
+    x:Class="PlayStation_Gui.Views.TrophyDetailListPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:PlayStation_Gui.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewModels="using:PlayStation_Gui.ViewModels"
+    xmlns:controls="using:Template10.Controls"
+    xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
+    xmlns:behaviors="using:Template10.Behaviors"
+    xmlns:listControls="using:PlayStation_Gui.Controls.ListControls"
+    xmlns:core="using:Microsoft.Xaml.Interactions.Core"
+    xmlns:flyout="using:PlayStation_Gui.Tools.Flyout"
+    xmlns:controls1="using:PlayStation_Gui.Controls"
+    mc:Ignorable="d">
+    <Page.DataContext>
+        <viewModels:TrophyDetailListViewModel />
+    </Page.DataContext>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <controls:PageHeader BackButtonVisibility="Collapsed" Content="{Binding TrophyName}" VisualStateNormalMinWidth="720"  HorizontalAlignment="Stretch">
+            <interactivity:Interaction.Behaviors>
+                <behaviors:EllipsisBehavior Visibility="Collapsed" />
+            </interactivity:Interaction.Behaviors>
+        </controls:PageHeader>
+
+        <Grid Grid.Row="1">
+            <listControls:AdaptiveGridView ItemClick="{x:Bind ViewModel.SelectTrophyDetail}" flyout:FlyoutHelper.IsOpen="{x:Bind ViewModel.TrophyViewModel.IsOpen, Mode=OneWay}" flyout:FlyoutHelper.Parent="{Binding ElementName=TrophyListView}" Margin="15" ItemsSource="{Binding TrophyDetailList}" ItemTemplate="{StaticResource TrophyDetailDataTemplate}" IsItemClickEnabled="True" SelectionMode="None"
+                                  MinItemWidth="350"
+                                  MinItemHeight="100"
+                                  MaxItemHeight="120"
+                                           IsSwipeEnabled="False" x:Name="TrophyListView">
+                <listControls:AdaptiveGridView.ItemContainerStyle>
+                    <Style TargetType="GridViewItem">
+                        <Setter Property="HorizontalContentAlignment"
+                            Value="Stretch" />
+                        <Setter Property="HorizontalAlignment"
+                            Value="Stretch" />
+                        <Setter Property="VerticalContentAlignment"
+                            Value="Stretch" />
+                        <Setter Property="VerticalAlignment"
+                            Value="Stretch" />
+                        <Setter Property="Margin"
+                            Value="5" />
+                    </Style>
+                </listControls:AdaptiveGridView.ItemContainerStyle>
+                <FlyoutBase.AttachedFlyout>
+                    <Flyout FlyoutPresenterStyle="{StaticResource PlayStationFlyoutStyle}" Placement="Full">
+                        <controls1:TrophyView x:Name="TrophyView"></controls1:TrophyView>
+                    </Flyout>
+                </FlyoutBase.AttachedFlyout>
+            </listControls:AdaptiveGridView>
+        </Grid>
+    </Grid>
+</Page>

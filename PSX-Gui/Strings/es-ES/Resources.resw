@@ -636,6 +636,9 @@ Puedes ganar trofeos jugando a juegos.</value>
   <data name="Trophy.Text" xml:space="preserve">
     <value>Trofeos</value>
   </data>
+  <data name="TrophyContent.Content" xml:space="preserve">
+    <value>Trofeos</value>
+  </data>
   <data name="Messenger.Text" xml:space="preserve">
     <value>Mensajes</value>
   </data>

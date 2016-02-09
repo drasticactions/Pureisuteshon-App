@@ -639,6 +639,9 @@ Kamu bisa meraih piala dengan memainkan game yang punya piala.</value>
   <data name="Trophy.Text" xml:space="preserve">
     <value>Piala</value>
   </data>
+  <data name="TrophyContent.Content" xml:space="preserve">
+    <value>Piala</value>
+  </data>
   <data name="Messenger.Text" xml:space="preserve">
     <value>Pesan</value>
   </data>

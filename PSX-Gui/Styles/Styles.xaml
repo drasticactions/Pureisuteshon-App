@@ -629,7 +629,7 @@
         </Border>
     </DataTemplate>
     <DataTemplate x:Key="TrophyDetailDataTemplate">
-        <Border Margin="5" MaxWidth="350" BorderBrush="White" BorderThickness="1">
+        <Border Margin="5" BorderBrush="White" BorderThickness="1">
             <Grid>
                 <Grid.Background>
                     <SolidColorBrush Color="Black" Opacity="0.65" />

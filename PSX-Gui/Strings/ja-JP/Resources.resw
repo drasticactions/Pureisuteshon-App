@@ -183,6 +183,9 @@
   <data name="Trophy.Text" xml:space="preserve">
     <value>トロフィー</value>
   </data>
+    <data name="TrophyContent.Content" xml:space="preserve">
+    <value>トロフィー</value>
+  </data>
   <data name="WhatsNew.Content" xml:space="preserve">
     <value>What's New</value>
   </data>
