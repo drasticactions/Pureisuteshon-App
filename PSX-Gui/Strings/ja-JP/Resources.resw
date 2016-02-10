@@ -153,6 +153,9 @@
   <data name="MessagesPivot.Text" xml:space="preserve">
     <value>メッセージ</value>
   </data>
+    <data name="MessagesContext.Text" xml:space="preserve">
+    <value>メッセージ</value>
+  </data>
   <data name="MessagePivot.Label" xml:space="preserve">
     <value>メッセージ</value>
   </data>

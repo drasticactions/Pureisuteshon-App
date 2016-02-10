@@ -334,6 +334,9 @@
   <data name="MessagePivot.Label" xml:space="preserve">
     <value>Pesan</value>
   </data>
+  <data name="MessageContext.Label" xml:space="preserve">
+    <value>Pesan</value>
+  </data>
   <data name="MyLanguages.Text" xml:space="preserve">
     <value>Bahasa:</value>
   </data>

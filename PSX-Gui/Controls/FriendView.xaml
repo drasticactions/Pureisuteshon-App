@@ -31,7 +31,7 @@
                 <behaviors:EllipsisBehavior Visibility="Collapsed" />
             </interactivity:Interaction.Behaviors>
         </controls:PageHeader>
-        <Pivot Margin="0,40,0,0" Grid.Row="1" x:Name="MainPivot">
+        <Pivot Margin="0,0,0,0" Grid.Row="1" x:Name="MainPivot">
             <PivotItem x:Uid="AboutMePivot" Header="紹介">
                 <Grid x:Name="UserInformationGrid" HorizontalAlignment="Stretch" Column="0">
                     <ScrollViewer ZoomMode="Disabled" VerticalScrollBarVisibility="Auto">

@@ -59,8 +59,7 @@ namespace PlayStation_App.ViewModels
 
         public List<string> GroupMembers { get; set; } = new List<string>();
 
-        public NavigateToStickersListView NavigateToStickersListCommand { get; set; } = new NavigateToStickersListView()
-            ;
+        public NavigateToStickersListView NavigateToStickersListCommand { get; set; } = new NavigateToStickersListView();
 
         public LoadImage LoadImage { get; set; } = new LoadImage();
         public FriendFilterButton FriendFilterButton { get; set; } = new FriendFilterButton();

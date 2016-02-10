@@ -1,0 +1,86 @@
+﻿<Page
+    x:Class="PlayStation_Gui.Views.MessagesPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:PlayStation_Gui.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewModels="using:PlayStation_Gui.ViewModels"
+    xmlns:controls="using:Kimono.Controls"
+    xmlns:controls1="using:Template10.Controls"
+    xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
+    xmlns:behaviors="using:Template10.Behaviors"
+    xmlns:controls2="using:AmazingPullToRefresh.Controls"
+    xmlns:controls3="using:PlayStation_Gui.Controls"
+    mc:Ignorable="d">
+    <Page.DataContext>
+        <viewModels:MessagesViewModel />
+    </Page.DataContext>
+    <Grid>
+        <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Visibility="{Binding IsLoading, Converter={StaticResource BooleanToVisibilityConverter}}" Canvas.ZIndex="1" Grid.Row="1">
+            <Grid.Background>
+                <SolidColorBrush Color="Black" Opacity=".25"/>
+            </Grid.Background>
+            <ProgressRing Foreground="White" Width="50" Height="50" IsActive="{Binding IsLoading}" Style="{StaticResource WaveProgressRingStyle}" />
+        </Grid>
+        <controls:MasterDetailViewControl x:Name="previewControl" PreviewItem="{Binding Selected, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
+            <controls:MasterDetailViewControl.MasterViewPaneContent>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="10"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <controls1:PageHeader BackButtonVisibility="Collapsed"  VisualStateNormalMinWidth="720"  HorizontalAlignment="Stretch" x:Uid="MessagesContext" Content="Messages" Frame="{x:Bind Frame}">
+                        <interactivity:Interaction.Behaviors>
+                            <behaviors:EllipsisBehavior Visibility="Collapsed" />
+                        </interactivity:Interaction.Behaviors>
+                    </controls1:PageHeader>
+                    <ProgressBar Grid.Row="1"  Visibility="{Binding IsLoading, Converter={StaticResource BooleanToVisibilityConverter}}" 
+                                  VerticalAlignment="Top" IsIndeterminate="True"/>
+                    <ListView Grid.Row="2" IsItemClickEnabled="True" SelectedItem="{Binding Selected, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" ItemClick="{x:Bind ViewModel.SelectMessageGroup}" ItemTemplate="{StaticResource MessageDataTemplate}" ItemsSource="{Binding MessageGroupCollection}" x:Name="MessageList">
+                        <ListView.ItemContainerStyle>
+                            <Style TargetType="ListViewItem">
+                                <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                            </Style>
+                        </ListView.ItemContainerStyle>
+                    </ListView>
+                </Grid>
+            </controls:MasterDetailViewControl.MasterViewPaneContent>
+            <controls:MasterDetailViewControl.DetailViewPaneContent>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <controls1:PageHeader BackButtonVisibility="Collapsed"  VisualStateNormalMinWidth="720"  HorizontalAlignment="Stretch" Content="{Binding Selected.MessageGroup, Converter={StaticResource ConversationUsersConverter}, Mode=OneWay}" Frame="{x:Bind Frame}">
+                        <interactivity:Interaction.Behaviors>
+                            <behaviors:EllipsisBehavior Visibility="Collapsed" />
+                        </interactivity:Interaction.Behaviors>
+                    </controls1:PageHeader>
+                    <ListView Grid.Row="1" x:Name="MessagesList" ItemTemplate="{StaticResource MessageDetailDataTemplate}" ItemsSource="{Binding MessageCollection}">
+                        <ListView.ItemContainerStyle>
+                            <Style TargetType="ListViewItem">
+                                <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                            </Style>
+                        </ListView.ItemContainerStyle>
+                    </ListView>
+                    <Grid  Grid.Row="2">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="45"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <TextBox Text="{Binding Message, Mode=TwoWay}" Margin="5" VerticalAlignment="Top" Height="30"/>
+                        <StackPanel HorizontalAlignment="Right" Margin="5" Grid.Row="1" Orientation="Horizontal">
+                            <Button x:Uid="RemoveImage" Visibility="{Binding IsImageAttached, Converter={StaticResource BooleanToVisibilityConverter}}" Content="Remove Image" Margin="0,0,5,0"></Button>
+                            <Button x:Uid="AttachImage"  Content="Image" Margin="0,0,5,0"/>
+                            <Button x:Uid="Stamps" Content="Stamp" Margin="0,0,5,0"/>
+                            <Button x:Uid="SendButton"  Content="Send"/>
+                        </StackPanel>
+                    </Grid>
+                </Grid>
+            </controls:MasterDetailViewControl.DetailViewPaneContent>
+        </controls:MasterDetailViewControl>
+    </Grid>
+</Page>
