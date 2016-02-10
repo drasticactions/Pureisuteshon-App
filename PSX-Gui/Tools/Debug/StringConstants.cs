@@ -9,5 +9,7 @@ namespace PlayStation_Gui.Tools.Debug
     public class StringConstants
     {
         public const string UserDatabase = "UserDatabase";
+
+        public const string StampDatabase = "StampDatabase";
     }
 }
