@@ -165,6 +165,7 @@
     <Compile Include="Tools\Debug\ResultChecker.cs" />
     <Compile Include="Tools\Debug\SampleData.cs" />
     <Compile Include="Tools\Debug\StringConstants.cs" />
+    <Compile Include="Tools\FileAccessCommands.cs" />
     <Compile Include="Tools\FlyoutHelper.cs" />
     <Compile Include="Tools\Flyout\FlyoutHelper.cs" />
     <Compile Include="Tools\Helpers\AuthHelpers.cs" />

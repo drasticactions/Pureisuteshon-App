@@ -12,6 +12,8 @@
     xmlns:behaviors="using:Template10.Behaviors"
     xmlns:controls2="using:AmazingPullToRefresh.Controls"
     xmlns:controls3="using:PlayStation_Gui.Controls"
+    xmlns:core="using:Microsoft.Xaml.Interactions.Core"
+    xmlns:tools="using:PlayStation_App.Tools"
     mc:Ignorable="d">
     <Page.DataContext>
         <viewModels:MessagesViewModel />
@@ -48,7 +50,7 @@
                 </Grid>
             </controls:MasterDetailViewControl.MasterViewPaneContent>
             <controls:MasterDetailViewControl.DetailViewPaneContent>
-                <Grid>
+                <Grid Visibility="{Binding Selected, Converter={StaticResource NullVisibilityInverter}, Mode=OneWay}">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="*"/>
@@ -59,7 +61,74 @@
                             <behaviors:EllipsisBehavior Visibility="Collapsed" />
                         </interactivity:Interaction.Behaviors>
                     </controls1:PageHeader>
-                    <ListView Grid.Row="1" x:Name="MessagesList" ItemTemplate="{StaticResource MessageDetailDataTemplate}" ItemsSource="{Binding MessageCollection}">
+                    <ListView Grid.Row="1" x:Name="MessagesList" ItemsSource="{Binding MessageCollection}">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid Margin="6">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="100" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Border VerticalAlignment="Top" Grid.Column="0" Width="75" Height="75">
+                                        <Image Source="{Binding AvatarUrl}" Stretch="UniformToFill" />
+                                    </Border>
+                                    <StackPanel Grid.Column="1">
+                                        <TextBlock TextWrapping="NoWrap"
+                               Text="{Binding Message.SenderOnlineId}" />
+                                        <StackPanel>
+                                            <StackPanel.Background>
+                                                <SolidColorBrush Color="#DBDEE7" Opacity="0.65" />
+                                            </StackPanel.Background>
+                                            <Image MaxHeight="300" MaxWidth="300" Source="{Binding Message.StickerDetail.ImageUrl}">
+                                                <FlyoutBase.AttachedFlyout>
+                                                    <MenuFlyout>
+                                                        <MenuFlyoutItem x:Uid="SaveImage" Click="DownloadImage" CommandParameter="{Binding}"/>
+                                                    </MenuFlyout>
+                                                </FlyoutBase.AttachedFlyout>
+                                                <interactivity:Interaction.Behaviors>
+                                                    <core:EventTriggerBehavior EventName="Holding">
+                                                        <tools:OpenMenuFlyoutAction />
+                                                    </core:EventTriggerBehavior>
+                                                    <core:EventTriggerBehavior EventName="RightTapped">
+                                                        <tools:OpenMenuFlyoutAction />
+                                                    </core:EventTriggerBehavior>
+                                                </interactivity:Interaction.Behaviors>
+                                            </Image>
+                                            <TextBlock TextWrapping="Wrap" Margin="5" FontWeight="Bold"
+                                   Text="{Binding Message.Body}" />
+                                            <Border HorizontalAlignment="Left" MaxWidth="400" MaxHeight="400"  Visibility="{Binding ImageAvailable, Converter={StaticResource BooleanToVisibilityConverter}}" BorderBrush="White" BorderThickness="1" Margin="5">
+                                                <Grid MinWidth="150" MinHeight="150">
+                                                    <Image Tapped="LoadImage" IsTapEnabled="True">
+                                                        <Image.Source>
+                                                            <Binding Path="Image" >
+                                                                <Binding.TargetNullValue>
+                                                                    <ImageSource>/Assets/Square150x150Logo.scale-400.png</ImageSource>
+                                                                </Binding.TargetNullValue>
+                                                            </Binding>
+                                                        </Image.Source>
+                                                        <FlyoutBase.AttachedFlyout>
+                                                            <MenuFlyout>
+                                                                <MenuFlyoutItem x:Uid="SaveImage" Click="DownloadImage"  CommandParameter="{Binding}"/>
+                                                            </MenuFlyout>
+                                                        </FlyoutBase.AttachedFlyout>
+                                                        <interactivity:Interaction.Behaviors>
+                                                            <core:EventTriggerBehavior EventName="Holding">
+                                                                <tools:OpenMenuFlyoutAction />
+                                                            </core:EventTriggerBehavior>
+                                                            <core:EventTriggerBehavior EventName="RightTapped">
+                                                                <tools:OpenMenuFlyoutAction />
+                                                            </core:EventTriggerBehavior>
+                                                        </interactivity:Interaction.Behaviors>
+                                                    </Image>
+                                                </Grid>
+                                            </Border>
+                                        </StackPanel>
+                                        <TextBlock FontSize="15" HorizontalAlignment="Right" TextWrapping="Wrap"
+                               Text="{Binding Message.ReceivedDate, Converter={StaticResource DateConverter}}" />
+                                    </StackPanel>
+                                </Grid>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
                         <ListView.ItemContainerStyle>
                             <Style TargetType="ListViewItem">
                                 <Setter Property="HorizontalContentAlignment" Value="Stretch" />
@@ -71,12 +140,18 @@
                             <RowDefinition Height="45"/>
                             <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
-                        <TextBox Text="{Binding Message, Mode=TwoWay}" Margin="5" VerticalAlignment="Top" Height="30"/>
+                        <TextBox Text="{Binding Message, Mode=TwoWay}" Margin="5" VerticalAlignment="Top" Height="30">
+                            <interactivity:Interaction.Behaviors>
+                                <behaviors:TextBoxEnterKeyBehavior>
+                                    <core:CallMethodAction MethodName="SendMessageCommand" TargetObject="{Binding}" />
+                                </behaviors:TextBoxEnterKeyBehavior>
+                            </interactivity:Interaction.Behaviors>
+                        </TextBox>
                         <StackPanel HorizontalAlignment="Right" Margin="5" Grid.Row="1" Orientation="Horizontal">
-                            <Button x:Uid="RemoveImage" Visibility="{Binding IsImageAttached, Converter={StaticResource BooleanToVisibilityConverter}}" Content="Remove Image" Margin="0,0,5,0"></Button>
-                            <Button x:Uid="AttachImage"  Content="Image" Margin="0,0,5,0"/>
+                            <Button x:Uid="RemoveImage" Click="RemoveImage"  Visibility="{Binding IsImageAttached, Converter={StaticResource BooleanToVisibilityConverter}}" Content="Remove Image" Margin="0,0,5,0"></Button>
+                            <Button x:Uid="AttachImage" Click="AttachImage" Content="Image" Margin="0,0,5,0"/>
                             <Button x:Uid="Stamps" Content="Stamp" Margin="0,0,5,0"/>
-                            <Button x:Uid="SendButton"  Content="Send"/>
+                            <Button x:Uid="SendButton" Click="{x:Bind ViewModel.SendMessage}" Content="Send"/>
                         </StackPanel>
                     </Grid>
                 </Grid>

@@ -29,7 +29,7 @@ namespace Template10.Behaviors
         {
             if (e.Key == Windows.System.VirtualKey.Enter)
             {
-                Interaction.ExecuteActions(AssociatedObject, this.Actions, null);
+                Interaction.ExecuteActions(AssociatedObject, this.Actions, AssociatedTextBox.Text);
                 e.Handled = true;
             }
         }

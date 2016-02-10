@@ -386,7 +386,7 @@ namespace PlayStation_App.ViewModels
             return string.Empty;
         }
 
-        public async Task SendMessage()
+        public async Task SendMessage(Object sender, Object parameter)
         {
             if (AttachedImage != null && IsImageAttached)
             {

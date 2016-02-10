@@ -5,6 +5,8 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Storage;
+using Windows.Storage.Pickers;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -12,6 +14,8 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using PlayStation_App.Tools.Debug;
+using PlayStation_App.ViewModels;
 using PlayStation_Gui.ViewModels;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
@@ -30,6 +34,7 @@ namespace PlayStation_Gui.Views
             this.InitializeComponent();
             NavigationCacheMode = NavigationCacheMode.Enabled;
             ViewModel.MasterDetailViewControl = previewControl;
+            ViewModel.ListView = MessagesList;
         }
 
         protected override void OnNavigatingFrom(NavigatingCancelEventArgs e)
@@ -46,6 +51,60 @@ namespace PlayStation_Gui.Views
             var cacheSize = ((Frame)Parent).CacheSize;
             ((Frame)Parent).CacheSize = 0;
             ((Frame)Parent).CacheSize = cacheSize;
+        }
+
+        private async void DownloadImage(object sender, RoutedEventArgs e)
+        {
+            var imageSource = sender as MenuFlyoutItem;
+            var message = imageSource?.CommandParameter as MessageGroupItem;
+            if (message == null)
+                return;
+            await ViewModel.DownloadImageAsync(message);
+        }
+
+        private void RemoveImage(object sender, RoutedEventArgs e)
+        {
+            ViewModel.IsImageAttached = false;
+            ViewModel.AttachedImage = null;
+        }
+
+        private async void LoadImage(object sender, RoutedEventArgs e)
+        {
+            var imageSource = sender as Image;
+            var message = imageSource?.DataContext as MessageGroupItem;
+            if (message == null)
+                return;
+            await ViewModel.LoadMessageImage(message);
+        }
+
+        private async void AttachImage(object sender, RoutedEventArgs e)
+        {
+            string error;
+            try
+            {
+                var openPicker = new FileOpenPicker
+                {
+                    ViewMode = PickerViewMode.Thumbnail,
+                    SuggestedStartLocation = PickerLocationId.PicturesLibrary
+                };
+                openPicker.FileTypeFilter.Add(".jpg");
+                openPicker.FileTypeFilter.Add(".jpeg");
+                openPicker.FileTypeFilter.Add(".png");
+                openPicker.FileTypeFilter.Add(".gif");
+                var file = await openPicker.PickSingleFileAsync();
+                if (file == null) return;
+                var stream = await file.OpenAsync(FileAccessMode.Read);
+                ViewModel.AttachedImage = stream;
+                ViewModel.IsImageAttached = true;
+                ViewModel.ImagePath = file.Path;
+                return;
+            }
+            catch (Exception ex)
+            {
+                error = ex.Message;
+            }
+
+            await ResultChecker.SendMessageDialogAsync(error, false);
         }
     }
 }
