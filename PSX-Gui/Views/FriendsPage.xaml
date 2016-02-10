@@ -25,6 +25,10 @@
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
                     <controls1:PageHeader BackButtonVisibility="Collapsed"  VisualStateNormalMinWidth="720"  HorizontalAlignment="Stretch" x:Uid="FriendsContent" Content="Friends" Frame="{x:Bind Frame}">
+                        <controls1:PageHeader.PrimaryCommands>
+                            <AppBarButton Click="RefreshList" Icon="Refresh" Label="Refresh">
+                            </AppBarButton>
+                        </controls1:PageHeader.PrimaryCommands>
                         <interactivity:Interaction.Behaviors>
                             <behaviors:EllipsisBehavior Visibility="Collapsed" />
                         </interactivity:Interaction.Behaviors>

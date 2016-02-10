@@ -25,6 +25,10 @@ namespace PlayStation_Gui
         {
             InitializeComponent();
 
+            Microsoft.ApplicationInsights.WindowsAppInitializer.InitializeAsync(
+                Microsoft.ApplicationInsights.WindowsCollectors.Metadata |
+                Microsoft.ApplicationInsights.WindowsCollectors.Session);
+
             #region App settings
 
             Settings = SettingsService.Instance;

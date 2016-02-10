@@ -54,5 +54,10 @@ namespace PlayStation_Gui.Views
             var friend = FriendList.SelectedItem as Friend;
             await FriendPageView.LoadFriend(friend);
         }
+
+        private void RefreshList(object sender, RoutedEventArgs e)
+        {
+            ViewModel.SetFriendList();
+        }
     }
 }

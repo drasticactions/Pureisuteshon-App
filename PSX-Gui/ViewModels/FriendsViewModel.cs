@@ -88,11 +88,11 @@ namespace PlayStation_Gui.ViewModels
             SetFriendList();
         }
 
-        public async void PullToRefresh_ListView(object sender, RefreshRequestedEventArgs e)
+        public void PullToRefresh_ListView(object sender, RefreshRequestedEventArgs e)
         {
-            var deferral = e.GetDeferral();
+            //var deferral = e.GetDeferral();
             SetFriendList();
-            deferral.Complete();
+            //deferral.Complete();
         }
 
         public void SetFriendList()

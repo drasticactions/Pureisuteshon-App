@@ -106,5 +106,18 @@ namespace PlayStation_Gui.Views
 
             await ResultChecker.SendMessageDialogAsync(error, false);
         }
+
+        private async void RefreshGroupList(object sender, RoutedEventArgs e)
+        {
+            await ViewModel.GetMessageGroups(Shell.Instance.ViewModel.CurrentUser.Username);
+        }
+
+        private async void RefreshList(object sender, RoutedEventArgs e)
+        {
+            if (ViewModel.SelectedMessageGroup != null)
+            {
+                await ViewModel.GetMessages(ViewModel.SelectedMessageGroup);
+            }
+        }
     }
 }
