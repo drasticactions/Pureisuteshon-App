@@ -50,13 +50,20 @@ namespace PlayStation_Gui.ViewModels
             {
                 await GetMessageGroups(Shell.Instance.ViewModel.CurrentUser.Username);
             }
-            if (state.ContainsKey(nameof(Selected)))
+            try
             {
-                if (Selected == null)
+                if (state.ContainsKey("Thread"))
                 {
-                    Selected = JsonConvert.DeserializeObject<MessageGroupItem>(state[nameof(Selected)]?.ToString());
-                    state.Clear();
+                    if (Selected == null)
+                    {
+                        Selected = JsonConvert.DeserializeObject<MessageGroupItem>(state["Thread"]?.ToString());
+                        state.Clear();
+                    }
                 }
+            }
+            catch (Exception)
+            {
+                // State didn't save
             }
         }
 
@@ -65,7 +72,7 @@ namespace PlayStation_Gui.ViewModels
             Template10.Common.BootStrapper.Current.NavigationService.FrameFacade.BackRequested -= MasterDetailViewControl.NavigationManager_BackRequested;
             if (Selected != null)
             {
-                state[nameof(Selected)] = JsonConvert.SerializeObject(Selected);
+                state["Thread"] = JsonConvert.SerializeObject(Selected);
             }
             return Task.CompletedTask;
         }

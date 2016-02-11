@@ -60,7 +60,7 @@ namespace PlayStation_Gui.ViewModels
             Template10.Common.BootStrapper.Current.NavigationService.FrameFacade.BackRequested -= MasterDetailViewControl.NavigationManager_BackRequested;
             if (Selected != null)
             {
-                state[nameof(Selected)] = JsonConvert.SerializeObject(Selected);
+                state["Friend"] = JsonConvert.SerializeObject(Selected);
             }
             return Task.CompletedTask;
         }
