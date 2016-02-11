@@ -17,7 +17,11 @@
     <EnableDotNetNativeCompatibleProfile>true</EnableDotNetNativeCompatibleProfile>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <PackageCertificateKeyFile>PlayStation-Gui_TemporaryKey.pfx</PackageCertificateKeyFile>
+    <PackageCertificateKeyFile>Pureisuteshon-Gui_StoreKey.pfx</PackageCertificateKeyFile>
+    <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
+    <AppxBundle>Always</AppxBundle>
+    <AppxBundlePlatforms>x86|x64|arm</AppxBundlePlatforms>
+    <PackageCertificateThumbprint>1404FE55A4E7B3CB4ED90350C01AA4ED8BE9973E</PackageCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
     <DebugSymbols>true</DebugSymbols>
@@ -91,7 +95,7 @@
   <ItemGroup>
     <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
     <Content Include="ApplicationInsights.config">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="Assets\Fonts\Locator-Bold.eot" />
     <Content Include="Assets\Fonts\Locator-Bold.otf" />
@@ -116,8 +120,9 @@
     <Content Include="Assets\Fonts\Other\Locator-MediumItalic.otf" />
     <Content Include="Assets\Fonts\Other\Locator-RegularItalic.otf" />
     <Content Include="Assets\Fonts\Other\Locator-UltraLight.otf" />
-    <None Include="PlayStation-Gui_TemporaryKey.pfx" />
     <None Include="project.json" />
+    <None Include="Pureisuteshon-Gui_StoreKey.pfx" />
+    <None Include="Pureisuteshon-Gui_TemporaryKey.pfx" />
     <PRIResource Include="Strings\ja-JP\Resources.resw">
       <SubType>Designer</SubType>
     </PRIResource>
@@ -191,6 +196,7 @@
     <Compile Include="ViewModels\MessagesViewModel.cs" />
     <Compile Include="ViewModels\SettingsPageViewModel.cs" />
     <Compile Include="ViewModels\ShellViewModel.cs" />
+    <Compile Include="ViewModels\StickersListViewModel.cs" />
     <Compile Include="ViewModels\TrophyDetailListViewModel.cs" />
     <Compile Include="ViewModels\TrophyListViewModel.cs" />
     <Compile Include="ViewModels\TrophyViewModel.cs" />
@@ -331,6 +337,7 @@
     <Content Include="Assets\Wide310x150Logo.scale-200.png" />
     <Content Include="Assets\Wide310x150Logo.scale-400.png" />
     <Content Include="Help.htm" />
+    <None Include="Package.StoreAssociation.xml" />
     <Content Include="Properties\Default.rd.xml" />
   </ItemGroup>
   <ItemGroup>

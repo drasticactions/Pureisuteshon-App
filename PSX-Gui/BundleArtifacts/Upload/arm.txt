@@ -1,0 +1,9 @@
+MainPackage=C:\Users\t_mil\Documents\GitHub\PlayStation-App\PSX-Gui\bin\ARM\Release\Upload\Pureisuteshon-Gui_4.6.4.0_ARM.appx
+SymbolPackage=C:\Users\t_mil\Documents\GitHub\PlayStation-App\PSX-Gui\AppPackages\Pureisuteshon-Gui_4.6.4.0\Pureisuteshon-Gui_4.6.4.0_ARM.appxsym
+ResourcePack=C:\Users\t_mil\Documents\GitHub\PlayStation-App\PSX-Gui\_language-es.appx
+ResourcePack=C:\Users\t_mil\Documents\GitHub\PlayStation-App\PSX-Gui\_language-id.appx
+ResourcePack=C:\Users\t_mil\Documents\GitHub\PlayStation-App\PSX-Gui\_language-ja.appx
+ResourcePack=C:\Users\t_mil\Documents\GitHub\PlayStation-App\PSX-Gui\_scale-100.appx
+ResourcePack=C:\Users\t_mil\Documents\GitHub\PlayStation-App\PSX-Gui\_scale-125.appx
+ResourcePack=C:\Users\t_mil\Documents\GitHub\PlayStation-App\PSX-Gui\_scale-150.appx
+ResourcePack=C:\Users\t_mil\Documents\GitHub\PlayStation-App\PSX-Gui\_scale-400.appx

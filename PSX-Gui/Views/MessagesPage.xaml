@@ -14,6 +14,7 @@
     xmlns:controls3="using:PlayStation_Gui.Controls"
     xmlns:core="using:Microsoft.Xaml.Interactions.Core"
     xmlns:tools="using:PlayStation_App.Tools"
+    xmlns:listControls="using:PlayStation_Gui.Controls.ListControls"
     mc:Ignorable="d">
     <Page.DataContext>
         <viewModels:MessagesViewModel />
@@ -158,7 +159,58 @@
                         <StackPanel HorizontalAlignment="Right" Margin="5" Grid.Row="1" Orientation="Horizontal">
                             <Button x:Uid="RemoveImage" Click="RemoveImage"  Visibility="{Binding IsImageAttached, Converter={StaticResource BooleanToVisibilityConverter}}" Content="Remove Image" Margin="0,0,5,0"></Button>
                             <Button x:Uid="AttachImage" Click="AttachImage" Content="Image" Margin="0,0,5,0"/>
-                            <Button x:Uid="Stamps" Content="Stamp" Margin="0,0,5,0"/>
+                            <Button x:Uid="Stamps" Content="Stamp" Margin="0,0,5,0">
+                                <Button.Flyout>
+                                    <Flyout FlyoutPresenterStyle="{StaticResource PlayStationFlyoutStyle}">
+                                        <Grid Width="320" MaxWidth="500" Height="400">
+                                            <ListView  x:Name="StickerList" IsItemClickEnabled="True" 
+                                                       ItemsSource="{Binding StickerListViewModel.StickerList}" ItemClick="{x:Bind ViewModel.SelectStickerGroup}" ItemTemplate="{StaticResource StickerPackageListDataTemplate}">
+                                                <ListView.ItemContainerStyle>
+                                                    <Style TargetType="ListViewItem">
+                                                        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                                                    </Style>
+                                                </ListView.ItemContainerStyle>
+                                                <FlyoutBase.AttachedFlyout>
+                                                    <Flyout x:Name="StickerFlyout" FlyoutPresenterStyle="{StaticResource PlayStationFlyoutNoScrollStyle}" Placement="Full">
+                                                        <listControls:AdaptiveGridView IsItemClickEnabled="True" ItemClick="{x:Bind ViewModel.SelectSticker}"
+                                                                                       MinItemWidth="150"
+                                                                                       MinItemHeight="150"
+                                                                                       MaxItemHeight="350"
+                                                                                       ItemsSource="{Binding StickerListViewModel.StickerCollection}">
+                                                            <listControls:AdaptiveGridView.ItemContainerStyle>
+                                                                <Style TargetType="GridViewItem">
+                                                                    <Setter Property="HorizontalContentAlignment"
+                            Value="Stretch" />
+                                                                    <Setter Property="HorizontalAlignment"
+                            Value="Stretch" />
+                                                                    <Setter Property="VerticalContentAlignment"
+                            Value="Stretch" />
+                                                                    <Setter Property="VerticalAlignment"
+                            Value="Stretch" />
+                                                                    <Setter Property="Margin"
+                            Value="5" />
+                                                                </Style>
+                                                            </listControls:AdaptiveGridView.ItemContainerStyle>
+                                                            <listControls:AdaptiveGridView.ItemTemplate>
+                                                                <DataTemplate>
+                                                                    <Border  HorizontalAlignment="Stretch" BorderBrush="White" Margin="3" BorderThickness="1">
+                                                                        <Grid>
+                                                                            <Grid.Background>
+                                                                                <SolidColorBrush Color="#C0000000" />
+                                                                            </Grid.Background>
+                                                                            <Image Width="175" Height="175" Source="{Binding ImageUrl}"/>
+                                                                        </Grid>
+                                                                    </Border>
+                                                                </DataTemplate>
+                                                            </listControls:AdaptiveGridView.ItemTemplate>
+                                                        </listControls:AdaptiveGridView>
+                                                    </Flyout>
+                                                </FlyoutBase.AttachedFlyout>
+                                            </ListView>
+                                        </Grid>
+                                    </Flyout>
+                                </Button.Flyout>
+                            </Button>
                             <Button x:Uid="SendButton" Click="{x:Bind ViewModel.SendMessage}" Content="Send"/>
                         </StackPanel>
                     </Grid>

@@ -93,7 +93,7 @@ namespace PlayStation_Gui.ViewModels
                 result = await _authManager.RefreshAccessToken(user.RefreshToken);
                 var tokenResult = JsonConvert.DeserializeObject<Tokens>(result.Tokens);
                 result = await _userManager.GetUser(user.Username,
-                    new UserAuthenticationEntity(tokenResult.AccessToken, tokenResult.RefreshToken, tokenResult.ExpiresIn),
+                    new UserAuthenticationEntity(tokenResult.AccessToken, tokenResult.RefreshToken, AccountAuthHelpers.GetUnixTime(DateTime.Now) + tokenResult.ExpiresIn),
                     user.Region, user.Language);
                 var userResult = JsonConvert.DeserializeObject<User>(result.ResultJson);
 

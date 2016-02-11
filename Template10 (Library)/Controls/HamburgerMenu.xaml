@@ -18,7 +18,10 @@
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="Button">
-                            <Grid x:Name="RootGrid" Background="{TemplateBinding Background}">
+                            <Grid x:Name="RootGrid">
+                                <Grid.Background>
+                                    <SolidColorBrush Color="#DBDEE7" Opacity="0.15" />
+                                </Grid.Background>
                                 <VisualStateManager.VisualStateGroups>
                                     <VisualStateGroup x:Name="CommonStates">
                                         <VisualState x:Name="Normal">

@@ -11,10 +11,17 @@
           "lib/uap10.0/AmazingPullToRefresh.dll": {}
         }
       },
-      "Microsoft.ApplicationInsights/2.0.0-beta4": {},
-      "Microsoft.ApplicationInsights.PersistenceChannel/2.0.0-beta3": {
+      "Microsoft.ApplicationInsights/1.2.3": {
+        "compile": {
+          "lib/portable-win81+wpa81/Microsoft.ApplicationInsights.dll": {}
+        },
+        "runtime": {
+          "lib/portable-win81+wpa81/Microsoft.ApplicationInsights.dll": {}
+        }
+      },
+      "Microsoft.ApplicationInsights.PersistenceChannel/1.2.3": {
         "dependencies": {
-          "Microsoft.ApplicationInsights": "[2.0.0-beta3, )"
+          "Microsoft.ApplicationInsights": "[1.2.3, )"
         },
         "compile": {
           "lib/portable-win81+wpa81/Microsoft.ApplicationInsights.PersistenceChannel.dll": {}
@@ -1649,10 +1656,17 @@
           "lib/uap10.0/AmazingPullToRefresh.dll": {}
         }
       },
-      "Microsoft.ApplicationInsights/2.0.0-beta4": {},
-      "Microsoft.ApplicationInsights.PersistenceChannel/2.0.0-beta3": {
+      "Microsoft.ApplicationInsights/1.2.3": {
+        "compile": {
+          "lib/portable-win81+wpa81/Microsoft.ApplicationInsights.dll": {}
+        },
+        "runtime": {
+          "lib/portable-win81+wpa81/Microsoft.ApplicationInsights.dll": {}
+        }
+      },
+      "Microsoft.ApplicationInsights.PersistenceChannel/1.2.3": {
         "dependencies": {
-          "Microsoft.ApplicationInsights": "[2.0.0-beta3, )"
+          "Microsoft.ApplicationInsights": "[1.2.3, )"
         },
         "compile": {
           "lib/portable-win81+wpa81/Microsoft.ApplicationInsights.PersistenceChannel.dll": {}
@@ -3377,10 +3391,17 @@
           "lib/uap10.0/AmazingPullToRefresh.dll": {}
         }
       },
-      "Microsoft.ApplicationInsights/2.0.0-beta4": {},
-      "Microsoft.ApplicationInsights.PersistenceChannel/2.0.0-beta3": {
+      "Microsoft.ApplicationInsights/1.2.3": {
+        "compile": {
+          "lib/portable-win81+wpa81/Microsoft.ApplicationInsights.dll": {}
+        },
+        "runtime": {
+          "lib/portable-win81+wpa81/Microsoft.ApplicationInsights.dll": {}
+        }
+      },
+      "Microsoft.ApplicationInsights.PersistenceChannel/1.2.3": {
         "dependencies": {
-          "Microsoft.ApplicationInsights": "[2.0.0-beta3, )"
+          "Microsoft.ApplicationInsights": "[1.2.3, )"
         },
         "compile": {
           "lib/portable-win81+wpa81/Microsoft.ApplicationInsights.PersistenceChannel.dll": {}
@@ -5077,10 +5098,17 @@
           "lib/uap10.0/AmazingPullToRefresh.dll": {}
         }
       },
-      "Microsoft.ApplicationInsights/2.0.0-beta4": {},
-      "Microsoft.ApplicationInsights.PersistenceChannel/2.0.0-beta3": {
+      "Microsoft.ApplicationInsights/1.2.3": {
+        "compile": {
+          "lib/portable-win81+wpa81/Microsoft.ApplicationInsights.dll": {}
+        },
+        "runtime": {
+          "lib/portable-win81+wpa81/Microsoft.ApplicationInsights.dll": {}
+        }
+      },
+      "Microsoft.ApplicationInsights.PersistenceChannel/1.2.3": {
         "dependencies": {
-          "Microsoft.ApplicationInsights": "[2.0.0-beta3, )"
+          "Microsoft.ApplicationInsights": "[1.2.3, )"
         },
         "compile": {
           "lib/portable-win81+wpa81/Microsoft.ApplicationInsights.PersistenceChannel.dll": {}
@@ -6810,10 +6838,17 @@
           "lib/uap10.0/AmazingPullToRefresh.dll": {}
         }
       },
-      "Microsoft.ApplicationInsights/2.0.0-beta4": {},
-      "Microsoft.ApplicationInsights.PersistenceChannel/2.0.0-beta3": {
+      "Microsoft.ApplicationInsights/1.2.3": {
+        "compile": {
+          "lib/portable-win81+wpa81/Microsoft.ApplicationInsights.dll": {}
+        },
+        "runtime": {
+          "lib/portable-win81+wpa81/Microsoft.ApplicationInsights.dll": {}
+        }
+      },
+      "Microsoft.ApplicationInsights.PersistenceChannel/1.2.3": {
         "dependencies": {
-          "Microsoft.ApplicationInsights": "[2.0.0-beta3, )"
+          "Microsoft.ApplicationInsights": "[1.2.3, )"
         },
         "compile": {
           "lib/portable-win81+wpa81/Microsoft.ApplicationInsights.PersistenceChannel.dll": {}
@@ -8510,10 +8545,17 @@
           "lib/uap10.0/AmazingPullToRefresh.dll": {}
         }
       },
-      "Microsoft.ApplicationInsights/2.0.0-beta4": {},
-      "Microsoft.ApplicationInsights.PersistenceChannel/2.0.0-beta3": {
+      "Microsoft.ApplicationInsights/1.2.3": {
+        "compile": {
+          "lib/portable-win81+wpa81/Microsoft.ApplicationInsights.dll": {}
+        },
+        "runtime": {
+          "lib/portable-win81+wpa81/Microsoft.ApplicationInsights.dll": {}
+        }
+      },
+      "Microsoft.ApplicationInsights.PersistenceChannel/1.2.3": {
         "dependencies": {
-          "Microsoft.ApplicationInsights": "[2.0.0-beta3, )"
+          "Microsoft.ApplicationInsights": "[1.2.3, )"
         },
         "compile": {
           "lib/portable-win81+wpa81/Microsoft.ApplicationInsights.PersistenceChannel.dll": {}
@@ -10243,10 +10285,17 @@
           "lib/uap10.0/AmazingPullToRefresh.dll": {}
         }
       },
-      "Microsoft.ApplicationInsights/2.0.0-beta4": {},
-      "Microsoft.ApplicationInsights.PersistenceChannel/2.0.0-beta3": {
+      "Microsoft.ApplicationInsights/1.2.3": {
+        "compile": {
+          "lib/portable-win81+wpa81/Microsoft.ApplicationInsights.dll": {}
+        },
+        "runtime": {
+          "lib/portable-win81+wpa81/Microsoft.ApplicationInsights.dll": {}
+        }
+      },
+      "Microsoft.ApplicationInsights.PersistenceChannel/1.2.3": {
         "dependencies": {
-          "Microsoft.ApplicationInsights": "[2.0.0-beta3, )"
+          "Microsoft.ApplicationInsights": "[1.2.3, )"
         },
         "compile": {
           "lib/portable-win81+wpa81/Microsoft.ApplicationInsights.PersistenceChannel.dll": {}
@@ -11951,26 +12000,26 @@
         "package/services/metadata/core-properties/413c9a54e0564c57969e9ca39fe53223.psmdcp"
       ]
     },
-    "Microsoft.ApplicationInsights/2.0.0-beta4": {
-      "sha512": "AuyQbBX85vzd/LKW+uvPlqpKMRHUu62zDHPrfuAO+vw6sycFU4bjD2hQLUsFr6qTmlBojZ6Q8yimxETUCZAwig==",
+    "Microsoft.ApplicationInsights/1.2.3": {
+      "sha512": "a34atobxpucCTTX9VCD7aIu6Ydzry+Va7TxK2tTQcfaMvefGW4kUKtg9GHKIn19IaXe+A4oZt/GBqsOt5vQrBA==",
       "type": "Package",
       "files": [
         "[Content_Types].xml",
         "_rels/.rels",
-        "lib/dnxcore50/Microsoft.ApplicationInsights.dll",
-        "lib/dnxcore50/Microsoft.ApplicationInsights.XML",
         "lib/net40/Microsoft.ApplicationInsights.dll",
         "lib/net40/Microsoft.ApplicationInsights.XML",
         "lib/net45/Microsoft.ApplicationInsights.dll",
         "lib/net45/Microsoft.ApplicationInsights.XML",
-        "lib/net46/Microsoft.ApplicationInsights.dll",
-        "lib/net46/Microsoft.ApplicationInsights.XML",
+        "lib/portable-win81+wpa81/Microsoft.ApplicationInsights.dll",
+        "lib/portable-win81+wpa81/Microsoft.ApplicationInsights.XML",
+        "lib/wp8/Microsoft.ApplicationInsights.dll",
+        "lib/wp8/Microsoft.ApplicationInsights.XML",
         "Microsoft.ApplicationInsights.nuspec",
-        "package/services/metadata/core-properties/d9d707d0793545c1b2b5118b1aeeca60.psmdcp"
+        "package/services/metadata/core-properties/3b36eef276524f5d883c618d5fd8c500.psmdcp"
       ]
     },
-    "Microsoft.ApplicationInsights.PersistenceChannel/2.0.0-beta3": {
-      "sha512": "1km42tFTsuNSDe3wEN88r9tzlw5uTbFAl/KjkZtC2w13Tc2lA92tJHM7mSWv0zFt9w6Bx7m3km5yMECcYhzOLw==",
+    "Microsoft.ApplicationInsights.PersistenceChannel/1.2.3": {
+      "sha512": "5MGcvPQVaGlGyAVh9adg4sSkIVSYDKn+H3+YnZa9hi1gH/g6UsRt4HLc8vp/IxjlbmXbJyAB7dYJV/NHmAGAgA==",
       "type": "Package",
       "files": [
         "[Content_Types].xml",
@@ -11984,7 +12033,7 @@
         "lib/wp8/Microsoft.ApplicationInsights.PersistenceChannel.dll",
         "lib/wp8/Microsoft.ApplicationInsights.PersistenceChannel.XML",
         "Microsoft.ApplicationInsights.PersistenceChannel.nuspec",
-        "package/services/metadata/core-properties/460690bead5947ebb831d7d2a4912dad.psmdcp"
+        "package/services/metadata/core-properties/f973733421c14c3594986b3f2c22213a.psmdcp"
       ]
     },
     "Microsoft.ApplicationInsights.WindowsApps/1.1.1": {
@@ -15511,8 +15560,6 @@
   "projectFileDependencyGroups": {
     "": [
       "AmazingPullToRefresh >= 0.9.0",
-      "Microsoft.ApplicationInsights >= 2.0.0-beta4",
-      "Microsoft.ApplicationInsights.PersistenceChannel >= 2.0.0-beta3",
       "Microsoft.ApplicationInsights.WindowsApps >= 1.1.1",
       "Microsoft.NETCore.UniversalWindowsPlatform >= 5.0.0",
       "Newtonsoft.Json >= 8.0.2",

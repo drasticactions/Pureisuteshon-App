@@ -35,6 +35,7 @@ namespace PlayStation_Gui.Views
             NavigationCacheMode = NavigationCacheMode.Enabled;
             ViewModel.MasterDetailViewControl = previewControl;
             ViewModel.ListView = MessagesList;
+            ViewModel.StickerFlyout = StickerFlyout;
         }
 
         protected override void OnNavigatingFrom(NavigatingCancelEventArgs e)

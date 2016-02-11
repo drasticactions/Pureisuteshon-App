@@ -48,15 +48,6 @@ namespace PlayStation_Gui.ViewModels
         {
             Template10.Common.BootStrapper.Current.NavigationService.FrameFacade.BackRequested += MasterDetailViewControl.NavigationManager_BackRequested;
             MasterDetailViewControl.LoadLayout();
-            if (state.ContainsKey(nameof(Selected)))
-            {
-                if (Selected == null)
-                {
-                    Selected = JsonConvert.DeserializeObject<Friend>(state[nameof(Selected)]?.ToString());
-                    await FriendView.LoadFriend(Selected);
-                    state.Clear();
-                }
-            }
 
             if (FriendScrollingCollection == null || !FriendScrollingCollection.Any())
             {

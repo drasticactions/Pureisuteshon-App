@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest" xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" IgnorableNamespaces="uap mp">
-  <Identity Name="b7e0dd55-2512-414d-8ad5-b359d1102bb6" Publisher="CN=t_mil" Version="1.0.0.0" />
+  <Identity Name="52978DrasticActions.FoulPlayTheUnofficialPlayStati" Publisher="CN=49056560-3A92-41D0-8509-DF4FE44F646C" Version="4.6.4.0" />
   <mp:PhoneIdentity PhoneProductId="b7e0dd55-2512-414d-8ad5-b359d1102bb6" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
-    <DisplayName>PlayStation-Gui</DisplayName>
-    <PublisherDisplayName>t_mil</PublisherDisplayName>
+    <DisplayName>FoulPlay: The Unofficial PlayStation Network App</DisplayName>
+    <PublisherDisplayName>Tim Miller</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
   <Dependencies>
@@ -15,10 +15,16 @@
   </Resources>
   <Applications>
     <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="PlayStation-Gui.App">
-      <uap:VisualElements DisplayName="PlayStation-Gui.App" Square150x150Logo="Assets\Square150x150Logo.png" Square44x44Logo="Assets\Square44x44Logo.png" Description="Minimal" BackgroundColor="transparent">
-        <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png">
+      <uap:VisualElements DisplayName="FoulPlay" Square150x150Logo="Assets\Square150x150Logo.png" Square44x44Logo="Assets\Square44x44Logo.png" Description="FoulPlay is an Unofficial PlayStation Client for Windows." BackgroundColor="transparent">
+        <uap:LockScreen Notification="badge" BadgeLogo="Assets\BadgeLogo.png" />
+        <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png" ShortName="FoulPlay" Square310x310Logo="Assets\Square310x310Logo.png" Square71x71Logo="Assets\Square71x71Logo.png">
+          <uap:ShowNameOnTiles>
+            <uap:ShowOn Tile="square150x150Logo" />
+            <uap:ShowOn Tile="wide310x150Logo" />
+            <uap:ShowOn Tile="square310x310Logo" />
+          </uap:ShowNameOnTiles>
         </uap:DefaultTile>
-        <uap:SplashScreen Image="Assets\SplashScreen.png" />
+        <uap:SplashScreen Image="Assets\SplashScreen.png" BackgroundColor="#1E72C9" />
       </uap:VisualElements>
     </Application>
   </Applications>

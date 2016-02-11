@@ -14,6 +14,7 @@ using Windows.Storage.Pickers;
 using Windows.Storage.Streams;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Navigation;
@@ -41,9 +42,21 @@ namespace PlayStation_Gui.ViewModels
         {
             Template10.Common.BootStrapper.Current.NavigationService.FrameFacade.BackRequested += MasterDetailViewControl.NavigationManager_BackRequested;
             MasterDetailViewControl.LoadLayout();
-            if (MessageGroupCollection != null || !MessageGroupCollection.Any())
+            if (StickerListViewModel.StickerList == null || !StickerListViewModel.StickerList.Any())
+            {
+                await StickerListViewModel.GetStickerPacks();
+            }
+            if (MessageGroupCollection == null || !MessageGroupCollection.Any())
             {
                 await GetMessageGroups(Shell.Instance.ViewModel.CurrentUser.Username);
+            }
+            if (state.ContainsKey(nameof(Selected)))
+            {
+                if (Selected == null)
+                {
+                    Selected = JsonConvert.DeserializeObject<MessageGroupItem>(state[nameof(Selected)]?.ToString());
+                    state.Clear();
+                }
             }
         }
 
@@ -56,6 +69,39 @@ namespace PlayStation_Gui.ViewModels
             }
             return Task.CompletedTask;
         }
+
+        public async void SelectSticker(object sender, ItemClickEventArgs e)
+        {
+            var sticker = e.ClickedItem as StickerSelection;
+            if (sticker == null)
+            {
+                return;
+            }
+            StickerFlyout?.Hide();
+            IsLoading = true;
+            await SendSticker(sticker);
+            IsLoading = false;
+        }
+
+        public Flyout StickerFlyout { get; set; }
+
+        public async void SelectStickerGroup(object sender, ItemClickEventArgs e)
+        {
+            try
+            {
+                var stickerResponse = e.ClickedItem as StickerResponse;
+                if (stickerResponse == null) return;
+                await StickerListViewModel.GetStickers(stickerResponse);
+                FlyoutBase.ShowAttachedFlyout(sender as FrameworkElement);
+            }
+            catch (Exception)
+            {
+                
+                //throw;
+            }
+        }
+
+        public StickersListViewModel StickerListViewModel { get; set; } = new StickersListViewModel();
 
         public void RemoveImage()
         {
@@ -462,37 +508,48 @@ namespace PlayStation_Gui.ViewModels
 
         public async Task SendSticker(StickerSelection stickerSelection)
         {
-            var result = new Result();
-            if (GroupMembers.Any() && IsNewMessage)
+            string error;
+            try
             {
-                result =
-                    await
-                        _messageManager.CreateStickerPostWithNewGroupMessage(GroupMembers.ToArray(),
-                            stickerSelection.ManifestUrl,
-                            stickerSelection.Number.ToString(), stickerSelection.ImageUrl, stickerSelection.PackageId,
-                            stickerSelection.Type, Shell.Instance.ViewModel.CurrentTokens,
-                            Shell.Instance.ViewModel.CurrentUser.Region);
+                var result = new Result();
+                if (GroupMembers.Any() && IsNewMessage)
+                {
+                    result =
+                        await
+                            _messageManager.CreateStickerPostWithNewGroupMessage(GroupMembers.ToArray(),
+                                stickerSelection.ManifestUrl,
+                                stickerSelection.Number.ToString(), stickerSelection.ImageUrl, stickerSelection.PackageId,
+                                stickerSelection.Type, Shell.Instance.ViewModel.CurrentTokens,
+                                Shell.Instance.ViewModel.CurrentUser.Region);
+                }
+                else
+                {
+                    result =
+                        await
+                            _messageManager.CreateStickerPost(SelectedMessageGroup.MessageGroupId,
+                                stickerSelection.ManifestUrl,
+                                stickerSelection.Number.ToString(), stickerSelection.ImageUrl, stickerSelection.PackageId,
+                                stickerSelection.Type, Shell.Instance.ViewModel.CurrentTokens,
+                                Shell.Instance.ViewModel.CurrentUser.Region);
+                }
+
+                await AccountAuthHelpers.UpdateTokens(Shell.Instance.ViewModel.CurrentUser, result);
+                var resultCheck = await ResultChecker.CheckSuccess(result);
+                if (resultCheck)
+                {
+                    SelectedMessageGroup = JsonConvert.DeserializeObject<MessageGroup>(result.ResultJson);
+                    await GetMessages(SelectedMessageGroup);
+                    //await GetMessageGroups(Shell.Instance.ViewModel.CurrentUser.Username);
+                    IsNewMessage = false;
+                }
+                return;
             }
-            else
+            catch (Exception ex)
             {
-                result =
-                    await
-                        _messageManager.CreateStickerPost(SelectedMessageGroup.MessageGroupId,
-                            stickerSelection.ManifestUrl,
-                            stickerSelection.Number.ToString(), stickerSelection.ImageUrl, stickerSelection.PackageId,
-                            stickerSelection.Type, Shell.Instance.ViewModel.CurrentTokens,
-                            Shell.Instance.ViewModel.CurrentUser.Region);
+                error = ex.Message;
             }
 
-            await AccountAuthHelpers.UpdateTokens(Shell.Instance.ViewModel.CurrentUser, result);
-            var resultCheck = await ResultChecker.CheckSuccess(result);
-            if (resultCheck)
-            {
-                SelectedMessageGroup = JsonConvert.DeserializeObject<MessageGroup>(result.ResultJson);
-                await GetMessages(SelectedMessageGroup);
-                //await GetMessageGroups(Shell.Instance.ViewModel.CurrentUser.Username);
-                IsNewMessage = false;
-            }
+            await ResultChecker.SendMessageDialogAsync(error, false);
         }
 
         private bool _isLoading;

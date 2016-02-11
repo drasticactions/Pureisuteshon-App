@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Windows.UI.Popups;
+using Microsoft.ApplicationInsights;
 using PlayStation.Entities.Web;
 
 namespace PlayStation_App.Tools.Debug
@@ -16,6 +17,19 @@ namespace PlayStation_App.Tools.Debug
             var title = isSuccess ? loader.GetString("SuccessText/Text") : loader.GetString("ErrorText/Text");
             var dialog = new MessageDialog((string.Concat(title, Environment.NewLine, Environment.NewLine, message)));
             await dialog.ShowAsync();
+            if (!isSuccess)
+            {
+                try
+                {
+                    var tc = new TelemetryClient();
+                    var prop = new Dictionary<string, string> { { "errorMessage", message } };
+                    tc.TrackEvent("Error", prop);
+                }
+                catch (Exception)
+                {
+                    // Ignore analytics failing. :\
+                }
+            }
         }
 
 

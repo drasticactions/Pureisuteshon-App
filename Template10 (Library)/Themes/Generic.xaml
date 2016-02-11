@@ -114,7 +114,10 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="controls:PageHeader">
-                    <Grid x:Name="LayoutRoot" Background="{TemplateBinding Background}">
+                    <Grid x:Name="LayoutRoot">
+                        <Grid.Background>
+                            <SolidColorBrush Color="#DBDEE7" Opacity="0.15" />
+                        </Grid.Background>
                         <Grid.Clip>
                             <RectangleGeometry Rect="{Binding TemplateSettings.ClipRect, RelativeSource={RelativeSource Mode=TemplatedParent}}">
                                 <RectangleGeometry.Transform>
@@ -693,7 +696,6 @@
 
                         <Grid x:Name="ContentRoot" Height="{TemplateBinding Height}"
                               Margin="{TemplateBinding Padding}" VerticalAlignment="Top"
-                              Background="{TemplateBinding Background}"
                               Opacity="{TemplateBinding Opacity}">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="Auto" />

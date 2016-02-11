@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using PlayStation_Gui.Services.SettingsServices;
 using Windows.ApplicationModel.Activation;
 using Windows.UI.Xaml.Controls;
+using Microsoft.ApplicationInsights;
 using PlayStation_App.Database;
 using PlayStation_Gui.Tools.Database;
 using PlayStation_Gui.Tools.Debug;
@@ -23,11 +24,8 @@ namespace PlayStation_Gui
 
         public App()
         {
+            Microsoft.ApplicationInsights.WindowsAppInitializer.InitializeAsync();
             InitializeComponent();
-
-            Microsoft.ApplicationInsights.WindowsAppInitializer.InitializeAsync(
-                Microsoft.ApplicationInsights.WindowsCollectors.Metadata |
-                Microsoft.ApplicationInsights.WindowsCollectors.Session);
 
             #region App settings
 
@@ -39,6 +37,9 @@ namespace PlayStation_Gui
             #region Database
             var db = new UserAccountDataSource(new SQLitePlatformWinRT(), DatabaseWinRTHelpers.GetWinRTDatabasePath(StringConstants.UserDatabase));
             db.CreateDatabase();
+
+            var dbs = new StickersDataSource(new SQLitePlatformWinRT(), DatabaseWinRTHelpers.GetWinRTDatabasePath(StringConstants.StampDatabase));
+            dbs.CreateDatabase();
             #endregion  
         }
 
@@ -54,7 +55,21 @@ namespace PlayStation_Gui
                 Frame = new Frame();
                 var nav = NavigationServiceFactory(BackButton.Attach, ExistingContent.Include, Frame);
                 var shell = new Shell(nav);
-                //await shell.ViewModel.LoginUser();
+                if (Shell.Instance.ViewModel.CurrentUser == null)
+                {
+                    var userAccountDatabase = new UserAccountDatabase(new SQLitePlatformWinRT(), DatabaseWinRTHelpers.GetWinRTDatabasePath(StringConstants.UserDatabase));
+                    if (await userAccountDatabase.HasDefaultAccounts())
+                    {
+                        try
+                        {
+                            var result = await Shell.Instance.ViewModel.LoginDefaultUser();
+                        }
+                        catch (Exception)
+                        {
+                            // error happened, send them to account page so we can check on it.
+                        }
+                    }
+                }
                 Window.Current.Content = shell;
             }
 
@@ -69,22 +84,36 @@ namespace PlayStation_Gui
             {
                 var nav = NavigationServiceFactory(BackButton.Attach, ExistingContent.Include, Frame);
                 var shell = (Shell)Window.Current.Content;
-               // await shell.ViewModel.LoginUser();
                 shell.SetNav(nav);
-                //var page = Frame.Content as BookmarksPage;
-                //if (page != null)
-                //{
-                //    Current.NavigationService.FrameFacade.BackRequested +=
-                //        page.ViewModel.MasterDetailViewControl.NavigationManager_BackRequested;
-                //}
-                //else
-                //{
-                //    var threadpage = Frame.Content as ThreadListPage;
-                //    if (threadpage != null)
-                //    {
-                //        Current.NavigationService.FrameFacade.BackRequested += page.ViewModel.MasterDetailViewControl.NavigationManager_BackRequested;
-                //    }
-                //}
+                if (Shell.Instance.ViewModel.CurrentUser == null)
+                {
+                    var userAccountDatabase = new UserAccountDatabase(new SQLitePlatformWinRT(), DatabaseWinRTHelpers.GetWinRTDatabasePath(StringConstants.UserDatabase));
+                    if (await userAccountDatabase.HasDefaultAccounts())
+                    {
+                        try
+                        {
+                            var result = await Shell.Instance.ViewModel.LoginDefaultUser();
+                        }
+                        catch (Exception)
+                        {
+                            // error happened, send them to account page so we can check on it.
+                        }
+                    }
+                }
+                var page = Frame.Content as MessagesPage;
+                if (page != null)
+                {
+                    Current.NavigationService.FrameFacade.BackRequested +=
+                        page.ViewModel.MasterDetailViewControl.NavigationManager_BackRequested;
+                }
+                else
+                {
+                    var threadpage = Frame.Content as FriendsPage;
+                    if (threadpage != null)
+                    {
+                        Current.NavigationService.FrameFacade.BackRequested += threadpage.ViewModel.MasterDetailViewControl.NavigationManager_BackRequested;
+                    }
+                }
             }
 
             await Task.CompletedTask;
@@ -98,32 +127,39 @@ namespace PlayStation_Gui
                 || launch?.PreviousExecutionState == ApplicationExecutionState.Terminated
                 || launch?.PreviousExecutionState == ApplicationExecutionState.ClosedByUser)
             {
-                var userAccountDatabase = new UserAccountDatabase(new SQLitePlatformWinRT(), DatabaseWinRTHelpers.GetWinRTDatabasePath(StringConstants.UserDatabase));
-                if (await userAccountDatabase.HasAccounts())
+                if (Shell.Instance.ViewModel.CurrentUser == null)
                 {
-
-                    if (await userAccountDatabase.HasDefaultAccounts())
+                    var userAccountDatabase = new UserAccountDatabase(new SQLitePlatformWinRT(), DatabaseWinRTHelpers.GetWinRTDatabasePath(StringConstants.UserDatabase));
+                    if (await userAccountDatabase.HasAccounts())
                     {
-                        try
+
+                        if (await userAccountDatabase.HasDefaultAccounts())
                         {
-                            var result = await Shell.Instance.ViewModel.LoginDefaultUser();
-                            NavigationService.Navigate(result ? typeof (Views.MainPage) : typeof (Views.AccountPage));
+                            try
+                            {
+                                var result = await Shell.Instance.ViewModel.LoginDefaultUser();
+                                NavigationService.Navigate(result ? typeof(Views.MainPage) : typeof(Views.AccountPage));
+                            }
+                            catch (Exception)
+                            {
+                                // error happened, send them to account page so we can check on it.
+                                NavigationService.Navigate(typeof(Views.AccountPage));
+                            }
+
                         }
-                        catch (Exception)
+                        else
                         {
-                            // error happened, send them to account page so we can check on it.
                             NavigationService.Navigate(typeof(Views.AccountPage));
                         }
-
                     }
                     else
                     {
-                        NavigationService.Navigate(typeof(Views.AccountPage));
+                        NavigationService.Navigate(typeof(Views.LoginPage));
                     }
                 }
                 else
                 {
-                    NavigationService.Navigate(typeof(Views.LoginPage));
+                    NavigationService.Navigate(typeof(Views.MainPage));
                 }
             }
 

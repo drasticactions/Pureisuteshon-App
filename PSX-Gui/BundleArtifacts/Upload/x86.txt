@@ -1,0 +1,2 @@
+MainPackage=C:\Users\t_mil\Documents\GitHub\PlayStation-App\PSX-Gui\bin\x86\Release\Upload\Pureisuteshon-Gui_4.6.3.0_x86.appx
+SymbolPackage=C:\Users\t_mil\Documents\GitHub\PlayStation-App\PSX-Gui\AppPackages\Pureisuteshon-Gui_4.6.3.0\Pureisuteshon-Gui_4.6.3.0_x86.appxsym

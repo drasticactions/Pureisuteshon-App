@@ -6,21 +6,30 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:viewModels="using:PlayStation_Gui.ViewModels"
+    xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
+    xmlns:behaviors="using:Template10.Behaviors"
+    xmlns:controls="using:Template10.Controls"
     mc:Ignorable="d">
     <Page.DataContext>
         <viewModels:FriendLinkViewModel />
     </Page.DataContext>
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <Grid  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Visibility="{Binding IsLoading, Converter={StaticResource BooleanToVisibilityConverter}}" Canvas.ZIndex="1" Grid.Row="0">
+        <controls:PageHeader BackButtonVisibility="Collapsed"  VisualStateNormalMinWidth="720"  HorizontalAlignment="Stretch" Frame="{x:Bind Frame}">
+            <interactivity:Interaction.Behaviors>
+                <behaviors:EllipsisBehavior Visibility="Collapsed" />
+            </interactivity:Interaction.Behaviors>
+        </controls:PageHeader>
+        <Grid  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Visibility="{Binding IsLoading, Converter={StaticResource BooleanToVisibilityConverter}}" Canvas.ZIndex="1" Grid.Row="1">
             <Grid.Background>
                 <SolidColorBrush Color="Black" Opacity=".25"/>
             </Grid.Background>
             <ProgressRing Foreground="White" Width="50" Height="50" IsActive="{Binding IsLoading}" Style="{StaticResource WaveProgressRingStyle}" />
         </Grid>
-        <Grid Grid.Row="0">
+        <Grid Grid.Row="1">
             <ScrollViewer MaxWidth="750" ZoomMode="Disabled">
                 <StackPanel VerticalAlignment="Center" Margin="15">
                     <TextBlock Margin="5" TextWrapping="Wrap" x:Uid="UseEmailSms" Style="{StaticResource SubtitleTextBlockStyle}" Text="EメールやSMSで送信する"/>
