@@ -29,12 +29,12 @@ namespace PlayStation_Gui.Controls
             this.InitializeComponent();
         }
 
-        public async Task LoadFriend(Friend friend)
+        public async Task LoadFriend(string onlineId)
         {
-            await ViewModel.SetUser(friend.OnlineId);
-            ViewModel.SetTrophyList(friend.OnlineId);
-            ViewModel.SetFriendsList(friend.OnlineId, false, false, false, false, true, false, false);
-            ViewModel.SetRecentActivityFeed(friend.OnlineId);
+            await ViewModel.SetUser(onlineId);
+            ViewModel.SetTrophyList(onlineId);
+            ViewModel.SetFriendsList(onlineId, false, false, false, false, true, false, false);
+            ViewModel.SetRecentActivityFeed(onlineId);
         }
     }
 }

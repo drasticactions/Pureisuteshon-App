@@ -52,7 +52,7 @@ namespace PlayStation_Gui.Views
         {
             if (FriendList.SelectedItem == null) return;
             var friend = FriendList.SelectedItem as Friend;
-            await FriendPageView.LoadFriend(friend);
+            await FriendPageView.LoadFriend(friend.OnlineId);
         }
 
         private void RefreshList(object sender, RoutedEventArgs e)

@@ -711,4 +711,7 @@ Puedes ganar trofeos jugando a juegos.</value>
   <data name="NoSMS.Text" xml:space="preserve">
     <value>No se pueden enviar SMS en este sistema.</value>
   </data>
+  <data name="Account.Text" xml:space="preserve">
+    <value>Account</value>
+  </data>
 </root>

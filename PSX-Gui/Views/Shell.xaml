@@ -19,7 +19,7 @@
     </Page.Background>
     <Controls:ModalDialog IsModal="{x:Bind IsBusy, Mode=OneWay}">
         <Controls:ModalDialog.Content>
-            <Controls:HamburgerMenu x:Name="MyHamburgerMenu" SecondaryButtonOrientation="Horizontal" Opacity=".95" VisualStateNormalMinWidth="720" VisualStateWideMinWidth="1020">
+            <Controls:HamburgerMenu x:Name="MyHamburgerMenu" SecondaryButtonOrientation="Vertical" Opacity=".95" VisualStateNormalMinWidth="720" VisualStateWideMinWidth="1020">
 
                 <Controls:HamburgerMenu.PrimaryButtons>
                     <Controls:HamburgerButtonInfo IsEnabled="{x:Bind ViewModel.IsLoggedIn, Mode=OneWay}" ClearHistory="True" PageType="views:MainPage">
@@ -73,9 +73,19 @@
                 </Controls:HamburgerMenu.PrimaryButtons>
 
                 <Controls:HamburgerMenu.SecondaryButtons>
-                    <Controls:HamburgerButtonInfo x:Name="LoginButton" IsEnabled="{x:Bind ViewModel.IsLoggedIn, Mode=OneWay}" MaxWidth="48" PageType="views:AccountPage">
+                    <Controls:HamburgerButtonInfo x:Name="LoginButton" IsEnabled="{x:Bind ViewModel.IsLoggedIn, Mode=OneWay}" PageType="views:AccountPage">
                         <StackPanel Orientation="Horizontal">
                             <SymbolIcon Width="48" Height="48" Symbol="Contact" />
+                            <TextBlock Margin="12,0,0,0" VerticalAlignment="Center" x:Uid="Account" Text="Account" />
+                        </StackPanel>
+                    </Controls:HamburgerButtonInfo>
+
+                    <Controls:HamburgerButtonInfo IsEnabled="{x:Bind ViewModel.IsLoggedIn, Mode=OneWay}" PageType="views:FriendPage">
+                        <StackPanel Orientation="Horizontal">
+                            <Border Width="48" Height="48">
+                                <Image Width="27" Height="27" VerticalAlignment="Center" x:Name="CurrentUserAvatar" HorizontalAlignment="Center" Stretch="UniformToFill" Source="{x:Bind ViewModel.CurrentAvatar, Mode=OneWay}" />
+                            </Border>
+                            <TextBlock Margin="12,0,0,0" VerticalAlignment="Center" x:Name="CurrentUserBlock" Text="{x:Bind ViewModel.CurrentUserName, Mode=OneWay}" />
                         </StackPanel>
                     </Controls:HamburgerButtonInfo>
                 </Controls:HamburgerMenu.SecondaryButtons>

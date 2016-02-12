@@ -32,9 +32,13 @@ namespace PlayStation_Gui.Views
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            if (e.Parameter == null) return;
+            if (e.Parameter == null)
+            {
+                await FriendPageView.LoadFriend(Shell.Instance.ViewModel.CurrentUser.Username);
+                return;
+            }
             var thread = JsonConvert.DeserializeObject<Friend>(e.Parameter.ToString());
-            await FriendPageView.LoadFriend(thread);
+            await FriendPageView.LoadFriend(thread.OnlineId);
         }
     }
 }

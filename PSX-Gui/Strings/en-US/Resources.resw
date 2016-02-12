@@ -729,4 +729,7 @@ You can earn trophies by playing games that support them.</value>
   <data name="LeaveMessageGroup.Text" xml:space="preserve">
     <value>Leave</value>
   </data>
+  <data name="Account.Text" xml:space="preserve">
+    <value>Account</value>
+  </data>
 </root>

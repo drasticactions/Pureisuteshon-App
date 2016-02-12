@@ -714,4 +714,7 @@ Kamu bisa meraih piala dengan memainkan game yang punya piala.</value>
   <data name="NoSMS.Text" xml:space="preserve">
     <value>Tidak bisa mengirim SMS dari sistem ini.</value>
   </data>
+  <data name="Account.Text" xml:space="preserve">
+    <value>Account</value>
+  </data>
 </root>

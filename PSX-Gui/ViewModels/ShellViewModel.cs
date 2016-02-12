@@ -36,6 +36,32 @@ namespace PlayStation_Gui.ViewModels
             }
         }
 
+        public string CurrentUserName
+        {
+            get
+            {
+                if (CurrentUser != null)
+                {
+                    return CurrentUser.Username;
+                }
+
+                return "User";
+            }
+        }
+
+        public string CurrentAvatar
+        {
+            get
+            {
+                if (CurrentUser != null)
+                {
+                    return CurrentUser.AvatarUrl;
+                }
+
+                return "/Assets/Icons/Friends.png";
+            }
+        }
+
         private AccountUser _currentUser;
 
         public AccountUser CurrentUser
@@ -44,6 +70,8 @@ namespace PlayStation_Gui.ViewModels
             set
             {
                 Set(ref _currentUser, value);
+                RaisePropertyChanged("CurrentUserName");
+                RaisePropertyChanged("CurrentAvatar");
             }
         }
 
