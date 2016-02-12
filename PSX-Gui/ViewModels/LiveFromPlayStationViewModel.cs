@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Windows.System;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
+using AmazingPullToRefresh.Controls;
 using Newtonsoft.Json;
 using PlayStation.Managers;
 using PlayStation_App.Models.Live;
@@ -43,6 +44,13 @@ namespace PlayStation_Gui.ViewModels
                 error = ex.Message;
             }
             await ResultChecker.SendMessageDialogAsync(error, false);
+        }
+
+        public async void PullToRefresh_ListView(object sender, RefreshRequestedEventArgs e)
+        {
+            var deferral = e.GetDeferral();
+            await BuildList();
+            deferral.Complete();
         }
 
         public async void LiveGrid_OnItemClick(object sender, ItemClickEventArgs e)

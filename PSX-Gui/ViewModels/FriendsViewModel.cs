@@ -9,6 +9,7 @@ using AmazingPullToRefresh.Controls;
 using Kimono.Controls;
 using Newtonsoft.Json;
 using PlayStation_App.Models.Friends;
+using PlayStation_App.Tools.Debug;
 using PlayStation_App.Tools.ScrollingCollection;
 using PlayStation_Gui.Controls;
 using PlayStation_Gui.Views;
@@ -58,9 +59,16 @@ namespace PlayStation_Gui.ViewModels
         public override Task OnNavigatedFromAsync(IDictionary<string, object> state, bool suspending)
         {
             Template10.Common.BootStrapper.Current.NavigationService.FrameFacade.BackRequested -= MasterDetailViewControl.NavigationManager_BackRequested;
-            if (Selected != null)
+            try
             {
-                state["Friend"] = JsonConvert.SerializeObject(Selected);
+                if (Selected != null)
+                {
+                    state["Friend"] = JsonConvert.SerializeObject(Selected);
+                }
+            }
+            catch (Exception ex)
+            {
+                ResultChecker.LogEvent("SerializeError", new Dictionary<string, string>() { { "serialization", ex.Message } });
             }
             return Task.CompletedTask;
         }

@@ -18,6 +18,7 @@ using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Navigation;
+using AmazingPullToRefresh.Controls;
 using Kimono.Controls;
 using Newtonsoft.Json;
 using PlayStation.Entities.Web;
@@ -57,9 +58,17 @@ namespace PlayStation_Gui.ViewModels
                     if (Selected == null)
                     {
                         Selected = JsonConvert.DeserializeObject<MessageGroupItem>(state["Thread"]?.ToString());
-                        state.Clear();
                     }
                 }
+                if (state.ContainsKey("SelectedMessageGroup"))
+                {
+                    if (SelectedMessageGroup == null)
+                    {
+                        SelectedMessageGroup = JsonConvert.DeserializeObject<MessageGroup>(state["SelectedMessageGroup"]?.ToString());
+                        await GetMessages(SelectedMessageGroup);
+                    }
+                }
+                state.Clear();
             }
             catch (Exception)
             {
@@ -70,11 +79,34 @@ namespace PlayStation_Gui.ViewModels
         public override Task OnNavigatedFromAsync(IDictionary<string, object> state, bool suspending)
         {
             Template10.Common.BootStrapper.Current.NavigationService.FrameFacade.BackRequested -= MasterDetailViewControl.NavigationManager_BackRequested;
-            if (Selected != null)
+            try
             {
-                state["Thread"] = JsonConvert.SerializeObject(Selected);
+                if (Selected != null)
+                {
+                    state["Thread"] = JsonConvert.SerializeObject(Selected);
+                    state["SelectedMessageGroup"] = JsonConvert.SerializeObject(SelectedMessageGroup);
+                }
+            }
+            catch (Exception ex)
+            {
+                ResultChecker.LogEvent("SerializeError", new Dictionary<string, string>() { {"serialization", ex.Message}});
             }
             return Task.CompletedTask;
+        }
+
+        public async void PullToRefresh_ListView(object sender, RefreshRequestedEventArgs e)
+        {
+            var deferral = e.GetDeferral();
+            await GetMessageGroups(Shell.Instance.ViewModel.CurrentUser.Username);
+            deferral.Complete();
+        }
+
+        public async void PullToRefresh_MessageView(object sender, RefreshRequestedEventArgs e)
+        {
+            if (SelectedMessageGroup != null)
+            {
+                await GetMessages(SelectedMessageGroup);
+            }
         }
 
         public async void SelectSticker(object sender, ItemClickEventArgs e)

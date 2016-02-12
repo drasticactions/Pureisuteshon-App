@@ -32,6 +32,19 @@ namespace PlayStation_App.Tools.Debug
             }
         }
 
+        public static void LogEvent(string eventName, Dictionary<string, string> events)
+        {
+            try
+            {
+                var tc = new TelemetryClient();
+                tc.TrackEvent(eventName, events);
+            }
+            catch (Exception)
+            {
+                // Ignore errors? From logs? :\
+            }
+        }
+
 
 
         public async static Task<bool> CheckSuccess(Result result, bool showMessage = true)

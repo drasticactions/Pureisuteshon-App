@@ -10,6 +10,7 @@
     xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
     xmlns:behaviors="using:Template10.Behaviors"
     xmlns:listControls="using:PlayStation_Gui.Controls.ListControls"
+    xmlns:controls1="using:AmazingPullToRefresh.Controls"
     mc:Ignorable="d">
     <Page.DataContext>
         <viewModels:LiveFromPlayStationViewModel />
@@ -63,6 +64,9 @@
                             Value="5" />
                 </Style>
             </listControls:AdaptiveGridView.ItemContainerStyle>
+            <controls1:PullToRefreshAdorner.Extender>
+                <controls1:PullToRefreshExtender RefreshRequested="{x:Bind ViewModel.PullToRefresh_ListView}" />
+            </controls1:PullToRefreshAdorner.Extender>
         </listControls:AdaptiveGridView>
     </Grid>
 </Page>

@@ -51,6 +51,9 @@
                                 <Setter Property="HorizontalContentAlignment" Value="Stretch" />
                             </Style>
                         </ListView.ItemContainerStyle>
+                        <controls2:PullToRefreshAdorner.Extender>
+                            <controls2:PullToRefreshExtender RefreshRequested="{x:Bind ViewModel.PullToRefresh_ListView}" />
+                        </controls2:PullToRefreshAdorner.Extender>
                     </ListView>
                 </Grid>
             </controls:MasterDetailViewControl.MasterViewPaneContent>
@@ -71,6 +74,9 @@
                         </interactivity:Interaction.Behaviors>
                     </controls1:PageHeader>
                     <ListView Grid.Row="1" x:Name="MessagesList" ItemsSource="{Binding MessageCollection}">
+                        <controls2:PullToRefreshAdorner.Extender>
+                            <controls2:PullToRefreshExtender RefreshRequested="{x:Bind ViewModel.PullToRefresh_MessageView}" />
+                        </controls2:PullToRefreshAdorner.Extender>
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <Grid Margin="6">

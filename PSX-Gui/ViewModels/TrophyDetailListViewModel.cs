@@ -8,11 +8,13 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Navigation;
+using AmazingPullToRefresh.Controls;
 using Newtonsoft.Json;
 using PlayStation.Managers;
 using PlayStation_App.Models.Friends;
 using PlayStation_App.Models.Response;
 using PlayStation_App.Models.Trophies;
+using PlayStation_App.Tools.Debug;
 using PlayStation_App.Tools.Helpers;
 using PlayStation_App.Tools.ScrollingCollection;
 using PlayStation_Gui.Controls;
@@ -26,36 +28,69 @@ namespace PlayStation_Gui.ViewModels
     {
         public override async void OnNavigatedTo(object parameter, NavigationMode mode, IDictionary<string, object> state)
         {
-            if (state.ContainsKey(nameof(Username)) && state.ContainsKey(nameof(NpcommunicationId)))
+            if (state.ContainsKey(nameof(Username)) && state.ContainsKey(nameof(NpcommunicationId)) && state.ContainsKey(nameof(TrophyName)))
             {
                 Username = state[nameof(Username)]?.ToString();
-                NpcommunicationId = state[nameof(Username)]?.ToString();
+                NpcommunicationId = state[nameof(NpcommunicationId)]?.ToString();
                 TrophyName = state[nameof(TrophyName)]?.ToString();
             }
 
-            if (TrophyDetailList == null || !TrophyDetailList.Any())
+            string error;
+            try
             {
-                if (string.IsNullOrEmpty(NpcommunicationId) || string.IsNullOrEmpty(Username))
+                if (TrophyDetailList == null || !TrophyDetailList.Any())
                 {
-                    var trophyNavString = parameter as string;
-                    if (string.IsNullOrEmpty(trophyNavString))
+                    if (string.IsNullOrEmpty(NpcommunicationId) || string.IsNullOrEmpty(Username))
                     {
-                        return;
+                        var trophyNavString = parameter as string;
+                        if (string.IsNullOrEmpty(trophyNavString))
+                        {
+                            return;
+                        }
+                        var trophyNav = JsonConvert.DeserializeObject<TrophyNavProperties>(trophyNavString);
+                        NpcommunicationId = trophyNav.NpCommunicationId;
+                        Username = trophyNav.Username;
+                        TrophyName = trophyNav.TrophyName;
                     }
-                    var trophyNav = JsonConvert.DeserializeObject<TrophyNavProperties>(trophyNavString);
-                    NpcommunicationId = trophyNav.NpCommunicationId;
-                    Username = trophyNav.Username;
-                    TrophyName = trophyNav.TrophyName;
+                    await SetTrophyDetailList();
                 }
+                return;
+            }
+            catch (Exception ex)
+            {
+                error = ex.Message;
+            }
+
+            await ResultChecker.SendMessageDialogAsync(error, false);
+        }
+
+        public async void PullToRefresh_ListView(object sender, RefreshRequestedEventArgs e)
+        {
+            var deferral = e.GetDeferral();
+            try
+            {
                 await SetTrophyDetailList();
             }
+            catch (Exception)
+            {
+                // TODO: Add error checker here too?
+            }
+            deferral.Complete();
         }
+
 
         public override Task OnNavigatedFromAsync(IDictionary<string, object> state, bool suspending)
         {
-            state[nameof(Username)] = Username;
-            state[nameof(NpcommunicationId)] = NpcommunicationId;
-            state[nameof(TrophyName)] = TrophyName;
+            try
+            {
+                state[nameof(Username)] = Username;
+                state[nameof(NpcommunicationId)] = NpcommunicationId;
+                state[nameof(TrophyName)] = TrophyName;
+            }
+            catch (Exception ex)
+            {
+                ResultChecker.LogEvent("SerializeError", new Dictionary<string, string>() { { "serialization", ex.Message } });
+            }
             return Task.CompletedTask;
         }
 

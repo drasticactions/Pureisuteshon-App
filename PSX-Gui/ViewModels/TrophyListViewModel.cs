@@ -5,9 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
+using AmazingPullToRefresh.Controls;
 using Newtonsoft.Json;
 using PlayStation_App.Models.Trophies;
 using PlayStation_App.Models.TrophyDetail;
+using PlayStation_App.Tools.Debug;
 using PlayStation_App.Tools.ScrollingCollection;
 using PlayStation_Gui.Models;
 using PlayStation_Gui.Views;
@@ -40,9 +42,16 @@ namespace PlayStation_Gui.ViewModels
             };
         }
 
+        public void PullToRefresh_ListView(object sender, RefreshRequestedEventArgs e)
+        {
+            SetTrophyList();
+        }
+
+
         public void SelectTrophy(object sender, ItemClickEventArgs e)
         {
             var trophy = e.ClickedItem as TrophyTitle;
+            if (trophy == null) return;
             var trophyNav = new TrophyNavProperties
             {
                 NpCommunicationId = trophy.NpCommunicationId,
@@ -52,20 +61,31 @@ namespace PlayStation_Gui.ViewModels
             NavigationService.Navigate(typeof (TrophyDetailListPage), JsonConvert.SerializeObject(trophyNav));
         }
 
-        public override void OnNavigatedTo(object parameter, NavigationMode mode, IDictionary<string, object> state)
+        public override async void OnNavigatedTo(object parameter, NavigationMode mode, IDictionary<string, object> state)
         {
-            if (TrophyScrollingCollection == null || !TrophyScrollingCollection.Any())
+            string error;
+            try
             {
-                if (!string.IsNullOrEmpty(parameter as string))
+                if (TrophyScrollingCollection == null || !TrophyScrollingCollection.Any())
                 {
-                    Username = parameter as string;
+                    if (!string.IsNullOrEmpty(parameter as string))
+                    {
+                        Username = parameter as string;
+                    }
+                    else
+                    {
+                        Username = Shell.Instance.ViewModel.CurrentUser.Username;
+                    }
+                    SetTrophyList();
                 }
-                else
-                {
-                    Username = Shell.Instance.ViewModel.CurrentUser.Username;
-                }
-                SetTrophyList();
+                return;
             }
+            catch (Exception ex)
+            {
+                error = ex.Message;
+            }
+
+            await ResultChecker.SendMessageDialogAsync(error, false);
         }
     }
 }
