@@ -88,6 +88,15 @@
                             <TextBlock Margin="12,0,0,0" VerticalAlignment="Center" x:Name="CurrentUserBlock" Text="{x:Bind ViewModel.CurrentUserName, Mode=OneWay}" />
                         </StackPanel>
                     </Controls:HamburgerButtonInfo>
+
+                    <Controls:HamburgerButtonInfo IsEnabled="{x:Bind ViewModel.IsLoggedIn, Mode=OneWay}" PageType="views:SettingsPage">
+                        <StackPanel Orientation="Horizontal">
+                            <Border Width="48" Height="48">
+                                <Image Width="27" Height="27" VerticalAlignment="Center" HorizontalAlignment="Center" Stretch="UniformToFill" Source="/Assets/Icons/Settings.png" />
+                            </Border>
+                            <TextBlock Margin="12,0,0,0" VerticalAlignment="Center" x:Uid="Settings" Text="Settings" />
+                        </StackPanel>
+                    </Controls:HamburgerButtonInfo>
                 </Controls:HamburgerMenu.SecondaryButtons>
 
             </Controls:HamburgerMenu>

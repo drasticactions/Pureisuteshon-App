@@ -14,7 +14,7 @@
         <vm:SettingsPageViewModel />
     </Page.DataContext>
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Grid>
 
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup x:Name="AdaptiveVisualStateGroup">
@@ -64,36 +64,65 @@
             <PivotItem DataContext="{Binding SettingsPartViewModel}" Header="Settings">
                 <ScrollViewer Margin="0,12,-12,0" HorizontalContentAlignment="Left" VerticalScrollBarVisibility="Auto">
                     <RelativePanel HorizontalAlignment="Left">
-                        <ToggleSwitch x:Name="UseLightThemeToggleSwitch" Header="Use Light Theme"
-                                      IsOn="{Binding UseLightThemeButton, Mode=TwoWay}"
-                                      OffContent="Dark theme" OnContent="Light theme"
-                                      />
-                        <TextBox x:Name="BusyTextTextBox" Width="200"
-                                 Margin="0,12,0,0" HorizontalAlignment="Left"
-                                 Header="Busy text"
-                                 RelativePanel.Below="UseLightThemeToggleSwitch"
-                                 Text="{Binding BusyText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                        <ToggleSwitch x:Name="UseBackgroundTask" Header="Enable Background Tasks"
+                                      IsOn="{Binding UseBackgroundTask, Mode=TwoWay}"
+                                      OffContent="Off" OnContent="On" />
+                        <TextBlock Margin="0,0,0,20" x:Name="BackgroundSwitchText" RelativePanel.Below="UseBackgroundTask" TextWrapping="Wrap">Enables background Tasks to be used for live tile.</TextBlock>
+                        <ToggleSwitch x:Name="UseBookmarkBackground" RelativePanel.Below="BackgroundSwitchText" Header="Enable Recent Activity Live Tiles"
+                                      IsOn="{Binding UseBackgroundRecentActivityLiveTile, Mode=TwoWay}"
+                                      OffContent="Off" OnContent="On" />
+                        <TextBlock Margin="0,0,0,20" x:Name="BookmarkBackgroundSwitchText" RelativePanel.Below="UseBookmarkBackground" TextWrapping="Wrap">Enables your and your friends recent activites to appear on the FoulPlay live tile.</TextBlock>
                     </RelativePanel>
                 </ScrollViewer>
             </PivotItem>
             <PivotItem Header="About">
                 <Grid DataContext="{Binding AboutPartViewModel}">
-                    <Border HorizontalAlignment="Right" VerticalAlignment="Top"
+                    <ScrollViewer ZoomMode="Disabled">
+                        <Grid>
+                            <Border HorizontalAlignment="Right" VerticalAlignment="Top"
                             BorderBrush="DimGray" BorderThickness="1"
                             IsHitTestVisible="False">
-                        <Border.Background>
-                            <SolidColorBrush Color="{ThemeResource SystemAccentColor}" />
-                        </Border.Background>
-                        <Image Margin="12" Source="{Binding Logo}" Stretch="None" />
-                    </Border>
-                    <StackPanel>
-                        <TextBlock Margin="0,0,0,12" FontSize="24" Text="{Binding DisplayName}" />
-                        <TextBlock Text="{Binding Publisher}" />
-                        <TextBlock>
+                                <Border.Background>
+                                    <SolidColorBrush Color="{ThemeResource SystemAccentColor}" />
+                                </Border.Background>
+                                <Image Margin="12" Width="60" Height="60"  Source="{Binding Logo}" Stretch="UniformToFill" />
+                            </Border>
+                            <StackPanel>
+                                <TextBlock Margin="0,0,0,12"  Style="{StaticResource TitleTextBlockStyle}" Text="{Binding DisplayName}" />
+                                <TextBlock>
                             <Run>Version</Run>
                             <Run Text="{Binding Version}" />
-                        </TextBlock>
-                    </StackPanel>
+                                </TextBlock>
+                                <TextBlock Margin="0,30,0,0" Style="{StaticResource TitleTextBlockStyle}" Text="Main Developer:" />
+
+                                <RichTextBlock Margin="0,0,0,25" TextWrapping="Wrap">
+                                    <Paragraph>
+                                        Drastic Actions
+                                        <Hyperlink NavigateUri="https://github.com/drasticactions">(GitHub)</Hyperlink>
+                                    </Paragraph>
+                                </RichTextBlock>
+
+                                <TextBlock Style="{StaticResource TitleTextBlockStyle}" Text="Libraries:" />
+
+                                <TextBlock Margin="0,0,0,25" TextWrapping="Wrap">
+                       NotificationExtensions.Win10
+                        <LineBreak/>
+                       AmazingPullToRefresh
+                        <LineBreak/>
+                        Azure Application Insights
+                        <LineBreak/>
+                        SQLite
+                        <LineBreak/>
+                        Json.NET
+                        <LineBreak/>
+                        Template 10
+                        <LineBreak/>
+                        Kimono
+                        <LineBreak/>
+                                </TextBlock>
+                            </StackPanel>
+                        </Grid>
+                    </ScrollViewer>
                 </Grid>
             </PivotItem>
         </Pivot>

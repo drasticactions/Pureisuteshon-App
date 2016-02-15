@@ -19,6 +19,25 @@ namespace PlayStation_Gui.Services.SettingsServices
             _helper = new Template10.Services.SettingsService.SettingsHelper();
         }
 
+        public bool BackgroundEnable
+        {
+            get { return _helper.Read<bool>(nameof(BackgroundEnable), false); }
+            set
+            {
+                _helper.Write(nameof(BackgroundEnable), value);
+                ChangeBackgroundStatus(value);
+            }
+        }
+
+        public bool RecentActivityBackground
+        {
+            get { return _helper.Read<bool>(nameof(RecentActivityBackground), false); }
+            set
+            {
+                _helper.Write(nameof(RecentActivityBackground), value);
+            }
+        }
+
         public ApplicationTheme AppTheme
         {
             get

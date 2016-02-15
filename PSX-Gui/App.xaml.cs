@@ -3,9 +3,13 @@ using Windows.UI.Xaml;
 using System.Threading.Tasks;
 using PlayStation_Gui.Services.SettingsServices;
 using Windows.ApplicationModel.Activation;
+using Windows.ApplicationModel.Background;
+using Windows.Foundation.Metadata;
+using Windows.UI.Notifications;
 using Windows.UI.Xaml.Controls;
 using Microsoft.ApplicationInsights;
 using PlayStation_App.Database;
+using PlayStation_Gui.Tools.Background;
 using PlayStation_Gui.Tools.Database;
 using PlayStation_Gui.Tools.Debug;
 using PlayStation_Gui.Views;
@@ -46,6 +50,29 @@ namespace PlayStation_Gui
         // runs even if restored from state
         public override async Task OnInitializeAsync(IActivatedEventArgs args)
         {
+            // Setup Background
+            var isIoT = ApiInformation.IsTypePresent("Windows.Devices.Gpio.GpioController");
+
+            if (!isIoT)
+            {
+                TileUpdateManager.CreateTileUpdaterForApplication().EnableNotificationQueue(true);
+                BackgroundTaskUtils.UnregisterBackgroundTasks(BackgroundTaskUtils.ToastBackgroundTaskName);
+                var task2 = await
+                    BackgroundTaskUtils.RegisterBackgroundTask(BackgroundTaskUtils.ToastBackgroundTaskEntryPoint,
+                        BackgroundTaskUtils.ToastBackgroundTaskName, new ToastNotificationActionTrigger(),
+                        null);
+
+                if (Settings.BackgroundEnable)
+                {
+                    BackgroundTaskUtils.UnregisterBackgroundTasks(BackgroundTaskUtils.BackgroundTaskName);
+                    var task = await
+                        BackgroundTaskUtils.RegisterBackgroundTask(BackgroundTaskUtils.BackgroundTaskEntryPoint,
+                            BackgroundTaskUtils.BackgroundTaskName,
+                            new TimeTrigger(15, false),
+                            null);
+                }
+            }
+
             var launch = args as LaunchActivatedEventArgs;
             if (launch?.PreviousExecutionState == ApplicationExecutionState.NotRunning
                 || launch?.PreviousExecutionState == ApplicationExecutionState.Terminated

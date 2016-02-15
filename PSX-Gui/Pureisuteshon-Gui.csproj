@@ -150,6 +150,7 @@
     <Compile Include="Services\SettingsServices\SettingsService.cs" />
     <Compile Include="Tools\AlwaysExecutableCommand.cs" />
     <Compile Include="Tools\AsyncDelegateCommand.cs" />
+    <Compile Include="Tools\Background\BackgroundTaskUtils.cs" />
     <Compile Include="Tools\Converter\BooleanToVisibilityConverter.cs" />
     <Compile Include="Tools\Converter\BooleanToVisibilityInverter.cs" />
     <Compile Include="Tools\Converter\BroadcastImageConverter.cs" />
@@ -426,6 +427,15 @@
     <SDKReference Include="SQLite.UAP.2015, Version=3.10.2">
       <Name>SQLite for Universal App Platform</Name>
     </SDKReference>
+    <SDKReference Include="WindowsDesktop, Version=10.0.10586.0">
+      <Name>Windows Desktop Extensions for the UWP</Name>
+    </SDKReference>
+    <SDKReference Include="WindowsIoT, Version=10.0.10586.0">
+      <Name>Windows IoT Extensions for the UWP</Name>
+    </SDKReference>
+    <SDKReference Include="WindowsMobile, Version=10.0.10586.0">
+      <Name>Windows Mobile Extensions for the UWP</Name>
+    </SDKReference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Kimono\Kimono.csproj">
@@ -435,6 +445,10 @@
     <ProjectReference Include="..\PSX\Pureisuteshon.Core.csproj">
       <Project>{edf72919-ca43-4b95-8d52-ef4821bf5432}</Project>
       <Name>Pureisuteshon.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Pureisuteshon.BackgroundNotify\Pureisuteshon.BackgroundNotify.csproj">
+      <Project>{58b6c815-4b2f-4a7f-af22-b8da1227f5e5}</Project>
+      <Name>Pureisuteshon.BackgroundNotify</Name>
     </ProjectReference>
     <ProjectReference Include="..\Pureisuteshon.Database\Pureisuteshon.Database.csproj">
       <Project>{81f4d005-d5d1-4b32-b4c2-1f4212e4b236}</Project>

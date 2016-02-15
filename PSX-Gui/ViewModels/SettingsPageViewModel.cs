@@ -20,6 +20,18 @@ namespace PlayStation_Gui.ViewModels
                 _settings = Services.SettingsServices.SettingsService.Instance;
         }
 
+        public bool UseBackgroundTask
+        {
+            get { return _settings.BackgroundEnable; }
+            set { _settings.BackgroundEnable = value; base.RaisePropertyChanged(); }
+        }
+
+        public bool UseBackgroundRecentActivityLiveTile
+        {
+            get { return _settings.RecentActivityBackground; }
+            set { _settings.RecentActivityBackground = value; base.RaisePropertyChanged(); }
+        }
+
         public bool UseLightThemeButton
         {
             get { return _settings.AppTheme.Equals(ApplicationTheme.Light); }
