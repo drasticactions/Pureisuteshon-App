@@ -24,7 +24,7 @@ namespace PlayStation_App.Tools.Helpers
             {
                 user.AccessToken = tokens.AccessToken;
                 user.RefreshToken = tokens.RefreshToken;
-                user.RefreshDate = GetUnixTime(DateTime.Now) + tokens.ExpiresIn;
+                user.RefreshDate = GetUnixTime(DateTime.Now) + (300);
             }
 
             if (loginUser != null)

@@ -89,8 +89,9 @@ namespace Pureisuteshon.BackgroundNotify
                 var tokenResult = JsonConvert.DeserializeObject<Tokens>(result.Tokens);
                 user.AccessToken = tokenResult.AccessToken;
                 user.RefreshToken = tokenResult.RefreshToken;
-                user.RefreshDate = GetUnixTime(DateTime.Now) + tokenResult.ExpiresIn;
+                user.RefreshDate = GetUnixTime(DateTime.Now) + (300);
                 result.IsSuccess = true;
+                await AccountDatabase.UpdateAccountUser(user);
             }
             catch (Exception ex)
             {
