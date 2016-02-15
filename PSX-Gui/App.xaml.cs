@@ -56,11 +56,11 @@ namespace PlayStation_Gui
             if (!isIoT)
             {
                 TileUpdateManager.CreateTileUpdaterForApplication().EnableNotificationQueue(true);
-                BackgroundTaskUtils.UnregisterBackgroundTasks(BackgroundTaskUtils.ToastBackgroundTaskName);
-                var task2 = await
-                    BackgroundTaskUtils.RegisterBackgroundTask(BackgroundTaskUtils.ToastBackgroundTaskEntryPoint,
-                        BackgroundTaskUtils.ToastBackgroundTaskName, new ToastNotificationActionTrigger(),
-                        null);
+                //BackgroundTaskUtils.UnregisterBackgroundTasks(BackgroundTaskUtils.ToastBackgroundTaskName);
+                //var task2 = await
+                //    BackgroundTaskUtils.RegisterBackgroundTask(BackgroundTaskUtils.ToastBackgroundTaskEntryPoint,
+                //        BackgroundTaskUtils.ToastBackgroundTaskName, new ToastNotificationActionTrigger(),
+                //        null);
 
                 if (Settings.BackgroundEnable)
                 {

@@ -180,6 +180,12 @@
   <data name="Settings.Text" xml:space="preserve">
     <value>設定</value>
   </data>
+  <data name="SettingsHeader.Header" xml:space="preserve">
+    <value>設定</value>
+  </data>
+  <data name="SettingsContext.Content" xml:space="preserve">
+    <value>設定</value>
+  </data>
   <data name="Signin.Content" xml:space="preserve">
     <value>サインイン</value>
   </data>

@@ -39,7 +39,7 @@ namespace Pureisuteshon.Notifications
         public static void CreateRecentActvityLiveTile(Feed feed)
         {
             TileBindingContentAdaptive bindingContent;
-            if (feed.SmallImageUrl != null || feed.LargeImageUrl != null)
+            if (feed.SmallImageUrl != null)
             {
                 bindingContent = new TileBindingContentAdaptive()
                 {
@@ -48,7 +48,7 @@ namespace Pureisuteshon.Notifications
                         Crop = TileImageCrop.None,
                         Overlay = 0,
                         Source =
-        new TileImageSource(!string.IsNullOrEmpty(feed.LargeImageUrl) ? feed.LargeImageUrl : feed.SmallImageUrl)
+        new TileImageSource(feed.SmallImageUrl)
                     },
                     Children =
                 {
