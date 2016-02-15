@@ -109,6 +109,7 @@ namespace Pureisuteshon.BackgroundNotify
 
         private async Task Update(IBackgroundTaskInstance taskInstance)
         {
+            NotifyStatusTile.ClearCurrentTiles();
             if (_helper.Read<bool>("RecentActivityBackground", false))
             {
                 var recentActivityManager = new RecentActivityManager();
@@ -123,7 +124,12 @@ namespace Pureisuteshon.BackgroundNotify
                     return;
                 }
                 var feedEntity = JsonConvert.DeserializeObject<RecentActivityResponse>(feedResultEntity.ResultJson);
-                foreach (var feed in feedEntity.Feed)
+                if (!feedEntity.Feed.Any())
+                {
+                    return;
+                }
+                var feeds = feedEntity.Feed.Take(5);
+                foreach (var feed in feeds)
                 {
                     NotifyStatusTile.CreateRecentActvityLiveTile(feed);
                 }

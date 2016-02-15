@@ -28,28 +28,52 @@ namespace Pureisuteshon.Notifications
             return internet;
         }
 
+        public static void ClearCurrentTiles()
+        {
+            var updater = TileUpdateManager.CreateTileUpdaterForApplication();
+            updater.Clear();
+            TileUpdateManager.CreateTileUpdaterForApplication().EnableNotificationQueue(true);
+
+        }
+
         public static void CreateRecentActvityLiveTile(Feed feed)
         {
-            TileBindingContentAdaptive bindingContent = new TileBindingContentAdaptive()
+            TileBindingContentAdaptive bindingContent;
+            if (feed.SmallImageUrl != null || feed.LargeImageUrl != null)
             {
-                
-                Children =
+                bindingContent = new TileBindingContentAdaptive()
+                {
+                    PeekImage = new TilePeekImage()
+                    {
+                        Crop = TileImageCrop.None,
+                        Overlay = 0,
+                        Source =
+        new TileImageSource(!string.IsNullOrEmpty(feed.LargeImageUrl) ? feed.LargeImageUrl : feed.SmallImageUrl)
+                    },
+                    Children =
                 {
                     new TileText()
                     {
                         Text = feed.Caption,
+                        Wrap = true,
                         Style = TileTextStyle.Body
                     }
                 }
-            };
-            if (feed.SmallImageUrl != null || feed.LargeImageUrl != null)
+                };
+            }
+            else
             {
-                bindingContent.PeekImage = new TilePeekImage()
+                bindingContent = new TileBindingContentAdaptive()
                 {
-                    Source =
-                        new TileImageSource(!string.IsNullOrEmpty(feed.LargeImageUrl)
-                            ? feed.LargeImageUrl
-                            : feed.SmallImageUrl)
+                    Children =
+                {
+                    new TileText()
+                    {
+                        Text = feed.Caption,
+                        Wrap = true,
+                        Style = TileTextStyle.Body
+                    }
+                }
                 };
             }
             var binding = new TileBinding()
