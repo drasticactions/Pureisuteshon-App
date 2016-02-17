@@ -11,6 +11,7 @@ using PlayStation.Managers;
 using PlayStation_App.Models.RecentActivity;
 using PlayStation_App.Models.Response;
 using PlayStation_App.Tools.Debug;
+using PlayStation_App.Tools.Helpers;
 using PlayStation_App.Tools.ScrollingCollection;
 using PlayStation_Gui.Views;
 using Template10.Mvvm;
@@ -113,6 +114,7 @@ namespace PlayStation_Gui.ViewModels
         {
             var feedResultEntity =
                 await _recentActivityManager.GetActivityFeed(Shell.Instance.ViewModel.CurrentUser.Username, _page, true, true, Shell.Instance.ViewModel.CurrentTokens, Shell.Instance.ViewModel.CurrentUser.Region, Shell.Instance.ViewModel.CurrentUser.Language);
+            await AccountAuthHelpers.UpdateTokens(Shell.Instance.ViewModel.CurrentUser, feedResultEntity);
             var result = await ResultChecker.CheckSuccess(feedResultEntity);
             if (!result)
             {
