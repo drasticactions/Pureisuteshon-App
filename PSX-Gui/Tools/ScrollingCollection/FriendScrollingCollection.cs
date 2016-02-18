@@ -79,6 +79,7 @@ namespace PlayStation_App.Tools.ScrollingCollection
             try
             {
                 var friendManager = new FriendManager();
+                await Shell.Instance.ViewModel.UpdateTokens();
                 var friendResultEntity =
                     await
                         friendManager.GetFriendsList(Username, Offset, BlockedPlayer, RecentlyPlayed, PersonalDetailSharing,

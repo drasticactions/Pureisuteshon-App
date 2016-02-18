@@ -55,6 +55,15 @@ namespace PlayStation_App.Database
             }
         }
 
+        public async Task<AccountUser> GetUserAccount(string id)
+        {
+            using (var ds = new UserAccountDataSource(Platform, DbLocation))
+            {
+                var account = await ds.AccountUserRepository.Get(id);
+                return account;
+            }
+        }
+
         public async Task<int> CreateAccountUser(AccountUser user)
         {
             using (var db = new UserAccountDataSource(Platform, DbLocation))

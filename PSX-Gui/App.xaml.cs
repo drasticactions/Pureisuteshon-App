@@ -127,6 +127,10 @@ namespace PlayStation_Gui
                         }
                     }
                 }
+                else
+                {
+                    await Shell.Instance.ViewModel.UpdateTokens();
+                }
                 var page = Frame.Content as MessagesPage;
                 if (page != null)
                 {

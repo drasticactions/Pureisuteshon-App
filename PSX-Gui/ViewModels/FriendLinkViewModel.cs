@@ -34,6 +34,7 @@ namespace PlayStation_Gui.ViewModels
 
         public async Task<string> CreateFriendLink()
         {
+            await Shell.Instance.ViewModel.UpdateTokens();
             var result = await _friendManager.GetFriendLink(Shell.Instance.ViewModel.CurrentTokens);
             await AccountAuthHelpers.UpdateTokens(Shell.Instance.ViewModel.CurrentUser, result);
             var resultCheck = await ResultChecker.CheckSuccess(result);

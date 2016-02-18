@@ -93,6 +93,7 @@ namespace PlayStation_App.Tools.ScrollingCollection
         {
             Offset = Offset + MaxCount;
             IsLoading = true;
+            await Shell.Instance.ViewModel.UpdateTokens();
             var trophyManager = new TrophyManager();
             var trophyResultList = await trophyManager.GetTrophyList(username, CompareUsername, Offset, Shell.Instance.ViewModel.CurrentTokens, Shell.Instance.ViewModel.CurrentUser.Region, Shell.Instance.ViewModel.CurrentUser.Language);
             await AccountAuthHelpers.UpdateTokens(Shell.Instance.ViewModel.CurrentUser, trophyResultList);

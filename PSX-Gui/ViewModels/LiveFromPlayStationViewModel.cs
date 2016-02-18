@@ -105,6 +105,7 @@ namespace PlayStation_Gui.ViewModels
         {
             LiveBroadcastCollection = new ObservableCollection<LiveBroadcastEntity>();
             IsLoading = true;
+            await Shell.Instance.ViewModel.UpdateTokens();
             await SetUstreamElements(true);
             await SetTwitchElements(true);
             await SetNicoDougaElements(true);
@@ -138,6 +139,7 @@ namespace PlayStation_Gui.ViewModels
                 {"type", "live"},
                 {"interactive", interactive ? "true" : "false"}
             };
+
             var ustreamResultList =
                 await
                     _liveStreamManager.GetUstreamFeed(0, 80, "compact", filterList, "views", query,

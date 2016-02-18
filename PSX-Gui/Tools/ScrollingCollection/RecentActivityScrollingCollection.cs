@@ -84,6 +84,7 @@ namespace PlayStation_App.Tools.ScrollingCollection
         public async void LoadFeedList(string username)
         {
             IsLoading = true;
+            await Shell.Instance.ViewModel.UpdateTokens();
             var feedResultEntity =
                 await _recentActivityManager.GetActivityFeed(username, PageCount, StorePromo, IsNews, Shell.Instance.ViewModel.CurrentTokens, Shell.Instance.ViewModel.CurrentUser.Region, Shell.Instance.ViewModel.CurrentUser.Language);
             await AccountAuthHelpers.UpdateTokens(Shell.Instance.ViewModel.CurrentUser, feedResultEntity);

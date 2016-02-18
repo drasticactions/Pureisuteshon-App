@@ -112,6 +112,7 @@ namespace PlayStation_Gui.ViewModels
 
         private async Task<bool> LoadFeed(ObservableCollection<Feed> testFeed)
         {
+            await Shell.Instance.ViewModel.UpdateTokens();
             var feedResultEntity =
                 await _recentActivityManager.GetActivityFeed(Shell.Instance.ViewModel.CurrentUser.Username, _page, true, true, Shell.Instance.ViewModel.CurrentTokens, Shell.Instance.ViewModel.CurrentUser.Region, Shell.Instance.ViewModel.CurrentUser.Language);
             await AccountAuthHelpers.UpdateTokens(Shell.Instance.ViewModel.CurrentUser, feedResultEntity);

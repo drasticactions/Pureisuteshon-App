@@ -67,5 +67,10 @@ namespace PlayStation_App.Database
         {
             return await _db.DeleteAsync(entity);
         }
+
+        public async Task<T> Get(object id)
+        {
+            return await _db.GetAsync<T>(id);
+        }
     }
 }

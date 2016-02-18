@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Windows.UI.Xaml;
+using Microsoft.ApplicationInsights;
 using Newtonsoft.Json;
 using PlayStation.Entities.User;
 using PlayStation.Entities.Web;
@@ -76,6 +77,20 @@ namespace PlayStation_Gui.ViewModels
         }
 
         public UserAuthenticationEntity CurrentTokens => new UserAuthenticationEntity(CurrentUser.AccessToken, CurrentUser.RefreshToken, CurrentUser.RefreshDate);
+
+        public async Task UpdateTokens()
+        {
+            try
+            {
+                CurrentUser = await _udb.GetUserAccount(CurrentUser.AccountId);
+            }
+            catch (Exception ex)
+            {
+                var tc = new TelemetryClient();
+                var prop = new Dictionary<string, string> { { "errorMessage", ex.Message } };
+                tc.TrackEvent("FailedToUploadTokens", prop);
+            }
+        }
 
         public async Task<bool> LoginDefaultUser()
         {

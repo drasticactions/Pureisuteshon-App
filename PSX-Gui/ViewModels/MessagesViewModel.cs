@@ -152,6 +152,7 @@ namespace PlayStation_Gui.ViewModels
         public async Task LoadMessageImage(MessageGroupItem item)
         {
             IsLoading = true;
+            await Shell.Instance.ViewModel.UpdateTokens();
             var imageBytes =
                 await
                     _messageManager.GetMessageContent(SelectedMessageGroup.MessageGroupId,
@@ -248,6 +249,7 @@ namespace PlayStation_Gui.ViewModels
             try
             {
                 SelectedMessageGroup = messageGroup;
+                await Shell.Instance.ViewModel.UpdateTokens();
                 var messageResult =
                     await
                         _messageManager.GetGroupConversation(messageGroup.MessageGroupId,
@@ -314,6 +316,7 @@ namespace PlayStation_Gui.ViewModels
             var newMessages = _messageResponse?.Messages.Where(node => !node.SeenFlag);
             if (newMessages != null)
             {
+                await Shell.Instance.ViewModel.UpdateTokens();
                 var messageUids = newMessages.Select(node => node.MessageUid).ToList();
                 await
                     _messageManager.ClearMessages(_messageResponse.MessageGroup.MessageGroupId, messageUids,
@@ -332,6 +335,7 @@ namespace PlayStation_Gui.ViewModels
             MessageGroupCollection = new ObservableCollection<MessageGroupItem>();
             try
             {
+                await Shell.Instance.ViewModel.UpdateTokens();
                 var messageResult =
                     await
                         _messageManager.GetMessageGroup(userName, Shell.Instance.ViewModel.CurrentTokens,

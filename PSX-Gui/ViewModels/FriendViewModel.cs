@@ -129,6 +129,7 @@ namespace PlayStation_Gui.ViewModels
         {
             var isCurrentUser = Shell.Instance.ViewModel.CurrentUser.Username.Equals(userName);
             var userManager = new UserManager();
+            await Shell.Instance.ViewModel.UpdateTokens();
             var userResult = await userManager.GetUser(userName, Shell.Instance.ViewModel.CurrentTokens, Shell.Instance.ViewModel.CurrentUser.Region, Shell.Instance.ViewModel.CurrentUser.Language);
             await AccountAuthHelpers.UpdateTokens(Shell.Instance.ViewModel.CurrentUser, userResult);
             var result = await ResultChecker.CheckSuccess(userResult);

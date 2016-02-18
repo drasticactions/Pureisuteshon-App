@@ -148,6 +148,7 @@ namespace PlayStation_Gui.ViewModels
         public async Task SetTrophyDetailList()
         {
             IsLoading = true;
+            await Shell.Instance.ViewModel.UpdateTokens();
             TrophyDetailList = new ObservableCollection<Trophy>();
             var trophyResult =
                 await
