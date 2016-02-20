@@ -1,6 +1,8 @@
 # Pureisuteshon
 ### A Client for Windows 10
 
+<a href="https://www.microsoft.com/store/apps/9WZDNCRDSXMZ?ocid=badge"><img src="https://assets.windowsphone.com/d86ab9b4-2f3d-4a94-92f8-1598073e7343/English_Get_it_Win_10_InvariantCulture_Default.png" srcset="https://assets.windowsphone.com/5d2bd562-d242-4538-85f4-857d6457404b/English_Get_it_Win_10_InvariantCulture_Default.png 2x"  alt="Get it on Windows 10" /></a>
+
 [Download from the Windows Store](https://www.microsoft.com/en-us/store/apps/foulplay-the-unofficial-playstation-network-app/9wzdncrdsxmz)
 
 Pureisuteshon is a UWP app that lets you connect to the Pureisuteshon on any of your devices running Windows 10. Right now it's pretty basic, supporting the following.
