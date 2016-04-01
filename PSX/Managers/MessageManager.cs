@@ -34,7 +34,7 @@ namespace PlayStation.Managers
             return await _webManager.GetData(new Uri(url), userAuthenticationEntity, language);
         }
 
-        public async Task<Result> ClearMessages(string messageGroupId, List<int> messageUids, UserAuthenticationEntity userAuthenticationEntity, string region = "jp")
+        public async Task<Result> ClearMessages(string messageGroupId, List<float> messageUids, UserAuthenticationEntity userAuthenticationEntity, string region = "jp")
         {
             var url = string.Format(EndPoints.ClearMessages, region, messageGroupId, string.Join(",", messageUids));
             var json = new StringContent("{\"seenFlag\":true}", Encoding.UTF8, "application/json");
@@ -175,7 +175,7 @@ namespace PlayStation.Managers
 
             public int messageKind { get; set; }
 
-            public int messageUid { get; set; }
+            public float messageUid { get; set; }
 
             public StickerDetail stickerDetail { get; set; }
         }

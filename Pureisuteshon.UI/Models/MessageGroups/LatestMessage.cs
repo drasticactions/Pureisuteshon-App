@@ -10,7 +10,7 @@ namespace PlayStation_App.Models.MessageGroups
     {
 
         [JsonProperty("messageUid")]
-        public int MessageUid { get; set; }
+        public float MessageUid { get; set; }
 
         [JsonProperty("seenFlag")]
         public bool SeenFlag { get; set; }

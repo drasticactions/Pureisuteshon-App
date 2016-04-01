@@ -11,7 +11,7 @@ namespace PlayStation_App.Models.Messages
     {
 
         [JsonProperty("messageUid")]
-        public int MessageUid { get; set; }
+        public float MessageUid { get; set; }
 
         [JsonProperty("fakeMessageUid")]
         public object FakeMessageUid { get; set; }
