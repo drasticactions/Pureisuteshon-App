@@ -14,6 +14,8 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using PlayStation_App.Models.Friends;
+using PlayStation_App.Models.MessageGroups;
 using PlayStation_App.Tools.Debug;
 using PlayStation_App.ViewModels;
 using PlayStation_Gui.ViewModels;
@@ -119,6 +121,38 @@ namespace PlayStation_Gui.Views
             {
                 await ViewModel.GetMessages(ViewModel.SelectedMessageGroup);
             }
+        }
+
+        private async void NewMessage(object sender, RoutedEventArgs e)
+        {
+            string error;
+            if (!MessageFriendList.SelectedItems.Any()) return;
+            try
+            {
+                ViewModel.MessageCollection?.Clear();
+                var usernameObjectList = MessageFriendList.SelectedItems.ToList();
+                var friendList = usernameObjectList.Cast<Friend>().ToList();
+                var usernameList = friendList.Select(node => node.OnlineId).ToList();
+                ViewModel.IsNewMessage = true;
+                ViewModel.GroupMembers = usernameList;
+                var selectedGroupMessage = new MessageGroup()
+                {
+                    MessageGroupDetail = new MessageGroupDetail() { MessageGroupName = string.Join(",", usernameList) }
+                };
+                ViewModel.SelectedMessageGroup = selectedGroupMessage;
+                ViewModel.Selected = new MessageGroupItem()
+                {
+                    MessageGroup = selectedGroupMessage
+                };
+                FriendMessageFlyout.Hide();
+                return;
+            }
+            catch (Exception ex)
+            {
+                error = ex.Message;
+            }
+
+            await ResultChecker.SendMessageDialogAsync(error, false);
         }
     }
 }

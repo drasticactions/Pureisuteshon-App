@@ -14,6 +14,10 @@ namespace PlayStation_App.Tools.Converter
             if (value == null) return null;
             var message = (MessageGroup) value;
             MessageGroupDetail messageGroupDetail = message.MessageGroupDetail;
+            if (messageGroupDetail == null)
+            {
+                return $"Error getting title :(";
+            }
             if (!string.IsNullOrEmpty(messageGroupDetail.MessageGroupName))
             {
                 return messageGroupDetail.MessageGroupName;

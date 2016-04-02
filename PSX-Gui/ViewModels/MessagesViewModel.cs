@@ -31,6 +31,7 @@ using PlayStation_App.Models.Sticker;
 using PlayStation_App.Models.User;
 using PlayStation_App.Tools.Debug;
 using PlayStation_App.Tools.Helpers;
+using PlayStation_App.Tools.ScrollingCollection;
 using PlayStation_App.ViewModels;
 using PlayStation_Gui.Views;
 using Template10.Mvvm;
@@ -43,6 +44,10 @@ namespace PlayStation_Gui.ViewModels
         {
             Template10.Common.BootStrapper.Current.NavigationService.FrameFacade.BackRequested += MasterDetailViewControl.NavigationManager_BackRequested;
             MasterDetailViewControl.LoadLayout();
+            if (FriendScrollingCollection == null || !FriendScrollingCollection.Any())
+            {
+                SetFriendsList(Shell.Instance.ViewModel.CurrentUser.Username, false, false, false, false, true, false, false);
+            }
             if (StickerListViewModel.StickerList == null || !StickerListViewModel.StickerList.Any())
             {
                 await StickerListViewModel.GetStickerPacks();
@@ -74,6 +79,21 @@ namespace PlayStation_Gui.ViewModels
             {
                 // State didn't save
             }
+        }
+
+        public void SetFriendsList(string userName, bool onlineFilter, bool blockedPlayer, bool recentlyPlayed,
+    bool personalDetailSharing, bool friendStatus, bool requesting, bool requested)
+        {
+            FriendScrollingCollection = new FriendScrollingCollection
+            {
+                Offset = 0,
+                OnlineFilter = onlineFilter,
+                Requested = requested,
+                Requesting = requesting,
+                PersonalDetailSharing = personalDetailSharing,
+                FriendStatus = friendStatus,
+                Username = userName
+            };
         }
 
         public override Task OnNavigatedFromAsync(IDictionary<string, object> state, bool suspending)
@@ -222,6 +242,17 @@ namespace PlayStation_Gui.ViewModels
         public MasterDetailViewControl MasterDetailViewControl { get; set; }
 
         public MessageGroup SelectedMessageGroup { get; set; }
+
+        private FriendScrollingCollection _friendScrollingCollection;
+
+        public FriendScrollingCollection FriendScrollingCollection
+        {
+            get { return _friendScrollingCollection; }
+            set
+            {
+                Set(ref _friendScrollingCollection, value);
+            }
+        }
 
         public async Task SelectMessageGroup(object sender, ItemClickEventArgs e)
         {

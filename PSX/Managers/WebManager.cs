@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
@@ -13,7 +14,11 @@ namespace PlayStation.Managers
     {
         public async Task<Result> PutData(Uri uri, StringContent json, UserAuthenticationEntity userAuthenticationEntity, string language = "ja")
         {
-            using (var httpClient = new HttpClient())
+            var handler = new HttpClientHandler
+            {
+                AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate
+            };
+            using (var httpClient = new HttpClient(handler))
             {
                 try
                 {
@@ -43,7 +48,11 @@ namespace PlayStation.Managers
 
         public async Task<Result> DeleteData(Uri uri, StringContent json, UserAuthenticationEntity userAuthenticationEntity, string language = "ja")
         {
-            using (var httpClient = new HttpClient())
+            var handler = new HttpClientHandler
+            {
+                AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate
+            };
+            using (var httpClient = new HttpClient(handler))
             {
                 try
                 {
@@ -70,9 +79,13 @@ namespace PlayStation.Managers
             }
         }
 
-        public async  Task<Result> PostData(Uri uri, StringContent content, UserAuthenticationEntity userAuthenticationEntity, string language = "ja")
+        public async  Task<Result> PostData(Uri uri, StringContent content, UserAuthenticationEntity userAuthenticationEntity, string language = "ja", bool isMessage = false)
         {
-            using (var httpClient = new HttpClient())
+            var handler = new HttpClientHandler
+            {
+                AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate
+            };
+            using (var httpClient = new HttpClient(handler))
             {
                 try
                 {
@@ -82,6 +95,10 @@ namespace PlayStation.Managers
                     {
                         var tokens = await authenticationManager.RefreshAccessToken(userAuthenticationEntity.RefreshToken);
                         result.Tokens = tokens.Tokens;
+                    }
+                    if (isMessage)
+                    {
+                        httpClient.DefaultRequestHeaders.Add("User-Agent", "PlayStation Messages App/3.20.23");
                     }
                     httpClient.DefaultRequestHeaders.Add("Accept-Language", language);
                     httpClient.DefaultRequestHeaders.Add("Origin", "http://psapp.dl.playstation.net");
@@ -99,7 +116,7 @@ namespace PlayStation.Managers
             }
         }
 
-        public async Task<Result> PostData(Uri uri, FormUrlEncodedContent header, UserAuthenticationEntity userAuthenticationEntity, string language = "ja")
+        public async Task<Result> PostData(Uri uri, FormUrlEncodedContent header, UserAuthenticationEntity userAuthenticationEntity, string language = "ja", bool isMessage = false)
         {
             using (var httpClient = new HttpClient())
             {
@@ -111,6 +128,10 @@ namespace PlayStation.Managers
                     {
                         var tokens = await authenticationManager.RefreshAccessToken(userAuthenticationEntity.RefreshToken);
                         result.Tokens = tokens.Tokens;
+                    }
+                    if (isMessage)
+                    {
+                        httpClient.DefaultRequestHeaders.Add("User-Agent", "PlayStation Messages App/3.20.23");
                     }
                     httpClient.DefaultRequestHeaders.Add("Accept-Language", language);
                     httpClient.DefaultRequestHeaders.Add("Origin", "http://psapp.dl.playstation.net");
@@ -159,7 +180,7 @@ namespace PlayStation.Managers
             }
         }
 
-        public async Task<Result> PostData(Uri uri, MultipartContent content, UserAuthenticationEntity userAuthenticationEntity, string language = "ja")
+        public async Task<Result> PostData(Uri uri, MultipartContent content, UserAuthenticationEntity userAuthenticationEntity, string language = "ja", bool isMessage = false)
         {
             using (var httpClient = new HttpClient())
             {
@@ -171,6 +192,10 @@ namespace PlayStation.Managers
                     {
                         var tokens = await authenticationManager.RefreshAccessToken(userAuthenticationEntity.RefreshToken);
                         result.Tokens = tokens.Tokens;
+                    }
+                    if (isMessage)
+                    {
+                        httpClient.DefaultRequestHeaders.Add("User-Agent", "PlayStation Messages App/3.20.23");
                     }
                     httpClient.DefaultRequestHeaders.Add("Accept-Language", language);
                     httpClient.DefaultRequestHeaders.Add("Origin", "http://psapp.dl.playstation.net");

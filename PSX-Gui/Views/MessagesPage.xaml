@@ -38,6 +38,28 @@
                         <controls1:PageHeader.PrimaryCommands>
                             <AppBarButton Click="RefreshGroupList" Icon="Refresh" Label="Refresh">
                             </AppBarButton>
+                            <AppBarButton Icon="Add" Label="New Message">
+                                <AppBarButton.Flyout>
+                                    <Flyout Placement="Full" x:Name="FriendMessageFlyout" FlyoutPresenterStyle="{StaticResource PlayStationFlyoutNoScrollStyle}">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="*"/>
+                                                <RowDefinition Height="Auto"/>
+                                            </Grid.RowDefinitions>
+                                            <ListView x:Name="MessageFriendList" SelectionMode="Multiple" Grid.Row="0"
+                                                          ItemTemplate="{StaticResource FriendTemplate}"
+                                                          ItemsSource="{Binding FriendScrollingCollection}">
+                                                <ListView.ItemContainerStyle>
+                                                    <Style TargetType="ListViewItem">
+                                                        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                                                    </Style>
+                                                </ListView.ItemContainerStyle>
+                                            </ListView>
+                                            <Button HorizontalAlignment="Right" Margin="5" Grid.Row="1" Click="NewMessage" Content="New Message"/>
+                                        </Grid>
+                                    </Flyout>
+                                </AppBarButton.Flyout>
+                            </AppBarButton>
                         </controls1:PageHeader.PrimaryCommands>
                         <interactivity:Interaction.Behaviors>
                             <behaviors:EllipsisBehavior Visibility="Collapsed" />

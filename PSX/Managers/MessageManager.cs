@@ -82,13 +82,13 @@ namespace PlayStation.Managers
             string region = "jp")
         {
             var url = string.Format(EndPoints.CreatePost, region, messageUserId);
-            const string boundary = "abcdefghijklmnopqrstuvwxyz";
+            const string boundary = "gc0p4Jq0M2Yt08jU534c0p";
             var messageJson = new SendMessage
             {
                 message = new Message()
                 {
                     body = string.Empty,
-                    fakeMessageUid = 1384958573288,
+                    fakeMessageUid = 1234,
                     messageKind = 1013,
                     stickerDetail = new StickerDetail()
                     {
@@ -112,13 +112,13 @@ namespace PlayStation.Managers
             UserAuthenticationEntity userAuthenticationEntity, string region = "jp")
         {
             var url = string.Format(EndPoints.CreatePost, region, messageUserId);
-            const string boundary = "abcdefghijklmnopqrstuvwxyz";
+            const string boundary = "gc0p4Jq0M2Yt08jU534c0p";
             var messageJson = new SendMessage
             {
                 message = new Message()
                 {
                     body = post,
-                    fakeMessageUid = 1384958573288,
+                    fakeMessageUid = 1234,
                     messageKind = 1
                 }
             };
@@ -162,6 +162,7 @@ namespace PlayStation.Managers
 
         public class SendMessage
         {
+            [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
             public string[] to { get; set; }
 
             public Message message { get; set; }
@@ -175,8 +176,10 @@ namespace PlayStation.Managers
 
             public int messageKind { get; set; }
 
+            [JsonProperty(NullValueHandling = NullValueHandling.Ignore, DefaultValueHandling = DefaultValueHandling.Ignore)]
             public float messageUid { get; set; }
 
+            [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
             public StickerDetail stickerDetail { get; set; }
         }
 
@@ -220,20 +223,20 @@ namespace PlayStation.Managers
             t.Headers.ContentLength = realImage.Length;
             form.Add(t);
 
-            return await _webManager.PostData(new Uri(url), form, currentTokens);
+            return await _webManager.PostData(new Uri(url), form, currentTokens, "ja", true);
         }
 
         public async Task<Result> CreateNewGroupMessage(string[] toArray, string message, UserAuthenticationEntity currentTokens, string region)
         {
             var url = string.Format(EndPoints.CreateNewGroupPost, region);
-            const string boundary = "abcdefghijklmnopqrstuvwxyz";
+            const string boundary = "gc0p4Jq0M2Yt08jU534c0p";
             var messageJson = new SendMessage
             {
                 to = toArray,
                 message = new Message()
                 {
                     body = message,
-                    fakeMessageUid = 1384958573288,
+                    fakeMessageUid = 1234,
                     messageKind = 1
                 }
             };
@@ -242,20 +245,20 @@ namespace PlayStation.Managers
             var stringContent = new StringContent(json, Encoding.UTF8, "application/json");
             stringContent.Headers.Add("Content-Description", "message");
             var form = new MultipartContent("mixed", boundary) { stringContent };
-            return await _webManager.PostData(new Uri(url), form, currentTokens);
+            return await _webManager.PostData(new Uri(url), form, currentTokens, "ja", true);
         }
 
         public async Task<Result> CreateStickerPostWithNewGroupMessage(string[] toArray, string manifestUrl, string toString, string imageUrl, string packageId, string type, UserAuthenticationEntity currentTokens, string region)
         {
             var url = string.Format(EndPoints.CreateNewGroupPost, region);
-            const string boundary = "abcdefghijklmnopqrstuvwxyz";
+            const string boundary = "gc0p4Jq0M2Yt08jU534c0p";
             var messageJson = new SendMessage
             {
                 to = toArray,
                 message = new Message()
                 {
                     body = string.Empty,
-                    fakeMessageUid = 1384958573288,
+                    fakeMessageUid = 1234,
                     messageKind = 1013,
                     stickerDetail = new StickerDetail()
                     {
@@ -272,7 +275,7 @@ namespace PlayStation.Managers
             var stringContent = new StringContent(json, Encoding.UTF8, "application/json");
             stringContent.Headers.Add("Content-Description", "message");
             var form = new MultipartContent("mixed", boundary) { stringContent };
-            return await _webManager.PostData(new Uri(url), form, currentTokens);
+            return await _webManager.PostData(new Uri(url), form, currentTokens, "ja", true);
         }
     }
 }
