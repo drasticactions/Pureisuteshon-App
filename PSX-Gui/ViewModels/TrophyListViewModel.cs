@@ -61,7 +61,7 @@ namespace PlayStation_Gui.ViewModels
             NavigationService.Navigate(typeof (TrophyDetailListPage), JsonConvert.SerializeObject(trophyNav));
         }
 
-        public override async void OnNavigatedTo(object parameter, NavigationMode mode, IDictionary<string, object> state)
+        public override async Task OnNavigatedToAsync(object parameter, NavigationMode mode, IDictionary<string, object> state)
         {
             string error;
             try

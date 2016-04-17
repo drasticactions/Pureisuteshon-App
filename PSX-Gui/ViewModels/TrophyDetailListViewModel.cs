@@ -26,7 +26,7 @@ namespace PlayStation_Gui.ViewModels
 {
     public class TrophyDetailListViewModel : ViewModelBase
     {
-        public override async void OnNavigatedTo(object parameter, NavigationMode mode, IDictionary<string, object> state)
+        public override async Task OnNavigatedToAsync(object parameter, NavigationMode mode, IDictionary<string, object> state)
         {
             if (state.ContainsKey(nameof(Username)) && state.ContainsKey(nameof(NpcommunicationId)) && state.ContainsKey(nameof(TrophyName)))
             {

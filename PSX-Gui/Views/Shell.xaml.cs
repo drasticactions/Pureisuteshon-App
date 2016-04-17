@@ -18,7 +18,7 @@ namespace PlayStation_Gui.Views
         private static WindowWrapper Window { get; set; }
         public static HamburgerMenu HamburgerMenu { get { return Instance.MyHamburgerMenu; } }
         public ShellViewModel ViewModel => this.DataContext as ShellViewModel;
-        public Shell(NavigationService navigationService)
+        public Shell(INavigationService navigationService)
         {
             Instance = this;
             this.InitializeComponent();
@@ -33,7 +33,7 @@ namespace PlayStation_Gui.Views
         public string BusyText { get; set; } = "Please wait...";
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public void SetNav(NavigationService navigationService)
+        public void SetNav(INavigationService navigationService)
         {
             MyHamburgerMenu.NavigationService = navigationService;
         }

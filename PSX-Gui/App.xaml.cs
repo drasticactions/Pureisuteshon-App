@@ -103,9 +103,9 @@ namespace PlayStation_Gui
             await Task.CompletedTask;
         }
 
-        public override async void OnResuming(object s, object e)
+        public override async void OnResuming(object s, object e, AppExecutionState previousExecutionState)
         {
-            base.OnResuming(s, e);
+            base.OnResuming(s, e, previousExecutionState);
             // On Restore, if we have a frame, remake navigation so we can go back to previous pages.
             if (Frame != null)
             {

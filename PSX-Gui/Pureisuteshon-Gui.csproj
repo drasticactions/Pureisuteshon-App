@@ -424,8 +424,8 @@
     <Folder Include="Commands\SelectAccount\" />
   </ItemGroup>
   <ItemGroup>
-    <SDKReference Include="SQLite.UAP.2015, Version=3.10.2">
-      <Name>SQLite for Universal App Platform</Name>
+    <SDKReference Include="SQLite.UWP.2015, Version=3.12.1">
+      <Name>SQLite for Universal Windows Platform</Name>
     </SDKReference>
     <SDKReference Include="WindowsDesktop, Version=10.0.10586.0">
       <Name>Windows Desktop Extensions for the UWP</Name>
@@ -457,10 +457,6 @@
     <ProjectReference Include="..\Pureisuteshon.UI\Pureisuteshon.UI.csproj">
       <Project>{713460f4-ebd7-4846-9881-f6681c310847}</Project>
       <Name>Pureisuteshon.UI</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Template10 %28Library%29\Template10 %28Library%29.csproj">
-      <Project>{ac3e4f10-6615-4e16-bb0f-104760c92b95}</Project>
-      <Name>Template10 %28Library%29</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
