@@ -19,7 +19,7 @@
     </Page.Background>
     <Controls:ModalDialog IsModal="{x:Bind IsBusy, Mode=OneWay}">
         <Controls:ModalDialog.Content>
-            <Controls:HamburgerMenu x:Name="MyHamburgerMenu" SecondaryButtonOrientation="Vertical" Opacity=".95" VisualStateNormalMinWidth="720" VisualStateWideMinWidth="1020">
+            <Controls:HamburgerMenu x:Name="MyHamburgerMenu" SecondaryButtonOrientation="Vertical" TabIndex="-25" VisualStateNormalMinWidth="720" VisualStateWideMinWidth="1020">
 
                 <Controls:HamburgerMenu.PrimaryButtons>
                     <Controls:HamburgerButtonInfo IsEnabled="{x:Bind ViewModel.IsLoggedIn, Mode=OneWay}" ClearHistory="True" PageType="views:MainPage">

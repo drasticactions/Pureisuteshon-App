@@ -48,16 +48,17 @@ namespace PlayStation_Gui.Views
             ((Frame)Parent).CacheSize = cacheSize;
         }
 
-        private async void MasterListBox_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (FriendList.SelectedItem == null) return;
-            var friend = FriendList.SelectedItem as Friend;
-            await FriendPageView.LoadFriend(friend.OnlineId);
-        }
-
         private void RefreshList(object sender, RoutedEventArgs e)
         {
             ViewModel.SetFriendList();
+        }
+
+        private async void FriendList_OnItemClick(object sender, ItemClickEventArgs e)
+        {
+            if (e.ClickedItem == null) return;
+            var friend = e.ClickedItem as Friend;
+            await FriendPageView.LoadFriend(friend.OnlineId);
+            ViewModel.FriendLoaded = true;
         }
     }
 }

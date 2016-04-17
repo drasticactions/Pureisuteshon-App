@@ -23,6 +23,16 @@ namespace PlayStation_Gui.ViewModels
         private FriendScrollingCollection _friendScrollingCollection;
         private ComboBox _filterComboBox;
 
+        private bool _friendLoaded = default(bool);
+        public bool FriendLoaded
+        {
+            get { return _friendLoaded; }
+            set
+            {
+                Set(ref _friendLoaded, value);
+            }
+        }
+
         private Friend _selected;
 
         public Friend Selected

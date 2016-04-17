@@ -52,7 +52,7 @@
                       Grid.Row="2"
                       HorizontalAlignment="Stretch" 
                       IsSwipeEnabled="True" 
-                      SelectionChanged="MasterListBox_OnSelectionChanged"
+                      ItemClick="FriendList_OnItemClick"
                       SelectedItem="{Binding Selected, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"   
                       ItemTemplate="{StaticResource FriendTemplate}"
                       ItemsSource="{Binding FriendScrollingCollection}"
@@ -71,14 +71,15 @@
             </controls2:MasterDetailViewControl.MasterViewPaneContent>
             <controls2:MasterDetailViewControl.DetailViewPaneContent>
                 <Grid>
-                    <Grid VerticalAlignment="Center" HorizontalAlignment="Center" Visibility="{Binding Selected,
-                    Converter={StaticResource NullVisibilityConverter}, Mode=OneWay}">
+                    <Grid VerticalAlignment="Center" HorizontalAlignment="Center" Visibility="{Binding FriendLoaded,
+                    Converter={StaticResource BooleanToVisibilityInverter}, Mode=OneWay}">
                         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
                             <Image MaxHeight="230" Source="/Assets/Icons/Friend/FriendsHangingOut.png"/>
                             <Image MaxHeight="230" Source="/Assets/Icons/Friend/RandomControllers.png"/>
                         </StackPanel>
                     </Grid>
-                    <Grid Visibility="{Binding Selected, Converter={StaticResource NullVisibilityInverter}, Mode=OneWay}">
+                    <Grid Visibility="{Binding FriendLoaded,
+                    Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}">
                         <controls3:FriendView x:Name="FriendPageView">
 
                         </controls3:FriendView>
